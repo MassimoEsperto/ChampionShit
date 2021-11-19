@@ -1,0 +1,91 @@
+<div *ngIf="!loading_page" [hidden]="hidden_page" class="page pb-32">
+
+  <div *ngIf="formazione">
+
+    <div [hidden]="schieramento">
+
+      <div class="pt-8 pb-32" style="text-align: center;color: blanchedalmond;">
+        <h4>{{language.page.rosa_utente}}</h4>
+      </div>
+
+
+      <mat-selection-list #players>
+        <mat-list-option #item *ngFor="let player of formazione.rosa" [selected]="player.selected"
+          [hidden]="!disabledTeam(players,player) && !item.selected" [value]="player">
+          {{player.tipo}} {{player.nome}} {{player.percentuale}}
+        </mat-list-option>
+      </mat-selection-list>
+      <br>
+      <p style="color: red;">{{language.page.indisponibili}}</p>
+      <mat-nav-list>
+        <mat-list-item *ngFor="let item of formazione.indisponibili">
+          {{item.tipo}} {{item.nome}}
+        </mat-list-item>
+      </mat-nav-list>
+
+      <div class="pa-8">
+        <my-button [color]="'success'" [block]="true" [disabled]="players.selectedOptions.selected.length!=5"
+          [label]="language.bottoni.schiera" (myClick)="schiera(players.selectedOptions.selected)"></my-button>
+      </div>
+
+
+    </div>
+
+
+
+    <div [hidden]="!schieramento" class="flex-schiera wrapper pb-32">
+
+      <div class="pb-32">
+
+        <div class="pt-8 pb-32" style="text-align: center;color: blanchedalmond;">
+          <h4>{{language.page.formazione}}</h4>
+        </div>
+
+        <div class="pa-8">
+          <div class="squadra-list" (click)="changeView()">
+
+            <div class="flex-schiera pa-8">
+              <div *ngFor="let ele of squadra">
+                <div class="squadra-box" *ngIf="ele.tipo=='P'">
+                  <div class="pt-16">{{ele.tipo+" "+ele.nome.substring(0, 10)}}</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex-schiera pa-8">
+              <div *ngFor="let ele of squadra">
+                <div class="squadra-box" *ngIf="ele.tipo=='D'">
+                  <div class="pt-16">{{ele.tipo+" "+ele.nome.substring(0, 10)}}</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex-schiera pa-8">
+              <div *ngFor="let ele of squadra">
+                <div class="squadra-box" *ngIf="ele.tipo=='C'">
+                  <div class="pt-16">{{ele.tipo+" "+ele.nome.substring(0, 10)}}</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex-schiera pa-8">
+              <div *ngFor="let ele of squadra">
+                <div class="squadra-box" *ngIf="ele.tipo=='A'">
+                  <div class="pt-16">{{ele.tipo+" "+ele.nome.substring(0, 10)}}</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="pa-8">
+            <my-button [color]="'danger'" [block]="true" [disabled]="squadra.length!=5"
+              [label]="language.bottoni.inserisci" [loading]="loading_btn" (myClick)="setFormazione()"></my-button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

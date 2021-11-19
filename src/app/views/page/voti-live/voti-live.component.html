@@ -1,0 +1,44 @@
+<div *ngIf="!loading_page" [hidden]="hidden_page" class="page pb-32">
+
+    <div class="pt-8 pb-32" style="text-align: center;color: blanchedalmond;">
+        <h4>PAGINA IN COSTRUZIONE</h4>
+    </div>
+
+    <br>
+    <div *ngIf="formazioni">
+        <div *ngFor="let fanta of formazioni" class="pt-16">
+            
+            <mdb-card class="text-white" bgColor="bg-success">
+                <mdb-card-header>
+                    <div class="row">
+                        <div class="col-6">
+                            <span>{{fanta.match[0].squadra}}</span>
+                        </div>
+                        <div class="col-6">
+                            <span>{{fanta.match[1].squadra}}</span>
+                        </div>
+                    </div>
+                </mdb-card-header>
+                <!--Card content-->
+                <mdb-card-body class="font-size-smart">
+                    <div class="row">
+                        <div class="col-6">
+                            <div *ngFor="let schieramento of fanta.match[0].schieramento">
+                                <span>{{schieramento.ruolo}} {{schieramento.calciatore}} {{schieramento.voto}}</span>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div *ngFor="let schieramento of fanta.match[1].schieramento">
+                                <span>{{schieramento.ruolo}} {{schieramento.calciatore}} {{schieramento.voto}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </mdb-card-body>
+
+            </mdb-card>
+
+
+
+        </div>
+
+    </div>

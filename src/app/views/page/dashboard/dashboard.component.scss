@@ -1,0 +1,26 @@
+@import '../../../../assets/css/page.scss';
+
+
+
+
+
+.squadre{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+
+.punteggio{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sfondo_campo{
+    background-image: url(../../../../assets/img/campo_sfida.png);
+    background-position: center; 
+	background-repeat: no-repeat;
+    background-size: cover;
+
+}

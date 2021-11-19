@@ -1,0 +1,27 @@
+<div *ngIf="isPlayer" class="all-view">
+
+  <div class="pcdesktop">
+    <nav-desktop></nav-desktop>
+  </div>
+
+  <div class="tablet">
+    <nav-tablet></nav-tablet>
+  </div>
+
+  <div class="smartphone">
+    <nav-smartphone></nav-smartphone>
+  </div>
+
+  <!-- Page -->
+  <div class="pt-media" style="min-height:100vh;">
+    <my-spinner></my-spinner>
+    <my-alert></my-alert>
+    <router-outlet></router-outlet>
+  </div>
+
+  <my-footer></my-footer>
+</div>
+
+<div *ngIf="isVisitors">
+  <pagamento></pagamento>
+</div>

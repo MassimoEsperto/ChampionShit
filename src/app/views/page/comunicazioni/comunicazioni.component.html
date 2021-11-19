@@ -1,0 +1,32 @@
+<div *ngIf="!loading_page" [hidden]="hidden_page" class="page">
+
+<div *ngFor="let item of comunicazioni">
+    <div *ngIf="item.visualizzata==1">
+        <mdb-card class="text-white mb-3" bgColor="bg-transparent">
+            <mdb-card-header>{{item.tempo}}</mdb-card-header>
+            <mdb-card-body>
+                <mdb-card-title>
+                    <h5>{{item.titolo}}</h5>
+                </mdb-card-title>
+                <mdb-card-text class="text-white">{{item.messaggio}}</mdb-card-text>
+            </mdb-card-body>
+        </mdb-card>
+    </div>
+
+    <div *ngIf="item.visualizzata==0">
+        <mdb-card class="text-white mb-3" bgColor="bg-success">
+            <mdb-card-header>{{item.tempo}}</mdb-card-header>
+            <mdb-card-body>
+                <mdb-card-title>
+                    <h5>{{item.titolo}}</h5>
+                </mdb-card-title>
+                <mdb-card-text class="text-white">{{item.messaggio}}</mdb-card-text>
+            </mdb-card-body>
+        </mdb-card>
+    </div>
+</div>
+
+   
+  
+
+</div>

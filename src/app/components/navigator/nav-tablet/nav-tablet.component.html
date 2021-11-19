@@ -1,0 +1,61 @@
+<div class="header flex-between">
+    <div class="cursore" (click)="navElement()">
+        <mdb-icon fas icon="bars" class="white-text"></mdb-icon>
+    </div>
+    <div>
+        <span class="navbar-brand pr-16">{{loggato.username}}</span>
+    </div>
+    <div>
+        <a type="button">
+            <img src="assets/avatar/{{loggato.avatar}}.png" (click)="info()" alt=""
+                class="img-fluid rounded-circle z-depth-0" width="24px" height="24px"></a>
+    </div>
+</div>
+
+<div id="pannello" #pannello class="sidepanel">
+
+    <links class="pl-8">
+
+        <!-- Links -->
+        <ul class="navbar-nav mr-auto">
+            <li *ngIf="isAdmin" class="nav-item flex-start pl-16">
+                <mdb-icon fas icon="id-card-alt" class="white-text"></mdb-icon>
+                <a class="nav-link waves-light" (click)="navElement()" routerLink="/home/gestione-admin"
+                    mdbWavesEffect>{{language.header.admin}}</a>
+            </li>
+            <li class="nav-item flex-start pl-16">
+                <mdb-icon fas icon="poo" class="white-text"></mdb-icon>
+                <a class="nav-link waves-light" (click)="navElement()" routerLink="/home/dashboard"
+                    mdbWavesEffect>{{language.pannello.home}}</a>
+            </li>
+            <li *ngIf="isPlayer" class="nav-item flex-start pl-16">
+                <mdb-icon fas icon="file-signature" class="white-text"></mdb-icon>
+                <a class="nav-link waves-light" (click)="navElement()" routerLink="/home/schieramento"
+                    mdbWavesEffect>{{language.pannello.formazione}}</a>
+            </li>
+            <li class="nav-item flex-start pl-16">
+                <mdb-icon fas icon="umbrella-beach" class="white-text"></mdb-icon>
+                <a class="nav-link waves-light" (click)="navElement()" routerLink="/home/calendario"
+                    mdbWavesEffect>{{language.pannello.calendario}}</a>
+            </li>
+            <li class="nav-item flex-start pl-16">
+                <mdb-icon fas icon="binoculars" class="white-text"></mdb-icon>
+                <a class="nav-link waves-light" (click)="navElement()" routerLink="/home/rose-utenti"
+                    mdbWavesEffect>{{language.pannello.rose}}</a>
+            </li>
+            <li class="nav-item flex-start pl-16">
+                <mdb-icon fas icon="user-alt-slash" class="white-text"></mdb-icon>
+                <a class="nav-link waves-light" (click)="logOut()" mdbWavesEffect>{{language.pannello.log_out}}</a>
+            </li>
+            <li class="nav-item pl-8">
+                <a class="nav-link" (click)="azzeraMessaggiSmart()" routerLink="/home/comunicazioni">
+                    {{loggato.num_msg}} <mdb-icon fas icon="envelope"></mdb-icon></a>
+            </li>
+        </ul>
+    </links>
+
+    <div class="flex-central">
+        <img src="assets/img/torneo.png" alt="ShitCup" class="immagine">
+    </div>
+    <!-- Collapsible content -->
+</div>

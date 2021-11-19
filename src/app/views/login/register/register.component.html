@@ -1,0 +1,56 @@
+<div class="gradient-body">
+
+    <div class="flex-central pt-24 pb-56 pl-16 pr-16">
+
+        <!-- Material form login -->
+        <mdb-card>
+
+            <mdb-card-header class="danger-color white-text text-center py-4">
+                <h5>
+                    <strong>{{language.login.registrati}}</strong>
+                </h5>
+            </mdb-card-header>
+
+
+            <!--Card content-->
+            <mdb-card-body class="px-lg-5 pt-8">
+
+                <!-- Form -->
+                <form class="text-center" style="color: #757575;" #element="ngForm" (submit)="registrati(element)">
+
+                    <!-- Username -->
+                    <input type="text" id="username" class="form-control mb-4 mt-4" placeholder="Username" minlength="4"
+                        maxlength="12" [(ngModel)]="element.username" name="username" required />
+
+                    <!-- Email -->
+                    <input type="email" id="email" class="form-control mb-4" placeholder="Email" minlength="8"
+                        maxlength="40" [(ngModel)]="element.mail" name="email" required email />
+
+                    <!-- Password -->
+                    <input type="password" id="psw" class="form-control mb-4" placeholder="Pwd (min 8 caratteri)" minlength="8"
+                    maxlength="20" [(ngModel)]="element.password" name="password" required />
+
+                    <!-- Squadra -->
+                    <input type="text" id="squadra" class="form-control mb-4 mt-4" placeholder="Squadra" minlength="4"
+                        [(ngModel)]="element.squadra" name="squadra" required maxlength="12" />
+
+                    <!-- Sign in button -->
+                    <my-button [submit]="true" [color]="'danger'" [block]="true" [disabled]="element.invalid"
+                        [label]="language.bottoni.invia" [loading]="loading_btn"></my-button>
+
+                    <!-- Forgot password -->
+                    <a routerLink="/recupera-password">{{language.login.recupera_password}}</a> /
+                    <!-- Forgot login -->
+                    <a routerLink="/sign-in">{{language.login.login}}</a>
+
+                </form>
+                <!-- Form -->
+
+            </mdb-card-body>
+
+        </mdb-card>
+        <!-- Material form login -->
+
+    </div>
+
+</div>

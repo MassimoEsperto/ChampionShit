@@ -1,0 +1,40 @@
+<div *ngIf="!loading_page" [hidden]="hidden_page" class="page">
+
+    <div class="pt-8 pb-32" style="text-align: center;color: blanchedalmond;">
+        <h4>{{language.page.rose_utenti}}</h4>
+    </div>
+   
+
+    <mat-accordion class="rose-headers-align" multi>
+        <div *ngFor="let item of listaRose">
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        {{item.squadra}}
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        <div></div>
+                        <img src="assets/avatar/{{item.avatar}}.png" class="avatar" width="24px" />
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+
+                <div>
+                    Username: {{item.username}}
+                </div>
+
+                <div>
+                    Lega: {{item.lega}}
+                </div>
+
+                <br>
+
+                <div *ngFor="let ele of item.lista;let i = index">
+                    {{i+1}} {{ele.ruolo}} {{ele.calciatore}}
+                </div>
+
+            </mat-expansion-panel>
+        </div>
+
+    </mat-accordion>
+    <br>
+</div>

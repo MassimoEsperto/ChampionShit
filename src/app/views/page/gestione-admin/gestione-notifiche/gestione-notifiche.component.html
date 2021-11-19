@@ -1,0 +1,60 @@
+<div class="page">
+
+    <div class="inserisci" *ngIf="toggle">
+        <mdb-card class="text-white" bgColor="bg-success">
+            <mdb-card-header>Nuova Notifica</mdb-card-header>
+            <mdb-card-body>
+
+                <form class="text-center" #messaggio="ngForm" (submit)="setComunicazione(messaggio.form.value)">
+
+                    <!-- Name -->
+                    <input type="text" class="form-control mb-4" name="titolo" placeholder="titolo" ngModel required />
+
+                    <!-- Message -->
+                    <div class="form-group">
+                        <textarea class="form-control" rows="3" name="testo" placeholder="Messaggio" ngModel
+                            required></textarea>
+                    </div>
+
+                    <!-- Send button -->
+                    <my-button [submit]="true" [color]="'danger'" [block]="true" [disabled]="messaggio.invalid"
+                        [label]="'INVIA'" [loading]="loading_btn"></my-button>
+
+                    <my-button [color]="'danger'" [block]="true" [label]="'CHANGE'" (myClick)="toggla()"></my-button>
+
+                </form>
+            </mdb-card-body>
+        </mdb-card>
+
+        <!-- Default form contact -->
+    </div>
+
+    <div class="invia" *ngIf="!toggle">
+        <mdb-card class="text-white" bgColor="bg-success">
+            <mdb-card-header>Invia Notifica</mdb-card-header>
+            <mdb-card-body>
+
+                <form class="text-center" #element="ngForm" (submit)="addComunicazione(element.form.value)">
+
+                    <select multiple class="form-control mb-4 mt-4 custom-select" placeholder="Utenti" name="utenti"
+                        ngModel required>
+                        <option *ngFor="let u of utenti" [ngValue]="u.id">{{u.username}}</option>
+                    </select>
+
+                    <select class="form-control mb-4 mt-4 custom-select" placeholder="Notifiche" name="notifica" ngModel
+                        required>
+                        <option *ngFor="let n of notifiche" [ngValue]="n.id">{{n.titolo}}</option>
+                    </select>
+
+                    <!-- Send button -->
+                    <my-button [submit]="true" [color]="'danger'" [block]="true" [disabled]="element.invalid"
+                        [label]="'INVIA'" [loading]="loading_btn"></my-button>
+
+                    <my-button [color]="'danger'" [block]="true" [label]="'CHANGE'" (myClick)="toggla()"></my-button>
+
+                </form>
+            </mdb-card-body>
+        </mdb-card>
+    </div>
+
+</div>

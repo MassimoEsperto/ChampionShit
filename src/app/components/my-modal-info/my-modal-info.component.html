@@ -1,0 +1,10 @@
+<h2 mat-dialog-title>{{data.titolo}}</h2>
+<mat-dialog-content class="mat-typography">
+
+    <div *ngFor="let item of data.lista" class="pb-16">
+        <h3>{{item.subtitolo}}</h3>
+        <p>{{item.messaggio1}}</p>
+        <p>{{item.messaggio2}}</p>
+    </div>
+
+</mat-dialog-content>

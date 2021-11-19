@@ -1,0 +1,20 @@
+.fisso {
+    position: fixed;
+    top: 64px;
+    right: 8px;
+    margin-left: 8px;
+    border-radius: 8px;
+    padding: 16px;
+    opacity: 0.8;
+    transition: opacity 0.6s; /* 600ms to fade out */
+    color: white;
+    z-index: 100;
+}
+
+.my-alert-success{
+    background-color: blue;
+}
+
+.my-alert-error{
+    background-color: red;
+}

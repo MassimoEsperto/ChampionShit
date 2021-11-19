@@ -1,0 +1,79 @@
+<p>IN QUESTA SEZIONE POTRAI SIA CARICARE LE SQUADRE CHE SOSTITUIRE GIOCATORI DEI PARTECIPANTI</p>
+
+
+<my-button [submit]="false" [color]="'warning'" [block]="true" [label]="'CAMBIA IN '+labelView" (myClick)="changeView()"
+  [loading]="loading_btn"></my-button>
+
+<br>
+
+<div *ngIf="labelView == 'SOSTITUISCI'" class="carica">
+  <label class="btn btn-default btn-file">
+    Update File
+    <input type="file" style="display: none;" (change)="importSquadre($event)"
+      accept=".csv,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
+  </label>
+
+  <div *ngIf="formazioni.length" class="pt-64">
+    <h4 style="text-align: center;">ASSOCIA SQUADRA ALL'UTENTE</h4>
+    <p>lega {{lega}}</p>
+    <div class="flex-tra-fra">
+      <div class="flex-colonna">
+        <mat-form-field appearance="outline">
+          <mat-label>Squadra</mat-label>
+          <mat-select (selectionChange)="onSelectedSquadra($event)">
+            <mat-option *ngFor="let element of formazioni" [value]="element">
+              {{element.utente}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div *ngFor="let element of selectedTeam;let i=index">
+          {{i+1}}) {{element.nome}}
+        </div>
+      </div>
+      <div class="flex-colonna">
+        <mat-form-field appearance="outline">
+          <mat-label>Utente</mat-label>
+          <mat-select (selectionChange)="onSelectedUtente($event)">
+            <mat-option *ngFor="let element of utenti" [value]="element">
+              {{element.squadra}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div *ngIf="selectedUtente">USERNAME: </div>
+        <div *ngIf="selectedUtente">{{selectedUtente.username}}</div>
+        <div *ngIf="selectedUtente">SQUADRA: </div>
+        <div *ngIf="selectedUtente">{{selectedUtente.squadra}}</div>
+        <div *ngIf="selectedUtente">EMAIL: </div>
+        <div *ngIf="selectedUtente">{{selectedUtente.email}}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pa-8">
+    <my-button [submit]="false" [color]="'danger'" [block]="true" [disabled]="!selectedTeam||!selectedUtente"
+      [label]="'INVIA'" [loading]="loading_btn" (myClick)="onAssocia()"></my-button>
+  </div>
+</div>
+
+<div *ngIf="labelView == 'CARICA'" class="sostituisci">
+
+  <form class="text-center" #element="ngForm" (submit)="onSostituisci(element.form.value)">
+    <label for="select-utente">Da Sostituire</label>
+    <select id="select-utente" class="form-control mb-4 mt-4 custom-select" name="utente" ngModel required>
+      <optgroup *ngFor="let ut of listaRoseUtenti" label="{{ut.squadra}}">
+        <option *ngFor="let u of ut.lista" [ngValue]="u">{{u.ruolo}} {{u.calciatore}}</option>
+      </optgroup>
+    </select>
+
+    <label for="select-player">Da Inserire</label>
+    <select id="select-player" class="form-control mb-4 mt-4 custom-select" name="player" ngModel required>
+      <option *ngFor="let n of listaRose" [ngValue]="n.id_calciatore">{{n.ruolo}} {{n.nome_calciatore}}</option>
+    </select>
+
+    <!-- Send button -->
+    <my-button [submit]="true" [color]="'danger'" [block]="true" [disabled]="element.invalid" [label]="'INVIA'"
+      [loading]="loading_btn"></my-button>
+
+  </form>
+
+</div>

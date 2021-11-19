@@ -1,0 +1,148 @@
+{
+    "page": {
+        "cambia_dati": "更改数据",
+        "cambia_img": "更改图像",
+        "personalizza":"定制",
+        "giornata": "日",
+        "da_disputare": "有争议",
+        "inizio_partita": "游戏开始",
+        "inserisci_formazione": "插入训练",
+        "vedi_live": "現場直播",
+        "risultati": "结果",
+        "classifiche": "排名",
+        "girone": "团体",
+        "squadra": "团队",
+        "rosa_utente": "用户密码",
+        "rose_utenti": "用户密码",
+        "indisponibili": "不可",
+        "formazione": "训练",
+        "calcolo": "計算中...",
+        "serie": "一個聯賽",
+        "fase": "階段",
+        "data": "日期",
+        "fasi": {
+            "gironi": "團體",
+            "spareggi": "射擊",
+            "quarti": "四分之一",
+            "semi_finale": "半-決賽",
+            "finale": "決賽"
+        }
+    },
+    "alert": {
+        "success": "难以置信！",
+        "email": "很快您将收到一封包含所请求信息的电子邮件",
+        "formazione": "您的帐户没有游戏"
+    },
+    "presentazione": {
+        "discorso": "粪便杯已成为一种敬畏和时尚的元素，是所有希望从破产季节中赎回的足球运动员的基本特征。",
+        "aggiorna_versione": "您必须更新版本",
+        "versione_locale": "本地版本",
+        "versione_applicazione": "应用程序版本",
+        "soluzione": "已指示解决方案",
+        "svuotare_cache": "清空缓存并删除 co​​okie .."
+    },
+    "bottoni": {
+        "invia": "发送",
+        "inserisci": "插",
+        "schiera": "大批",
+        "entra": "进来",
+        "avatar": "选择头像"
+    },
+    "pannello": {
+        "admin": "行政",
+        "home": "家",
+        "formazione": "培训管理",
+        "calendario": "结果日历",
+        "rose": "玫瑰用户列表",
+        "log_out": "注销"
+    },
+    "header": {
+        "admin": "行政",
+        "home": "家",
+        "formazione": "培训管理",
+        "calendario": "结果日历",
+        "rose": "玫瑰用户列表",
+        "log_out": "注销"
+    },
+    "login": {
+        "recupera_password": "恢复密码",
+        "registrati": "注册",
+        "login": "登录",
+        "torna_al_login": "返回登录"
+    },
+    "modali": {
+        "cambia_lingua": "改变语言",
+        "lingue": [
+            {
+                "cod": "ita",
+                "nome": "义大利文",
+                "ico" : "fas fa-pizza-slice"
+            },
+            {
+                "cod": "eng",
+                "nome": "英语",
+                "ico" : "fas fa-igloo"
+            },
+            {
+                "cod": "fra",
+                "nome": "法语",
+                "ico" : "fab fa-fort-awesome"
+            },
+            {
+                "cod": "cin",
+                "nome": "中国人",
+                "ico" : "fas fa-torii-gate"
+            }
+        ]
+    },
+    "footer": {
+        "regolamento": "法规",
+        "info": "信息",
+        "competizione": "竞赛",
+        "chi_siamo": "我们是谁",
+        "nostro_blog": "我们的博客",
+        "cambio_lingua": "更改语言",
+        "albo": "荣誉卷",
+        "profilo": "輪廓"
+    },
+    "albo": {
+        "titolo": "荣誉卷",
+        "lista": [
+            {
+                "subtitolo": "版 2014/2015",
+                "messaggio1": "参加人数为 12",
+                "messaggio2": "优胜者 Profeta"
+            },
+            {
+                "subtitolo": "版 2015/2016",
+                "messaggio1": "参加人数为 12",
+                "messaggio2": "优胜者 Profeta"
+            },
+            {
+                "subtitolo": "版 2016/2017",
+                "messaggio1": "参加人数为 12",
+                "messaggio2": "优胜者 Profeta"
+            },
+            {
+                "subtitolo": "版 2017/2018",
+                "messaggio1": "参加人数为 12",
+                "messaggio2": "优胜者 Ostello Il Maestro"
+            },
+            {
+                "subtitolo": "版 2018/2019",
+                "messaggio1": "参加人数为 8",
+                "messaggio2": "优胜者 Ostello Il Maestro"
+            },
+            {
+                "subtitolo": "版 2019/2020",
+                "messaggio1": "参加人数为 0",
+                "messaggio2": "无争议"
+            },
+            {
+                "subtitolo": "版 2020/2021",
+                "messaggio1": "参加人数为 12, 比赛第一次扩展到几个联赛",
+                "messaggio2": "优胜者 Smithwiks"
+            }
+        ]
+    }
+}

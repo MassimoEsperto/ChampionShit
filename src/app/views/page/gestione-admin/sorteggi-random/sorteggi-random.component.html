@@ -1,0 +1,89 @@
+<div class="pa-8" *ngIf="selezionati.length!=4">
+    <div>
+        <my-button [submit]="false" [color]="'primary'" [block]="false" [label]="'NUOVO GIRONE'"
+            (myClick)="getStartNewRandom()"></my-button>
+    </div>
+    <div *ngIf="start">
+        <div class="selezionata">
+            <select class="btn-file custom-select" [(ngModel)]="girone">
+                <option *ngFor="let g of randomizzabili.gironi" [ngValue]="g">GIRONE {{g}}°</option>
+            </select>
+        </div>
+
+        <div *ngIf="girone">
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        SORTEGIABILI
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        <div></div>
+                        <div>SELEZIONATI:{{players.selectedOptions.selected.length}}</div>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+
+                <mat-selection-list #players>
+                    <mat-list-option #item *ngFor="let player of randomizzabili.utenti" [selected]="player.selected"
+                        [value]="player">
+                        {{player.descrizione}}
+                    </mat-list-option>
+                </mat-selection-list>
+
+
+
+
+            </mat-expansion-panel>
+
+            <div>
+                <my-button [color]="'success'" [block]="true" [disabled]="players.selectedOptions.selected.length==0"
+                    [label]="'SORTEGGIA'" (myClick)="sorteggio(players.selectedOptions.selected)"></my-button>
+            </div>
+        </div>
+        <mdb-card>
+            <mdb-card-header style="background-color: white;">GIRONE {{girone}}</mdb-card-header>
+            <!--Card content-->
+            <mdb-card-body>
+                <table class="table table-hover">
+                    <thead class="red white-text rounded-lg">
+                        <tr>
+                            <th scope="col">SQUADRA (FANTACALCIO) </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr mdbTableCol *ngFor="let el of selezionati">
+                            <td>{{el.descrizione}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </mdb-card-body>
+
+        </mdb-card>
+    </div>
+</div>
+
+<div class="pt-32 pr-8 pl-8" *ngIf="selezionati.length==4">
+
+    <mdb-card>
+        <mdb-card-header style="background-color: white;">GIRONE {{girone}}</mdb-card-header>
+        <!--Card content-->
+        <mdb-card-body>
+            <table class="table table-hover">
+                <thead class="red white-text rounded-lg">
+                    <tr>
+                        <th scope="col">SQUADRA (FANTACALCIO) </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr mdbTableCol *ngFor="let el of selezionati">
+                        <td>{{el.descrizione}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </mdb-card-body>
+
+    </mdb-card>
+
+    <my-button [submit]="false" [color]="'danger'" [block]="true" [label]="'CONFERMA'" [loading]="loading_btn"
+        (myClick)="salvaGirone()"></my-button>
+
+</div>

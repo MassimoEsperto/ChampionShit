@@ -1,0 +1,81 @@
+<div class="footer-fisso">
+    <div class="navigazione">
+        <div class="colonna" routerLink="/home/dashboard">
+            <div style="padding-bottom: 4px;">
+                <mdb-icon fas icon="home" class="pr-1"></mdb-icon>
+            </div>
+            <div>
+                <span>{{language.header.home}}</span>
+            </div>
+        </div>
+
+        <div class="colonna" routerLink="/home/calendario" (click)="impostazioni.hide()">
+            <div style="padding-bottom: 4px;">
+                <mdb-icon far icon="calendar-alt" class="pr-1"></mdb-icon>
+            </div>
+            <div>
+                <span>{{language.header.calendario.substring(0,5)}}.</span>
+            </div>
+        </div>
+
+        <div class="colonna" routerLink="/home/rose-utenti" (click)="impostazioni.hide()">
+            <div style="padding-bottom: 4px;">
+                <mdb-icon fas icon="binoculars" class="pr-1"></mdb-icon>
+            </div>
+            <div>
+                <span>{{language.header.rose}}</span>
+            </div>
+        </div>
+
+        <div class="colonna" (click)="impostazioni.hide();azzeraMessaggiDesk()" routerLink="/home/comunicazioni">
+            <div style="padding-bottom: 4px;">
+                <mdb-icon fas icon="envelope" class="pr-1"></mdb-icon>{{loggato.num_msg}}
+            </div>
+            <div>
+                <span>SMS</span>
+            </div>
+        </div>
+
+        <div class="colonna" (click)="impostazioni.toggle()">
+            <div style="padding-bottom: 4px;">
+                <mdb-icon fas icon="user-cog" class="pr-1"></mdb-icon>
+            </div>
+            <div>
+                <span>INFO</span>
+            </div>
+        </div>
+
+
+
+    </div>
+    <div class="impostazioni" mdbCollapse #impostazioni="bs-collapse" (click)="impostazioni.hide()">
+        <!-- Footer Elements -->
+        <div class="container">
+
+            <div class="pt-16 pb-8">
+                <div class="my-flex-around">
+                    <div class="informazioni flex-colonna">
+                        <p>{{language.footer.info}}</p>
+                        <span class="cursore pb-8" (click)="logOut()">{{language.pannello.log_out}}</span>
+                        <span class="cursore pb-8" (click)="onChangeLanguage()">{{language.footer.cambio_lingua}}</span>
+                    </div>
+                    <div class="competizione flex-colonna">
+                        <p>{{language.footer.competizione}}</p>
+                        <span class="cursore pb-8" (click)="onInfo()">{{language.footer.albo}}</span>
+                        <a class="cursore pb-8"
+                            href="assets/download/WorldWideFantashit.pdf">{{language.footer.regolamento}}</a>
+                        <span class="cursore pb-8" routerLink="/home/info-utente">{{language.footer.profilo}}</span>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <!-- Footer Elements -->
+
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3">© 2020 Copyright: ShitCup {{versione}}
+        </div>
+        <!-- Copyright -->
+    </div>
+</div>

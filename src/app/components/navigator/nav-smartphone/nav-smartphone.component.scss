@@ -1,0 +1,54 @@
+
+.navigazione{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    color: white;
+}
+
+.colonna{
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-fisso {
+    position: fixed;
+    overflow: auto;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 10;
+    width: 100%;
+    background-color: rgba(255, 0, 0, 0.9);
+    color: white;
+    text-align: center;
+    font-size: 12px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+ }
+
+ .footer-copyright {
+    background-color: rgba(0, 0, 0, 0.1);
+ }
+
+ .my-flex-around{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+}
+
+.informazioni span:hover{
+    color: yellow;
+}
+
+.competizione span:hover{
+    color: yellow;
+}
+.competizione a:hover{
+    color: yellow;
+}

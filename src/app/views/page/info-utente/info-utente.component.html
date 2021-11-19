@@ -1,0 +1,79 @@
+<div class="page" style="text-align: center;">
+  
+  <h3 style="color: blanchedalmond;">{{language.page.personalizza}}</h3>
+  <br>
+
+  <div class="mio-container" style="text-align: center;">
+  
+    <div class="pb-64">
+     
+      <mdb-card>
+        <mdb-card-header>{{language.page.cambia_dati}}</mdb-card-header>
+        <!--Card content-->
+        <mdb-card-body class="pt-8">
+
+          <!-- Form -->
+          <form class="text-center" style="color: #757575;" (submit)="onUpdate(loggato)">
+
+            <!-- Username -->
+            <input type="text" id="username" class="form-control mb-4 mt-4" placeholder="Username" minlength="4"
+              maxlength="12" [(ngModel)]="loggato.username" name="username" required #user="ngModel" />
+
+            <!-- Email -->
+            <input type="email" id="email" class="form-control mb-4" placeholder="Email" minlength="8" maxlength="25"
+              [(ngModel)]="loggato.email" name="email" required email #mail="ngModel" />
+
+            <!-- Squadra -->
+            <input type="text" id="squadra" class="form-control mb-4 mt-4" placeholder="Squadra" minlength="4"
+              [(ngModel)]="loggato.squadra" name="squadra" required maxlength="12" #team="ngModel" />
+
+            <!-- Sign in button -->
+            <my-button [submit]="true" [color]="'danger'" [block]="true"
+              [disabled]="mail.invalid||team.invalid||user.invalid" [label]="language.bottoni.invia" [loading]="loading_btn">
+            </my-button>
+          </form>
+          <!-- Form -->
+
+        </mdb-card-body>
+
+      </mdb-card>
+    </div>
+
+
+    <div class="pb-64">
+      <mdb-card>
+        <mdb-card-header>{{language.page.cambia_img}}</mdb-card-header>
+        <!--Card content-->
+        <mdb-card-body class="pt-8">
+
+          <div class="image-preview mt-16" *ngIf="avatarSel">
+            <img src="assets/avatar/{{avatarSel.nome}}.png" width="220" height="220" />
+          </div>
+          <div class="image-preview" *ngIf="!avatarSel">
+            <img src="assets/img/omino.png" width="220" height="220" />
+          </div>
+          <br>
+          <mat-form-field appearance="outline">
+            <mat-label>{{language.bottoni.avatar}}</mat-label>
+            <mat-select (selectionChange)="selectedCombo($event.value)">
+              <mat-option *ngFor="let item of avatars" [value]="item">
+                <img src="assets/avatar/{{item.nome}}.png" width="20" height="20" />
+                {{item.nome}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <my-button [submit]="false" [color]="'danger'" [block]="true" [disabled]="!avatarSel" [label]="language.bottoni.invia"
+            [loading]="loading_btn" (myClick)="updateAvatar()"></my-button>
+
+        </mdb-card-body>
+
+      </mdb-card>
+
+    </div>
+
+
+
+
+
+  </div>
+</div>

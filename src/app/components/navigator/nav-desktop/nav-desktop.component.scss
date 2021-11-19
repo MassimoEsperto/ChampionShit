@@ -1,0 +1,25 @@
+ul li:hover {
+	background: #ff4d4d;
+}
+
+.navbar {
+	width: 100%;
+	background: #ff3333;
+	overflow: auto;
+	z-index: 10;
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	color: white;
+	box-shadow: 0 4px 10px -2px rgb(0 0 0 / 36%);
+}
+
+.navbar a {
+	color: white;
+	text-decoration: none;
+}
+
+.navbar a:hover {
+	color: #00c851;
+}

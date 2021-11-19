@@ -1,0 +1,12 @@
+<p>IN QUESTA SEZIONE POTRAI IMPORTARE LA LISTA CALCIATORI TOTALE</p>
+<hr>
+<p>AGGIUNGI IL FILE EXCEL CON LA LISTA DEI SVINCOLATI</p>
+<label class="btn btn-default btn-file">
+    Update File
+    <input type="file" style="display: none;" (change)="importListaCalciatori($event)"
+      accept=".csv,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
+  </label>
+  <div class="pa-8">
+    <my-button [submit]="false" [color]="'danger'" [block]="true" [disabled]="!rose.length" [label]="'INVIA'"
+      [loading]="loading_btn" (myClick)="onAggiungiCalciatori()"></my-button>
+  </div>

@@ -1,0 +1,13 @@
+<div *ngIf="disabled&&!loading">
+    <button mdbBtn color="{{color}}" block="{{block}}" class="my-4" type="{{type}}" disabled>
+        {{label}}
+    </button>
+</div>
+<div *ngIf="loading">
+    <button mdbBtn color="{{color}}" block="{{block}}" class="my-4" type="{{type}}" disabled>
+        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+    </button>
+</div>
+<div *ngIf="!disabled&&!loading">
+    <button mdbBtn  color="{{color}}" block="{{block}}" (click)="myClick.emit()" class="my-4" type="{{type}}" mdbWavesEffect>{{label}}</button>
+</div>

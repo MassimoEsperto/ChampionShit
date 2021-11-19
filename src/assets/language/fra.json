@@ -1,0 +1,148 @@
+{
+    "page": {
+        "cambia_dati": "CHANGER LES DONNÉES",
+        "cambia_img": "CHANGER D'IMAGE",
+        "personalizza":"PERSONNALISER",
+        "giornata": "JOURNEE",
+        "da_disputare": "POUR DISPUTER",
+        "inizio_partita": "COMMENCER LE JEU",
+        "inserisci_formazione": "INSÉRER LA FORMATION",
+        "vedi_live": "VOIR EN DIRECT",
+        "risultati": "RÉSULTATS",
+        "classifiche": "CLASSEMENTS",
+        "girone": "GROUPE",
+        "squadra": "EQUIPE",
+        "rosa_utente": "UTILISATEUR ROSE",
+        "rose_utenti": "UTILISATEUR ROSE",
+        "indisponibili": "NON DISPONIBLE",
+        "formazione": "FORMATION",
+        "calcolo": "EN CALCUL...",
+        "serie": "SERIE A",
+        "fase": "PHASE",
+        "data": "DATE",
+        "fasi": {
+            "gironi": "GROUPES",
+            "spareggi": "TIRAGES",
+            "quarti": "TRIMESTRE",
+            "semi_finale": "DEMIFINALE",
+            "finale": "FINAL"
+        }
+    },
+    "alert": {
+        "success": "Incroyable, ça a marché!",
+        "email": "Bientôt, vous recevrez un e-mail avec les informations demandées",
+        "formazione": "Il n'y a pas de jeux avec votre compte"
+    },
+    "presentazione": {
+        "discorso": "LA SHIT CUP EST DEVENUE UN ÉLÉMENT DE CULTE ET DE STYLE, UNE FONCTION FONDAMENTALE POUR TOUS LES FOOTBALLEURS À LA RECHERCHE D'UNE SAISON DE FAILLITE.",
+        "aggiorna_versione": "VOUS DEVEZ METTRE À JOUR LA VERSION",
+        "versione_locale": "Version locale",
+        "versione_applicazione": "Version de l'application",
+        "soluzione": "Solution indiquée",
+        "svuotare_cache": "Vider les caches et supprimer les cookies .."
+    },
+    "bottoni": {
+        "invia": "ENVOYER",
+        "inserisci": "INSERT",
+        "schiera": "TABLEU",
+        "entra": "ENTREZ",
+        "avatar": "Selectionnez Avatar"
+    },
+    "pannello": {
+        "admin": "ADMIN",
+        "home": "PAGE D'ACCUREIL",
+        "formazione": "GESTION DE LA FORMATION",
+        "calendario": "CALENDRIER DES RÉSULTATS",
+        "rose": "COMPOSITION DES EQUIPES",
+        "log_out": "DECONNEXION"
+    },
+    "header": {
+        "admin": "ADMIN",
+        "home": "ACCUREIL",
+        "formazione": "FORMATION",
+        "calendario": "CALENDRIER",
+        "rose": "EQUIPES",
+        "log_out": "DECONNEXION"
+    },
+    "login": {
+        "recupera_password": "Récupérer Passe",
+        "registrati": "Register",
+        "login": "Login",
+        "torna_al_login": "Retour à la Connexion"
+    },
+    "modali": {
+        "cambia_lingua": "CHANGER LA LANGUE",
+        "lingue": [
+            {
+                "cod": "ita",
+                "nome": "Italien",
+                "ico" : "fas fa-pizza-slice"
+            },
+            {
+                "cod": "eng",
+                "nome": "Anglais",
+                "ico" : "fas fa-igloo"
+            },
+            {
+                "cod": "fra",
+                "nome": "Français",
+                "ico" : "fab fa-fort-awesome"
+            },
+            {
+                "cod": "cin",
+                "nome": "Chinois",
+                "ico" : "fas fa-torii-gate"
+            }
+        ]
+    },
+    "footer": {
+        "regolamento": "Règlement",
+        "info": "INFORMATION",
+        "competizione": "COMPETITION",
+        "chi_siamo": "Qui nous sommes",
+        "nostro_blog": "Notre blog",
+        "cambio_lingua": "Changer de langue",
+        "albo": "Palmarès",
+        "profilo": "Profil"
+    },
+    "albo": {
+        "titolo": "Palmarès",
+        "lista": [
+            {
+                "subtitolo": "Edition 2014/2015",
+                "messaggio1": "Le nombre de participants est de 12",
+                "messaggio2": "Gagnant Profeta"
+            },
+            {
+                "subtitolo": "Edition 2015/2016",
+                "messaggio1": "Le nombre de participants est de 12",
+                "messaggio2": "Gagnant Profeta"
+            },
+            {
+                "subtitolo": "Edition 2016/2017",
+                "messaggio1": "Le nombre de participants est de 12",
+                "messaggio2": "Gagnant Profeta"
+            },
+            {
+                "subtitolo": "Edition 2017/2018",
+                "messaggio1": "Le nombre de participants est de 12",
+                "messaggio2": "Gagnant Ostello Il Maestro"
+            },
+            {
+                "subtitolo": "Edition 2018/2019",
+                "messaggio1": "Le nombre de participants est de 8",
+                "messaggio2": "Gagnant Ostello Il Maestro"
+            },
+            {
+                "subtitolo": "Edition 2019/2020",
+                "messaggio1": "Le nombre de participants est de 0",
+                "messaggio2": "Non contesté"
+            },
+            {
+                "subtitolo": "Edition 2020/2021",
+                "messaggio1": "Le nombre de participants est de 12, pour la première fois le tournoi a été étendu à différentes ligues",
+                "messaggio2": "Gagnant Smithwiks"
+            }
+        ]
+    }
+}

@@ -1,0 +1,69 @@
+<div *ngIf="!loading_page" [hidden]="hidden_page" class="page">
+
+  <div *ngIf="dash">
+    <div *ngIf="!dash.turno.limbo" class="pt-8" style="text-align: center;color: blanchedalmond;">
+      <h4>{{dash.turno.attuale}}° {{language.page.da_disputare}}</h4>
+    </div>
+
+    <div *ngIf="dash.turno.limbo" class="pt-8" style="text-align: center;color: blanchedalmond;">
+      <h4>{{language.page.calcolo}}</h4>
+    </div>
+
+    <div class="pt-32" *ngIf="dash.prossimo_match">
+
+      <mdb-card class="text-white" bgColor="bg-success">
+        <mdb-card-header>
+          <div *ngIf="!dash.turno.limbo">{{language.page.inizio_partita}}: {{dash.turno.tmp}}</div>
+          <div *ngIf="dash.turno.limbo">MATCH</div>
+        </mdb-card-header>
+        <!--Card content-->
+        <mdb-card-body class="sfondo_campo">
+          <div class="squadre">
+            <div class="row col-4 col-sm-4 col-md-4 col-lg-4">
+              <div class="col-12 col-sm-12 col-md-6 col-lg-6  punteggio">
+                <img src="assets/avatar/{{dash.prossimo_match.avatar_casa}}.png" class="avatar" width="24px" />
+              </div>
+              <div class="col-12 col-sm-12 col-md-6 col-lg-6  punteggio">
+                <label style="font-weight: bold;">
+                  {{dash.prossimo_match.casa}}
+                </label>
+              </div>
+            </div>
+            <div class="punteggio col-4 col-sm-4 col-md-4 col-lg-4"></div>
+            <div class="row col-4 col-sm-4 col-md-4 col-lg-4">
+              <div class="col-12 col-sm-12 col-md-6 col-lg-6  punteggio">
+                <img src="assets/avatar/{{dash.prossimo_match.avatar_trasferta}}.png" class="avatar" width="24px" />
+              </div>
+              <div class="col-12 col-sm-12 col-md-6 col-lg-6 punteggio">
+                <label style="font-weight: bold;">
+                  {{dash.prossimo_match.trasferta}}
+                </label>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="!dash.turno.limbo">
+            <my-button [submit]="false" [color]="'success'" [block]="true" [label]="language.page.inserisci_formazione"
+              (myClick)="inserisciFormazione()"></my-button>
+          </div>
+          <div *ngIf="dash.turno.limbo">
+            <my-button [submit]="false" [color]="'success'" [block]="true" [label]="language.page.vedi_live"
+              (myClick)="visualizzaLive()"></my-button>
+          </div>
+        </mdb-card-body>
+
+      </mdb-card>
+
+    </div>
+
+    <div class="pt-32" *ngIf="dash.turno.precedente&&!dash.turno.limbo">
+      <mdb-card class="text-white" bgColor="bg-success">
+        <mdb-card-header>{{language.page.risultati}}</mdb-card-header>
+      </mdb-card>
+      <risultati [selected]="dash.risultati"></risultati>
+
+    </div>
+
+    <classifica></classifica>
+
+  </div>
+</div>

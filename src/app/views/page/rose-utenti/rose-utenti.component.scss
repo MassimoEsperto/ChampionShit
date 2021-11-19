@@ -1,0 +1,20 @@
+@import '../../../../assets/css/page.scss';
+
+.rose-action-buttons {
+    padding-bottom: 20px;
+  }
+  
+  .rose-headers-align .mat-expansion-panel-header-title,
+  .rose-headers-align .mat-expansion-panel-header-description {
+    flex-basis: 0;
+  }
+  
+  .rose-headers-align .mat-expansion-panel-header-description {
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .rose-headers-align .mat-form-field + .mat-form-field {
+    margin-left: 8px;
+  }
+  

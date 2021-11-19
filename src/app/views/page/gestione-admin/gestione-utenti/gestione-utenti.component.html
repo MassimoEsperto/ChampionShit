@@ -1,0 +1,50 @@
+
+<!-- Editable table -->
+<div class="card">
+  <h3 class="card-header text-center font-weight-bold text-uppercase py-4">GESTIONE UTENTI</h3>
+  <div class="card-body">
+    <div id="table" class="table-editable">
+
+      <table class="table table-bordered table-responsive-md table-striped text-center">
+        <tr>
+          <th class="text-center">ID</th>
+          <th class="text-center">USERNAME</th>
+          <th class="text-center">SQUADRA</th>
+          <th class="text-center">RUOLO</th>
+          <th class="text-center">Validate</th>
+          <th class="text-center">Remove</th>
+        </tr>
+        <tr *ngFor="let ele of utenti; let id = index">
+          <td>
+            <span>{{ele.id}}</span>
+          </td>
+          <td>
+            <span contenteditable="true" (keyup)="changeValue(id, 'username', $event)"
+              (blur)="updateList(id, 'username', $event)">{{ele.username}}</span>
+          </td>
+          <td>
+            <span contenteditable="true" (keyup)="changeValue(id, 'squadra', $event)"
+              (blur)="updateList(id, 'squadra', $event)">{{ele.squadra}}</span>
+          </td>
+          <td>
+            <span contenteditable="true" (keyup)="changeValue(id, 'ruolo', $event)"
+              (blur)="updateList(id, 'ruolo', $event)">{{getRuolo(ele.ruolo)}}</span>
+          </td>
+          <td>
+            <span class="table-remove">
+              <button type="button" mdbBtn color="primary" size="sm" class="my-0"
+                (click)="onValidate(ele)">Validate</button>
+            </span>
+          </td>
+          <td>
+            <span class="table-remove">
+              <button type="button" mdbBtn color="danger" size="sm" class="my-0" (click)="onDelete(id,ele.id)">Remove</button>
+            </span>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+<!-- Editable table -->
+

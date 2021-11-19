@@ -1,0 +1,10 @@
+<div *ngIf="message" [ngClass]="message.cssClass" class="fisso">
+    <mdb-icon *ngIf="message.type=='error'" fas icon="car-crash"></mdb-icon> 
+    <mdb-icon *ngIf="message.type=='success'" fas icon="grin-tongue-wink"></mdb-icon>
+    {{ message.text}}
+  </div>
+
+
+  
+ 
+  

@@ -1,0 +1,51 @@
+<div *ngIf="!errore" class="presentation pa-16">
+
+	<div class="flex-center">
+		<div class="col-sm-12 col-md-6">
+			<img src="assets/img/shit.png" alt="ShitCup" class="immagine">
+		</div>
+	</div>
+	<br>
+
+
+	<div class="row">
+		<div class="col-sm-12 col-md-6">
+			<img src="assets/img/monkey_cup.png" alt="ShitCup" class="immagine" data-mdb-toggle="tooltip"
+				title="CLICCA LA BANANA">
+		</div>
+		<div class="col-sm-12 col-md-6 row">
+
+			<div class="col-sm-12 col-md-6">
+			</div>
+			<div class="col-sm-12 col-md-12 col-lg-12 col-xl-6 flex-end">
+				<img src="assets/img/freccia.png" alt="ShitCup" class="immagine" style="max-width: 160px;">
+				<a routerLink="/sign-in">
+					<img src="assets/img/banana.gif" alt="ShitCup" class="immagine" style="max-width: 160px;">
+				</a>
+			</div>
+			<div class="col-sm-12">
+				<p>{{language.presentazione.discorso}}</p>
+			</div>
+		</div>
+	</div>
+	<a class="fisso" href="https://www.linkedin.com/in/emanuele-de-carlo-12361199">
+		<img src="assets/img/firma.png" alt="ShitCup" class="firma">
+	</a>
+
+</div>
+
+<div *ngIf="errore&&verifica" class="presentation pa-16">
+	<div class="pt-16">
+		<h5>{{language.presentazione.aggiorna_versione}}</h5>
+		<p>{{language.presentazione.versione_locale}}: {{verifica.locale}}</p>
+		<p>{{language.presentazione.versione_applicazione}}: {{verifica.applicazione}}</p>
+		<hr>
+		<p>{{language.presentazione.soluzione}}:</p>
+		<p>{{language.presentazione.svuotare_cache}}</p>
+	</div>
+	<div class="flex-center">
+		<div class="pa-32">
+			<img src="assets/img/monkey_cup.png" alt="Scimmia" class="immagine">
+		</div>
+	</div>
+</div>

@@ -1,0 +1,31 @@
+<div *ngIf="!loading_page" [hidden]="hidden_page" class="page">
+
+  <mat-tab-group mat-align-tabs="center">
+    <div *ngFor="let num of giornate">
+      <mat-tab label="{{num}}° {{language.page.giornata}}">
+        <div class="pt-16">
+          <div class="pb-16 pt-16 pl-16 pr-16">
+
+            <div class="row" style="border-radius: 10px;">
+              <div class="fase col-4" style="background-color:#00c851;color: white;border-radius: 8px 0px 0px 8px;">
+                <span><u>{{language.page.serie}}</u></span>
+                <span>{{getSelected(num)[0].serie_a}}°</span>
+              </div>
+              <div class="fase col-4 pt-8 pb-8" style="background-color:white;">
+                <span style="color:#00c851;"><u>{{language.page.fase}}</u></span>
+                <span style="color:#f44336;">{{getFasi(num)}}</span>
+
+              </div>
+              <div class="fase col-4" style="background-color:#f44336;color: white;border-radius: 0px 8px 8px 0px;">
+                <span><u>{{language.page.data}}</u></span>
+                <span>{{getSelected(num)[0].data}}</span>
+              </div>
+            </div>
+
+          </div>
+          <risultati [selected]="getSelected(num)"></risultati>
+        </div>
+      </mat-tab>
+    </div>
+  </mat-tab-group>
+</div>

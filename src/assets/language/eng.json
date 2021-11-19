@@ -1,0 +1,148 @@
+{
+    "page": {
+        "cambia_dati": "CHANGE DATA",
+        "cambia_img": "CHANGE IMAGE",
+        "personalizza":"CUSTOMIZE",
+        "giornata": "DAY",
+        "da_disputare": "TO DISPUTE",
+        "inizio_partita": "START MATCH",
+        "inserisci_formazione": "INSERT TRAINING",
+        "vedi_live": "SEE LIVE",
+        "risultati": "RESULTS",
+        "classifiche": "RANKINGS",
+        "girone": "GROUP",
+        "squadra": "TEAM",
+        "rosa_utente": "USER LIST",
+        "rose_utenti": "USERS LIST",
+        "indisponibili": "NOT AVAILABLE",
+        "formazione": "TRAINING",
+        "calcolo": "IN CALCULATION...",
+        "serie": "SERIE A",
+        "fase": "PHASE",
+        "data": "DATE",
+        "fasi": {
+            "gironi": "GROUPS",
+            "spareggi": "SHOOTS",
+            "quarti": "QUARTER",
+            "semi_finale": "SEMIFINAL",
+            "finale": "FINAL"
+        }
+    },
+    "bottoni": {
+        "invia": "SEND",
+        "inserisci": "INSERT",
+        "schiera": "DEPLOY",
+        "entra": "COME IN",
+        "avatar": "Select Avatar"
+    },
+    "alert": {
+        "success": "Incredible It Worked!",
+        "email": "Soon you will receive an email with the requested info",
+        "formazione": "There are no games with your account"
+    },
+    "presentazione": {
+        "discorso": "THE SHIT CUP HAS BECOME AN ELEMENT OF WORSHIP AND STYLE, A FUNDAMENTAL FEATURE FOR ALL FOOTBALLERS LOOKING FOR REDEMPTION FROM A BANKRUPTCY SEASON.",
+        "aggiorna_versione": "YOU MUST UPDATE THE VERSION",
+        "versione_locale": "Local version",
+        "versione_applicazione": "Application version",
+        "soluzione": "Solution indicated",
+        "svuotare_cache": "Empty caches and delete cookies .."
+    },
+    "pannello": {
+        "admin": "ADMIN",
+        "home": "HOME",
+        "formazione": "TRAINING MANAGEMENT",
+        "calendario": "RESULTS CALENDAR",
+        "rose": "USER ROSE LIST",
+        "log_out": "LOG-OUT"
+    },
+    "header": {
+        "admin": "ADMIN",
+        "home": "HOME",
+        "formazione": "TRAINING",
+        "calendario": "CALENDAR",
+        "rose": "TEAMS",
+        "log_out": "LOG-OUT"
+    },
+    "login": {
+        "recupera_password": "Recover Password",
+        "registrati": "Register",
+        "login": "Login",
+        "torna_al_login": "Back to Login"
+    },
+    "modali": {
+        "cambia_lingua": "CHANGE LANGUAGE",
+        "lingue": [
+            {
+                "cod": "ita",
+                "nome": "Italian",
+                "ico" : "fas fa-pizza-slice"
+            },
+            {
+                "cod": "eng",
+                "nome": "English",
+                "ico" : "fas fa-igloo"
+            },
+            {
+                "cod": "fra",
+                "nome": "French",
+                "ico" : "fab fa-fort-awesome"
+            },
+            {
+                "cod": "cin",
+                "nome": "Chinese",
+                "ico" : "fas fa-torii-gate"
+            }
+        ]
+    },
+    "footer": {
+        "regolamento": "Regulation",
+        "info": "INFORMATION",
+        "competizione": "COMPETITION",
+        "chi_siamo": "Who we are",
+        "nostro_blog": "Our Blog",
+        "cambio_lingua": "Change language",
+        "albo": "Roll of honor",
+        "profilo": "Profile"
+    },
+    "albo": {
+        "titolo": "Roll of honor",
+        "lista": [
+            {
+                "subtitolo": "Edition 2014/2015",
+                "messaggio1": "Number of participants is 12",
+                "messaggio2": "Winner Profeta"
+            },
+            {
+                "subtitolo": "Edition 2015/2016",
+                "messaggio1": "Number of participants is 12",
+                "messaggio2": "Winner Profeta"
+            },
+            {
+                "subtitolo": "Edition 2016/2017",
+                "messaggio1": "Number of participants is 12",
+                "messaggio2": "Winner Profeta"
+            },
+            {
+                "subtitolo": "Edition 2017/2018",
+                "messaggio1": "Number of participants is 12",
+                "messaggio2": "Winner Ostello Il Maestro"
+            },
+            {
+                "subtitolo": "Edition 2018/2019",
+                "messaggio1": "Number of participants is 8",
+                "messaggio2": "Winner Ostello Il Maestro"
+            },
+            {
+                "subtitolo": "Edition 2019/2020",
+                "messaggio1": "Number of participants is 0",
+                "messaggio2": "Not disputed"
+            },
+            {
+                "subtitolo": "Edition 2020/2021",
+                "messaggio1": "Number of participants is 12, for the first time the tournament extended to several leagues",
+                "messaggio2": "Winner Smithwiks"
+            }
+        ]
+    }
+}

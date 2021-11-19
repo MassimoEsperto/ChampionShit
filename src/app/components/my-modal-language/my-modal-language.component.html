@@ -1,0 +1,12 @@
+<div class="modale-linguaggio">
+  <div style="text-align: center;">
+    <h2>{{data.titolo}}</h2>
+  </div>
+  <mat-dialog-actions>
+    <div class="flex-colonna opzioni">
+      <div *ngFor="let item of data.lista" [mat-dialog-close]="item.cod" class="pt-8 pb-8">
+        <i class="{{item.ico}}"></i> {{item.nome}}
+      </div>
+    </div>
+  </mat-dialog-actions>
+</div>

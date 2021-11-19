@@ -1,0 +1,148 @@
+{
+    "page": {
+        "cambia_dati": "CAMBIA DATI",
+        "cambia_img": "CAMBIA IMMAGINE",
+        "personalizza":"PERSONALIZZA",
+        "giornata": "GIORNATA",
+        "da_disputare": "DA DISPUTARE",
+        "inizio_partita": "INIZIO PARTITA",
+        "inserisci_formazione": "INSERISCI FORMAZIONE",
+        "vedi_live": "VEDI LIVE",
+        "risultati": "RISULTATI",
+        "classifiche": "CLASSIFICHE",
+        "girone": "GIRONE",
+        "squadra": "SQUADRA",
+        "rosa_utente": "ROSA UTENTE",
+        "rose_utenti": "ROSE UTENTI",
+        "indisponibili": "INDISPONIBILI",
+        "formazione": "FORMAZIONE",
+        "calcolo": "IN CALCOLO...",  
+        "serie": "SERIE A",
+        "fase": "FASE",
+        "data": "DATA",
+        "fasi": {
+            "gironi": "GIRONI",
+            "spareggi": "SPAREGGI",
+            "quarti": "QUARTI",
+            "semi_finale": "SEMIFINALE",
+            "finale": "FINALE"
+        }
+    },
+    "alert": {
+        "success": "Incredibile Ha Funzionato!",
+        "email": "A breve riceverai una email con le info richieste",
+        "formazione": "Non sono previste partite col tuo account"
+    },
+    "presentazione": {
+        "discorso": "LA SHIT CUP E' DIVENTATA UN ELEMENTO DI CULTO E DI STILE, CARATTERISTICA FONDAMENTALE PER TUTTI I FANTALLENATORI IN CERCA DI RISCATTO DA UNA STAGIONE FALLIMENTARE.",
+        "aggiorna_versione": "DEVI AGGIORNARE LA VERSIONE",
+        "versione_locale": "Versione locale",
+        "versione_applicazione": "Versione applicazione",
+        "soluzione": "Soluzione indicata",
+        "svuotare_cache": "Svuotare le cache e cancellare i cookie.."
+    },
+    "bottoni": {
+        "invia": "INVIA",
+        "inserisci": "INSERISCI",
+        "schiera": "SCHIERA",
+        "entra": "ENTRA",
+        "avatar": "Seleziona Avatar"
+    },
+    "pannello": {
+        "admin": "ADMIN",
+        "home": "HOME",
+        "formazione": "GESTIONE FORMAZIONE",
+        "calendario": "CALENDARIO RISULTATI",
+        "rose": "LISTA ROSE UTENTI",
+        "log_out": "LOG-OUT"
+    },
+    "header": {
+        "admin": "ADMIN",
+        "home": "HOME",
+        "formazione": "FORMAZIONE",
+        "calendario": "CALENDARIO",
+        "rose": "ROSE",
+        "log_out": "LOG-OUT"
+    },
+    "login": {
+        "recupera_password": "Recupera Password",
+        "registrati": "Registrati",
+        "login": "Login",
+        "torna_al_login": "Torna Al Login"
+    },
+    "modali": {
+        "cambia_lingua": "CAMBIA LINGUAGGIO",
+        "lingue": [
+            {
+                "cod": "ita",
+                "nome": "Italiano",
+                "ico" : "fas fa-pizza-slice"
+            },
+            {
+                "cod": "eng",
+                "nome": "Inglese",
+                "ico" : "fas fa-igloo"
+            },
+            {
+                "cod": "fra",
+                "nome": "Francese",
+                "ico" : "fab fa-fort-awesome"
+            },
+            {
+                "cod": "cin",
+                "nome": "Cinese",
+                "ico" : "fas fa-torii-gate"
+            }
+        ]
+    },
+    "footer": {
+        "regolamento": "Regolamento",
+        "info": "INFORMAZIONI",
+        "competizione": "COMPETIZIONE",
+        "chi_siamo": "Chi siamo",
+        "nostro_blog": "Il Nostro Blog",
+        "cambio_lingua": "Cambio lingua",
+        "albo": "Albo d'oro",
+        "profilo": "Profilo"
+    },
+    "albo": {
+        "titolo": "Albo d'oro",
+        "lista": [
+            {
+                "subtitolo": "Edizione 2014/2015",
+                "messaggio1": "Numero dei partecipanti è di 12",
+                "messaggio2": "Vincitore Profeta"
+            },
+            {
+                "subtitolo": "Edizione 2015/2016",
+                "messaggio1": "Numero dei partecipanti è di 12",
+                "messaggio2": "Vincitore Profeta"
+            },
+            {
+                "subtitolo": "Edizione 2016/2017",
+                "messaggio1": "Numero dei partecipanti è di 12",
+                "messaggio2": "Vincitore Profeta"
+            },
+            {
+                "subtitolo": "Edizione 2017/2018",
+                "messaggio1": "Numero dei partecipanti è di 12",
+                "messaggio2": "Vincitore Ostello Il Maestro"
+            },
+            {
+                "subtitolo": "Edizione 2018/2019",
+                "messaggio1": "Numero dei partecipanti è di 8",
+                "messaggio2": "Vincitore Ostello Il Maestro"
+            },
+            {
+                "subtitolo": "Edizione 2019/2020",
+                "messaggio1": "Numero dei partecipanti è di 0",
+                "messaggio2": "Non disputata"
+            },
+            {
+                "subtitolo": "Edizione 2020/2021",
+                "messaggio1": "Numero dei partecipanti è di 12, per la prima volta il torneo si esteso a diverse leghe",
+                "messaggio2": "Vincitore Smithwiks"
+            }
+        ]
+    }
+}

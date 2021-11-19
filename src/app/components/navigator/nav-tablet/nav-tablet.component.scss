@@ -1,0 +1,56 @@
+ul li:hover {
+	background: #ff4d4d;
+}
+.sidepanel::-webkit-scrollbar {
+    display: none;
+}
+
+.sidepanel {
+	width: 0;
+	position: fixed;
+	z-index: 10;
+	height: 100vh;
+	left: 0;
+	background-color: #e60000;
+	overflow-x: hidden;
+	transition: all 0.8s cubic-bezier(0.2,0.8,0.2,0.8);
+	padding-top: 40px;
+	-ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.sidepanel a {
+	padding: 8px;
+	text-decoration: none;
+	color: white;
+	display: block;
+}
+
+.sidepanel a:hover {
+	color: #818181;
+}
+
+.header {
+	padding-left: 16px;
+	padding-right: 16px;
+	padding-top: 8px;
+	padding-bottom: 8px;
+	background: #ff3333;
+	color: white;
+	z-index: 100;
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	box-shadow: 0 4px 10px -2px rgb(0 0 0 / 36%);
+}
+
+.tooglePanel {
+	width: 100%;
+}
+
+.immagine{
+	width:60%;
+}
+
+

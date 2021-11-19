@@ -1,0 +1,33 @@
+<!-- Footer -->
+<footer class="page-footer font-small red darken-3">
+
+  <!-- Footer Elements -->
+  <div class="container">
+
+    <div class="pt-16 pb-8">
+      <div class="my-flex-around">
+        <div class="informazioni flex-colonna">
+          <p>{{language.footer.info}}</p>
+          <span class="cursore pb-8">{{language.footer.chi_siamo}}</span>
+          <span class="cursore pb-8">{{language.footer.nostro_blog}}</span>
+          <span class="cursore pb-8" (click)="onChangeLanguage()">{{language.footer.cambio_lingua}}</span>
+        </div>
+        <div class="competizione flex-colonna">
+          <p>{{language.footer.competizione}}</p>
+          <span class="cursore pb-8" (click)="onInfo()">{{language.footer.albo}}</span>
+          <a class="cursore pb-8" href="assets/download/WorldWideFantashit.pdf">{{language.footer.regolamento}}</a>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+  <!-- Footer Elements -->
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2020 Copyright: ShitCup {{versione}}
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->

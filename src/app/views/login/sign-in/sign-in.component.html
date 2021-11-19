@@ -1,0 +1,48 @@
+<div class="gradient-body">
+
+  <div class="flex-central pt-56 pb-56 pl-16 pr-16">
+
+    <!-- Material form login -->
+    <mdb-card>
+
+      <mdb-card-header class="danger-color white-text text-center py-4">
+        <h5>
+          <strong>{{language.login.login}}</strong>
+        </h5>
+      </mdb-card-header>
+
+
+      <!--Card content-->
+      <mdb-card-body class="px-lg-5 pt-8">
+
+        <!-- Form -->
+        <form class="text-center" style="color: #757575;" #loggato="ngForm" (submit)="login(loggato)">
+
+          <!-- Email -->
+          <input type="text" id="name" class="form-control mb-4 mt-4" placeholder="Username"
+            [(ngModel)]="loggato.username" name="name" required />
+
+          <!-- Password -->
+          <input type="password" id="psw" class="form-control mb-4" placeholder="Password"
+            [(ngModel)]="loggato.password" name="password" required />
+
+          <!-- Sign in button -->
+          <my-button [submit]="true" [color]="'danger'" [block]="true" [disabled]="loggato.invalid" [label]="language.bottoni.entra" [loading]="loading_btn"></my-button>
+
+          <!-- Forgot password -->
+          <a routerLink="/recupera-password">{{language.login.recupera_password}}</a> / 
+          <!-- Register -->
+          <a routerLink="/register">{{language.login.registrati}}</a>
+
+        </form>
+        <!-- Form -->
+
+      </mdb-card-body>
+
+    </mdb-card>
+    <!-- Material form login -->
+
+  </div>
+  
+</div>
+

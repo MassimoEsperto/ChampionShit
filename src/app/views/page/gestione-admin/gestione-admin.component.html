@@ -1,0 +1,51 @@
+<div *ngIf="!loading_page" class="page">
+
+  <mat-tab-group backgroundColor="accent" mat-align-tabs="center">
+
+    <mat-tab label="UTENTI">
+      <div class="pt-16 pl-8 pr-8 tabula">
+        <gestione-utenti [utenti]="utenti" (deleteUtente)="ricalcola($event)"></gestione-utenti>
+      </div>
+    </mat-tab>
+    
+    <mat-tab label="CALCOLO">
+      <div class="pt-16 tabula">
+        <calcolo-voti></calcolo-voti>
+      </div>
+    </mat-tab>
+    
+    <mat-tab label="RECUPERO">
+      <div class="pt-16 tabula">
+        <recupero-precedenti></recupero-precedenti>
+      </div>
+    </mat-tab>
+    
+    <mat-tab label="SVINCOLATI">
+      <div class="pt-16 tabula">
+        <gestione-rose [attuali]="calciatori"></gestione-rose>
+      </div>
+    </mat-tab>
+    
+    <mat-tab label="SQUADRE">
+      <div class="pt-16 tabula">
+        <gestione-squadre [listaRose]="calciatori" [utenti]="utenti"></gestione-squadre>
+      </div>
+    </mat-tab>
+
+    <mat-tab label="NOTIFICHE">
+      <div class="pt-16 tabula">
+        <gestione-notifiche [utenti]="utenti"></gestione-notifiche>
+      </div>
+    </mat-tab>
+
+    <mat-tab label="SORTEGGI">
+      <div class="pt-16 tabula">
+        <sorteggi-random></sorteggi-random>
+      </div>
+    </mat-tab>
+
+  </mat-tab-group>
+
+
+
+</div>

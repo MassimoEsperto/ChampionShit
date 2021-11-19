@@ -1,0 +1,58 @@
+<div style="text-align: center;">
+    <h4>SHIT CUP</h4>
+</div>
+
+<div class="flex-between pb-8">
+    <div>
+        <h6 style="font-weight: bold;">{{data.casa.squadra}}</h6>
+    </div>
+   
+    <div>
+        <h6 style="font-weight: bold;"> {{data.trasferta.squadra}}</h6>
+    </div>
+</div>
+
+<div class="flex-between scontro">
+
+    <div class="formazioni">
+        <div *ngFor="let item of data.casa.formazione" class="flex-between">
+            <div class="pl-8">
+                {{item.nome_calciatore.substring(0,10)}}
+            </div>
+            <div class="pl-8 pr-8">
+                {{item.voto}}
+            </div>
+        </div>
+        <hr>
+        <div *ngIf="data.casa.somma" class="flex-between">
+            <div class="pl-8">
+                TOT.
+            </div>
+            <div class="pl-8 pr-8">
+                {{data.casa.somma}}
+            </div>
+        </div>
+    </div>
+
+    <div class="formazioni">
+        <div *ngFor="let item of data.trasferta.formazione" class="flex-between">
+            <div>
+                {{item.nome_calciatore.substring(0,10)}}
+            </div>
+            <div class="pl-8 pr-8">
+                {{item.voto}}
+            </div>
+        </div>
+        <hr>
+        <div *ngIf="data.trasferta.somma" class="flex-between">
+            <div class="pl-8">
+                TOT.
+            </div>
+            <div class="pl-8 pr-8">
+                {{data.trasferta.somma}}
+            </div>
+        </div>
+    </div>
+
+   
+</div>

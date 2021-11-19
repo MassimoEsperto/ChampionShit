@@ -1,0 +1,32 @@
+@import '../../../../assets/css/page.scss';
+
+
+.mat-tab-labels {
+    background-color: #00A041;
+}
+.mat-tab-label, .mat-tab-link {
+    color: white;
+}
+
+.mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+    background-color: white;
+}
+
+.mat-tab-header-pagination {
+    background: #00A041;
+}
+
+.fasi{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.fase{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
