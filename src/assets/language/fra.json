@@ -20,6 +20,7 @@
         "serie": "SERIE A",
         "fase": "PHASE",
         "data": "DATE",
+        "voti_live": "VOTES EN DIRECT",
         "fasi": {
             "gironi": "GROUPES",
             "spareggi": "TIRAGES",

@@ -1,12 +1,12 @@
 <div *ngIf="!loading_page" [hidden]="hidden_page" class="page pb-32">
 
-    <div class="pt-8 pb-32" style="text-align: center;color: blanchedalmond;">
-        <h4>PAGINA IN COSTRUZIONE</h4>
+    <div class="pt-8 pb-16" style="text-align: center;color: blanchedalmond;">
+        <h4>{{language.page.voti_live}}</h4>
     </div>
 
     <br>
     <div *ngIf="formazioni">
-        <div *ngFor="let fanta of formazioni" class="pt-16">
+        <div *ngFor="let fanta of formazioni" class="pb-16">
             
             <mdb-card class="text-white" bgColor="bg-success">
                 <mdb-card-header>

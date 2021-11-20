@@ -20,6 +20,7 @@
         "serie": "一個聯賽",
         "fase": "階段",
         "data": "日期",
+        "voti_live": "現場投票",
         "fasi": {
             "gironi": "團體",
             "spareggi": "射擊",

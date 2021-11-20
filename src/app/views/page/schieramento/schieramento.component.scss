@@ -11,7 +11,8 @@
 	background: url('~src/assets/img/campo_formazioni.png');
 	background-repeat: no-repeat, repeat;
 	background-size: cover;
-	min-height: 280px;
+	min-height: 240px;
+	min-width: 240px;
     max-width: 480px;
 	padding-top: 32px;
 	padding-right: 8px;
@@ -24,8 +25,8 @@
 	background-color: #f1f1f1;
 	color: black;
 	font-weight: bold;
-	padding-left: 8px;
-	padding-right: 8px;
+	padding-left: 4px;
+	padding-right: 4px;
 	text-align: center;
 	height: 48px;
 	width: 128px;
@@ -40,7 +41,7 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
   }
 
   mat-list-option[aria-selected="true"] {	

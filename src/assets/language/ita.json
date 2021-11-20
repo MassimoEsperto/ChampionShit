@@ -20,6 +20,7 @@
         "serie": "SERIE A",
         "fase": "FASE",
         "data": "DATA",
+        "voti_live": "VOTI LIVE",
         "fasi": {
             "gironi": "GIRONI",
             "spareggi": "SPAREGGI",

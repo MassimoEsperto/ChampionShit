@@ -65,7 +65,7 @@ export class SchieramentoComponent extends GlobalComponent implements OnInit {
                 str[1].indexOf(">") + 1
 
               );
-              let giocatore = nome.replace("&#39;", "").toUpperCase();
+              let giocatore = nome.replace("&#39;", "").replace(".", "").trim().toUpperCase();
 
               let element = this.formazione.rosa.find(x => x.nome == giocatore)
               if (element) {
@@ -189,23 +189,18 @@ export class SchieramentoComponent extends GlobalComponent implements OnInit {
       switch (item.tipo) {
         case 'P': {
           return portieri < 1 && (size < 4 || (centro > 0 && attaccanti > 0 && difensori > 0));
-          break;
         }
         case 'D': {
           return difensori < 2 && (size < 4 || (centro > 0 && attaccanti > 0));
-          break;
         }
         case 'C': {
           return centro < 2 && (size < 4 || (difensori > 0 && attaccanti > 0));
-          break;
         }
         case 'A': {
           return attaccanti < 2 && (size < 4 || (centro > 0 && difensori > 0));
-          break;
         }
         default: {
           return true;
-          break;
         }
       }
 

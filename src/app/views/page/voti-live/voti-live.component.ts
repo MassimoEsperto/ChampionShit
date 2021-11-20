@@ -34,7 +34,7 @@ export class VotiLiveComponent extends GlobalComponent implements OnInit {
 
         next: (result: any) => {
           this.formazioni = result.formazioni
-          this.getVotiLive(result.team, result.seriea, 0)
+          this.getVotiLive(result.team, result.seriea, result.bonusmalus, 0)
 
         },
         error: (error: any) => {
@@ -45,7 +45,7 @@ export class VotiLiveComponent extends GlobalComponent implements OnInit {
   }
 
 
-  getVotiLive(team: any, seriea: string, indice: number) {
+  getVotiLive(team: any, seriea: string, bonus: any, indice: number) {
 
     if (indice > 19) {
       this.loadPage(this.spinner);
@@ -56,10 +56,13 @@ export class VotiLiveComponent extends GlobalComponent implements OnInit {
       .subscribe({
 
         next: (result: any) => {
+
           for (let ele of result) {
+            ele.voto = this.calcoloVoto(ele, bonus)
+            ele.nome = ele.nome.replace(".", "").trim()
             this.votilive.push(ele)
           }
-          this.getVotiLive(team, seriea, indice + 1)
+          this.getVotiLive(team, seriea, bonus, indice + 1)
         },
         error: (error: any) => {
           this.alert.error(error);
@@ -76,14 +79,28 @@ export class VotiLiveComponent extends GlobalComponent implements OnInit {
         for (let calcio of match.schieramento) {
           let fantavoto = this.votilive.find(i => i.nome == calcio.calciatore);
           if (fantavoto) {
-            calcio.voto = fantavoto.voto = 55 ? fantavoto.voto : 4
+            calcio.voto = fantavoto.voto
           }
-          calcio.calciatore=calcio.calciatore.replace(" ","").substring(0,10)
+          calcio.calciatore = calcio.calciatore.replace(" ", "").substring(0, 10)
         }
       }
     }
 
   }
+
+  calcoloVoto(fanta, griglia) {
+
+    let voto = Number(fanta.voto)
+
+    if (voto == 55) return 4;
+
+    let evento = fanta.evento.split(",")
+    for (let bonus of evento) {
+      voto = griglia[bonus] ? Number(griglia[bonus]) + voto : voto
+    }
+    return voto
+  }
+
 
 
 }
