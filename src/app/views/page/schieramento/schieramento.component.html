@@ -12,7 +12,7 @@
       <mat-selection-list #players>
         <mat-list-option #item *ngFor="let player of formazione.rosa" [selected]="player.selected"
           [hidden]="!disabledTeam(players,player) && !item.selected" [value]="player">
-          {{player.tipo}} {{player.nome}} {{player.percentuale}}
+          {{player.tipo}} {{player.nome}} {{percentuale[player.nome]?percentuale[player.nome]:'0%'}}
         </mat-list-option>
       </mat-selection-list>
       <br>

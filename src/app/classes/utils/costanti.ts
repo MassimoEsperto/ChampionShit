@@ -16,10 +16,5 @@ export const INIBITO = "1"
 
 export const MAX_IMG = 40000
 
-export const SERVICE_TYPE = { ADMIN: "/admin/", PLAYER: "/player/", AUT: "/autenticazione/" }
+export const SERVICE_TYPE = { ADMIN: "/admin/", PLAYER: "/player/", AUT: "/autenticazione/" , FANTA: "/fantagazzetta/" }
 
-//fonte fantacalcio
-export const PROBABILI_FORMAZIONI_URL = 'https://www.fantacalcio.it/probabili-formazioni-serie-a/index.html'
-
-export const VOTI_LIVE_URL = 'https://www.fantacalcio.it/api/live/'
-//es https://www.fantacalcio.it/live-serie-a/Spezia

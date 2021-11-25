@@ -4,8 +4,8 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { HttpSenderService } from './http-sender-service';
 import { map, catchError } from 'rxjs/operators';
-import { PROBABILI_FORMAZIONI_URL, SERVICE_TYPE, VOTI_LIVE_URL } from '../classes/utils/costanti';
 import { Utente } from '../classes/models/utente';
+import { SERVICE_TYPE } from '../classes/utils/costanti';
 
 @Injectable({
   providedIn: 'root'
@@ -140,35 +140,6 @@ export class PlayerService extends HttpSenderService {
         this.tokenError(res);//controllo token
 
         return res['data'];
-      }),
-        catchError(this.handleError));
-  }
-
-  getProbabiliFormazione(): Observable<any> {
-    return this.http.get(PROBABILI_FORMAZIONI_URL, { responseType: 'text' });
-  }
-
-
-  getFormazioni() {
-
-    return this.http.get(`${this.buildURL("live_fantacalcio")}`, this.myheaders)
-      .pipe(map((res) => {
-
-        this.tokenError(res);//controllo token
-
-        return res['data'];
-
-      }),
-        catchError(this.handleError));
-  }
-
-  getVotiLive(team: any, gio: string) {
-
-    return this.http.get(VOTI_LIVE_URL + team + "?g=" + gio + "&i=16")
-      .pipe(map((res) => {
-
-        return res;
-
       }),
         catchError(this.handleError));
   }

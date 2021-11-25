@@ -4,6 +4,7 @@ import { SpinnerService } from 'src/app/services/spinner.service';
 import { finalize } from 'rxjs/operators';
 import { AlertService } from 'src/app/services/alert.service';
 import { PlayerService } from 'src/app/services/player.service';
+import { FantaGazzettaService } from 'src/app/services/fanta-gazzetta.service';
 
 
 @Component({
@@ -17,12 +18,14 @@ export class SchieramentoComponent extends GlobalComponent implements OnInit {
     private spinner: SpinnerService,
     private alert: AlertService,
     private playerService: PlayerService,
+    private fantaService: FantaGazzettaService,
     private ref: ChangeDetectorRef) {
     super();
   }
 
   ngOnInit() {
-    this.getFormazione()
+    this.spinner.view();
+    this.getProbabiliFormazione()
   }
 
   ngAfterViewInit() { }
@@ -33,46 +36,23 @@ export class SchieramentoComponent extends GlobalComponent implements OnInit {
 
   //dichiara le variabili
   formazione: any;
+  percentuale: any;
   squadra = [];
   schieramento: boolean = true;
 
 
   getProbabiliFormazione() {
 
-    this.playerService.getProbabiliFormazione()
-
+    this.fantaService.getProbabiliFormazione()
+      .pipe(finalize(() => {
+        this.getFormazione();
+      }))
       .subscribe({
 
-        next: (result: string) => {
+        next: (result: any) => {
 
-          let splittato = result.split("player-name")
-          let nome
-          let percentuale
+          this.percentuale = result
 
-          for (let ris of splittato) {
-
-            let str = ris.split("player-percentage-value")
-
-            if (str && str.length > 1) {
-
-              nome = str[0].substring(
-                str[0].indexOf("<"),
-                str[0].indexOf(">") + 1
-
-              );
-              percentuale = str[1].substring(
-                str[1].indexOf("<"),
-                str[1].indexOf(">") + 1
-
-              );
-              let giocatore = nome.replace("&#39;", "").replace(".", "").trim().toUpperCase();
-
-              let element = this.formazione.rosa.find(x => x.nome == giocatore)
-              if (element) {
-                element.percentuale = percentuale
-              }
-            }
-          }
         },
         error: (error: any) => {
           this.alert.error(error);
@@ -84,10 +64,12 @@ export class SchieramentoComponent extends GlobalComponent implements OnInit {
 
 
   changeView() {
+
     this.schieramento = !this.schieramento;
   }
 
   sortedByRuoli(squadra) {
+
     let sortedsquadra = squadra.sort((n1, n2) => {
       if (n1.tipo < n2.tipo) {
         return 1;
@@ -106,7 +88,6 @@ export class SchieramentoComponent extends GlobalComponent implements OnInit {
 
   getFormazione() {
 
-    this.spinner.view();
     this.playerService.getRosaDisponibile()
       .pipe(finalize(() => {
         this.loadPage(this.spinner);
@@ -116,7 +97,6 @@ export class SchieramentoComponent extends GlobalComponent implements OnInit {
         next: (result: any) => {
           this.formazione = result
           this.squadra = result.schierata
-          this.getProbabiliFormazione()
         },
         error: (error: any) => {
           this.alert.error(error);
@@ -160,6 +140,7 @@ export class SchieramentoComponent extends GlobalComponent implements OnInit {
 
 
   schiera(list) {
+
     let lista = list.map(item => item.value);
 
     this.squadra = this.sortedByRuoli(lista);
