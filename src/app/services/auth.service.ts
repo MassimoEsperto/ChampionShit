@@ -112,7 +112,7 @@ export class AuthService extends HttpSenderService {
         catchError(this.handleError));
   }
 
-  segnalaUtente(utente: Utente) {
+  segnalaUtente(utente: any) {
 
     return this.http.post(`${this.buildURL("register_mail")}`, { data: utente })
       .pipe(map((res) => {
@@ -130,6 +130,15 @@ export class AuthService extends HttpSenderService {
           error: res['data'] != this.versione()
         }
         return verifica;
+      }),
+        catchError(this.handleError));
+  }
+
+  registerNewUtente(payload: any) {
+
+    return this.http.post(`${this.buildURL("register_new_utente")}`, { data: payload })
+      .pipe(map((res) => {
+        return 'ok';
       }),
         catchError(this.handleError));
   }

@@ -1,1 +1,10 @@
 @import '../../../../assets/css/card.scss';
+
+.step{
+    color: #757575 !important;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+

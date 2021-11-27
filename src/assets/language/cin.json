@@ -69,7 +69,17 @@
         "recupera_password": "恢复密码",
         "registrati": "注册",
         "login": "登录",
-        "torna_al_login": "返回登录"
+        "torna_al_login": "返回登录",
+        "step": {
+            "passo": "一步步",
+            "indietro": "返回",
+            "successivo": "下一個",
+            "di": "迪",
+            "lega": "輸入您當前夢幻足球的聯賽名稱",
+            "squadra": "選擇您當前的夢幻足球隊",
+            "rosa": "球隊確認由 3 名守門員 8 名後衛 6 名中場球員和 6 名前鋒組成",
+            "dati": "輸入您對本次比賽有效的個人數據"
+        }
     },
     "modali": {
         "cambia_lingua": "改变语言",

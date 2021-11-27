@@ -69,7 +69,17 @@
         "recupera_password": "Recupera Password",
         "registrati": "Registrati",
         "login": "Login",
-        "torna_al_login": "Torna Al Login"
+        "torna_al_login": "Torna Al Login",
+        "step": {
+            "passo": "PASSO",
+            "indietro": "INDIETRO",
+            "successivo": "SUCCESSIVO",
+            "di": "DI",
+            "lega": "Inserisci il nome della lega del tuo attuale fantacalcio",
+            "squadra": "Selezione la tua attuale squadra del fantacalcio",
+            "rosa": "Conferma rosa composta da 3 portieri 8 difensori 6 centrocampisti e 6 attaccanti",
+            "dati": "Inserisci i tuoi dati personali validi per questa competizione"
+        }
     },
     "modali": {
         "cambia_lingua": "CAMBIA LINGUAGGIO",

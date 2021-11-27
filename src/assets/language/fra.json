@@ -69,7 +69,17 @@
         "recupera_password": "Récupérer Passe",
         "registrati": "Register",
         "login": "Login",
-        "torna_al_login": "Retour à la Connexion"
+        "torna_al_login": "Retour à la Connexion",
+        "step": {
+            "passo": "PAS",
+            "indietro": "RETOUR",
+            "successivo": "SUIVANT",
+            "di": "JE",
+            "lega": "Entrez le nom de la ligue de votre football Fantasy actuel",
+            "squadra": "Selectionnez votre equipe de football Fantasy actuelle",
+            "rosa": "Confirmation equipe compose de 3 gardiens 8 defenseurs 6 milieux de terrain et 6 attaquants",
+            "dati": "Saisissez vos donnes personnelles valables pour ce concours"
+        }
     },
     "modali": {
         "cambia_lingua": "CHANGER LA LANGUE",

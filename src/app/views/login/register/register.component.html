@@ -15,36 +15,110 @@
             <!--Card content-->
             <mdb-card-body class="px-lg-5 pt-8">
 
-                <!-- Form -->
-                <form class="text-center" style="color: #757575;" #element="ngForm" (submit)="registrati(element)">
+                <div class="step1-2">
 
-                    <!-- Username -->
-                    <input type="text" id="username" class="form-control mb-4 mt-4" placeholder="Username" minlength="4"
-                        maxlength="12" [(ngModel)]="element.username" name="username" required />
+                    <!-- Form -->
+                    <form class="text-center" style="color: #757575;" #lega="ngForm" (submit)="onLega(lega.utente)">
+                        <div class="step1" *ngIf="stepform==1">
+                            <div class="step">
+                                <span>{{language.login.step.passo}} 1 {{language.login.step.di}} 4</span>
+                            </div>
+                            <br>
+                            <span>{{language.login.step.lega}}</span>
+                            <!-- Lega -->
+                            <input type="text" id="nome" class="form-control mb-4 mt-4" placeholder="Lega fantacalcio"
+                                [(ngModel)]="lega.nome" name="nome" required />
 
-                    <!-- Email -->
-                    <input type="email" id="email" class="form-control mb-4" placeholder="Email" minlength="8"
-                        maxlength="40" [(ngModel)]="element.mail" name="email" required email />
+                            <my-button [submit]="false" [color]="'success'" [block]="true" [disabled]="!lega.nome" [loading]="loading_btn"
+                                [label]="language.login.step.successivo" (myClick)="getLega(lega.nome)"></my-button>
+                        </div>
+                        <div class="step2" *ngIf="stepform==2">
+                            <div class="step">
+                                <span>{{language.login.step.passo}} 2 {{language.login.step.di}} 4</span>
+                                <span (click)="stepform=stepform-1">{{language.login.step.indietro}}</span>
+                            </div>
+                            <br>
+                            <span>{{language.login.step.squadra}}</span>
 
-                    <!-- Password -->
-                    <input type="password" id="psw" class="form-control mb-4" placeholder="Pwd (min 8 caratteri)" minlength="8"
-                    maxlength="20" [(ngModel)]="element.password" name="password" required />
+                            <select class="form-control mb-4 mt-4 custom-select" [(ngModel)]="lega.utente"
+                                placeholder="Utenti" name="utente" required>
+                                <option *ngFor="let u of fantalega" [ngValue]="u">{{u.team}}</option>
+                            </select>
 
-                    <!-- Squadra -->
-                    <input type="text" id="squadra" class="form-control mb-4 mt-4" placeholder="Squadra" minlength="4"
-                        [(ngModel)]="element.squadra" name="squadra" required maxlength="12" />
+                            <!-- Sign in button -->
+                            <my-button [submit]="true" [color]="'success'" [block]="true" [disabled]="lega.invalid"
+                                [label]="language.login.step.successivo" [loading]="loading_btn"></my-button>
+                        </div>
 
-                    <!-- Sign in button -->
-                    <my-button [submit]="true" [color]="'danger'" [block]="true" [disabled]="element.invalid"
-                        [label]="language.bottoni.invia" [loading]="loading_btn"></my-button>
 
+                    </form>
+                    <!-- Form -->
+                </div>
+
+                <div class="step3" style="color: #757575;" *ngIf="stepform==3">
+                    <div class="step">
+                        <span>{{language.login.step.passo}} 3 {{language.login.step.di}} 4</span>
+                        <span (click)="stepform=stepform-1">{{language.login.step.indietro}}</span>
+                    </div>
+                    <br>
+                    <span>{{language.login.step.rosa}}</span>
+                    <mat-selection-list #players>
+                        <mat-list-option #item *ngFor="let player of vincolati" [selected]="player.selected"
+                            [hidden]="disabledTeam(players,player) && !item.selected" [value]="player">
+                            {{player.ruolo}} {{player.nome_calciatore}}
+                        </mat-list-option>
+                    </mat-selection-list>
+                    <br>
+                    <div class="pa-8">
+                        <my-button [color]="'success'" [block]="true"
+                            [disabled]="players.selectedOptions.selected.length!=25"
+                            [label]="language.login.step.successivo"
+                            [loading]="loading_btn"
+                            (myClick)="conferma(players.selectedOptions.selected)"></my-button>
+                    </div>
+                </div>
+
+                <div class="step4" style="color: #757575;" *ngIf="stepform==4">
+                    <div class="step">
+                        <span>{{language.login.step.passo}} 4 {{language.login.step.di}} 4</span>
+                        <span (click)="stepform=stepform-1">{{language.login.step.indietro}}</span>
+                    </div>
+                    <br>
+                    <span>{{language.login.step.dati}}</span>
+                    <!-- Form -->
+                    <form class="text-center" style="color: #757575;" #element="ngForm" (submit)="onRegistrati(element.value)">
+
+                        <!-- Username -->
+                        <input type="text" id="username" class="form-control mb-4 mt-4" placeholder="Username"
+                            minlength="4" maxlength="12" [(ngModel)]="element.username" name="username" required />
+
+                        <!-- Email -->
+                        <input type="email" id="email" class="form-control mb-4" placeholder="Email" minlength="8"
+                            maxlength="40" [(ngModel)]="element.mail" name="email" required email />
+
+                        <!-- Password -->
+                        <input type="password" id="psw" class="form-control mb-4" placeholder="Pwd (min 8 caratteri)"
+                            minlength="8" maxlength="20" [(ngModel)]="element.password" name="password" required />
+
+                        <!-- Squadra -->
+                        <input type="text" id="squadra" class="form-control mb-4 mt-4" placeholder="Squadra"
+                            minlength="4" [(ngModel)]="element.squadra" name="squadra" required maxlength="12" />
+
+                        <!-- Sign in button -->
+                        <my-button [submit]="true" [color]="'danger'" [block]="true" [disabled]="element.invalid"
+                            [label]="language.bottoni.invia" [loading]="loading_btn"></my-button>
+
+                    </form>
+                    <!-- Form -->
+                </div>
+
+                <div style="text-align: center;">
                     <!-- Forgot password -->
                     <a routerLink="/recupera-password">{{language.login.recupera_password}}</a> /
                     <!-- Forgot login -->
                     <a routerLink="/sign-in">{{language.login.login}}</a>
+                </div>
 
-                </form>
-                <!-- Form -->
 
             </mdb-card-body>
 

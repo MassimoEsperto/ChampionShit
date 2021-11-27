@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { catchError, map } from 'rxjs/operators';
@@ -32,5 +32,18 @@ export class FantaGazzettaService extends HttpSenderService {
 
       }),
       catchError(this.handleError));
+  }
+
+  getLega(name: string) {
+
+    const params = new HttpParams().set('lega', name);
+
+    return this.http.get<any>(`${this.buildURL("get_lega")}`, { params: params })
+      .pipe(map((res) => {
+
+        return res['data'];
+
+      }),
+        catchError(this.handleError));
   }
 }
