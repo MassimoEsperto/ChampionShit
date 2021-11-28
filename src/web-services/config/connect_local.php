@@ -23,5 +23,12 @@ function connect()
   return $connect;
 }
 
+//error message
+function errorMessage($emessage) {
+  header("HTTP/1.1 500 Internal Server Error");
+  header('Content-Type: application/json; charset=UTF-8');
+  die(json_encode(array('message' => $emessage, 'code' => 400)));
+}
+
 $con = connect();
 

@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { map, catchError } from 'rxjs/operators';
 import { HttpSenderService } from './http-sender-service';
-import { Utente } from '../classes/models/utente';
 import { Observable } from 'rxjs';
 import { SERVICE_TYPE } from '../classes/utils/costanti';
 
@@ -102,16 +101,6 @@ export class AuthService extends HttpSenderService {
         catchError(this.handleError));
   }
 
-  registerUtente(utente: Utente): Observable<Utente[]> {
-
-    return this.http.post(`${this.buildURL("register_utente")}`, { data: utente })
-      .pipe(map((res) => {
-        let utente = res['data'];
-        return utente;
-      }),
-        catchError(this.handleError));
-  }
-
   segnalaUtente(utente: any) {
 
     return this.http.post(`${this.buildURL("register_mail")}`, { data: utente })
@@ -134,11 +123,11 @@ export class AuthService extends HttpSenderService {
         catchError(this.handleError));
   }
 
-  registerNewUtente(payload: any) {
+  registerNewUtente(payload: any): Observable<any[]>  {
 
     return this.http.post(`${this.buildURL("register_new_utente")}`, { data: payload })
       .pipe(map((res) => {
-        return 'ok';
+        return res['data'];
       }),
         catchError(this.handleError));
   }

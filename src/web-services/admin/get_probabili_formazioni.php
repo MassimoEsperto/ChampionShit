@@ -1,4 +1,5 @@
 <?php
+//da eliminare
 error_reporting(E_ALL);
 
 $file = "https://www.fantacalcio.it/probabili-formazioni-serie-a/index.html";

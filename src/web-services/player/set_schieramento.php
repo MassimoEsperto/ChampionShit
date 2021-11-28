@@ -35,10 +35,7 @@ if(isset($postdata) && !empty($postdata))
 
 	if ($controllo->num_rows > 0) 
 	{
-		header("HTTP/1.1 500 Internal Server Error");
-		header('Content-Type: application/json; charset=UTF-8');
-		die(json_encode(array('message' => 'Non è possibile schierare formazioni per questa data!', 'code' => 400)));
-
+		errorMessage('Non è possibile schierare formazioni per questa data!');
 	} 
 	else 
 	{
@@ -52,9 +49,7 @@ if(isset($postdata) && !empty($postdata))
 		} 
 		else 
 		{
-			header("HTTP/1.1 500 Internal Server Error");
-			header('Content-Type: application/json; charset=UTF-8');
-			die(json_encode(array('message' => 'valori sballati', 'code' => 400)));
+            errorMessage('valori sballati');
 		}
 	}
 	

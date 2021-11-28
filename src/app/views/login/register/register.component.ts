@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { finalize } from 'rxjs/operators';
-import { Utente } from 'src/app/classes/models/utente';
 import { GlobalComponent } from 'src/app/classes/utils/global-component';
 import { AdminService } from 'src/app/services/admin.service';
 import { AlertService } from 'src/app/services/alert.service';
@@ -50,7 +49,6 @@ export class RegisterComponent extends GlobalComponent implements OnInit {
 
         }
       })
-
   }
 
   listaUtenti() {
@@ -66,7 +64,6 @@ export class RegisterComponent extends GlobalComponent implements OnInit {
 
         }
       })
-
   }
 
   getLega(lega: string) {
@@ -83,14 +80,11 @@ export class RegisterComponent extends GlobalComponent implements OnInit {
           } else {
             this.alert.error("Lega inesistente");
           }
-
         },
         error: (error: any) => {
           this.alert.error(error);
         },
-
       })
-
   }
 
 
@@ -133,19 +127,19 @@ export class RegisterComponent extends GlobalComponent implements OnInit {
       return
     }
     let payload = {
-      email: element.email,
-      password: element.password,
-      squadra: element.squadra,
-      username: element.username,
-      lega: this.fantalega['lega'],
-      players: this.squadra
+      "email": element.email,
+      "password": element.password,
+      "squadra": element.squadra,
+      "username": element.username,
+      "lega": this.fantalega['lega'],
+      "players": this.squadra
     }
 
-    console.log("payload", payload)
     this.registrati(payload)
   }
 
   navigateToHome() {
+
     setTimeout(() => {
       this.router.navigate(['/sign-in'])
     }, 2000);
