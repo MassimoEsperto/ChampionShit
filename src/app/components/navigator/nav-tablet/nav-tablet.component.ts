@@ -34,7 +34,7 @@ export class NavTabletComponent extends GlobalComponent implements OnInit {
 
   logOut() {
     this.authService.logout();
-    this.router.navigate(['login']);
+    this.refreshPage();
   }
 
   info() {
