@@ -73,18 +73,7 @@ export class AdminService extends HttpSenderService {
     return this.http.get(`${this.buildURL("get_giornate_calcolate")}`).pipe(
       map((res) => {
 
-        let giaCalcolate = [];
-        let daCalcolare = [];
-        let varie: any = res['data']
-        for (let tmp of varie) {
-          if (tmp.calcolato == '1')
-            giaCalcolate.push(Number(tmp.giornata))
-          else
-            daCalcolare.push(Number(tmp.giornata))
-        }
-
-        let result = { calcolate: giaCalcolate, incalcolate: daCalcolare }
-        return result;
+        return res['data'];
 
       }),
       catchError(this.handleError));

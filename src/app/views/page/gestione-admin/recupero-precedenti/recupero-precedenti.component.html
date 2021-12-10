@@ -2,7 +2,7 @@
 <div *ngIf="listaRose">
     <div class="selezionata">
         <select *ngIf="giornateDaCalcolare" class="btn-file custom-select ml-16" placeholder="Giornata"
-            [(ngModel)]="giornata" (change)='onGiornataSelected($event)'>
+            [(ngModel)]="giornata">
             <optgroup label="Da Calcolare">
                 <option *ngFor="let g of giornateDaCalcolare.incalcolate" [ngValue]="g">Giornata {{g}}°</option>
             </optgroup>

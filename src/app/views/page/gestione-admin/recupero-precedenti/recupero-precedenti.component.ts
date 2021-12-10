@@ -36,12 +36,6 @@ export class RecuperoPrecedentiComponent extends GlobalComponent implements OnIn
   listaRose: any;
   giornateDaCalcolare: any;
 
-
-  onGiornataSelected(event) {
-    const value = event.target.value;
-    this.giornata = value;
-  }
-
   onInsert(payload: any) {
     const dialogRef = this.dialog.open(MyModalValidate);
     dialogRef.afterClosed().subscribe(result => {
@@ -51,8 +45,9 @@ export class RecuperoPrecedentiComponent extends GlobalComponent implements OnIn
   }
 
   recTeamTrasferta(squadra, id_avversario) {
+  
     let ripescata = this.ultimeInserite.filter(x => x.id_utente == squadra.id_utente)
-    let avversario = this.listaRose.find(x => x.id == id_avversario)
+    let avversario = this.listaRose.find(x => x.id_utente == id_avversario)
 
     let payload = {
       lista: [],
