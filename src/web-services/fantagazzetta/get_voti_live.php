@@ -42,7 +42,7 @@ for($i=0;$i<count($team);$i++)
     for($j=0;$j<count($live_gazzetta_dec);$j++)
     {
       	$player=$live_gazzetta_dec[$j]->nome;
-      	$player = str_replace(' ','',$player);
+      	//$player = str_replace(' ','',$player);
       	$player = str_replace("'","",$player);
       	$player = str_replace('.','',$player);
       	$live_gazzetta_dec[$j]->nome=$player;
@@ -116,9 +116,9 @@ if($result = mysqli_query($con,$sql2))
 		
 		if($numero > -1){
           $formazioni[$ele]['match'][$squadre]['schieramento'][$numero]['id_calciatore'] = $row['id_calciatore'];
-          $formazioni[$ele]['match'][$squadre]['schieramento'][$numero]['calciatore'] = $row['calciatore'];
+          $formazioni[$ele]['match'][$squadre]['schieramento'][$numero]['calciatore'] = substr($row['calciatore'],0,12);
           $formazioni[$ele]['match'][$squadre]['schieramento'][$numero]['ruolo'] = $row['ruolo'];
-          $tmp_voto=$live_gazzetta[$row['calciatore']]?$live_gazzetta[$row['calciatore']]:4;
+          $tmp_voto=$live_gazzetta[$row['calciatore']]?$live_gazzetta[$row['calciatore']]:'-';
           $formazioni[$ele]['match'][$squadre]['schieramento'][$numero]['voto'] = $tmp_voto;
 		}
 		$numero++;

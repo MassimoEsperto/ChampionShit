@@ -31,9 +31,16 @@
               (blur)="updateList(id, 'ruolo', $event)">{{getRuolo(ele.ruolo)}}</span>
           </td>
           <td>
-            <span class="table-remove">
+            <span *ngIf="ele.ruolo==3" class="table-remove">
               <button type="button" mdbBtn color="primary" size="sm" class="my-0"
                 (click)="onValidate(ele)">Validate</button>
+            </span>
+            <span *ngIf="ele.ruolo!=3&&!ele.is_pay" class="table-remove">
+              <button type="button" mdbBtn color="primary" size="sm" class="my-0"
+                (click)="onPagato(ele)">Pagare</button>
+            </span>
+            <span *ngIf="ele.is_pay" class="table-remove">
+              OK
             </span>
           </td>
           <td>

@@ -55,7 +55,7 @@ else
 		</tr>
 		</table>
 		<br>
-		<a href='http://fantashitcup.altervista.org/WorldWideFantashit/ChampionShit'>Visit ShitCup.com!</a>
+		<a href='".$base_link_cup."'>Visit WorldWideFantashit.com!</a>
 		</body>
 		</html>
 		";

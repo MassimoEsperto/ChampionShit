@@ -32,3 +32,5 @@ function errorMessage($emessage) {
 
 $con = connect();
 
+$base_link_cup = "http://fantashitcup.altervista.org/WorldWideFantashit/ChampionShit";
+

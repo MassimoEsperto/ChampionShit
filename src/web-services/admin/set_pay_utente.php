@@ -60,7 +60,7 @@ if(isset($postdata) && !empty($postdata))
 	$headers .= 'From: <WorldWideFantashit@shitcup.com>' . "\r\n";
 
 	// Update.
-	$sql = "UPDATE `utenti` SET `ruolo`='{$id_ruolo}' WHERE `username` = '{$username}' LIMIT 1";
+	$sql = "UPDATE `utenti` SET `is_pay` = true WHERE `username` = '{$username}' LIMIT 1";
 
 	if(mysqli_query($con,$sql))
 	{

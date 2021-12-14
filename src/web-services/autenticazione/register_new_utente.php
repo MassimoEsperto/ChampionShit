@@ -19,10 +19,11 @@ if(isset($postdata) && !empty($postdata))
 	$lega = mysqli_real_escape_string($con, trim($dati->lega));    
 	$players= $dati->players;
 
-	$sql1 = "INSERT INTO utenti (username,email,password,squadra,lega) VALUES ('{$username}','{$email}','{$pass}','{$squadra}','{$lega}')";
-
-
-	if ($con->multi_query($sql1) === TRUE) 
+	//$sql1 = "INSERT INTO utenti (username,email,password,squadra,lega) VALUES ('{$username}','{$email}','{$pass}','{$squadra}','{$lega}')";
+	$sql1 .= "INSERT INTO utenti (username,email,password,squadra,lega,avatar_id) VALUES ('{$username}','{$email}','{$pass}','{$squadra}','{$lega}',";
+	$sql1 .= "(SELECT id_avatar FROM avatar WHERE id_avatar not in (SELECT avatar_id FROM utenti) ORDER BY RAND() LIMIT 1))";
+	
+    if ($con->multi_query($sql1) === TRUE) 
 	{
 		$last_id = $con->insert_id;
 	}

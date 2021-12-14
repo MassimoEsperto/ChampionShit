@@ -7,9 +7,9 @@
     <br>
     <div *ngIf="formazioni">
         <div *ngFor="let fanta of formazioni" class="pb-16">
-            
-            <mdb-card class="text-white" bgColor="bg-success">
-                <mdb-card-header>
+
+            <div class="my-card mb-8">
+                <div class="my-card-header">
                     <div class="row">
                         <div class="col-6">
                             <span>{{fanta.match[0].squadra}}</span>
@@ -18,9 +18,8 @@
                             <span>{{fanta.match[1].squadra}}</span>
                         </div>
                     </div>
-                </mdb-card-header>
-                <!--Card content-->
-                <mdb-card-body class="font-size-smart">
+                  </div>
+                <div class="my-card-body font-size-smart">
                     <div class="row">
                         <div class="col-6">
                             <div *ngFor="let schieramento of fanta.match[0].schieramento">
@@ -33,11 +32,8 @@
                             </div>
                         </div>
                     </div>
-                </mdb-card-body>
-
-            </mdb-card>
-
-
+                </div>
+              </div>
 
         </div>
 

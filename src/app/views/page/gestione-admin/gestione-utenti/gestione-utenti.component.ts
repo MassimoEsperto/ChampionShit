@@ -47,6 +47,22 @@ export class GestioneUtentiComponent extends GlobalComponent implements OnInit {
       })
   }
 
+
+  pagato(user: Utente) {
+
+    this.adminService.pagato(user)
+      .subscribe({
+        next: (result: any) => {
+         
+          this.alert.success(this.language.alert.success);
+          this.deleteUtente.emit("true");
+        },
+        error: (error: any) => {
+          this.alert.error(error);
+        }
+      })
+  }
+
   validate(user: Utente) {
 
     this.adminService.validateUtente(user)
@@ -82,6 +98,14 @@ export class GestioneUtentiComponent extends GlobalComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result)
         this.validate(element);
+    });
+  }
+
+  onPagato(element: Utente) {
+    const dialogRef = this.dialog.open(MyModalValidate);
+    dialogRef.afterClosed().subscribe(result => {
+      if (result)
+        this.pagato(element);
     });
   }
 

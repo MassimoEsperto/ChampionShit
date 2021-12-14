@@ -3,7 +3,7 @@
 require_once '../config/connect_local.php';
     
 $element = [];
-$sql = "SELECT id_utente,username,email,ruolo,squadra FROM utenti where id_utente < 100";
+$sql = "SELECT id_utente,username,email,ruolo,squadra,is_pay FROM utenti where id_utente < 100";
 
 if($result = mysqli_query($con,$sql))
 {
@@ -15,6 +15,7 @@ if($result = mysqli_query($con,$sql))
 		$element[$ele]['email'] = $row['email'];
 		$element[$ele]['ruolo'] = $row['ruolo'];
         $element[$ele]['id'] = $row['id_utente'];
+        $element[$ele]['is_pay'] = $row['is_pay'] == 1;
 		$ele++;
 	}
     

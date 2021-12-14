@@ -1,0 +1,26 @@
+
+.my-card-body{
+    color: #fff;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    padding-right: 8px;
+    padding-left: 12px;
+}
+
+.my-card-header{
+    background-color: green;
+    color: #fff;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-right: 8px;
+    padding-left: 12px;
+    background-color: rgba(0, 0, 0, 0.03);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.my-card{
+    border-radius: 4px;
+    border: 0;
+    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+    background-color: #00c851;
+}
