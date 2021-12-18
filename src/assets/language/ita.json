@@ -21,6 +21,7 @@
         "fase": "FASE",
         "data": "DATA",
         "voti_live": "VOTI LIVE",
+        "statistiche": "STATISTICHE",
         "fasi": {
             "gironi": "GIRONI",
             "spareggi": "SPAREGGI",
@@ -55,7 +56,9 @@
         "formazione": "GESTIONE FORMAZIONE",
         "calendario": "CALENDARIO RISULTATI",
         "rose": "LISTA ROSE UTENTI",
-        "log_out": "LOG-OUT"
+        "log_out": "LOG-OUT",
+        "classifiche": "CLASSIFICHE",
+        "comunicazioni": "COMUNICAZIONI"
     },
     "header": {
         "admin": "ADMIN",
@@ -63,7 +66,16 @@
         "formazione": "FORMAZIONE",
         "calendario": "CALENDARIO",
         "rose": "ROSE",
-        "log_out": "LOG-OUT"
+        "classifiche": "CLASSIFICHE",
+        "comunicazioni": "COMUNICAZIONI"
+    },
+    "smart": {
+        "admin": "ADMIN",
+        "home": "HOME",
+        "calendario": "CALE.",
+        "rose": "ROSE",
+        "classifiche": "CLAS.",
+        "info": "INFO"
     },
     "login": {
         "recupera_password": "Recupera Password",
@@ -114,7 +126,9 @@
         "nostro_blog": "Il Nostro Blog",
         "cambio_lingua": "Cambio lingua",
         "albo": "Albo d'oro",
-        "profilo": "Profilo"
+        "profilo": "Profilo",
+        "comunicazioni": "Comunicazioni",
+        "log_out": "LOG-OUT"
     },
     "albo": {
         "titolo": "Albo d'oro",

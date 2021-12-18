@@ -21,6 +21,7 @@
         "fase": "PHASE",
         "data": "DATE",
         "voti_live": "VOTES EN DIRECT",
+        "statistiche": "STATISTIQUES",
         "fasi": {
             "gironi": "GROUPES",
             "spareggi": "TIRAGES",
@@ -55,7 +56,9 @@
         "formazione": "GESTION DE LA FORMATION",
         "calendario": "CALENDRIER DES RÉSULTATS",
         "rose": "COMPOSITION DES EQUIPES",
-        "log_out": "DECONNEXION"
+        "log_out": "DECONNEXION",
+        "classifiche": "CLASSEMENTS",
+        "comunicazioni": "COMMUNICATION"
     },
     "header": {
         "admin": "ADMIN",
@@ -63,7 +66,16 @@
         "formazione": "FORMATION",
         "calendario": "CALENDRIER",
         "rose": "EQUIPES",
-        "log_out": "DECONNEXION"
+        "classifiche": "CLASSEMENTS",
+        "comunicazioni": "COMMUNICATION"
+    },
+    "smart": {
+        "admin": "ADMIN",
+        "home": "ACCUREIL",
+        "calendario": "CALE.",
+        "rose": "EQUIPES",
+        "classifiche": "CLAS.",
+        "info": "INFO"
     },
     "login": {
         "recupera_password": "Récupérer Passe",
@@ -114,7 +126,9 @@
         "nostro_blog": "Notre blog",
         "cambio_lingua": "Changer de langue",
         "albo": "Palmarès",
-        "profilo": "Profil"
+        "profilo": "Profil",
+        "comunicazioni": "Communication",
+        "log_out": "DECONNEXION"
     },
     "albo": {
         "titolo": "Palmarès",

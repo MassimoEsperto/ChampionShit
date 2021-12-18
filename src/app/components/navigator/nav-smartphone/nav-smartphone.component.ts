@@ -39,18 +39,6 @@ export class NavSmartphoneComponent extends GlobalComponent implements OnInit {
     this.versione = this.services.versione()
   }
 
-  logOut() {
-    this.authService.logout();
-    this.refreshPage();
-  }
-
-
-  azzeraMessaggiDesk() {
-    this.loggato.num_msg = 0;
-  }
-
-
-
 
   onChangeLanguage() {
 
@@ -75,5 +63,13 @@ export class NavSmartphoneComponent extends GlobalComponent implements OnInit {
     });
   }
 
+  logOut() {
+    this.authService.logout();
+    this.refreshPage();
+  }
+
+  azzeraMessaggi() {
+    this.loggato.num_msg = 0;
+  }
 
 }

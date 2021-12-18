@@ -21,6 +21,7 @@
         "fase": "PHASE",
         "data": "DATE",
         "voti_live": "LIVE VOTES",
+        "statistiche": "STATISTICS",
         "fasi": {
             "gironi": "GROUPS",
             "spareggi": "SHOOTS",
@@ -55,7 +56,9 @@
         "formazione": "TRAINING MANAGEMENT",
         "calendario": "RESULTS CALENDAR",
         "rose": "USER ROSE LIST",
-        "log_out": "LOG-OUT"
+        "log_out": "LOG-OUT",
+        "classifiche": "RANKINGS",
+        "comunicazioni": "COMMUNICATIONS"
     },
     "header": {
         "admin": "ADMIN",
@@ -63,7 +66,16 @@
         "formazione": "TRAINING",
         "calendario": "CALENDAR",
         "rose": "TEAMS",
-        "log_out": "LOG-OUT"
+        "classifiche": "RANKINGS",
+        "comunicazioni": "COMMUNICATIONS"
+    },
+    "smart": {
+        "admin": "ADMIN",
+        "home": "HOME",
+        "calendario": "CALE.",
+        "rose": "TEAMS",
+        "classifiche": "RANK.",
+        "info": "INFO"
     },
     "login": {
         "recupera_password": "Recover Password",
@@ -114,7 +126,9 @@
         "nostro_blog": "Our Blog",
         "cambio_lingua": "Change language",
         "albo": "Roll of honor",
-        "profilo": "Profile"
+        "profilo": "Profile",
+        "comunicazioni": "Communications",
+        "log_out": "LOG-OUT"
     },
     "albo": {
         "titolo": "Roll of honor",

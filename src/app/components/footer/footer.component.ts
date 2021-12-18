@@ -4,6 +4,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { GlobalComponent } from 'src/app/classes/utils/global-component';
 import { AdminService } from 'src/app/services/admin.service';
+import { AuthService } from 'src/app/services/auth.service';
+import { Utente } from 'src/app/classes/models/utente';
 
 @Component({
   selector: 'my-footer',
@@ -12,16 +14,22 @@ import { AdminService } from 'src/app/services/admin.service';
 })
 export class FooterComponent extends GlobalComponent implements OnInit {
 
+  versione: any;
+  loggato: Utente;
+
   constructor(
     private services: AdminService,
+    private authService: AuthService,
     public dialog: MatDialog) {
     super();
   }
 
-  ngOnInit() { this.versione = this.services.versione() }
+  ngOnInit() { 
+    this.versione = this.services.versione() 
+    this.loggato = this.authService.getLoggato();
+  }
 
 
-  versione: any;
 
   onChangeLanguage() {
 
@@ -44,6 +52,15 @@ export class FooterComponent extends GlobalComponent implements OnInit {
       panelClass: 'dialog-info',
       data: this.language.albo
     });
+  }
+
+  logOut() {
+    this.authService.logout();
+    this.refreshPage();
+  }
+
+  azzeraMessaggi() {
+    this.loggato.num_msg = 0;
   }
 
 }

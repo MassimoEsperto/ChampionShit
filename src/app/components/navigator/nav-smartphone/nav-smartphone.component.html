@@ -5,7 +5,7 @@
                 <mdb-icon fas icon="home" class="pr-1"></mdb-icon>
             </div>
             <div>
-                <span>{{language.header.home}}</span>
+                <span>{{language.smart.home}}</span>
             </div>
         </div>
 
@@ -14,7 +14,7 @@
                 <mdb-icon far icon="calendar-alt" class="pr-1"></mdb-icon>
             </div>
             <div>
-                <span>{{language.header.calendario.substring(0,5)}}.</span>
+                <span>{{language.smart.calendario}}.</span>
             </div>
         </div>
 
@@ -23,16 +23,16 @@
                 <mdb-icon fas icon="binoculars" class="pr-1"></mdb-icon>
             </div>
             <div>
-                <span>{{language.header.rose}}</span>
+                <span>{{language.smart.rose}}</span>
             </div>
         </div>
-
-        <div class="colonna" (click)="impostazioni.hide();azzeraMessaggiDesk()" routerLink="/home/comunicazioni">
+       
+        <div class="colonna" (click)="impostazioni.hide()" routerLink="/home/classifiche">
             <div style="padding-bottom: 4px;">
-                <mdb-icon fas icon="envelope" class="pr-1"></mdb-icon>{{loggato.num_msg}}
+                <mdb-icon fas icon="chart-line" class="pr-1"></mdb-icon>
             </div>
             <div>
-                <span>SMS</span>
+                <span>{{language.smart.classifiche}}</span>
             </div>
         </div>
 
@@ -41,7 +41,7 @@
                 <mdb-icon fas icon="user-cog" class="pr-1"></mdb-icon>
             </div>
             <div>
-                <span>INFO</span>
+                <span>{{language.smart.info}}</span>
             </div>
         </div>
 
@@ -58,6 +58,7 @@
                         <p>{{language.footer.info}}</p>
                         <span class="cursore pb-8" (click)="logOut()">{{language.pannello.log_out}}</span>
                         <span class="cursore pb-8" routerLink="/home/info-utente">{{language.footer.profilo}}</span>
+                        <span class="cursore pb-8" (click)="impostazioni.hide();azzeraMessaggi()" routerLink="/home/comunicazioni">{{language.footer.comunicazioni}}</span>
                     </div>
                     <div class="competizione flex-colonna">
                         <p>{{language.footer.competizione}}</p>

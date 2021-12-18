@@ -1,0 +1,70 @@
+<div *ngIf="statistiche" class="pb-8 pt-32">
+
+    <mdb-card class="text-white" bgColor="bg-success">
+        <mdb-card-header>{{language.page.statistiche}}</mdb-card-header>
+    </mdb-card>
+
+    <div class="pb-8 pt-8">
+        <mdb-card>
+
+            <mdb-card-body>
+                <div class="flex-around">
+                    <div style="text-align: center;">
+                        <div><span>Num</span></div>
+                        <div><span>{{statistiche.risultati.num}}</span></div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div><span>Win</span></div>
+                        <div><span>{{statistiche.risultati.win}}</span></div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div><span>Lose</span></div>
+                        <div><span>{{statistiche.risultati.par}}</span></div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div><span>Par</span></div>
+                        <div><span>{{statistiche.risultati.los}}</span></div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div><span>Gol</span></div>
+                        <div><span>{{statistiche.risultati.gol}}</span></div>
+                    </div>
+                </div>
+
+            </mdb-card-body>
+        </mdb-card>
+    </div>
+
+    <div class="pt-8 pb-8">
+
+        <div *ngFor="let item of statistiche.giocate">
+
+            <mdb-card>
+
+                <mdb-card-body>
+                    <div class="squadre">
+                        <div class="row col-4 col-sm-4 col-md-4 col-lg-4">
+                            <div>
+                                <label>
+                                    {{item.casa.replaceAll(" ", "")}}
+                                </label>
+                            </div>
+                        </div>
+                        <div class="punteggio col-4 col-sm-4 col-md-4 col-lg-4">
+                            <span>{{item.gol_casa}}-{{item.gol_trasferta}}</span>
+                        </div>
+                        <div class="row col-4 col-sm-4 col-md-4 col-lg-4">
+                            <div>
+                                <label>
+                                    {{item.trasferta.replaceAll(" ", "")}}
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </mdb-card-body>
+
+            </mdb-card>
+        </div>
+    </div>
+
+</div>

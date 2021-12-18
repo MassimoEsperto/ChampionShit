@@ -11,6 +11,7 @@ import { SchieramentoComponent } from '../views/page/schieramento/schieramento.c
 import { GestioneAdminComponent } from '../views/page/gestione-admin/gestione-admin.component';
 import { ComunicazioniComponent } from '../views/page/comunicazioni/comunicazioni.component';
 import { VotiLiveComponent } from '../views/page/voti-live/voti-live.component';
+import { ClassificheComponent } from '../views/page/classifiche/classifiche.component';
 
 
 
@@ -52,6 +53,11 @@ const routes: Routes = [
             {
                 path: 'comunicazioni',
                 component: ComunicazioniComponent
+            }
+            ,
+            {
+                path: 'classifiche',
+                component: ClassificheComponent
             }
         ]
     }

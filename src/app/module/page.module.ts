@@ -26,8 +26,9 @@ import { SorteggiRandomComponent } from '../views/page/gestione-admin/sorteggi-r
 import { NavDesktopComponent } from '../components/navigator/nav-desktop/nav-desktop.component';
 import { NavSmartphoneComponent } from '../components/navigator/nav-smartphone/nav-smartphone.component';
 import { NavTabletComponent } from '../components/navigator/nav-tablet/nav-tablet.component';
-import { ClassificaComponent } from '../components/classifica/classifica.component';
 import { VotiLiveComponent } from '../views/page/voti-live/voti-live.component';
+import { ClassificheComponent } from '../views/page/classifiche/classifiche.component';
+import { StatisticheComponent } from '../components/statistiche/statistiche.component';
 
 
 
@@ -54,8 +55,9 @@ import { VotiLiveComponent } from '../views/page/voti-live/voti-live.component';
     NavDesktopComponent,
     NavSmartphoneComponent,
     NavTabletComponent,
-    ClassificaComponent,
-    VotiLiveComponent
+    VotiLiveComponent,
+    ClassificheComponent,
+    StatisticheComponent
   ],
   imports: [
     CommonModule,

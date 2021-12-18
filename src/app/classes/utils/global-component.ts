@@ -55,4 +55,9 @@ export abstract class GlobalComponent {
         }, 1000);
     }
 
+    startPage(spinner: any) {
+        this.loading_page = true;
+        spinner.view();
+    }
+
 }

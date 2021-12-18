@@ -28,10 +28,10 @@
                 <a class="nav-link waves-light" (click)="navElement()" routerLink="/home/dashboard"
                     mdbWavesEffect>{{language.pannello.home}}</a>
             </li>
-            <li *ngIf="isPlayer" class="nav-item flex-start pl-16">
-                <mdb-icon fas icon="file-signature" class="white-text"></mdb-icon>
-                <a class="nav-link waves-light" (click)="navElement()" routerLink="/home/schieramento"
-                    mdbWavesEffect>{{language.pannello.formazione}}</a>
+            <li class="nav-item flex-start pl-16">
+                <mdb-icon fas icon="chart-line" class="white-text"></mdb-icon>
+                <a class="nav-link waves-light" (click)="navElement()" routerLink="/home/classifiche"
+                    mdbWavesEffect>{{language.pannello.classifiche}}</a>
             </li>
             <li class="nav-item flex-start pl-16">
                 <mdb-icon fas icon="umbrella-beach" class="white-text"></mdb-icon>
@@ -49,7 +49,7 @@
             </li>
             <li class="nav-item pl-8">
                 <a class="nav-link" (click)="azzeraMessaggiSmart()" routerLink="/home/comunicazioni">
-                    {{loggato.num_msg}} <mdb-icon fas icon="envelope"></mdb-icon></a>
+                    {{loggato.num_msg}} <mdb-icon fas icon="envelope"></mdb-icon> {{language.pannello.comunicazioni}}</a>
             </li>
         </ul>
     </links>

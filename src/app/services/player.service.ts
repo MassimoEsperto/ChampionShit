@@ -70,6 +70,18 @@ export class PlayerService extends HttpSenderService {
       catchError(this.handleError));
   }
 
+  getStatistiche() {
+    return this.http.get(`${this.buildURL("get_statistiche")}`, this.myheaders).pipe(
+      map((res) => {
+
+        this.tokenError(res);//controllo token
+
+        return res['data'];
+
+      }),
+      catchError(this.handleError));
+  }
+
   getCalendario() {
     return this.http.get(`${this.buildURL("get_risultati")}`, this.myheaders).pipe(
       map((res) => {

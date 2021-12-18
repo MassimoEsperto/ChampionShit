@@ -21,6 +21,7 @@
         "fase": "階段",
         "data": "日期",
         "voti_live": "現場投票",
+        "statistiche": "統計數據",
         "fasi": {
             "gironi": "團體",
             "spareggi": "射擊",
@@ -55,7 +56,9 @@
         "formazione": "培训管理",
         "calendario": "结果日历",
         "rose": "玫瑰用户列表",
-        "log_out": "注销"
+        "log_out": "注销",
+        "classifiche": "排名",
+        "comunicazioni": "通訊"
     },
     "header": {
         "admin": "行政",
@@ -63,7 +66,16 @@
         "formazione": "培训管理",
         "calendario": "结果日历",
         "rose": "玫瑰用户列表",
-        "log_out": "注销"
+        "classifiche": "排名",
+        "comunicazioni": "通訊",
+        "info": "信息"
+    },
+    "smart": {
+        "admin": "行政",
+        "home": "家",
+        "calendario": "结果日历",
+        "rose": "玫瑰用户列表",
+        "classifiche": "排名"
     },
     "login": {
         "recupera_password": "恢复密码",
@@ -114,7 +126,9 @@
         "nostro_blog": "我们的博客",
         "cambio_lingua": "更改语言",
         "albo": "荣誉卷",
-        "profilo": "輪廓"
+        "profilo": "輪廓",
+        "comunicazioni": "通訊",
+        "log_out": "注销"
     },
     "albo": {
         "titolo": "荣誉卷",

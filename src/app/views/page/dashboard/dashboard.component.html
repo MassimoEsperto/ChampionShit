@@ -9,6 +9,16 @@
       <h4>{{language.page.calcolo}}</h4>
     </div>
 
+    <div class="pt-32" style="text-align: center;color: aliceblue;">
+      <div>
+        <img src="assets/avatar/{{loggato.avatar}}.png" width="180" height="180" />
+      </div>
+      <div>
+        <h3>{{loggato.squadra}}</h3>
+      </div>
+    </div>
+
+
     <div class="pt-32" *ngIf="dash.prossimo_match">
 
       <mdb-card class="text-white" bgColor="bg-success">
@@ -55,6 +65,7 @@
 
     </div>
 
+
     <div class="pt-32" *ngIf="dash.turno.precedente&&!dash.turno.limbo">
       <mdb-card class="text-white" bgColor="bg-success">
         <mdb-card-header>{{language.page.risultati}}</mdb-card-header>
@@ -63,7 +74,7 @@
 
     </div>
 
-    <classifica></classifica>
+    <statistiche></statistiche>
 
   </div>
 </div>
