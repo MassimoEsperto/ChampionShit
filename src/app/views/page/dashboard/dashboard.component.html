@@ -9,22 +9,23 @@
       <h4>{{language.page.calcolo}}</h4>
     </div>
 
-    <div class="pt-32">
-    <mdb-card class="text-white mb-3" bgColor="bg-transparent">
-     
-      <mdb-card-body>
-        <div  style="text-align: center;color: aliceblue;">
-          <div>
-            <img src="assets/avatar/{{loggato.avatar}}.png" width="180" height="180" />
+    <div class="pt-32 pb-16">
+      <mdb-card class="text-white" bgColor="bg-transparent">
+
+        <mdb-card-body>
+          <div style="text-align: center;color: aliceblue;">
+            <div>
+              <img src="assets/avatar/{{loggato.avatar}}.png" width="180" height="180" />
+            </div>
           </div>
-        </div>
-      </mdb-card-body>
-      <mdb-card-header>{{loggato.squadra}}</mdb-card-header>
-  </mdb-card>
-</div>
-
-    
-
+        </mdb-card-body>
+        <mdb-card-header>
+          <div style="text-align: right;">
+            {{loggato.squadra}}
+          </div>
+        </mdb-card-header>
+      </mdb-card>
+    </div>
 
     <div class="pt-16" *ngIf="dash.prossimo_match">
 
