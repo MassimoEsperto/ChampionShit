@@ -39,7 +39,7 @@ export class AuthService extends HttpSenderService {
  
         this.setToken(decoded);
 
-        return token;
+        return decoded;
 
       }),
         catchError(this.handleError));

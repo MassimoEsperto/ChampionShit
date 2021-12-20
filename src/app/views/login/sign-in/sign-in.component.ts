@@ -37,8 +37,13 @@ export class SignInComponent extends GlobalComponent implements OnInit {
       .subscribe({
 
         next: (result: any) => {
-         
-          this.router.navigate(['home/dashboard']);
+       
+          let num_msg: number = Number(result.num_msg)
+       
+          if (num_msg > 0)
+            this.router.navigate(['home/comunicazioni']);
+          else
+            this.router.navigate(['home/dashboard']);
 
         },
         error: (error: any) => {
