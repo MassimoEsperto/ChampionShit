@@ -29,6 +29,7 @@ import { NavTabletComponent } from '../components/navigator/nav-tablet/nav-table
 import { VotiLiveComponent } from '../views/page/voti-live/voti-live.component';
 import { ClassificheComponent } from '../views/page/classifiche/classifiche.component';
 import { StatisticheComponent } from '../components/statistiche/statistiche.component';
+import { DataPartiteComponent } from '../views/page/gestione-admin/data-partite/data-partite.component';
 
 
 
@@ -57,7 +58,8 @@ import { StatisticheComponent } from '../components/statistiche/statistiche.comp
     NavTabletComponent,
     VotiLiveComponent,
     ClassificheComponent,
-    StatisticheComponent
+    StatisticheComponent,
+    DataPartiteComponent
   ],
   imports: [
     CommonModule,

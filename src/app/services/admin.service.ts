@@ -19,6 +19,15 @@ export class AdminService extends HttpSenderService {
     super(SERVICE_TYPE.ADMIN);
   }
 
+  getAdministrator(): Observable<any> {
+    return this.http.get(`${this.buildURL("get_administrator")}`).pipe(
+      map((res) => {
+
+        return res['data'];
+      }),
+      catchError(this.handleError));
+  }
+
   getUtenti(): Observable<Utente[]> {
     return this.http.get(`${this.buildURL("get_all_utenti")}`).pipe(
       map((res) => {
@@ -28,6 +37,7 @@ export class AdminService extends HttpSenderService {
       }),
       catchError(this.handleError));
   }
+  
 
 
   validateUtente(utente: Utente) {
@@ -226,6 +236,16 @@ export class AdminService extends HttpSenderService {
 
     return this.http.post(`${this.buildURL("upd_player_utente")}`, { data: payload })
       .pipe(map((res) => {
+        return 'ok';
+      }),
+        catchError(this.handleError));
+  }
+
+  cambiaDate(payload: any) {
+
+    return this.http.post(`${this.buildURL("upd_data_partita")}`,{ data: payload })
+      .pipe(map((res) => {
+
         return 'ok';
       }),
         catchError(this.handleError));

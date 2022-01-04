@@ -1,46 +1,52 @@
-<div *ngIf="!loading_page" class="page">
+<div *ngIf="administrator" class="page">
 
   <mat-tab-group backgroundColor="accent" mat-align-tabs="center">
 
     <mat-tab label="UTENTI">
       <div class="pt-16 pl-8 pr-8 tabula">
-        <gestione-utenti [utenti]="utenti" (deleteUtente)="ricalcola($event)"></gestione-utenti>
+        <gestione-utenti [utenti]="administrator.utenti"></gestione-utenti>
       </div>
     </mat-tab>
-    
+
     <mat-tab label="CALCOLO">
       <div class="pt-16 tabula">
-        <calcolo-voti></calcolo-voti>
+        <calcolo-voti [giornateDaCalcolare]="administrator.giornate_calcolate"></calcolo-voti>
       </div>
     </mat-tab>
-    
+
     <mat-tab label="RECUPERO">
       <div class="pt-16 tabula">
-        <recupero-precedenti></recupero-precedenti>
+        <recupero-precedenti [administrator]="administrator"></recupero-precedenti>
       </div>
     </mat-tab>
-    
+
     <mat-tab label="SVINCOLATI">
       <div class="pt-16 tabula">
-        <gestione-rose [attuali]="calciatori"></gestione-rose>
+        <gestione-rose [attuali]="administrator.lista_calciatori"></gestione-rose>
       </div>
     </mat-tab>
-    
+
     <mat-tab label="SQUADRE">
       <div class="pt-16 tabula">
-        <gestione-squadre [listaRose]="calciatori" [utenti]="utenti"></gestione-squadre>
+        <gestione-squadre [listaRose]="administrator.lista_calciatori" [utenti]="administrator.utenti"></gestione-squadre>
       </div>
     </mat-tab>
 
     <mat-tab label="NOTIFICHE">
       <div class="pt-16 tabula">
-        <gestione-notifiche [utenti]="utenti"></gestione-notifiche>
+        <gestione-notifiche [utenti]="administrator.utenti"></gestione-notifiche>
       </div>
     </mat-tab>
 
     <mat-tab label="SORTEGGI">
       <div class="pt-16 tabula">
         <sorteggi-random></sorteggi-random>
+      </div>
+    </mat-tab>
+
+    <mat-tab label="DATE">
+      <div class="pt-16 tabula">
+        <data-partite [dataPartite]="administrator.data_partite"></data-partite>
       </div>
     </mat-tab>
 

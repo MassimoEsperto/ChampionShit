@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import * as XLSX from 'xlsx';
 import { GlobalComponent } from 'src/app/classes/utils/global-component';
 import { AlertService } from 'src/app/services/alert.service';
@@ -12,6 +12,8 @@ import { AdminService } from 'src/app/services/admin.service';
 })
 export class CalcoloVotiComponent extends GlobalComponent implements OnInit {
 
+  @Input() giornateDaCalcolare: any;
+
   constructor(
     private alert: AlertService,
     private adminService: AdminService) {
@@ -19,12 +21,13 @@ export class CalcoloVotiComponent extends GlobalComponent implements OnInit {
   }
 
 
-  ngOnInit() { this.giornataDaCalcolare() }
+  ngOnInit() {
+    this.giornataAttuale = this.giornateDaCalcolare ? this.giornateDaCalcolare.incalcolate[0] : 1;
+  }
 
   formazione: any;
   risultati = [];
   giornataAttuale: number;
-  giornateDaCalcolare: any;
 
   importVoti(event: any) {
     let file: File
@@ -115,33 +118,13 @@ export class CalcoloVotiComponent extends GlobalComponent implements OnInit {
 
     this.adminService.getFormazioni(this.giornataAttuale.toString())
       .pipe(finalize(() => {
-          this.loading_btn = false;
+        this.loading_btn = false;
       }
       ))
       .subscribe({
 
         next: (result: any) => {
           this.formazione = result
-        },
-        error: (error: any) => {
-          this.alert.error(error);
-
-        }
-      })
-
-  }
-
- 
-
-  giornataDaCalcolare() {
-    this.loading_page = true;
-
-    this.adminService.getGiornateCalcolate()
-      .subscribe({
-
-        next: (result: any) => {
-          this.giornateDaCalcolare = result;
-          this.giornataAttuale = result.incalcolate[0];
         },
         error: (error: any) => {
           this.alert.error(error);

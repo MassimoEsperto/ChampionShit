@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { finalize } from 'rxjs/operators';
-import { Utente } from 'src/app/classes/models/utente';
 import { GlobalComponent } from 'src/app/classes/utils/global-component';
 import { AdminService } from 'src/app/services/admin.service';
 import { AlertService } from 'src/app/services/alert.service';
@@ -13,9 +12,7 @@ import { SpinnerService } from 'src/app/services/spinner.service';
 })
 export class GestioneAdminComponent extends GlobalComponent implements OnInit {
 
-
-  utenti: Utente[];
-  calciatori:any;
+  administrator: any;
 
   constructor(
     private spinner: SpinnerService,
@@ -25,49 +22,30 @@ export class GestioneAdminComponent extends GlobalComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.listaCalciatori();
+    this.spinner.view();
+    this.getAdministrator()
   }
 
-  ricalcola(event){
-    this.getAllUtenti();
-  }
 
-  getAllUtenti() {
+  getAdministrator() {
 
-    this.adminService.getUtenti()
+    this.adminService.getAdministrator()
       .pipe(finalize(() => {
-        this.spinner.clear(),
-          this.loading_page = false;
+        this.spinner.clear()
       }))
       .subscribe({
-        next: (result: Utente[]) => {
-         
-          this.utenti = result;
-         
-        },
-        error: (error: any) => {
-          this.alert.error(error);
-        }
-      })
-  }
- 
-  listaCalciatori() {
-
-    this.loading_btn = true;
-    this.spinner.view();
-
-    this.adminService.getListaCalciatori()
-      .subscribe({
-
         next: (result: any) => {
-          this.calciatori=result;
-          this.getAllUtenti();
+        
+          this.administrator = result
+
         },
         error: (error: any) => {
           this.alert.error(error);
-
         }
       })
-
   }
+
+
+
+
 }

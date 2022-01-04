@@ -81,6 +81,11 @@ if($result = mysqli_query($con,$sql2))
 {
 	$dip = 0;
 	$non = 0;
+    
+    $indisponibili[$non]['id'] = 1;
+	$indisponibili[$non]['nome'] = ' ';
+	$indisponibili[$non]['tipo'] = '?????';
+    
 	while($row = mysqli_fetch_assoc($result))
 	{
 		if($row['disabled']==false)

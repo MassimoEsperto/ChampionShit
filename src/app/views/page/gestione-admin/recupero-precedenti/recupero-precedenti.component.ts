@@ -1,12 +1,12 @@
 import { AdminService } from 'src/app/services/admin.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { GlobalComponent } from 'src/app/classes/utils/global-component';
 import { AlertService } from 'src/app/services/alert.service';
 import { finalize } from 'rxjs/operators';
 import { INIBITO } from 'src/app/classes/utils/costanti';
 import { MatDialog } from '@angular/material/dialog';
 import { MyModalValidate } from 'src/app/components/my-modal-validate/my-modal-validate.component';
-import { PlayerService } from 'src/app/services/player.service';
+
 
 @Component({
   selector: 'recupero-precedenti',
@@ -15,19 +15,20 @@ import { PlayerService } from 'src/app/services/player.service';
 })
 export class RecuperoPrecedentiComponent extends GlobalComponent implements OnInit {
 
+  @Input() administrator: any;
+
   constructor(
     private alert: AlertService,
     public dialog: MatDialog,
-    private adminService: AdminService,
-    private playerService: PlayerService) {
+    private adminService: AdminService) {
     super();
   }
 
 
   ngOnInit() {
-    this.listaRoseUtenti()
-    this.schieramentiPrecedenti();
-    this.giornataDaCalcolare();
+    this.listaRose = this.administrator.rose;
+    this.ultimeInserite = this.administrator.formazioni;
+    this.giornateDaCalcolare = this.administrator.giornate_calcolate;;
   }
 
   attuali = [];
@@ -45,7 +46,7 @@ export class RecuperoPrecedentiComponent extends GlobalComponent implements OnIn
   }
 
   recTeamTrasferta(squadra, id_avversario) {
-  
+
     let ripescata = this.ultimeInserite.filter(x => x.id_utente == squadra.id_utente)
     let avversario = this.listaRose.find(x => x.id_utente == id_avversario)
 
@@ -83,15 +84,10 @@ export class RecuperoPrecedentiComponent extends GlobalComponent implements OnIn
 
   }
 
-  giornateComplete() {
-    this.schieramentiAttuali();
-  }
-
 
 
   /* CHIAMATA AI SERVIZI */
   schieramentiAttuali() {
-
     this.loading_btn = true;
 
     this.adminService.getSchiermenti(this.giornata.toString())
@@ -103,22 +99,6 @@ export class RecuperoPrecedentiComponent extends GlobalComponent implements OnIn
 
         next: (result: any) => {
           this.attuali = result
-        },
-        error: (error: any) => {
-          this.alert.error(error);
-
-        }
-      })
-
-  }
-
-  schieramentiPrecedenti() {
-
-    this.adminService.lastFormazioniInserite()
-      .subscribe({
-
-        next: (result: any) => {
-          this.ultimeInserite = result
         },
         error: (error: any) => {
           this.alert.error(error);
@@ -150,38 +130,8 @@ export class RecuperoPrecedentiComponent extends GlobalComponent implements OnIn
 
   }
 
-  listaRoseUtenti() {
+  
 
-    this.playerService.getListaRose()
-      .subscribe({
-
-        next: (result: any) => {
-          this.listaRose = result;
-        },
-        error: (error: any) => {
-          this.alert.error(error);
-
-        }
-      })
-
-  }
-
-  giornataDaCalcolare() {
-    this.loading_page = true;
-
-    this.adminService.getGiornateCalcolate()
-      .subscribe({
-
-        next: (result: any) => {
-          this.giornateDaCalcolare = result;
-        },
-        error: (error: any) => {
-          this.alert.error(error);
-
-        }
-      })
-
-  }
   /* FINE CHIAMATA AI SERVIZI */
 }
 

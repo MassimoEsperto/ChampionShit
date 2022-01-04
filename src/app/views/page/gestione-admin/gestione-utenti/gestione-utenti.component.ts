@@ -1,5 +1,4 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { finalize } from 'rxjs/operators';
 import { Utente } from 'src/app/classes/models/utente';
 import { GlobalComponent } from 'src/app/classes/utils/global-component';
 import { AdminService } from 'src/app/services/admin.service';
@@ -19,7 +18,6 @@ export class GestioneUtentiComponent extends GlobalComponent implements OnInit {
 
   editField: string;
   @Input() utenti: Utente[];
-  @Output("deleteUtente") deleteUtente = new EventEmitter();
 
   constructor(
     private alert: AlertService,
@@ -28,7 +26,7 @@ export class GestioneUtentiComponent extends GlobalComponent implements OnInit {
     super();
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
 
 
@@ -39,7 +37,7 @@ export class GestioneUtentiComponent extends GlobalComponent implements OnInit {
       .subscribe({
         next: (result: any) => {
           this.alert.success(this.language.alert.success);
-          this.deleteUtente.emit("true");
+          this.ricalcola()
         },
         error: (error: any) => {
           this.alert.error(error);
@@ -53,9 +51,9 @@ export class GestioneUtentiComponent extends GlobalComponent implements OnInit {
     this.adminService.pagato(user)
       .subscribe({
         next: (result: any) => {
-         
+
           this.alert.success(this.language.alert.success);
-          this.deleteUtente.emit("true");
+          this.ricalcola()
         },
         error: (error: any) => {
           this.alert.error(error);
@@ -68,15 +66,33 @@ export class GestioneUtentiComponent extends GlobalComponent implements OnInit {
     this.adminService.validateUtente(user)
       .subscribe({
         next: (result: any) => {
-         
+
           this.alert.success(this.language.alert.success);
-          this.deleteUtente.emit("true");
+          this.ricalcola()
         },
         error: (error: any) => {
           this.alert.error(error);
         }
       })
   }
+
+
+
+  ricalcola() {
+
+    this.adminService.getUtenti()
+      .subscribe({
+        next: (result: Utente[]) => {
+
+          this.utenti = result;
+
+        },
+        error: (error: any) => {
+          this.alert.error(error);
+        }
+      })
+  }
+
   /* FINE CHIAMATE AI SERVIZI */
 
 
@@ -115,16 +131,16 @@ export class GestioneUtentiComponent extends GlobalComponent implements OnInit {
 
   getRuolo(input: any) {
     switch (Number(input)) {
-        case Ruolo.ADMIN:
-            return ComboRuolo.ADMIN_DESC
-            break;
-        case Ruolo.GIOCATORE:
-            return ComboRuolo.GIOCATORE_DESC
-            break;
-        default:
-            return ComboRuolo.VISITATORE_DESC
-            break;
+      case Ruolo.ADMIN:
+        return ComboRuolo.ADMIN_DESC
+        break;
+      case Ruolo.GIOCATORE:
+        return ComboRuolo.GIOCATORE_DESC
+        break;
+      default:
+        return ComboRuolo.VISITATORE_DESC
+        break;
     }
-}
+  }
 
 }

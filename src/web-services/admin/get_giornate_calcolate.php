@@ -16,7 +16,7 @@ if($result = mysqli_query($con,$sql))
     $ele_i = 0;
 	while($row = mysqli_fetch_assoc($result))
 	{
-    	if($row['giornata']==1){
+    	if($row['calcolato']==1){
           $calcolate[$ele_c] = $row['giornata'];
           $ele_c++;
         }else{

@@ -1,0 +1,42 @@
+<!-- Editable table -->
+<div class="card">
+    <h3 class="card-header text-center font-weight-bold text-uppercase py-4">GESTIONE DATA</h3>
+    <div class="card-body">
+        <div id="table" class="table-editable">
+
+            <table class="table table-bordered table-responsive-md table-striped text-center">
+                <tr>
+                    <th class="text-center">G</th>
+                    <th class="text-center">A</th>
+                    <th class="text-center">INIZIO</th>
+                    <th class="text-center">FINE</th>
+                    <th class="text-center">CAMBIA</th>
+                </tr>
+                <tr *ngFor="let ele of dataPartite; let id = index">
+                    <td>
+                        <span>{{ele.giornata}}</span>
+                    </td>
+                    <td>
+                        <span>{{ele.serie_a}}</span>
+                    </td>
+                    <td>
+                        <span contenteditable="true" (keyup)="changeValue(id, 'data_inizio', $event)"
+                            (blur)="updateList(id, 'data_inizio', $event)">{{ele.data_inizio}}</span>
+                    </td>
+                    <td>
+                        <span contenteditable="true" (keyup)="changeValue(id, 'data_fine', $event)"
+                            (blur)="updateList(id, 'data_fine', $event)">{{ele.data_fine}}</span>
+                    </td>
+
+                    <td>
+                        <span class="table-remove">
+                            <button type="button" mdbBtn color="danger" size="sm" class="my-0"
+                                (click)="onChangeData(ele)">Cambia</button>
+                        </span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Editable table -->

@@ -26,9 +26,7 @@ if($result = mysqli_query($con,$sql))
 }
 else
 {
-	header("HTTP/1.1 500 Internal Server Error");
-    header('Content-Type: application/json; charset=UTF-8');
-    die(json_encode(array('message' => 'Nessuna Comunicazione', 'code' => 404)));
+    errorMessage('Nessuna Comunicazione');
 }
 
 ?>
