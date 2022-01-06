@@ -86,15 +86,6 @@ export class AdminService extends HttpSenderService {
       catchError(this.handleError));
   }
 
-  getGiornateCalcolate() {
-    return this.http.get(`${this.buildURL("get_giornate_calcolate")}`).pipe(
-      map((res) => {
-
-        return res['data'];
-
-      }),
-      catchError(this.handleError));
-  }
 
   
   calcolaGiornata(payload: any): Observable<any[]> {
@@ -205,14 +196,7 @@ export class AdminService extends HttpSenderService {
         catchError(this.handleError));
   }
 
-  lastFormazioniInserite(): Observable<any[]> {
-    return this.http.get(`${this.buildURL("last_formazioni_inserite")}`).pipe(
-      map((res) => {
-        return res['data'];
-      }),
-      catchError(this.handleError));
-  }
-
+ 
   getCreaCompetizioneRandom() {
     return this.http.get(`${this.buildURL("get_crea_competizione_random")}`).pipe(
       map((res) => {

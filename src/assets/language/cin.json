@@ -75,7 +75,8 @@
         "home": "家",
         "calendario": "结果日历",
         "rose": "玫瑰用户列表",
-        "classifiche": "排名"
+        "classifiche": "排名",
+        "info": "信息"
     },
     "login": {
         "recupera_password": "恢复密码",

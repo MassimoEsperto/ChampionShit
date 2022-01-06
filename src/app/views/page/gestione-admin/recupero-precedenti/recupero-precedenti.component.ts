@@ -28,14 +28,12 @@ export class RecuperoPrecedentiComponent extends GlobalComponent implements OnIn
   ngOnInit() {
     this.listaRose = this.administrator.rose;
     this.ultimeInserite = this.administrator.formazioni;
-    this.giornateDaCalcolare = this.administrator.giornate_calcolate;;
   }
 
   attuali = [];
   ultimeInserite: any;
   giornata: number;
   listaRose: any;
-  giornateDaCalcolare: any;
 
   onInsert(payload: any) {
     const dialogRef = this.dialog.open(MyModalValidate);
@@ -45,15 +43,15 @@ export class RecuperoPrecedentiComponent extends GlobalComponent implements OnIn
     });
   }
 
-  recTeamTrasferta(squadra, id_avversario) {
+  recTeamTrasferta(item) {
 
-    let ripescata = this.ultimeInserite.filter(x => x.id_utente == squadra.id_utente)
-    let avversario = this.listaRose.find(x => x.id_utente == id_avversario)
+    let ripescata = this.ultimeInserite.filter(x => x.id_utente == item.match[1].id_utente)
+    let avversario = this.listaRose.find(x => x.id_utente == item.match[0].id_utente)
 
     let payload = {
       lista: [],
-      id_partita: squadra.formazione[0].id_partita,
-      id_utente: squadra.id_utente,
+      id_partita: item.id_partita,
+      id_utente: item.match[1].id_utente,
     }
 
     for (let membro of ripescata) {
@@ -67,14 +65,14 @@ export class RecuperoPrecedentiComponent extends GlobalComponent implements OnIn
 
   }
 
-  recTeamCasa(squadra) {
+  recTeamCasa(item) {
 
-    let ripescata = this.ultimeInserite.filter(x => x.id_utente == squadra.id_utente)
+    let ripescata = this.ultimeInserite.filter(x => x.id_utente == item.match[0].id_utente)
 
     let payload = {
       lista: [],
-      id_partita: squadra.formazione[0].id_partita,
-      id_utente: squadra.id_utente,
+      id_partita: item.id_partita,
+      id_utente: item.match[0].id_utente,
     }
 
     for (let membro of ripescata) {
@@ -87,10 +85,10 @@ export class RecuperoPrecedentiComponent extends GlobalComponent implements OnIn
 
 
   /* CHIAMATA AI SERVIZI */
-  schieramentiAttuali() {
+  ricalcola() {
     this.loading_btn = true;
 
-    this.adminService.getSchiermenti(this.giornata.toString())
+    this.adminService.getAdministrator()
       .pipe(finalize(() => {
         this.loading_btn = false;
       }
@@ -98,7 +96,7 @@ export class RecuperoPrecedentiComponent extends GlobalComponent implements OnIn
       .subscribe({
 
         next: (result: any) => {
-          this.attuali = result
+          this.administrator = result
         },
         error: (error: any) => {
           this.alert.error(error);
@@ -120,7 +118,7 @@ export class RecuperoPrecedentiComponent extends GlobalComponent implements OnIn
       .subscribe({
 
         next: (result: any) => {
-          this.schieramentiAttuali();
+          this.ricalcola();
         },
         error: (error: any) => {
           this.alert.error(error);

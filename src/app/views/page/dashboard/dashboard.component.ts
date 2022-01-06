@@ -58,4 +58,8 @@ export class DashboardComponent extends GlobalComponent implements OnInit {
   visualizzaLive() {
     this.router.navigate(['/home/voti-live']);
   }
+
+  visualizzaProfilo() {
+    this.router.navigate(['/home/info-utente']);
+  }
 }

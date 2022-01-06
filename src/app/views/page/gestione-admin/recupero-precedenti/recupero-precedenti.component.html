@@ -1,55 +1,41 @@
 <p>IN QUESTA SEZIONE E' POSSIBILE RECUPERARE LE FORMAZIONI PRECEDENTEMENTE INSERITE</p>
 <br>
-<div *ngIf="listaRose">
-    <div class="selezionata">
-        <select *ngIf="giornateDaCalcolare" class="btn-file custom-select ml-16" placeholder="Giornata"
-            [(ngModel)]="giornata">
-            <optgroup label="Da Calcolare">
-                <option *ngFor="let g of giornateDaCalcolare.incalcolate" [ngValue]="g">Giornata {{g}}°</option>
-            </optgroup>
-            <optgroup label="Gia Calcolato">
-                <option *ngFor="let g of giornateDaCalcolare.calcolate" [ngValue]="g">Giornata {{g}}°</option>
-            </optgroup>
-        </select>
-        <div class="pa-8">
-            <my-button [submit]="false" [color]="'primary'" [block]="false" [disabled]="!giornata" [label]="'PROCEDI'"
-                [loading]="loading_btn" (myClick)="schieramentiAttuali()"></my-button>
-        </div>
+<div *ngIf="administrator">
+    <div class="titolo">
+        <h3>RECUPERO GIORNATA {{administrator.giornate_calcolate['incalcolate'][0]}}</h3>
     </div>
-
     <div class="partite pl-8 pb-8 pt-16">
-        <div *ngFor="let item of attuali" class="pr-8 pb-8">
+        <div *ngFor="let item of administrator.formazioni_attuali" class="pr-8 pb-8">
             <div class="partita my-card">
                 <div class="casa">
 
                     <div class="squadraC pa-8">
-                        <label class="pr-8">{{item.casa.squadra.substring(0, 8)}}</label>
-
+                        <label class="pr-8">{{item.match[0].squadra}}</label>
                     </div>
                     <div class="pa-8">
-                        <div *ngFor="let ele of item.casa.formazione" class="calciatore">
+                        <div *ngFor="let ele of item.match[0].schieramento" class="calciatore">
                             <label class="pr-8">{{ele.calciatore.substring(0, 9)}}</label>
                         </div>
                     </div>
                     <div class="calciatore pa-8">
                         <my-button [submit]="false" [color]="'primary'" [block]="false" [label]="'RECUPERA'"
-                            [loading]="loading_btn" (myClick)="recTeamCasa(item.casa)"
-                            [disabled]="item.casa.formazione[0].id_calciatore!=0"></my-button>
+                            [loading]="loading_btn" (myClick)="recTeamCasa(item)"
+                            [disabled]="item.match[0].schieramento.length"></my-button>
                     </div>
                 </div>
                 <div class="trasferta">
                     <div class="squadraT pr-8 pt-8 pb-8">
-                        <label>{{item.trasferta.squadra.substring(0, 8)}}</label>
+                        <label>{{item.match[1].squadra}}</label>
                     </div>
                     <div class="pr-8 pt-8 pb-8">
-                        <div *ngFor="let ele of item.trasferta.formazione" class="calciatore">
+                        <div *ngFor="let ele of item.match[1].schieramento" class="calciatore">
                             <label class="pr-8">{{ele.calciatore.substring(0, 9)}}</label>
                         </div>
                     </div>
                     <div class="calciatore pa-8">
                         <my-button [submit]="false" [color]="'primary'" [block]="false" [label]="'RECUPERA'"
-                            [loading]="loading_btn" (myClick)="recTeamTrasferta(item.trasferta,item.casa.id_utente)"
-                            [disabled]="item.trasferta.formazione[0].id_calciatore!=0"></my-button>
+                            [loading]="loading_btn" (myClick)="recTeamTrasferta(item)"
+                            [disabled]="item.match[0].schieramento.length"></my-button>
                     </div>
                 </div>
             </div>
