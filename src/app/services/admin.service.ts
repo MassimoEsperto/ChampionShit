@@ -37,7 +37,7 @@ export class AdminService extends HttpSenderService {
       }),
       catchError(this.handleError));
   }
-  
+
 
 
   validateUtente(utente: Utente) {
@@ -87,7 +87,7 @@ export class AdminService extends HttpSenderService {
   }
 
 
-  
+
   calcolaGiornata(payload: any): Observable<any[]> {
 
     return this.http.post(`${this.buildURL("set_calcolo_giornata")}`, { data: payload })
@@ -117,7 +117,7 @@ export class AdminService extends HttpSenderService {
 
   insertVoti(risultati: any): Observable<any[]> {
 
-    let payloads=this.formatting.payloadCalcolo(risultati);
+    let payloads = this.formatting.payloadCalcolo(risultati);
 
     return this.http.post(`${this.buildURL("set_voti")}`, { data: payloads.voti })
       .pipe(map((res) => {
@@ -126,43 +126,29 @@ export class AdminService extends HttpSenderService {
         catchError(this.handleError));
   }
 
-  getFormazioni(giornata: string) {
+  getFormazioniInserite(giornata: string) {
 
     const params = new HttpParams().set('giornata', giornata);
 
-    return this.http.get<any>(`${this.buildURL("get_formazioni")}`,{ params: params })
+    return this.http.get<any>(`${this.buildURL("get_formazioni_inserite")}`, { params: params })
       .pipe(map((res) => {
 
-        return this.formatting.schieramenti(res['data']);
+        return res['data'];
 
       }),
         catchError(this.handleError));
   }
 
-  getSchiermenti(giornata: string) {
 
-    const params = new HttpParams().set('giornata', giornata);
+  getPalinsesto(filelist: any, formazioni_inserite: any) {
 
-    return this.http.get<any>(`${this.buildURL("get_formazioni")}`,{ params: params })
-      .pipe(map((res) => {
-        
-        let schieramento=this.formatting.schieramenti(res['data']);
-        let ordinata=this.formatting.formazioniPerGara(schieramento);
-        return ordinata;
-
-      }),
-        catchError(this.handleError));
+    return this.formatting.palinsesto(filelist, formazioni_inserite)
   }
 
-  getPalinsesto(input: any, filelist: any) {
-
-        return this.formatting.palinsesto(input,filelist)
-
-  }
 
   recuperoFormazione(payload: any): Observable<any[]> {
 
-    return this.http.post(`${this.buildURL("upd_schieramento")}`,{ data: payload })
+    return this.http.post(`${this.buildURL("upd_schieramento")}`, { data: payload })
       .pipe(map((res) => {
 
         return res['data'];
@@ -196,7 +182,7 @@ export class AdminService extends HttpSenderService {
         catchError(this.handleError));
   }
 
- 
+
   getCreaCompetizioneRandom() {
     return this.http.get(`${this.buildURL("get_crea_competizione_random")}`).pipe(
       map((res) => {
@@ -216,7 +202,7 @@ export class AdminService extends HttpSenderService {
         catchError(this.handleError));
   }
 
-  sostituisciCalciatore(payload: any) { 
+  sostituisciCalciatore(payload: any) {
 
     return this.http.post(`${this.buildURL("upd_player_utente")}`, { data: payload })
       .pipe(map((res) => {
@@ -227,7 +213,7 @@ export class AdminService extends HttpSenderService {
 
   cambiaDate(payload: any) {
 
-    return this.http.post(`${this.buildURL("upd_data_partita")}`,{ data: payload })
+    return this.http.post(`${this.buildURL("upd_data_partita")}`, { data: payload })
       .pipe(map((res) => {
 
         return 'ok';

@@ -26,14 +26,10 @@ export class RecuperoPrecedentiComponent extends GlobalComponent implements OnIn
 
 
   ngOnInit() {
-    this.listaRose = this.administrator.rose;
-    this.ultimeInserite = this.administrator.formazioni;
-  }
+    this.giornata_selezionata = this.administrator.giornate_calcolate['incalcolate'][0]}
 
-  attuali = [];
-  ultimeInserite: any;
-  giornata: number;
-  listaRose: any;
+  giornata_selezionata: string;
+  formazioni_inserite: any;
 
   onInsert(payload: any) {
     const dialogRef = this.dialog.open(MyModalValidate);
@@ -45,8 +41,11 @@ export class RecuperoPrecedentiComponent extends GlobalComponent implements OnIn
 
   recTeamTrasferta(item) {
 
-    let ripescata = this.ultimeInserite.filter(x => x.id_utente == item.match[1].id_utente)
-    let avversario = this.listaRose.find(x => x.id_utente == item.match[0].id_utente)
+    let ultimeInserite =this.administrator.ultime_formazioni_inserite;
+    let listaRose = this.administrator.rose;
+
+    let ripescata = ultimeInserite.filter(x => x.id_utente == item.match[1].id_utente)
+    let avversario = listaRose.find(x => x.id_utente == item.match[0].id_utente)
 
     let payload = {
       lista: [],
@@ -67,7 +66,9 @@ export class RecuperoPrecedentiComponent extends GlobalComponent implements OnIn
 
   recTeamCasa(item) {
 
-    let ripescata = this.ultimeInserite.filter(x => x.id_utente == item.match[0].id_utente)
+    let ultimeInserite =this.administrator.ultime_formazioni_inserite;
+
+    let ripescata = ultimeInserite.filter(x => x.id_utente == item.match[0].id_utente)
 
     let payload = {
       lista: [],
@@ -85,10 +86,10 @@ export class RecuperoPrecedentiComponent extends GlobalComponent implements OnIn
 
 
   /* CHIAMATA AI SERVIZI */
-  ricalcola() {
+  formazioniInserite() {
     this.loading_btn = true;
 
-    this.adminService.getAdministrator()
+    this.adminService.getFormazioniInserite(this.giornata_selezionata)
       .pipe(finalize(() => {
         this.loading_btn = false;
       }
@@ -96,7 +97,7 @@ export class RecuperoPrecedentiComponent extends GlobalComponent implements OnIn
       .subscribe({
 
         next: (result: any) => {
-          this.administrator = result
+          this.formazioni_inserite = result
         },
         error: (error: any) => {
           this.alert.error(error);
@@ -118,7 +119,7 @@ export class RecuperoPrecedentiComponent extends GlobalComponent implements OnIn
       .subscribe({
 
         next: (result: any) => {
-          this.ricalcola();
+          this.formazioniInserite();
         },
         error: (error: any) => {
           this.alert.error(error);

@@ -1,11 +1,25 @@
 <p>IN QUESTA SEZIONE E' POSSIBILE RECUPERARE LE FORMAZIONI PRECEDENTEMENTE INSERITE</p>
-<br>
+
 <div *ngIf="administrator">
-    <div class="titolo">
-        <h3>RECUPERO GIORNATA {{administrator.giornate_calcolate['incalcolate'][0]}}</h3>
-    </div>
+
+    <div class="selezionata">
+        <select  class="btn-file custom-select ml-16" [(ngModel)]="giornata_selezionata"
+          placeholder="Giornata">
+          <optgroup label="Da Calcolare">
+            <option *ngFor="let g of administrator.giornate_calcolate['incalcolate']" [ngValue]="g">Giornata {{g}}°</option>
+          </optgroup>
+          <optgroup label="Gia Calcolato">
+            <option *ngFor="let g of administrator.giornate_calcolate['calcolate']" [ngValue]="g">Giornata {{g}}°</option>
+          </optgroup>
+        </select>
+        <div class="pa-8">
+          <my-button [submit]="false" [color]="'primary'" [block]="false" [disabled]="!giornata_selezionata" [label]="'PROCEDI'"
+            [loading]="loading_btn" (myClick)="formazioniInserite()"></my-button>
+        </div>
+      </div>
+
     <div class="partite pl-8 pb-8 pt-16">
-        <div *ngFor="let item of administrator.formazioni_attuali" class="pr-8 pb-8">
+        <div *ngFor="let item of formazioni_inserite" class="pr-8 pb-8">
             <div class="partita my-card">
                 <div class="casa">
 

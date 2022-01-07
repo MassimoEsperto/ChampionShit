@@ -14,6 +14,10 @@ export class CalcoloVotiComponent extends GlobalComponent implements OnInit {
 
   @Input() giornateDaCalcolare: any;
 
+  giornata_selezionata: string;
+  formazioni_inserite: any;
+  risultati = [];
+
   constructor(
     private alert: AlertService,
     private adminService: AdminService) {
@@ -22,12 +26,10 @@ export class CalcoloVotiComponent extends GlobalComponent implements OnInit {
 
 
   ngOnInit() {
-    this.giornataAttuale = this.giornateDaCalcolare ? this.giornateDaCalcolare.incalcolate[0] : 1;
+    this.giornata_selezionata = this.giornateDaCalcolare.incalcolate[0];
   }
 
-  formazione: any;
-  risultati = [];
-  giornataAttuale: number;
+
 
   importVoti(event: any) {
     let file: File
@@ -80,25 +82,22 @@ export class CalcoloVotiComponent extends GlobalComponent implements OnInit {
           filelist.push(ris);
         }
       }
-      this.risultati = this.adminService.getPalinsesto(this.formazione, filelist)
+      this.risultati = this.adminService.getPalinsesto(filelist, this.formazioni_inserite)
     }
   }
 
-  updateRisultati() {
-    this.votazione()
-  }
 
   somma(punteggio: any) {
     let punti: number = 0;
-    for (let item of punteggio.formazione) {
+    for (let item of punteggio.schieramento) {
       punti += item.voto;
     }
-    punteggio.totale = punti;
+    punteggio.punti = punti;
   }
 
   gol(punteggio: any) {
     let punti: number = 0;
-    for (let item of punteggio.formazione) {
+    for (let item of punteggio.schieramento) {
       punti += item.voto;
     }
 
@@ -112,11 +111,10 @@ export class CalcoloVotiComponent extends GlobalComponent implements OnInit {
 
 
   /* CHIAMATA AI SERVIZI */
-  giornataCompleta() {
-
+  formazioniInserite() {
     this.loading_btn = true;
 
-    this.adminService.getFormazioni(this.giornataAttuale.toString())
+    this.adminService.getFormazioniInserite(this.giornata_selezionata)
       .pipe(finalize(() => {
         this.loading_btn = false;
       }
@@ -124,7 +122,7 @@ export class CalcoloVotiComponent extends GlobalComponent implements OnInit {
       .subscribe({
 
         next: (result: any) => {
-          this.formazione = result
+          this.formazioni_inserite = result
         },
         error: (error: any) => {
           this.alert.error(error);
@@ -155,7 +153,8 @@ export class CalcoloVotiComponent extends GlobalComponent implements OnInit {
 
   }
 
-  votazione() {
+  updateRisultati() {
+
     this.loading_btn = true;
 
     this.adminService.insertVoti(this.risultati)

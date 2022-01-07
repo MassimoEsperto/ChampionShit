@@ -1,7 +1,7 @@
 <p>IN QUESTA SEZIONE E' POSSIBILE EFFETTUARE IL CALCOLO DELLA GIORNATA</p>
 <br>
 <div class="selezionata">
-  <select *ngIf="giornateDaCalcolare" class="btn-file custom-select ml-16" [(ngModel)]="giornataAttuale"
+  <select class="btn-file custom-select ml-16" [(ngModel)]="giornata_selezionata"
     placeholder="Giornata">
     <optgroup label="Da Calcolare">
       <option *ngFor="let g of giornateDaCalcolare.incalcolate" [ngValue]="g">Giornata {{g}}°</option>
@@ -11,11 +11,11 @@
     </optgroup>
   </select>
   <div class="pa-8">
-    <my-button [submit]="false" [color]="'primary'" [block]="false" [disabled]="!giornataAttuale" [label]="'PROCEDI'"
-      [loading]="loading_btn" (myClick)="giornataCompleta()"></my-button>
+    <my-button [submit]="false" [color]="'primary'" [block]="false" [disabled]="!giornata_selezionata" [label]="'PROCEDI'"
+      [loading]="loading_btn" (myClick)="formazioniInserite()"></my-button>
   </div>
 </div>
-<div *ngIf="formazione">
+<div *ngIf="formazioni_inserite">
   <label class="btn btn-default btn-file">
     Update File
     <input type="file" style="display: none;" (change)="importVoti($event)"
@@ -28,34 +28,34 @@
         <div class="casa">
 
           <div class="squadraC pa-8">
-            <label class="pr-8">{{item.casa.squadra.substring(0, 8)}}</label>
-            <input value="{{gol(item.casa)}}" [(ngModel)]="item.casa.gol" type="number" class="voto" disabled>
+            <label class="pr-8">{{item.match[0].squadra.substring(0, 8)}}</label>
+            <input value="{{gol(item.match[0])}}" [(ngModel)]="item.match[0].gol" type="number" class="voto" disabled>
           </div>
           <div class="pa-8">
-            <div *ngFor="let ele of item.casa.formazione" class="calciatore">
+            <div *ngFor="let ele of item.match[0].schieramento" class="calciatore">
               <label class="pr-8">{{ele.calciatore.substring(0, 9)}}</label>
               <input value="{{ele.voto}}" [(ngModel)]="ele.voto" type="number" class="voto">
             </div>
           </div>
           <div class="calciatore pa-8">
             <label class="pr-8">TOT.</label>
-            <input value="{{somma(item.casa)}}" [(ngModel)]="item.casa.totale" type="number" class="voto" disabled>
+            <input value="{{somma(item.match[0])}}" [(ngModel)]="item.match[0].punti" type="number" class="voto" disabled>
           </div>
         </div>
         <div class="trasferta">
           <div class="squadraT pr-8 pt-8 pb-8">
-            <label>{{item.trasferta.squadra.substring(0, 8)}}</label>
-            <input value="{{gol(item.trasferta)}}" [(ngModel)]="item.trasferta.gol" type="number" class="voto" disabled>
+            <label>{{item.match[1].squadra.substring(0, 8)}}</label>
+            <input value="{{item.match[1].gol}}" [(ngModel)]="item.match[1].gol" type="number" class="voto" disabled>
           </div>
           <div class="pr-8 pt-8 pb-8">
-            <div *ngFor="let ele of item.trasferta.formazione" class="calciatore">
+            <div *ngFor="let ele of item.match[1].schieramento" class="calciatore">
               <label class="pr-8">{{ele.calciatore.substring(0, 9)}}</label>
               <input value="{{ele.voto}}" [(ngModel)]="ele.voto" type="number" class="voto">
             </div>
           </div>
           <div class="calciatore pa-8">
             <label class="pr-8">TOT.</label>
-            <input value="{{somma(item.trasferta)}}" [(ngModel)]="item.trasferta.totale" type="number" class="voto"
+            <input value="{{somma(item.match[1])}}" [(ngModel)]="item.match[1].punti" type="number" class="voto"
               disabled>
           </div>
         </div>
