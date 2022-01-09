@@ -1,12 +1,13 @@
 <div class="page" style="text-align: center;">
-  
-  <h3 style="color: blanchedalmond;">{{language.page.personalizza}}</h3>
-  <br>
+
+  <div class="pt-8 pb-32 titolo-pagina">
+    <h4>{{language.page.personalizza}}</h4>
+  </div>
 
   <div class="mio-container" style="text-align: center;">
-  
+
     <div class="pb-64">
-     
+
       <mdb-card>
         <mdb-card-header>{{language.page.cambia_dati}}</mdb-card-header>
         <!--Card content-->
@@ -29,7 +30,8 @@
 
             <!-- Sign in button -->
             <my-button [submit]="true" [color]="'danger'" [block]="true"
-              [disabled]="mail.invalid||team.invalid||user.invalid" [label]="language.bottoni.invia" [loading]="loading_btn">
+              [disabled]="mail.invalid||team.invalid||user.invalid" [label]="language.bottoni.invia"
+              [loading]="loading_btn">
             </my-button>
           </form>
           <!-- Form -->
@@ -62,8 +64,8 @@
               </mat-option>
             </mat-select>
           </mat-form-field>
-          <my-button [submit]="false" [color]="'danger'" [block]="true" [disabled]="!avatarSel" [label]="language.bottoni.invia"
-            [loading]="loading_btn" (myClick)="updateAvatar()"></my-button>
+          <my-button [submit]="false" [color]="'danger'" [block]="true" [disabled]="!avatarSel"
+            [label]="language.bottoni.invia" [loading]="loading_btn" (myClick)="updateAvatar()"></my-button>
 
         </mdb-card-body>
 

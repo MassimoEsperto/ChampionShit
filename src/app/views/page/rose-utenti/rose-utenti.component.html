@@ -1,10 +1,9 @@
 <div *ngIf="!loading_page" [hidden]="hidden_page" class="page">
 
-    <div class="pt-8 pb-32" style="text-align: center;color: blanchedalmond;">
+    <div class="pt-8 pb-32 titolo-pagina">
         <h4>{{language.page.rose_utenti}}</h4>
     </div>
    
-
     <mat-accordion class="rose-headers-align" multi>
         <div *ngFor="let item of listaRose">
             <mat-expansion-panel>

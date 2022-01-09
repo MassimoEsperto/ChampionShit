@@ -1,11 +1,11 @@
 <div *ngIf="!loading_page" [hidden]="hidden_page" class="page">
 
   <div *ngIf="dash">
-    <div *ngIf="!dash.turno.limbo" class="pt-8" style="text-align: center;color: blanchedalmond;">
+    <div *ngIf="!dash.turno.limbo" class="pt-8 titolo-pagina">
       <h4>{{dash.turno.attuale}}° {{language.page.da_disputare}}</h4>
     </div>
 
-    <div *ngIf="dash.turno.limbo" class="pt-8" style="text-align: center;color: blanchedalmond;">
+    <div *ngIf="dash.turno.limbo" class="pt-8 titolo-pagina">
       <h4>{{language.page.calcolo}}</h4>
     </div>
 
