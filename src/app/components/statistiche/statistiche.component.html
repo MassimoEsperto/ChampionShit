@@ -19,11 +19,11 @@
                     </div>
                     <div style="text-align: center;">
                         <div><span>Lose</span></div>
-                        <div><span>{{statistiche.risultati.par}}</span></div>
+                        <div><span>{{statistiche.risultati.los}}</span></div>
                     </div>
                     <div style="text-align: center;">
                         <div><span>Par</span></div>
-                        <div><span>{{statistiche.risultati.los}}</span></div>
+                        <div><span>{{statistiche.risultati.par}}</span></div>
                     </div>
                     <div style="text-align: center;">
                         <div><span>Gol</span></div>
@@ -45,8 +45,8 @@
                     <div class="squadre">
                         <div class="col-5 pa-0">
                             <div style="text-align: center;">
-                                <label>
-                                    {{item.casa.replaceAll(" ", "")}}
+                                <label [ngStyle]="{'font-weight': item.is_casa ? 'bold' : 'normal' }">
+                                    {{item.casa}}
                                 </label>
                             </div>
                         </div>
@@ -57,8 +57,8 @@
                         </div>
                         <div class="col-5 pa-0">
                             <div style="text-align: center;">
-                                <label>
-                                    {{item.trasferta.replaceAll(" ", "")}}
+                                <label [ngStyle]="{'font-weight': item.is_casa ? 'normal' : 'bold' }">
+                                    {{item.trasferta}}
                                 </label>
                             </div>
                         </div>
