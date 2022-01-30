@@ -19,6 +19,7 @@
 
                     <!-- Form -->
                     <form class="text-center" style="color: #757575;" #lega="ngForm" (submit)="onLega(lega.utente)">
+
                         <div class="step1" *ngIf="stepform==1">
                             <div class="step">
                                 <span>{{language.login.step.passo}} 1 {{language.login.step.di}} 4</span>
@@ -29,9 +30,11 @@
                             <input type="text" id="nome" class="form-control mb-4 mt-4" placeholder="Lega fantacalcio"
                                 [(ngModel)]="lega.nome" name="nome" required />
 
-                            <my-button [submit]="false" [color]="'success'" [block]="true" [disabled]="!lega.nome" [loading]="loading_btn"
-                                [label]="language.login.step.successivo" (myClick)="getLega(lega.nome)"></my-button>
+                            <my-button [submit]="false" [color]="'success'" [block]="true" [disabled]="!lega.nome"
+                                [loading]="loading_btn" [label]="language.login.step.successivo"
+                                (myClick)="getLega(lega.nome)"></my-button>
                         </div>
+
                         <div class="step2" *ngIf="stepform==2">
                             <div class="step">
                                 <span>{{language.login.step.passo}} 2 {{language.login.step.di}} 4</span>
@@ -69,11 +72,10 @@
                         </mat-list-option>
                     </mat-selection-list>
                     <br>
-                    <div class="pa-8">
+                    <div class="pa-8" *ngIf="!loading_btn">
                         <my-button [color]="'success'" [block]="true"
                             [disabled]="players.selectedOptions.selected.length!=25"
-                            [label]="language.login.step.successivo"
-                            [loading]="loading_btn"
+                            [label]="language.login.step.successivo" [loading]="loading_btn"
                             (myClick)="conferma(players.selectedOptions.selected)"></my-button>
                     </div>
                 </div>
@@ -86,7 +88,8 @@
                     <br>
                     <span>{{language.login.step.dati}}</span>
                     <!-- Form -->
-                    <form class="text-center" style="color: #757575;" #element="ngForm" (submit)="onRegistrati(element.value)">
+                    <form class="text-center" style="color: #757575;" #element="ngForm"
+                        (submit)="onRegistrati(element.value)">
 
                         <!-- Username -->
                         <input type="text" id="username" class="form-control mb-4 mt-4" placeholder="Username"
@@ -123,7 +126,7 @@
             </mdb-card-body>
 
         </mdb-card>
-        <!-- Material form login -->
+
 
     </div>
 

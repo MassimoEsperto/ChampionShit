@@ -156,8 +156,11 @@ export class RegisterComponent extends GlobalComponent implements OnInit {
         this.vincolati.push(singolo)
       }
     }
-    this.stepform += 1
-    this.loading_btn = false
+
+    setTimeout(() => {
+      this.loading_btn = false
+      this.stepform += 1
+    }, 1000);
 
   }
 

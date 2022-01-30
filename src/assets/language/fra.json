@@ -1,8 +1,9 @@
 {
     "page": {
         "cambia_dati": "CHANGER LES DONNÉES",
+        "cambia_squadra": "MISE ÉQUIPE",
         "cambia_img": "CHANGER D'IMAGE",
-        "personalizza":"PERSONNALISER",
+        "personalizza": "PERSONNALISER",
         "giornata": "JOURNEE",
         "da_disputare": "POUR DISPUTER",
         "inizio_partita": "COMMENCER LE JEU",
@@ -99,22 +100,22 @@
             {
                 "cod": "ita",
                 "nome": "Italien",
-                "ico" : "fas fa-pizza-slice"
+                "ico": "fas fa-pizza-slice"
             },
             {
                 "cod": "eng",
                 "nome": "Anglais",
-                "ico" : "fas fa-igloo"
+                "ico": "fas fa-igloo"
             },
             {
                 "cod": "fra",
                 "nome": "Français",
-                "ico" : "fab fa-fort-awesome"
+                "ico": "fab fa-fort-awesome"
             },
             {
                 "cod": "cin",
                 "nome": "Chinois",
-                "ico" : "fas fa-torii-gate"
+                "ico": "fas fa-torii-gate"
             }
         ]
     },

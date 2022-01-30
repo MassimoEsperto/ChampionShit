@@ -60,6 +60,6 @@ export class DashboardComponent extends GlobalComponent implements OnInit {
   }
 
   visualizzaProfilo() {
-    this.router.navigate(['/home/info-utente']);
+    this.router.navigate(['/home/info-utente'], { queryParams: { upgrade: this.dash.turno.is_upgrade } });
   }
 }

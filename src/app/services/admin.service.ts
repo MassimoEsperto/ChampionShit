@@ -106,9 +106,9 @@ export class AdminService extends HttpSenderService {
         catchError(this.handleError));
   }
 
-  updateRosaUtente(lista: any) { //associa la rosa all'utente
+  insertRosaUtente(lista: any) { //associa la rosa all'utente
 
-    return this.http.post(`${this.buildURL("upd_rosa_utente")}`, { data: lista })
+    return this.http.post(`${this.buildURL("set_rosa_utente")}`, { data: lista })
       .pipe(map((res) => {
         return 'ok';
       }),

@@ -1,8 +1,9 @@
 {
     "page": {
         "cambia_dati": "CHANGE DATA",
+        "cambia_squadra": "UPDATE TEAM",
         "cambia_img": "CHANGE IMAGE",
-        "personalizza":"CUSTOMIZE",
+        "personalizza": "CUSTOMIZE",
         "giornata": "DAY",
         "da_disputare": "TO DISPUTE",
         "inizio_partita": "START MATCH",
@@ -99,22 +100,22 @@
             {
                 "cod": "ita",
                 "nome": "Italian",
-                "ico" : "fas fa-pizza-slice"
+                "ico": "fas fa-pizza-slice"
             },
             {
                 "cod": "eng",
                 "nome": "English",
-                "ico" : "fas fa-igloo"
+                "ico": "fas fa-igloo"
             },
             {
                 "cod": "fra",
                 "nome": "French",
-                "ico" : "fab fa-fort-awesome"
+                "ico": "fab fa-fort-awesome"
             },
             {
                 "cod": "cin",
                 "nome": "Chinese",
-                "ico" : "fas fa-torii-gate"
+                "ico": "fas fa-torii-gate"
             }
         ]
     },

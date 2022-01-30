@@ -57,7 +57,7 @@ export class GestioneSquadreComponent extends GlobalComponent implements OnInit 
 
   associaCalciatori(payload: any) {
 
-    this.adminService.updateRosaUtente(payload)
+    this.adminService.insertRosaUtente(payload)
       .pipe(finalize(() => {
         this.loading_btn = false;
       }

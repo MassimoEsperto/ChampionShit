@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChild} from '@angular/core';
-import {MatAccordion} from '@angular/material/expansion';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatAccordion } from '@angular/material/expansion';
 import { finalize } from 'rxjs/operators';
 import { GlobalComponent } from 'src/app/classes/utils/global-component';
 import { AlertService } from 'src/app/services/alert.service';
@@ -24,10 +24,10 @@ export class RoseUtentiComponent extends GlobalComponent implements OnInit {
 
   listaRose: any;
 
-  ngOnInit(){this.listaRoseUtenti()}
+  ngOnInit() { this.listaRoseUtenti() }
 
-   /* CHIAMATE AI SERVIZI */
-   listaRoseUtenti() {
+  /* CHIAMATE AI SERVIZI */
+  listaRoseUtenti() {
 
     this.loading_page = true;
     this.spinner.view();
@@ -35,8 +35,7 @@ export class RoseUtentiComponent extends GlobalComponent implements OnInit {
     this.playerService.getListaRose()
       .pipe(finalize(() => {
         this.loadPage(this.spinner);
-      }
-      ))
+      }))
       .subscribe({
 
         next: (result: any) => {

@@ -1,8 +1,9 @@
 {
     "page": {
         "cambia_dati": "更改数据",
+        "cambia_squadra": "讓團隊",
         "cambia_img": "更改图像",
-        "personalizza":"定制",
+        "personalizza": "定制",
         "giornata": "日",
         "da_disputare": "有争议",
         "inizio_partita": "游戏开始",
@@ -100,22 +101,22 @@
             {
                 "cod": "ita",
                 "nome": "义大利文",
-                "ico" : "fas fa-pizza-slice"
+                "ico": "fas fa-pizza-slice"
             },
             {
                 "cod": "eng",
                 "nome": "英语",
-                "ico" : "fas fa-igloo"
+                "ico": "fas fa-igloo"
             },
             {
                 "cod": "fra",
                 "nome": "法语",
-                "ico" : "fab fa-fort-awesome"
+                "ico": "fab fa-fort-awesome"
             },
             {
                 "cod": "cin",
                 "nome": "中国人",
-                "ico" : "fas fa-torii-gate"
+                "ico": "fas fa-torii-gate"
             }
         ]
     },

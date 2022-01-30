@@ -184,5 +184,18 @@ export class PlayerService extends HttpSenderService {
       catchError(this.handleError));
   }
   /* FINE COMUNICAZIONI */
+
+  upgradeRosa(payload: any): Observable<any[]> {
+
+    return this.http.post(`${this.buildURL("upgrade_rosa")}`,
+      { data: payload }, this.myheaders)
+      .pipe(map((res) => {
+
+        this.tokenError(res);//controllo token
+
+        return res['data'];
+      }),
+        catchError(this.handleError));
+  }
 }
 

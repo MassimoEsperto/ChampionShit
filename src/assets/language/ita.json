@@ -1,8 +1,9 @@
 {
     "page": {
         "cambia_dati": "CAMBIA DATI",
+        "cambia_squadra": "AGGIORNA SQUADRA",
         "cambia_img": "CAMBIA IMMAGINE",
-        "personalizza":"PERSONALIZZA",
+        "personalizza": "PERSONALIZZA",
         "giornata": "GIORNATA",
         "da_disputare": "DA DISPUTARE",
         "inizio_partita": "INIZIO PARTITA",
@@ -16,7 +17,7 @@
         "rose_utenti": "ROSE UTENTI",
         "indisponibili": "INDISPONIBILI",
         "formazione": "FORMAZIONE",
-        "calcolo": "IN CALCOLO...",  
+        "calcolo": "IN CALCOLO...",
         "serie": "SERIE A",
         "fase": "FASE",
         "data": "DATA",
@@ -99,22 +100,22 @@
             {
                 "cod": "ita",
                 "nome": "Italiano",
-                "ico" : "fas fa-pizza-slice"
+                "ico": "fas fa-pizza-slice"
             },
             {
                 "cod": "eng",
                 "nome": "Inglese",
-                "ico" : "fas fa-igloo"
+                "ico": "fas fa-igloo"
             },
             {
                 "cod": "fra",
                 "nome": "Francese",
-                "ico" : "fab fa-fort-awesome"
+                "ico": "fab fa-fort-awesome"
             },
             {
                 "cod": "cin",
                 "nome": "Cinese",
-                "ico" : "fas fa-torii-gate"
+                "ico": "fas fa-torii-gate"
             }
         ]
     },
