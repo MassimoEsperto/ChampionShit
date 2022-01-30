@@ -21,7 +21,15 @@
     display: flex;
     justify-content: space-between;
     flex-direction: row;
-    align-items: flex-start;
+    align-items: stretch;
+    flex-wrap: nowrap;
+}
+
+.semi-loghi{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
     flex-wrap: nowrap;
 }
 
