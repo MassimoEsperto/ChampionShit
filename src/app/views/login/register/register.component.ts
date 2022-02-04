@@ -67,15 +67,20 @@ export class RegisterComponent extends GlobalComponent implements OnInit {
   }
 
   getLega(lega: string) {
+
     this.loading_btn = true
-    this.fanta.getLega(lega)
+    let re = /\ /gi;
+    let nome_lega = lega.replace(re,"-")
+
+    this.fanta.getLega(nome_lega)
       .pipe(finalize(() => this.loading_btn = false))
       .subscribe({
         next: (result: any) => {
 
           this.fantalega = result
-          this.fantalega['lega'] = lega
+
           if (this.fantalega && this.fantalega.length > 0) {
+            this.fantalega['lega'] = nome_lega
             this.stepform += 1
           } else {
             this.alert.error("Lega inesistente");
@@ -132,6 +137,7 @@ export class RegisterComponent extends GlobalComponent implements OnInit {
       "squadra": element.squadra,
       "username": element.username,
       "lega": this.fantalega['lega'],
+      "account": this.fantalega['account'],
       "players": this.squadra
     }
 
@@ -147,6 +153,7 @@ export class RegisterComponent extends GlobalComponent implements OnInit {
 
   onLega(lega) {
 
+    this.fantalega['account'] = lega.team
     this.loading_btn = true
     this.vincolati = []
     for (let ele of lega.lista) {

@@ -9,7 +9,7 @@ import { Formatting } from '../classes/utils/formatting';
 export class HttpSenderService {
 
   typeServices: string;
-  
+
   constructor(type = "/") {
     this.typeServices = type
   }
@@ -34,20 +34,23 @@ export class HttpSenderService {
   }
 
   getLoggato() {
-    let element=JSON.parse(localStorage.getItem("tk-user"))
-    let utente: Utente
-    if(element){
-      utente = new Utente(element.username, '', element.email, element.squadra)
-      utente.avatar=element.avatar
-      utente.id_avatar=element.id_avatar
-      utente.id=element.id_utente
-      utente.ruolo=element.ruolo
-      utente.token=element.token
-      utente.num_msg=element.num_msg
-    }else{
-      utente = new Utente('', '','', '')
+    let element = JSON.parse(localStorage.getItem("tk-user"))
+    let utente: Utente = new Utente('', '', '', '')
+    if (element) {
+      utente.username = element.username
+      utente.email = element.email
+      utente.squadra = element.squadra
+
+      utente.avatar = element.avatar
+      utente.id_avatar = element.id_avatar
+      utente.id = element.id_utente
+      utente.ruolo = element.ruolo
+      utente.token = element.token
+      utente.num_msg = element.num_msg
+      utente.lega = element.lega
+      utente.account = element.account
     }
-    
+
     return utente
   }
 

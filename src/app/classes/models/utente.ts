@@ -10,6 +10,8 @@ export class Utente {
   scadenza:string;
   num_msg: number;
   token?: string;
+  lega?: string;
+  account?: string;
 
   constructor(
     username: string,

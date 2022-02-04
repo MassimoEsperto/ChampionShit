@@ -22,7 +22,7 @@ export class GestioneRoseComponent extends GlobalComponent implements OnInit {
     super();
   }
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   @Input() attuali: any;
   rose: Rosa[] = [];
@@ -56,8 +56,11 @@ export class GestioneRoseComponent extends GlobalComponent implements OnInit {
         let nome: string = element['__EMPTY_1'].toLocaleUpperCase().replace("'", "").replace(".", "").trim()
 
         if (!nome.includes("*")) {
+          let esiste = this.attuali.some(i => i.nome_calciatore == nome);
+          if(!esiste){
           let ele: Rosa = new Rosa(ruolo, nome);
           this.rose.push(ele);
+          }
         }
 
       }

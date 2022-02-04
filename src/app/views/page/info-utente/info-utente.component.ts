@@ -43,12 +43,12 @@ export class InfoUtenteComponent extends GlobalComponent implements OnInit {
   vincolati = []
   stepform = 1
   squadra: any;
-  lega: string;
 
 
   ngOnInit() {
 
     this.loggato = this.playerService.getLoggato();
+    console.log("this.loggato",this.loggato)
     this.getAvatars();
     this.onUpgrade()
 
@@ -169,15 +169,18 @@ export class InfoUtenteComponent extends GlobalComponent implements OnInit {
   getLega(lega: string) {
 
     this.loading_btn = true
-    this.lega = lega
-    this.fanta.getLega(lega)
+    let re = /\ /gi;
+    let nome_lega = lega.replace(re,"-")
+    this.fanta.getLega(nome_lega)
       .pipe(finalize(() => this.loading_btn = false))
       .subscribe({
         next: (result: any) => {
 
           this.fantalega = result
-          this.fantalega['lega'] = lega
+         
           if (this.fantalega && this.fantalega.length > 0) {
+           
+            this.fantalega['lega'] = nome_lega
             this.stepform += 1
           } else {
             this.alert.error("Lega inesistente");
@@ -269,7 +272,7 @@ export class InfoUtenteComponent extends GlobalComponent implements OnInit {
     this.squadra = selected.map(item => item.value);
     let payload = {
       lista: this.squadra,
-      lega: this.lega
+      lega: this.fantalega['lega']
     }
     this.upgradeRosa(payload)
 

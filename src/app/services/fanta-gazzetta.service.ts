@@ -34,9 +34,9 @@ export class FantaGazzettaService extends HttpSenderService {
       catchError(this.handleError));
   }
 
-  getLega(name: string) {
+  getLega(lega: string) {
 
-    const params = new HttpParams().set('lega', name);
+    const params = new HttpParams().set('lega', lega);
 
     return this.http.get<any>(`${this.buildURL("get_lega")}`, { params: params })
       .pipe(map((res) => {
@@ -46,4 +46,5 @@ export class FantaGazzettaService extends HttpSenderService {
       }),
         catchError(this.handleError));
   }
+
 }
