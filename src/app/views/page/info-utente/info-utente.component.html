@@ -4,7 +4,7 @@
     <h4>{{language.page.personalizza}}</h4>
   </div>
 
-  <div class="mio-container" style="text-align: center;">
+  <div *ngIf="!upgrade" class="mio-container" style="text-align: center;">
 
     <div class="pb-64">
 
@@ -93,55 +93,8 @@
           
         <mdb-card-body class="pt-8">
 
-          <div class="step1-2">
-
-              <!-- Form -->
-              <form class="text-center" style="color: #757575;" #lega="ngForm" (submit)="onLega(lega.utente)">
-                  
-                  <div class="step1" *ngIf="stepform==1">
-                      <div class="step">
-                          <span>{{language.login.step.passo}} 1 {{language.login.step.di}} 3</span>
-                      </div>
-                      <br>
-                      <span>{{language.login.step.lega}}</span>
-                      <!-- Lega -->
-                      <input type="text" id="nome" class="form-control mb-4 mt-4" placeholder="Lega fantacalcio"
-                          [(ngModel)]="lega.nome" name="nome" required />
-
-                      <my-button [submit]="false" [color]="'success'" [block]="true" [disabled]="!lega.nome"
-                          [loading]="loading_btn" [label]="language.login.step.successivo"
-                          (myClick)="getLega(lega.nome)"></my-button>
-                  </div>
-                  
-                  <div class="step2" *ngIf="stepform==2">
-                      <div class="step">
-                          <span>{{language.login.step.passo}} 2 {{language.login.step.di}} 3</span>
-                          <span (click)="stepform=stepform-1">{{language.login.step.indietro}}</span>
-                      </div>
-                      <br>
-                      <span>{{language.login.step.squadra}}</span>
-
-                      <select class="form-control mb-4 mt-4 custom-select" [(ngModel)]="lega.utente"
-                          placeholder="Utenti" name="utente" required>
-                          <option *ngFor="let u of fantalega" [ngValue]="u">{{u.team}}</option>
-                      </select>
-
-                      <!-- Sign in button -->
-                      <my-button [submit]="true" [color]="'success'" [block]="true" [disabled]="lega.invalid"
-                          [label]="language.login.step.successivo" [loading]="loading_btn"></my-button>
-                  </div>
-
-
-              </form>
-              <!-- Form -->
-          </div>
-
-          <div class="step3" style="color: #757575;" *ngIf="stepform==3">
-              <div class="step">
-                  <span>{{language.login.step.passo}} 3 {{language.login.step.di}} 3</span>
-                  <span (click)="stepform=stepform-1">{{language.login.step.indietro}}</span>
-              </div>
-              <br>
+          <div style="color: #757575;">
+             
               <span>{{language.login.step.rosa}}</span>
               <mat-selection-list #players>
                   <mat-list-option #item *ngFor="let player of vincolati" [selected]="player.selected"
@@ -153,8 +106,8 @@
               <div class="pa-8" *ngIf="!loading_btn">
                   <my-button [color]="'success'" [block]="true"
                       [disabled]="players.selectedOptions.selected.length!=25"
-                      [label]="language.login.step.successivo" [loading]="loading_btn"
-                      (myClick)="conferma(players.selectedOptions.selected)"></my-button>
+                      [label]="language.bottoni.invia" [loading]="loading_btn"
+                      (myClick)="confermaUpgrade(players.selectedOptions.selected)"></my-button>
               </div>
           </div>
 

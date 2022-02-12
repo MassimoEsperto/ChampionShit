@@ -38,34 +38,31 @@ export class InfoUtenteComponent extends GlobalComponent implements OnInit {
   avatarSel: any;
   upgrade: boolean = false;
 
-  fantalega: any;
   svincolati: any;
   vincolati = []
-  stepform = 1
   squadra: any;
 
 
   ngOnInit() {
 
     this.loggato = this.playerService.getLoggato();
-    console.log("this.loggato",this.loggato)
-    this.getAvatars();
-    this.onUpgrade()
+    this.onStart()
 
   }
 
-  onUpgrade() {
+  onStart() {
+
+    this.loading_page = true;
+    this.spinner.view();
 
     this.route.queryParams.subscribe(params => {
       this.upgrade = params['upgrade'];
       if (this.upgrade) this.listaCalciatori()
+      else this.getAvatars()
     });
   }
 
   getAvatars() {
-
-    this.loading_page = true;
-    this.spinner.view();
 
     this.playerService.getAvatars()
       .pipe(finalize(() => {
@@ -148,6 +145,7 @@ export class InfoUtenteComponent extends GlobalComponent implements OnInit {
       })
   }
 
+  /* SEZIONE UPGRADE */
 
   listaCalciatori() {
 
@@ -156,6 +154,7 @@ export class InfoUtenteComponent extends GlobalComponent implements OnInit {
 
         next: (result: any) => {
           this.svincolati = result;
+          this.getLega(this.loggato.lega)
         },
         error: (error: any) => {
           this.alert.error(error);
@@ -168,20 +167,13 @@ export class InfoUtenteComponent extends GlobalComponent implements OnInit {
 
   getLega(lega: string) {
 
-    this.loading_btn = true
-    let re = /\ /gi;
-    let nome_lega = lega.replace(re,"-")
-    this.fanta.getLega(nome_lega)
-      .pipe(finalize(() => this.loading_btn = false))
+    this.fanta.getLega(lega)
       .subscribe({
         next: (result: any) => {
 
-          this.fantalega = result
-         
-          if (this.fantalega && this.fantalega.length > 0) {
-           
-            this.fantalega['lega'] = nome_lega
-            this.stepform += 1
+          if (result && result.length > 0) {
+            let fantalega = result.find(i => i.team == this.loggato.account).lista || [];
+            this.onLega(fantalega)
           } else {
             this.alert.error("Lega inesistente");
           }
@@ -192,39 +184,17 @@ export class InfoUtenteComponent extends GlobalComponent implements OnInit {
       })
   }
 
-
-  upgradeTeam(payload: any) {
-
-    this.authService.registerNewUtente(payload)
-      .pipe(finalize(() => this.loading_btn = false))
-      .subscribe({
-        next: (result: any) => {
-          this.alert.success(this.language.alert.success);
-        },
-        error: (error: any) => {
-          this.alert.error(error);
-        },
-      })
-  }
-
-
   onLega(lega) {
 
-    this.loading_btn = true
     this.vincolati = []
-    for (let ele of lega.lista) {
+    for (let ele of lega) {
       let singolo = this.svincolati.find(i => i.nome_calciatore == ele);
       if (singolo) {
         singolo['selected'] = true;
         this.vincolati.push(singolo)
       }
     }
-
-    setTimeout(() => {
-      this.loading_btn = false
-      this.stepform += 1
-    }, 1000);
-
+    this.loadPage(this.spinner);
   }
 
 
@@ -267,12 +237,12 @@ export class InfoUtenteComponent extends GlobalComponent implements OnInit {
 
   }
 
-  conferma(selected) {
+  confermaUpgrade(selected) {
 
     this.squadra = selected.map(item => item.value);
     let payload = {
       lista: this.squadra,
-      lega: this.fantalega['lega']
+      lega: this.loggato.lega
     }
     this.upgradeRosa(payload)
 
