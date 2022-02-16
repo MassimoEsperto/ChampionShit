@@ -56,7 +56,7 @@ export class InfoUtenteComponent extends GlobalComponent implements OnInit {
     this.spinner.view();
 
     this.route.queryParams.subscribe(params => {
-      this.upgrade = params['upgrade'];
+      this.upgrade = Number(params['upgrade'])==1;
       if (this.upgrade) this.listaCalciatori()
       else this.getAvatars()
     });

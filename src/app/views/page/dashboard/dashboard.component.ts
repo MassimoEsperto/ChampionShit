@@ -31,7 +31,6 @@ export class DashboardComponent extends GlobalComponent implements OnInit {
     this.loading_page = true;
     this.spinner.view();
     this.loggato = this.playerService.getLoggato();
-    console.log("loggato",this.loggato)
     this.getDashboard();
   }
 
