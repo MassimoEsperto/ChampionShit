@@ -1,9 +1,7 @@
 <div *ngIf="!loading_page" [hidden]="hidden_page" class="page">
 
-    <div class="pt-8 pb-32  titolo-pagina">
-        <h4>{{language.page.classifiche}}</h4>
-    </div>
-   
+    <my-titolo [title]="language.page.classifiche"></my-titolo>
+
     <div class="pt-8 pb-8">
         <mdb-card class="text-white" bgColor="bg-success">
             <mdb-card-header>{{language.page.fasi.gironi}}</mdb-card-header>

@@ -11,6 +11,7 @@ import { MySpinner } from '../components/my-spinner/my-spinner.component';
 import { AppCustomFrameworkModule } from './framework.module';
 import { MyModalInfo } from '../components/my-modal-info/my-modal-info.component';
 import { MyModalMatch } from '../components/my-modal-match/my-modal-match.component';
+import { MyTitolo } from '../components/my-titolo/my-titolo.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { MyModalMatch } from '../components/my-modal-match/my-modal-match.compon
     MyModalValidate,
     MyModalInfo,
     MyModalMatch,
-    MyModalLanguage
+    MyModalLanguage,
+    MyTitolo
   ],
   exports: [
     MyButton,
@@ -36,7 +38,8 @@ import { MyModalMatch } from '../components/my-modal-match/my-modal-match.compon
     MySpinner,
     MyModalValidate,
     MyModalInfo,
-    MyModalMatch
+    MyModalMatch,
+    MyTitolo
   ],
   providers: [
   ],

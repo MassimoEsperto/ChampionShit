@@ -1,15 +1,15 @@
 <div *ngIf="!loading_page" [hidden]="hidden_page" class="page">
 
   <div *ngIf="dash">
-    <div *ngIf="!dash.turno.limbo" class="pt-8 titolo-pagina">
-      <h4>{{dash.turno.attuale}}° {{language.page.da_disputare}}</h4>
+    <div *ngIf="!dash.turno.limbo">
+      <my-titolo [title]="dash.turno.attuale+'° '+language.page.da_disputare"></my-titolo>
     </div>
 
-    <div *ngIf="dash.turno.limbo" class="pt-8 titolo-pagina">
-      <h4>{{language.page.calcolo}}</h4>
+    <div *ngIf="dash.turno.limbo">
+      <my-titolo [title]="language.page.calcolo"></my-titolo>
     </div>
 
-    <div class="pt-32 pb-16">
+    <div class="pt-8 pb-16">
 
       <mdb-card class="text-white" bgColor="bg-transparent">
 
@@ -29,12 +29,12 @@
                   <img src="assets/avatar/{{loggato.avatar}}.png" width="100%" style="max-width: 180px;" />
                 </div>
                 <div style="text-align: right;" class="col-3 pr-0 mr-0 semi-loghi">
-                    <div>
-                      <img src="assets/img/rifle2.gif" width="100%" style="max-width: 120px;" />
-                    </div>
-                    <div class="pt-8">
-                      <img src="assets/img/proiettore.png" width="100%" style="max-width: 100px;" />
-                    </div>
+                  <div>
+                    <img src="assets/img/rifle2.gif" width="100%" style="max-width: 120px;" />
+                  </div>
+                  <div class="pt-8">
+                    <img src="assets/img/proiettore.png" width="100%" style="max-width: 100px;" />
+                  </div>
                 </div>
               </div>
             </div>

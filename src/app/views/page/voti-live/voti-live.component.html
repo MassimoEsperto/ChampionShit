@@ -1,8 +1,6 @@
 <div *ngIf="!loading_page" [hidden]="hidden_page" class="page pb-32">
 
-    <div class="pt-8 pb-32 titolo-pagina">
-        <h4>{{language.page.voti_live}}</h4>
-    </div>
+    <my-titolo [title]="language.page.voti_live"></my-titolo>
 
     <div *ngIf="formazioni">
         <div *ngFor="let fanta of formazioni" class="pb-16">

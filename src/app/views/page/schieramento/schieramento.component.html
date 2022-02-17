@@ -4,10 +4,7 @@
 
     <div [hidden]="schieramento">
 
-      <div class="pt-8 pb-32 titolo-pagina">
-        <h4>{{language.page.rosa_utente}}</h4>
-      </div>
-
+      <my-titolo [title]="language.page.rosa_utente"></my-titolo>
 
       <mat-selection-list #players>
         <mat-list-option #item *ngFor="let player of formazione.rosa" [selected]="player.selected"
@@ -37,9 +34,7 @@
 
       <div class="pb-32">
 
-        <div class="pt-8 pb-32 titolo-pagina">
-          <h4>{{language.page.formazione}}</h4>
-        </div>
+        <my-titolo [title]="language.page.formazione"></my-titolo>
 
         <div class="pa-8">
           <div class="squadra-list" (click)="changeView()">
