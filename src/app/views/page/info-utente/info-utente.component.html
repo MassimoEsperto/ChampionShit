@@ -4,6 +4,40 @@
 
   <div *ngIf="!upgrade" class="mio-container" style="text-align: center;">
 
+
+    <div class="pb-64">
+
+      <mdb-card>
+        <mdb-card-header>{{language.page.cambia_img}}</mdb-card-header>
+        <!--Card content-->
+        <mdb-card-body class="pt-8">
+
+          <div class="image-preview mt-16" *ngIf="avatarSel">
+            <img src="assets/avatar/{{avatarSel.nome}}.png" width="220" height="220" />
+          </div>
+          <div class="image-preview" *ngIf="!avatarSel">
+            <img src="assets/img/omino.png" width="220" height="220" />
+          </div>
+          <br>
+          <mat-form-field appearance="outline">
+            <mat-label>{{language.bottoni.avatar}}</mat-label>
+            <mat-select (selectionChange)="selectedCombo($event.value)">
+              <mat-option *ngFor="let item of avatars" [value]="item">
+                <img src="assets/avatar/{{item.nome}}.png" width="20" height="20" />
+                {{item.nome}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <my-button [submit]="false" [color]="'danger'" [block]="true" [disabled]="!avatarSel"
+            [label]="language.bottoni.invia" [loading]="loading_btn" (myClick)="updateAvatar()"></my-button>
+
+        </mdb-card-body>
+
+      </mdb-card>
+
+    </div>
+
+
     <div class="pb-64">
 
       <mdb-card>
@@ -46,73 +80,10 @@
       </mdb-card>
     </div>
 
-
-    <div class="pb-64">
-      <mdb-card>
-        <mdb-card-header>{{language.page.cambia_img}}</mdb-card-header>
-        <!--Card content-->
-        <mdb-card-body class="pt-8">
-
-          <div class="image-preview mt-16" *ngIf="avatarSel">
-            <img src="assets/avatar/{{avatarSel.nome}}.png" width="220" height="220" />
-          </div>
-          <div class="image-preview" *ngIf="!avatarSel">
-            <img src="assets/img/omino.png" width="220" height="220" />
-          </div>
-          <br>
-          <mat-form-field appearance="outline">
-            <mat-label>{{language.bottoni.avatar}}</mat-label>
-            <mat-select (selectionChange)="selectedCombo($event.value)">
-              <mat-option *ngFor="let item of avatars" [value]="item">
-                <img src="assets/avatar/{{item.nome}}.png" width="20" height="20" />
-                {{item.nome}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-          <my-button [submit]="false" [color]="'danger'" [block]="true" [disabled]="!avatarSel"
-            [label]="language.bottoni.invia" [loading]="loading_btn" (myClick)="updateAvatar()"></my-button>
-
-        </mdb-card-body>
-
-      </mdb-card>
-
-    </div>
-
   </div>
+</div>
 
 
-  <div *ngIf="upgrade" class="mio-container pr-16 pl-16" style="text-align: center;">
-
-    <div class="pb-64">
-
-      <mdb-card>
-        <mdb-card-header>{{language.page.cambia_squadra}}</mdb-card-header>
-        <!--Card content-->
-
-        <mdb-card-body class="pt-8">
-
-          <div style="color: #757575;">
-
-            <span>{{language.login.step.rosa}}</span>
-            <mat-selection-list #players>
-              <mat-list-option #item *ngFor="let player of vincolati" [selected]="player.selected"
-                [hidden]="disabledTeam(players,player) && !item.selected" [value]="player">
-                {{player.ruolo}} {{player.nome_calciatore}}
-              </mat-list-option>
-            </mat-selection-list>
-            <br>
-            <div class="pa-8" *ngIf="!loading_btn">
-              <my-button [color]="'success'" [block]="true" [disabled]="players.selectedOptions.selected.length!=25"
-                [label]="language.bottoni.invia" [loading]="loading_btn"
-                (myClick)="confermaUpgrade(players.selectedOptions.selected)"></my-button>
-            </div>
-          </div>
-
-        </mdb-card-body>
-
-      </mdb-card>
-
-
-    </div>
-
-  </div>
+<div *ngIf="upgrade">
+  <upgrade-team></upgrade-team>
+</div>

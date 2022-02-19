@@ -1,0 +1,38 @@
+<div *ngIf="!loading_page" [hidden]="hidden_page" class="page" style="text-align: center;">
+
+<div class="mio-container pa-16" style="text-align: center;">
+
+    <div class="pb-32">
+
+      <mdb-card>
+        <mdb-card-header>{{language.page.cambia_squadra}}</mdb-card-header>
+        <!--Card content-->
+
+        <mdb-card-body class="pt-8">
+
+          <div style="color: #757575;">
+
+            <span>{{language.login.step.rosa}}</span>
+            <mat-selection-list #players>
+              <mat-list-option #item *ngFor="let player of vincolati" [selected]="player.selected"
+                [hidden]="disabledTeam(players,player) && !item.selected" [value]="player">
+                {{player.ruolo}} {{player.nome_calciatore}}
+              </mat-list-option>
+            </mat-selection-list>
+            <br>
+            <div class="pa-8" *ngIf="!loading_btn">
+              <my-button [color]="'success'" [block]="true" [disabled]="players.selectedOptions.selected.length!=25"
+                [label]="language.bottoni.invia" [loading]="loading_btn"
+                (myClick)="confermaUpgrade(players.selectedOptions.selected)"></my-button>
+            </div>
+          </div>
+
+        </mdb-card-body>
+
+      </mdb-card>
+
+
+    </div>
+
+  </div>
+</div>

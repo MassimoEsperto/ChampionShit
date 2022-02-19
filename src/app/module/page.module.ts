@@ -30,6 +30,8 @@ import { VotiLiveComponent } from '../views/page/voti-live/voti-live.component';
 import { ClassificheComponent } from '../views/page/classifiche/classifiche.component';
 import { StatisticheComponent } from '../components/statistiche/statistiche.component';
 import { DataPartiteComponent } from '../views/page/gestione-admin/data-partite/data-partite.component';
+import { UpgradeTeamComponent } from '../components/upgrade-team/upgrade-team.component';
+import { MyLogoComponent } from '../components/my-logo/my-logo.component';
 
 
 
@@ -59,7 +61,9 @@ import { DataPartiteComponent } from '../views/page/gestione-admin/data-partite/
     VotiLiveComponent,
     ClassificheComponent,
     StatisticheComponent,
-    DataPartiteComponent
+    DataPartiteComponent,
+    UpgradeTeamComponent,
+    MyLogoComponent
   ],
   imports: [
     CommonModule,

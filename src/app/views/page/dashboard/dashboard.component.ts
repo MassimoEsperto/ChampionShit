@@ -59,7 +59,4 @@ export class DashboardComponent extends GlobalComponent implements OnInit {
     this.router.navigate(['/home/voti-live']);
   }
 
-  visualizzaProfilo() {
-    this.router.navigate(['/home/info-utente'], { queryParams: { upgrade: this.dash.turno.is_upgrade } });
-  }
 }

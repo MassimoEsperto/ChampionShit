@@ -2,52 +2,14 @@
 
   <div *ngIf="dash">
     <div *ngIf="!dash.turno.limbo">
-      <my-titolo [title]="dash.turno.attuale+'° '+language.page.da_disputare"></my-titolo>
+      <my-titolo [title]="dash.turno.attuale+'° '+language.page.giornata"></my-titolo>
     </div>
 
     <div *ngIf="dash.turno.limbo">
       <my-titolo [title]="language.page.calcolo"></my-titolo>
     </div>
 
-    <div class="pt-8 pb-16">
-
-      <mdb-card class="text-white" bgColor="bg-transparent">
-
-        <mdb-card-body class="pa-0">
-          <div class="punteggio pa-0">
-            <div class="col-12 col-sm-10 col-md-8 col-lg-6 pa-0">
-              <div class="loghi">
-                <div style="text-align: left;" class="col-3 pl-0 ml-0 semi-loghi">
-                  <div>
-                    <img src="assets/img/rifle1.gif" width="100%" style="max-width: 120px;" />
-                  </div>
-                  <div class="pt-8">
-                    <img src="assets/img/telecamera.png" width="100%" style="max-width: 100px;" />
-                  </div>
-                </div>
-                <div style="text-align: center;" class="col-6 pt-16 pb-8 cursore" (click)="visualizzaProfilo()">
-                  <img src="assets/avatar/{{loggato.avatar}}.png" width="100%" style="max-width: 180px;" />
-                </div>
-                <div style="text-align: right;" class="col-3 pr-0 mr-0 semi-loghi">
-                  <div>
-                    <img src="assets/img/rifle2.gif" width="100%" style="max-width: 120px;" />
-                  </div>
-                  <div class="pt-8">
-                    <img src="assets/img/proiettore.png" width="100%" style="max-width: 100px;" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </mdb-card-body>
-        <mdb-card-header>
-          <div style="text-align: center;">
-            {{loggato.squadra}}
-          </div>
-        </mdb-card-header>
-      </mdb-card>
-
-    </div>
+   <my-logo [is_upgrade]="this.dash.turno.is_upgrade"></my-logo>
 
     <div class="pt-16" *ngIf="dash.prossimo_match">
 

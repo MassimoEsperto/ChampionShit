@@ -5,10 +5,8 @@ import { finalize, timeout } from 'rxjs/operators';
 import { Utente } from 'src/app/classes/models/utente';
 import { GlobalComponent } from 'src/app/classes/utils/global-component';
 import { MyModalValidate } from 'src/app/components/my-modal-validate/my-modal-validate.component';
-import { AdminService } from 'src/app/services/admin.service';
 import { AlertService } from 'src/app/services/alert.service';
 import { AuthService } from 'src/app/services/auth.service';
-import { FantaGazzettaService } from 'src/app/services/fanta-gazzetta.service';
 import { PlayerService } from 'src/app/services/player.service';
 import { SpinnerService } from 'src/app/services/spinner.service';
 
@@ -24,8 +22,6 @@ export class InfoUtenteComponent extends GlobalComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private playerService: PlayerService,
-    private fanta: FantaGazzettaService,
-    private adminService: AdminService,
     private spinner: SpinnerService,
     public dialog: MatDialog,
     private route: ActivatedRoute,
@@ -52,17 +48,16 @@ export class InfoUtenteComponent extends GlobalComponent implements OnInit {
 
   onStart() {
 
-    this.loading_page = true;
-    this.spinner.view();
-
     this.route.queryParams.subscribe(params => {
-      this.upgrade = Number(params['upgrade'])==1;
-      if (this.upgrade) this.listaCalciatori()
-      else this.getAvatars()
+      this.upgrade = Number(params['upgrade']) == 1;
+      if (!this.upgrade)
+        this.getAvatars()
     });
   }
 
   getAvatars() {
+
+    this.startPage(this.spinner);
 
     this.playerService.getAvatars()
       .pipe(finalize(() => {
@@ -147,126 +142,5 @@ export class InfoUtenteComponent extends GlobalComponent implements OnInit {
 
   /* SEZIONE UPGRADE */
 
-  listaCalciatori() {
-
-    this.adminService.getListaCalciatori()
-      .subscribe({
-
-        next: (result: any) => {
-          this.svincolati = result;
-          this.getLega(this.loggato.lega)
-        },
-        error: (error: any) => {
-          this.alert.error(error);
-
-        }
-      })
-  }
-
-
-
-  getLega(lega: string) {
-
-    this.fanta.getLega(lega)
-      .subscribe({
-        next: (result: any) => {
-
-          if (result && result.length > 0) {
-            let fantalega = result.find(i => i.team == this.loggato.account).lista || [];
-            this.onLega(fantalega)
-          } else {
-            this.alert.error("Lega inesistente");
-          }
-        },
-        error: (error: any) => {
-          this.alert.error(error);
-        },
-      })
-  }
-
-  onLega(lega) {
-
-    this.vincolati = []
-    for (let ele of lega) {
-      let singolo = this.svincolati.find(i => i.nome_calciatore == ele);
-      if (singolo) {
-        singolo['selected'] = true;
-        this.vincolati.push(singolo)
-      }
-    }
-    this.loadPage(this.spinner);
-  }
-
-
-  disabledTeam(tot, item) {
-
-    let selected = tot.selectedOptions.selected;
-
-    let size = selected.length;
-
-    if (size == 25) return true;
-
-    try {
-
-      let centro = selected.filter(e => e.value.ruolo === 'C').length;
-      let difensori = selected.filter(e => e.value.ruolo === 'D').length;
-      let attaccanti = selected.filter(e => e.value.ruolo === 'A').length;
-      let portieri = selected.filter(e => e.value.ruolo === 'P').length;
-
-      switch (item.ruolo) {
-        case 'P': {
-          return portieri == 3;
-        }
-        case 'D': {
-          return difensori == 8;
-        }
-        case 'C': {
-          return centro == 8;
-        }
-        case 'A': {
-          return attaccanti == 6;
-        }
-        default: {
-          return false;
-        }
-      }
-
-    } catch (error) {
-      return false;
-    }
-
-  }
-
-  confermaUpgrade(selected) {
-
-    this.squadra = selected.map(item => item.value);
-    let payload = {
-      lista: this.squadra,
-      lega: this.loggato.lega
-    }
-    this.upgradeRosa(payload)
-
-  }
-
-  upgradeRosa(payload: any) {
-
-    this.loading_btn = true;
-
-    this.playerService.upgradeRosa(payload)
-      .pipe(finalize(() =>
-        this.loading_btn = false
-      ))
-      .subscribe({
-
-        next: (result: any) => {
-          this.alert.success(this.language.alert.success);
-        },
-        error: (error: any) => {
-          this.alert.error(error);
-
-        }
-      })
-
-  }
 
 }
