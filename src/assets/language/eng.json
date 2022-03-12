@@ -24,6 +24,7 @@
         "data": "DATE",
         "voti_live": "LIVE VOTES",
         "statistiche": "STATISTICS",
+        "generale": "GENERAL",
         "fasi": {
             "gironi": "GROUPS",
             "spareggi": "SHOOTS",

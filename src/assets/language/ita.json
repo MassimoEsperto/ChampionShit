@@ -24,6 +24,7 @@
         "data": "DATA",
         "voti_live": "VOTI LIVE",
         "statistiche": "STATISTICHE",
+        "generale": "GENERALE",
         "fasi": {
             "gironi": "GIRONI",
             "spareggi": "SPAREGGI",

@@ -24,6 +24,7 @@
         "data": "DATE",
         "voti_live": "VOTES EN DIRECT",
         "statistiche": "STATISTIQUES",
+        "generale": "GENERAL",
         "fasi": {
             "gironi": "GROUPES",
             "spareggi": "TIRAGES",
