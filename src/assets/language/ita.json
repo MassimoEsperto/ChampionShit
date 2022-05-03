@@ -24,7 +24,8 @@
         "data": "DATA",
         "voti_live": "VOTI LIVE",
         "statistiche": "STATISTICHE",
-        "generale": "GENERALE",
+        "generale": "UNICA PER TUTTI I GIRONI",
+        "altri_match": "ALTRE PARTITE",
         "fasi": {
             "gironi": "GIRONI",
             "spareggi": "SPAREGGI",

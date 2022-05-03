@@ -24,7 +24,8 @@
         "data": "DATE",
         "voti_live": "VOTES EN DIRECT",
         "statistiche": "STATISTIQUES",
-        "generale": "GENERAL",
+        "generale": "UNIQUE POUR TOUS LES GROUPES",
+        "altri_match": "AUTRES JEUX",
         "fasi": {
             "gironi": "GROUPES",
             "spareggi": "TIRAGES",

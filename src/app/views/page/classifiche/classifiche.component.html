@@ -6,7 +6,7 @@
         <mdb-card class="text-white" bgColor="bg-success">
             <mdb-card-header>{{language.page.fasi.gironi}}</mdb-card-header>
         </mdb-card>
-        <div *ngFor="let classifica of classifiche">
+        <div *ngFor="let classifica of classifiche.gironi">
             <div class="pb-8 pt-8">
                 <mdb-card>
                     <mdb-card-header style="background-color: white;">{{language.page.girone}} {{classifica.girone}}
@@ -16,7 +16,7 @@
                         <table class="table table-hover">
                             <thead class="red white-text rounded-lg">
                                 <tr>
-                                    <th *ngFor="let head of headElements" scope="col">{{head}} </th>
+                                    <th *ngFor="let head of headElementsGironi" scope="col">{{head}} </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -42,39 +42,37 @@
 
     <div class="pt-8 pb-8">
         <mdb-card class="text-white" bgColor="bg-success">
-            <mdb-card-header>{{language.page.generale}}</mdb-card-header>
+            <mdb-card-header>FACTORY SHITCUP</mdb-card-header>
         </mdb-card>
 
-        <div *ngIf="media">
-            <div class="pb-8 pt-8">
-                <mdb-card>
-                    <mdb-card-header style="background-color: white;">{{language.page.media_partite}} 
-                    </mdb-card-header>
-                    <!--Card content-->
-                    <mdb-card-body>
-                        <table class="table table-hover">
-                            <thead class="red white-text rounded-lg">
-                                <tr>
-                                    <th *ngFor="let head of headElements" scope="col">{{head}} </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr mdbTableCol *ngFor="let el of media">
-                                    <td>
-                                        <div class="squadra">
-                                            <img src="assets/avatar/{{el.avatar}}.png" class="avatar" width="24px" />
-                                            <div class="pl-8">{{el.squadra}}</div>
-                                        </div>
-                                    </td>
-                                    <td>{{el.media_gol}}</td>
-                                    <td>{{el.media_pt}}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </mdb-card-body>
+        <div class="pb-8 pt-8">
+            <mdb-card>
+                <mdb-card-header style="background-color: white;">{{language.page.generale}}
+                </mdb-card-header>
+                <!--Card content-->
+                <mdb-card-body>
+                    <table class="table table-hover">
+                        <thead class="red white-text rounded-lg">
+                            <tr>
+                                <th *ngFor="let head of headElementsFactory" scope="col">{{head}} </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr mdbTableCol *ngFor="let el of classifiche.factory">
+                                <td>
+                                    <div class="squadra">
+                                        <img src="assets/avatar/{{el.avatar}}.png" class="avatar" width="24px" />
+                                        <div class="pl-8">{{el.squadra}}</div>
+                                    </div>
+                                </td>
+                                <td>{{el.factory}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </mdb-card-body>
 
-                </mdb-card>
-            </div>
+            </mdb-card>
+
         </div>
 
     </div>

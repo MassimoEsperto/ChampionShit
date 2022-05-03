@@ -24,7 +24,8 @@
         "data": "DATE",
         "voti_live": "LIVE VOTES",
         "statistiche": "STATISTICS",
-        "generale": "GENERAL",
+        "generale": "UNIQUE FOR ALL GROUPS",
+        "altri_match": "OTHER GAMES",
         "fasi": {
             "gironi": "GROUPS",
             "spareggi": "SHOOTS",

@@ -21,17 +21,17 @@ export class ClassificheComponent extends GlobalComponent implements OnInit {
 
 
   classifiche: any;
-  media: any;
-  headElements = [this.language.page['squadra'], 'GOL', 'PT'];
+
+  headElementsGironi = [this.language.page['squadra'], 'GOL', 'PT'];
+  headElementsFactory = [this.language.page['squadra'], 'FACTORY'];
 
   ngOnInit() {
     this.startPage(this.spinner);
-    this.classifica();
-    this.generale()
+    this.getClassifiche();
   }
 
 
-  classifica() {
+  getClassifiche() {
 
     this.playerService.getClassifica()
       .pipe(finalize(() => {
@@ -47,18 +47,7 @@ export class ClassificheComponent extends GlobalComponent implements OnInit {
       })
   }
 
-  generale() {
 
-    this.playerService.getMedia()
-      .subscribe({
-        next: (result: any) => {
-          this.media = result
-        },
-        error: (error: any) => {
-          this.alert.error(error);
-        }
-      })
-  }
 
 
 }

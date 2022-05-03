@@ -95,7 +95,7 @@ export class PlayerService extends HttpSenderService {
   }
 
   getClassifica() {
-    return this.http.get(`${this.buildURL("get_classifiche")}`, this.myheaders).pipe(
+    return this.http.get(`${this.buildURL("get_classifiche2")}`, this.myheaders).pipe(
       map((res) => {
 
         this.tokenError(res);//controllo token

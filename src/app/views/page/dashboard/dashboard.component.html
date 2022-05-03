@@ -9,7 +9,7 @@
       <my-titolo [title]="language.page.calcolo"></my-titolo>
     </div>
 
-   <my-logo [is_upgrade]="this.dash.turno.is_upgrade"></my-logo>
+    <my-logo [is_upgrade]="this.dash.turno.is_upgrade"></my-logo>
 
     <div class="pt-16" *ngIf="dash.prossimo_match">
 
@@ -48,6 +48,26 @@
               (myClick)="inserisciFormazione()"></my-button>
           </div>
           <div *ngIf="dash.turno.limbo">
+            <my-button [submit]="false" [color]="'success'" [block]="true" [label]="language.page.vedi_live"
+              (myClick)="visualizzaLive()"></my-button>
+          </div>
+        </mdb-card-body>
+
+      </mdb-card>
+
+    </div>
+
+    <div class="pt-16" *ngIf="!dash.prossimo_match&&dash.turno.limbo">
+
+      <mdb-card class="text-white" bgColor="bg-success">
+
+        <mdb-card-header>
+          <div>{{language.page.altri_match}}</div>
+        </mdb-card-header>
+
+        <mdb-card-body class="sfondo_campo">
+
+          <div>
             <my-button [submit]="false" [color]="'success'" [block]="true" [label]="language.page.vedi_live"
               (myClick)="visualizzaLive()"></my-button>
           </div>
