@@ -94,8 +94,8 @@ export class PlayerService extends HttpSenderService {
       catchError(this.handleError));
   }
 
-  getClassifica() {
-    return this.http.get(`${this.buildURL("get_classifiche2")}`, this.myheaders).pipe(
+  getClassifiche() {
+    return this.http.get(`${this.buildURL("get_classifiche")}`, this.myheaders).pipe(
       map((res) => {
 
         this.tokenError(res);//controllo token
@@ -106,18 +106,7 @@ export class PlayerService extends HttpSenderService {
       catchError(this.handleError));
   }
 
-  getMedia() {
-    return this.http.get(`${this.buildURL("get_classifica_generale")}`, this.myheaders).pipe(
-      map((res) => {
-
-        this.tokenError(res);//controllo token
-
-        return res['data'];
-
-      }),
-      catchError(this.handleError));
-  }
-
+  
 
   /* FINE RISULTATI */
 

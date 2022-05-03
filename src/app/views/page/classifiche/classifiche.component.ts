@@ -23,7 +23,7 @@ export class ClassificheComponent extends GlobalComponent implements OnInit {
   classifiche: any;
 
   headElementsGironi = [this.language.page['squadra'], 'GOL', 'PT'];
-  headElementsFactory = [this.language.page['squadra'], 'FACTORY'];
+  headElementsFactory = [this.language.page['squadra'], 'FT'];
 
   ngOnInit() {
     this.startPage(this.spinner);
@@ -33,7 +33,7 @@ export class ClassificheComponent extends GlobalComponent implements OnInit {
 
   getClassifiche() {
 
-    this.playerService.getClassifica()
+    this.playerService.getClassifiche()
       .pipe(finalize(() => {
         this.loadPage(this.spinner);
       }))
