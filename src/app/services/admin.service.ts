@@ -220,5 +220,46 @@ export class AdminService extends HttpSenderService {
       }),
         catchError(this.handleError));
   }
+
+  getAccoppiamenti(): Observable<any[]> {
+    return this.http.get(`${this.buildURL("get_accoppiamenti")}`).pipe(
+      map((res) => {
+        return res['data'];
+      }),
+      catchError(this.handleError));
+  }
+
+  setAccoppiamento(payload: any) {
+
+    return this.http.post(`${this.buildURL("set_accoppiamento")}`, { data: payload })
+      .pipe(map((res) => {
+
+        return 'ok';
+      }),
+        catchError(this.handleError));
+  }
+
+ 
+  updAccoppiamento(payload: any) {
+
+    return this.http.post(`${this.buildURL("upd_accoppiamento")}`, { data: payload })
+      .pipe(map((res) => {
+
+        return 'ok';
+      }),
+        catchError(this.handleError));
+  }
+
+  deleteAccoppiamento(id: string) {
+    
+    const params = new HttpParams().set('id', id);
+
+    return this.http.get(`${this.buildURL("del_accoppiamento")}`, { params: params })
+      .pipe(map(res => {
+        return 'ok';
+      }),
+        catchError(this.handleError));
+  }
+
 }
 

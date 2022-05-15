@@ -12,6 +12,7 @@ import { AppCustomFrameworkModule } from './framework.module';
 import { MyModalInfo } from '../components/my-modal-info/my-modal-info.component';
 import { MyModalMatch } from '../components/my-modal-match/my-modal-match.component';
 import { MyTitolo } from '../components/my-titolo/my-titolo.component';
+import { MyModalAccopiamenti } from '../components/my-modal-accopiamenti/my-modal-accopiamenti.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { MyTitolo } from '../components/my-titolo/my-titolo.component';
     MyModalInfo,
     MyModalMatch,
     MyModalLanguage,
-    MyTitolo
+    MyTitolo,
+    MyModalAccopiamenti
   ],
   exports: [
     MyButton,
@@ -39,7 +41,8 @@ import { MyTitolo } from '../components/my-titolo/my-titolo.component';
     MyModalValidate,
     MyModalInfo,
     MyModalMatch,
-    MyTitolo
+    MyTitolo,
+    MyModalAccopiamenti
   ],
   providers: [
   ],

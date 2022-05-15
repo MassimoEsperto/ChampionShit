@@ -32,6 +32,7 @@ import { StatisticheComponent } from '../components/statistiche/statistiche.comp
 import { DataPartiteComponent } from '../views/page/gestione-admin/data-partite/data-partite.component';
 import { UpgradeTeamComponent } from '../components/upgrade-team/upgrade-team.component';
 import { MyLogoComponent } from '../components/my-logo/my-logo.component';
+import { AccoppiamentiComponent } from '../views/page/gestione-admin/accoppiamenti/accoppiamenti.component';
 
 
 
@@ -63,7 +64,8 @@ import { MyLogoComponent } from '../components/my-logo/my-logo.component';
     StatisticheComponent,
     DataPartiteComponent,
     UpgradeTeamComponent,
-    MyLogoComponent
+    MyLogoComponent,
+    AccoppiamentiComponent
   ],
   imports: [
     CommonModule,
