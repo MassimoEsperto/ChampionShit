@@ -1,0 +1,91 @@
+<div class="modale-linguaggio">
+    <div style="text-align: center;">
+        <h2>{{data.titolo}}</h2>
+    </div>
+    <mat-dialog-content [formGroup]="form">
+
+        <mat-form-field appearance="outline">
+            <mat-label>Giornata</mat-label>
+            <input matInput type="number" formControlName="giornata">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Serie A</mat-label>
+            <input matInput type="number" formControlName="serieA">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Start anno</mat-label>
+            <mat-select formControlName="annoStart">
+                <mat-option>None</mat-option>
+                <mat-option *ngFor="let item of data.combo.anni" [value]="item">{{item}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Start mese</mat-label>
+            <mat-select formControlName="meseStart">
+                <mat-option>None</mat-option>
+                <mat-option *ngFor="let item of data.combo.mesi" [value]="item">{{item}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Start giorno</mat-label>
+            <mat-select formControlName="giornoStart">
+                <mat-option>None</mat-option>
+                <mat-option *ngFor="let item of data.combo.giorni" [value]="item">{{item}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Start ora</mat-label>
+            <mat-select formControlName="oraStart">
+                <mat-option>None</mat-option>
+                <mat-option *ngFor="let item of data.combo.orari" [value]="item">{{item}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>End anno</mat-label>
+            <mat-select formControlName="annoEnd">
+                <mat-option>None</mat-option>
+                <mat-option *ngFor="let item of data.combo.anni" [value]="item">{{item}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>End mese</mat-label>
+            <mat-select formControlName="meseEnd">
+                <mat-option>None</mat-option>
+                <mat-option *ngFor="let item of data.combo.mesi" [value]="item">{{item}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>End giorno</mat-label>
+            <mat-select formControlName="giornoEnd">
+                <mat-option>None</mat-option>
+                <mat-option *ngFor="let item of data.combo.giorni" [value]="item">{{item}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>End ora</mat-label>
+            <mat-select formControlName="oraEnd">
+                <mat-option>None</mat-option>
+                <mat-option *ngFor="let item of data.combo.orari" [value]="item">{{item}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+      
+
+      
+
+    </mat-dialog-content>
+
+    <mat-dialog-actions>
+        <button mdbBtn color="danger" (click)="close()">Close</button>
+        <button [disabled]="!form.valid" mdbBtn color="primary" (click)="save()">Save</button>
+    </mat-dialog-actions>
+</div>

@@ -221,6 +221,27 @@ export class AdminService extends HttpSenderService {
         catchError(this.handleError));
   }
 
+  newData(payload: any) {
+
+    return this.http.post(`${this.buildURL("set_data_partita")}`, { data: payload })
+      .pipe(map((res) => {
+
+        return 'ok';
+      }),
+        catchError(this.handleError));
+  }
+
+  deleteDataPartita(giornata: string) {
+    
+    const params = new HttpParams().set('giornata', giornata);
+
+    return this.http.get(`${this.buildURL("del_data_partita")}`, { params: params })
+      .pipe(map(res => {
+        return 'ok';
+      }),
+        catchError(this.handleError));
+  }
+
   getAccoppiamenti(): Observable<any[]> {
     return this.http.get(`${this.buildURL("get_accoppiamenti")}`).pipe(
       map((res) => {

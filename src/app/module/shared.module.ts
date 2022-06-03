@@ -13,6 +13,7 @@ import { MyModalInfo } from '../components/my-modal-info/my-modal-info.component
 import { MyModalMatch } from '../components/my-modal-match/my-modal-match.component';
 import { MyTitolo } from '../components/my-titolo/my-titolo.component';
 import { MyModalAccopiamenti } from '../components/my-modal-accopiamenti/my-modal-accopiamenti.component';
+import { MyModalDate } from '../components/my-modal-date/my-modal-date.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { MyModalAccopiamenti } from '../components/my-modal-accopiamenti/my-moda
     MyModalMatch,
     MyModalLanguage,
     MyTitolo,
-    MyModalAccopiamenti
+    MyModalAccopiamenti,
+    MyModalDate
   ],
   exports: [
     MyButton,
@@ -42,7 +44,8 @@ import { MyModalAccopiamenti } from '../components/my-modal-accopiamenti/my-moda
     MyModalInfo,
     MyModalMatch,
     MyTitolo,
-    MyModalAccopiamenti
+    MyModalAccopiamenti,
+    MyModalDate
   ],
   providers: [
   ],

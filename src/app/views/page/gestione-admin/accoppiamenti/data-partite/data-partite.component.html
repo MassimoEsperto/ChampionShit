@@ -1,7 +1,16 @@
-<!-- Editable table -->
-<div class="card">
+<div *ngIf="loading_btn">
+    <br>
+    <br>
+    <mat-spinner></mat-spinner>
+</div>
+
+<div *ngIf="!loading_btn" class="card">
     <h3 class="card-header text-center font-weight-bold text-uppercase py-4">GESTIONE DATA</h3>
     <div class="card-body">
+
+        <button type="button" mdbBtn color="warning" size="sm" class="my-0" (click)="onNewDate()">AGGIUNGI NUOVA</button>
+        <hr>
+
         <div id="table" class="table-editable">
 
             <table class="table table-bordered table-responsive-md table-striped text-center">
@@ -10,9 +19,10 @@
                     <th class="text-center">A</th>
                     <th class="text-center">INIZIO</th>
                     <th class="text-center">FINE</th>
-                    <th class="text-center">CAMBIA</th>
+                    <th class="text-center">UPD</th>
+                    <th class="text-center">DEL</th>
                 </tr>
-                <tr *ngFor="let ele of dataPartite; let id = index">
+                <tr *ngFor="let ele of accoppiamenti.data_partite; let id = index">
                     <td>
                         <span>{{ele.giornata}}</span>
                     </td>
@@ -30,8 +40,15 @@
 
                     <td>
                         <span class="table-remove">
+                            <button type="button" mdbBtn color="success" size="sm" class="my-0"
+                                (click)="onChangeData(ele)">UPD</button>
+                        </span>
+                    </td>
+
+                    <td>
+                        <span class="table-remove">
                             <button type="button" mdbBtn color="danger" size="sm" class="my-0"
-                                (click)="onChangeData(ele)">Cambia</button>
+                                (click)="onDeleteData(ele)">DEL</button>
                         </span>
                     </td>
                 </tr>

@@ -22,17 +22,18 @@ import { GestioneSquadreComponent } from '../views/page/gestione-admin/gestione-
 import { GestioneUtentiComponent } from '../views/page/gestione-admin/gestione-utenti/gestione-utenti.component';
 import { RecuperoPrecedentiComponent } from '../views/page/gestione-admin/recupero-precedenti/recupero-precedenti.component';
 import { ComunicazioniComponent } from '../views/page/comunicazioni/comunicazioni.component';
-import { SorteggiRandomComponent } from '../views/page/gestione-admin/sorteggi-random/sorteggi-random.component';
+import { SorteggiRandomComponent } from '../views/page/gestione-admin/accoppiamenti/sorteggi-random/sorteggi-random.component';
 import { NavDesktopComponent } from '../components/navigator/nav-desktop/nav-desktop.component';
 import { NavSmartphoneComponent } from '../components/navigator/nav-smartphone/nav-smartphone.component';
 import { NavTabletComponent } from '../components/navigator/nav-tablet/nav-tablet.component';
 import { VotiLiveComponent } from '../views/page/voti-live/voti-live.component';
 import { ClassificheComponent } from '../views/page/classifiche/classifiche.component';
 import { StatisticheComponent } from '../components/statistiche/statistiche.component';
-import { DataPartiteComponent } from '../views/page/gestione-admin/data-partite/data-partite.component';
+import { DataPartiteComponent } from '../views/page/gestione-admin/accoppiamenti/data-partite/data-partite.component';
 import { UpgradeTeamComponent } from '../components/upgrade-team/upgrade-team.component';
 import { MyLogoComponent } from '../components/my-logo/my-logo.component';
 import { AccoppiamentiComponent } from '../views/page/gestione-admin/accoppiamenti/accoppiamenti.component';
+import { EliminatorieComponent } from '../views/page/gestione-admin/accoppiamenti/eliminatorie/eliminatorie.component';
 
 
 
@@ -65,7 +66,8 @@ import { AccoppiamentiComponent } from '../views/page/gestione-admin/accoppiamen
     DataPartiteComponent,
     UpgradeTeamComponent,
     MyLogoComponent,
-    AccoppiamentiComponent
+    AccoppiamentiComponent,
+    EliminatorieComponent
   ],
   imports: [
     CommonModule,

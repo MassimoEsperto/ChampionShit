@@ -15,6 +15,13 @@ import { AlertService } from 'src/app/services/alert.service';
 export class AccoppiamentiComponent extends GlobalComponent implements OnInit {
 
   accoppiamenti: any
+  
+  view_attuale:number=0;
+
+  view_possibili = [
+    {id: 1, name: "Date"},
+    {id: 2, name: "Eliminatorie"},
+    {id: 3, name: "Sorteggi gironi"}];
 
   constructor(
     public dialog: MatDialog,
@@ -25,55 +32,6 @@ export class AccoppiamentiComponent extends GlobalComponent implements OnInit {
 
   ngOnInit() { this.getAccoppiamenti() }
 
-
-  onUpdate(ele: any) {
-    console.log("upd", ele)
-    this.onChangeItem(ele)
-  }
-
-
-  onChangeItem(ele: any) {
-
-    const dialogRef = this.dialog.open(MyModalAccopiamenti, {
-      panelClass: 'dialog-language',
-      data: {
-        titolo: 'ACCOPPIAMENTI',
-        valori: ele,
-        combo: this.accoppiamenti.utenti
-      }
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result)
-        this.updAccoppiamento(result)
-    });
-  }
-
-  onNewItem() {
-
-    const dialogRef = this.dialog.open(MyModalAccopiamenti, {
-      panelClass: 'dialog-language',
-      data: {
-        titolo: 'ACCOPPIAMENTI',
-        valori: null,
-        combo: this.accoppiamenti.utenti
-      }
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result)
-        this.setAccoppiamento(result)
-    });
-  }
-
-
-  onDelete(id: any) {
-    const dialogRef = this.dialog.open(MyModalValidate);
-    dialogRef.afterClosed().subscribe(result => {
-      if (result)
-        this.delAccoppiamento(id);
-    });
-  }
 
   /* CHIAMATE AI SERVIZI */
 
@@ -88,7 +46,6 @@ export class AccoppiamentiComponent extends GlobalComponent implements OnInit {
       }))
       .subscribe({
         next: (result: any) => {
-          console.log(result)
           this.accoppiamenti = result
         },
         error: (error: any) => {
@@ -97,58 +54,4 @@ export class AccoppiamentiComponent extends GlobalComponent implements OnInit {
       })
   }
 
-
-  setAccoppiamento(item: any) {
-
-    this.loading_btn = true;
-
-    this.adminService.setAccoppiamento(item)
-      .pipe(finalize(() => {
-        this.loading_btn = false;
-      }))
-      .subscribe({
-        next: (result: any) => {
-          this.getAccoppiamenti()
-        },
-        error: (error: any) => {
-          this.alert.error(error);
-        }
-      })
-  }
-
-  updAccoppiamento(item: any) {
-
-    this.loading_btn = true;
-
-    this.adminService.updAccoppiamento(item)
-      .pipe(finalize(() => {
-        this.loading_btn = false;
-      }))
-      .subscribe({
-        next: (result: any) => {
-          this.getAccoppiamenti()
-        },
-        error: (error: any) => {
-          this.alert.error(error);
-        }
-      })
-  }
-
-
-
-
-  delAccoppiamento(id: any) {
-
-    this.adminService.deleteAccoppiamento(id)
-      .subscribe({
-        next: (result: any) => {
-          this.alert.success(this.language.alert.success);
-
-          this.getAccoppiamenti()
-        },
-        error: (error: any) => {
-          this.alert.error(error);
-        }
-      })
-  }
 }

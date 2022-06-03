@@ -1,0 +1,48 @@
+<div *ngIf="loading_btn">
+    <br>
+    <br>
+    <mat-spinner></mat-spinner>
+</div>
+
+<div *ngIf="!loading_btn" class="card">
+    <h3 class="card-header text-center font-weight-bold text-uppercase py-4">GESTIONE ACCOPPIAMENTI</h3>
+    <div class="card-body">
+
+        <button type="button" mdbBtn color="warning" size="sm" class="my-0" (click)="onNewItem()">AGGIUNGI
+            NUOVO</button>
+
+        <hr>
+
+        <div id="table" class="table-editable">
+
+            <table class="table table-bordered table-responsive-md table-striped text-center">
+                <tr>
+                    <th class="text-center">ID</th>
+                    <th class="text-center">GIO</th>
+                    <th class="text-center">FS</th>
+                    <th class="text-center">PARTITA</th>
+                    <th class="text-center">UPD</th>
+                    <th class="text-center">DEL</th>
+                </tr>
+                <tr *ngFor="let ele of accoppiamenti.calendario">
+                    <td>{{ele.id}}</td>
+                    <td>{{ele.giornata}}</td>
+                    <td>{{ele.fase}}</td>
+                    <td>{{ele.casa}} - {{ele.trasferta}}</td>
+                    <td>
+                        <span class="table-remove">
+                            <button type="button" mdbBtn color="success" size="sm" class="my-0"
+                                (click)="onUpdate(ele)">UPD</button>
+                        </span>
+                    </td>
+                    <td>
+                        <span class="table-remove">
+                            <button type="button" mdbBtn color="danger" size="sm" class="my-0"
+                                (click)="onDelete(ele.id)">DEL</button>
+                        </span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
