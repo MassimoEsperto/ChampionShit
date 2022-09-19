@@ -3,6 +3,7 @@ import { finalize } from 'rxjs/operators';
 import { GlobalComponent } from 'src/app/classes/utils/global-component';
 import { AlertService } from 'src/app/services/alert.service';
 import { FantaGazzettaService } from 'src/app/services/fanta-gazzetta.service';
+import { PlayerService } from 'src/app/services/player.service';
 import { SpinnerService } from 'src/app/services/spinner.service';
 
 @Component({
@@ -15,16 +16,18 @@ export class VotiLiveComponent extends GlobalComponent implements OnInit {
   constructor(
     private spinner: SpinnerService,
     private alert: AlertService,
+    private playerService: PlayerService,
     private fantaService: FantaGazzettaService
   ) {
     super();
   }
 
   formazioni: any
-  votilive = []
+  votilive: any
 
   ngOnInit() {
     this.getLivefanta();
+  
   }
 
   getLivefanta() {
@@ -33,6 +36,26 @@ export class VotiLiveComponent extends GlobalComponent implements OnInit {
     this.spinner.view();
 
     this.fantaService.getLiveFormazione()
+      .pipe(finalize(() => {
+        this. getLiveformazioni();
+      }
+      ))
+      .subscribe({
+
+        next: (result: any) => {
+          this.votilive = result;
+        },
+        error: (error: any) => {
+          this.alert.error(error);
+
+        }
+      })
+
+  }
+
+  getLiveformazioni() {
+
+    this.playerService.getFormazioniLive()
       .pipe(finalize(() => {
         this.loadPage(this.spinner);
       }

@@ -3,7 +3,7 @@
 // Versione applicazione
 export const VERSION = "1.0.2"
 
-export const WS_BASE_URL = `http://fantashitcup.altervista.org/WorldWideFantashit/web-services`
+export const WS_BASE_URL = `https://fantashitcup.altervista.org/WorldWideFantashit/web-services`
 
 // Timeout richieste POST
 export const REQUEST_TIMEOUT = 2 * 60 * 1000 // 2 minuti

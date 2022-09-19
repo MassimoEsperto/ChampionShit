@@ -106,6 +106,17 @@ export class PlayerService extends HttpSenderService {
       catchError(this.handleError));
   }
 
+  getFormazioniLive() {
+    return this.http.get(`${this.buildURL("get_formazioni_live")}`, this.myheaders).pipe(
+      map((res) => {
+
+        this.tokenError(res);//controllo token
+
+        return res['data'];
+
+      }),
+      catchError(this.handleError));
+  }
   
 
   /* FINE RISULTATI */
