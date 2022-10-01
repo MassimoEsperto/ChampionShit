@@ -93,7 +93,7 @@
             "di": "JE",
             "lega": "Entrez le nom de la ligue de votre football Fantasy actuel",
             "squadra": "Selectionnez votre equipe de football Fantasy actuelle",
-            "rosa": "Confirmation equipe compose de 3 gardiens 8 defenseurs 6 milieux de terrain et 6 attaquants",
+            "rosa": "Confirmation equipe compose de 3 gardiens 8 defenseurs 8 milieux de terrain et 6 attaquants",
             "dati": "Saisissez vos donnes personnelles valables pour ce concours"
         }
     },
