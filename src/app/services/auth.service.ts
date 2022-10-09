@@ -29,7 +29,7 @@ export class AuthService extends HttpSenderService {
   login(username: string, pass: string) {
     const params = new HttpParams().set('user', username).set('pass', pass);
 
-    return this.http.get<any>(`${this.buildURL("sign-in2")}`, { params: params })
+    return this.http.get<any>(`${this.buildURL("sign-in")}`, { params: params })
       .pipe(map((res) => {
 
         let token = res['token'];

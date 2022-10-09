@@ -68,6 +68,10 @@ export class NavSmartphoneComponent extends GlobalComponent implements OnInit {
     this.refreshPage();
   }
 
+  goToLink(url: string) {
+    window.open(url, "_blank");
+  }
+
   azzeraMessaggi() {
     this.loggato.num_msg = 0;
   }

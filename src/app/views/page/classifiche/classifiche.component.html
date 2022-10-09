@@ -2,7 +2,7 @@
 
     <my-titolo [title]="language.page.classifiche"></my-titolo>
 
-    <div class="pt-8 pb-8">
+    <div *ngIf="classifiche.factory.teams" class="pt-8 pb-8">
         <mdb-card class="text-white" bgColor="bg-success">
             <mdb-card-header>{{language.page.fasi.gironi}}</mdb-card-header>
         </mdb-card>
@@ -40,7 +40,7 @@
 
     </div>
 
-    <div class="pt-8 pb-8">
+    <div *ngIf="classifiche.factory.length" class="pt-8 pb-8">
         <mdb-card class="text-white" bgColor="bg-success">
             <mdb-card-header>FACTORY SHITCUP</mdb-card-header>
         </mdb-card>
