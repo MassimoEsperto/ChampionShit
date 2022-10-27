@@ -2,7 +2,7 @@
 
     <my-titolo [title]="language.page.classifiche"></my-titolo>
 
-    <div *ngIf="classifiche.factory.teams" class="pt-8 pb-8">
+    <div *ngIf="classifiche.gironi.length" class="pt-8 pb-8">
         <mdb-card class="text-white" bgColor="bg-success">
             <mdb-card-header>{{language.page.fasi.gironi}}</mdb-card-header>
         </mdb-card>
