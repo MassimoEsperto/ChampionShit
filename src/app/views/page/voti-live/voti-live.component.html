@@ -20,12 +20,12 @@
                     <div class="row">
                         <div class="col-6">
                             <div *ngFor="let schieramento of fanta.match[0].schieramento">
-                                <span>{{schieramento.ruolo}} {{schieramento.calciatore}} {{votilive[schieramento.calciatore]?votilive[schieramento.calciatore]:'-'}}</span>
+                                <span>{{schieramento.ruolo}} {{schieramento.nickname}} {{votilive[schieramento.calciatore]?votilive[schieramento.calciatore]:'-'}}</span>
                             </div>
                         </div>
                         <div class="col-6">
                             <div *ngFor="let schieramento of fanta.match[1].schieramento">
-                                <span>{{schieramento.ruolo}} {{schieramento.calciatore}} {{votilive[schieramento.calciatore]?votilive[schieramento.calciatore]:'-'}}</span>
+                                <span>{{schieramento.ruolo}} {{schieramento.nickname}} {{votilive[schieramento.calciatore]?votilive[schieramento.calciatore]:'-'}}</span>
                             </div>
                         </div>
                     </div>
