@@ -21,6 +21,7 @@ export class SidebarComponent extends GlobalComponent implements AfterViewInit {
 
   isPlayer: boolean;
   isVisitors: boolean;
+  isPagante: boolean = true;
   loggato: Utente;
 
   ngAfterViewInit() {
@@ -32,6 +33,7 @@ export class SidebarComponent extends GlobalComponent implements AfterViewInit {
     let ruolo = this.loggato.ruolo;
     this.isPlayer = ruolo == Ruolo.ADMIN || ruolo == Ruolo.GIOCATORE;
     this.isVisitors = ruolo == Ruolo.VISITATORE;
+    this.isPagante = this.loggato.pagato;
   }
 
 

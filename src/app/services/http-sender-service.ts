@@ -49,6 +49,7 @@ export class HttpSenderService {
       utente.num_msg = element.num_msg
       utente.lega = element.lega
       utente.account = element.account
+      utente.pagato = element.pagato == 1
     }
 
     return utente

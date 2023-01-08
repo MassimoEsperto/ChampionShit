@@ -14,8 +14,12 @@
 
   <!-- Page -->
   <div class="pt-media" style="min-height:100vh;">
+    <div *ngIf="!isPagante" class="pagante">
+      <h2>RICORDATI DI SALDARE IL DEBITO!</h2>
+    </div>
     <my-spinner></my-spinner>
     <my-alert></my-alert>
+   
     <router-outlet></router-outlet>
   </div>
 

@@ -12,6 +12,7 @@ export class Utente {
   token?: string;
   lega?: string;
   account?: string;
+  pagato?: boolean;
 
   constructor(
     username: string,
