@@ -83,6 +83,13 @@ $xl:1080px;
   align-items: flex-start;
 }
 
+.flex-colonna-end{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+
 .flex-tra-fra{
   display: flex;
   flex-direction: row;

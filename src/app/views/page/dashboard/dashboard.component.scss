@@ -2,7 +2,12 @@
 
 
 
-
+.squadre-lavagna{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+}
 
 .squadre{
     display: flex;
@@ -35,6 +40,14 @@
 
 .sfondo_campo{
     background-image: url(../../../../assets/img/campo_sfida.png);
+    background-position: center; 
+	background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+.sfondo_lavagna{
+    background-image: url(../../../../assets/img/lavagna.jpg);
     background-position: center; 
 	background-repeat: no-repeat;
     background-size: cover;

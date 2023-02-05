@@ -11,6 +11,14 @@
 
     <my-logo [is_upgrade]="this.dash.turno.is_upgrade"></my-logo>
 
+
+    <div [ngSwitch]="this.dash.periodo_giornata.periodo">
+      <div *ngSwitchCase="PERIODO_GIORNATA.PRE_PARTITA">PRE_PARTITA</div>
+      <div *ngSwitchCase="PERIODO_GIORNATA.PARTITA_LIVE">PARTITA_LIVE</div>
+      <div *ngSwitchCase="PERIODO_GIORNATA.POST_PARTITA">POST_PARTITA</div>
+    </div>
+
+
     <div class="pt-16" *ngIf="dash.prossimo_match">
 
       <mdb-card class="text-white" bgColor="bg-success">
@@ -55,6 +63,46 @@
 
       </mdb-card>
 
+      <!-- lavagna-->
+      <div class="pt-16">
+
+
+        <mdb-card class="text-white pa-16" bgColor="bg-success">
+
+          <mdb-card-body class="sfondo_lavagna">
+            <label style="font-weight: bold;">
+              {{language.page.cosi_campo}}:
+            </label>
+            <div class="squadre-lavagna">
+
+              <div class="flex-colonna">
+                <label style="font-weight: bold;">
+                  {{dash.prossimo_match.casa}}
+                </label>
+
+                <label *ngFor="let gesso of dash.prossimo_match.formazione_casa">
+                  {{gesso.nome_calciatore}}
+                </label>
+              </div>
+
+
+              <div class="flex-colonna">
+                <label style="font-weight: bold;">
+                  {{dash.prossimo_match.trasferta}}
+                </label>
+
+                <label *ngFor="let gesso of dash.prossimo_match.formazione_trasferta">
+                  {{gesso.nome_calciatore}}
+                </label>
+              </div>
+
+            </div>
+
+          </mdb-card-body>
+
+        </mdb-card>
+
+      </div>
     </div>
 
     <div class="pt-16" *ngIf="!dash.prossimo_match&&dash.turno.limbo">

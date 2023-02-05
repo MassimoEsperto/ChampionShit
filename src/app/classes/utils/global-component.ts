@@ -2,6 +2,7 @@ import language_ita from 'src/assets/language/ita.json';
 import language_eng from 'src/assets/language/eng.json';
 import language_fra from 'src/assets/language/fra.json';
 import language_cin from 'src/assets/language/cin.json';
+import { PeriodoGiornata } from './enums';
 
 export abstract class GlobalComponent {
 
@@ -59,5 +60,8 @@ export abstract class GlobalComponent {
         this.loading_page = true;
         spinner.view();
     }
+
+    //enums
+    PERIODO_GIORNATA = PeriodoGiornata;
 
 }

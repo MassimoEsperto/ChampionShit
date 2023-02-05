@@ -22,3 +22,9 @@ export enum FasiCompetizione {
     SEMI_FINALE = 4,
     FINALE = 5
 }
+
+export enum PeriodoGiornata {
+    PRE_PARTITA = 1,
+    PARTITA_LIVE = 2,
+    POST_PARTITA = 3
+}

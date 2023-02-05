@@ -27,6 +27,7 @@ export class DashboardComponent extends GlobalComponent implements OnInit {
   dash: any;
   loggato: Utente;
 
+
   ngOnInit() {
     this.loading_page = true;
     this.spinner.view();
