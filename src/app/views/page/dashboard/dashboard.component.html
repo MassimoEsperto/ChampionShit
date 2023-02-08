@@ -1,140 +1,155 @@
 <div *ngIf="!loading_page" [hidden]="hidden_page" class="page">
 
   <div *ngIf="dash">
-    <div *ngIf="!dash.turno.limbo">
-      <my-titolo [title]="dash.turno.attuale+'° '+language.page.giornata"></my-titolo>
-    </div>
-
-    <div *ngIf="dash.turno.limbo">
-      <my-titolo [title]="language.page.calcolo"></my-titolo>
+    <div>
+      <my-titolo [title]="dash.turno.giornata+'° '+language.page.giornata"></my-titolo>
     </div>
 
     <my-logo [is_upgrade]="this.dash.turno.is_upgrade"></my-logo>
 
 
-    <div [ngSwitch]="this.dash.periodo_giornata.periodo">
-      <div *ngSwitchCase="PERIODO_GIORNATA.PRE_PARTITA">PRE_PARTITA</div>
-      <div *ngSwitchCase="PERIODO_GIORNATA.PARTITA_LIVE">PARTITA_LIVE</div>
-      <div *ngSwitchCase="PERIODO_GIORNATA.POST_PARTITA">POST_PARTITA</div>
-    </div>
+    <div [ngSwitch]="this.dash.turno.periodo">
+      <div *ngSwitchCase="PERIODO_GIORNATA.PRE_PARTITA">
 
 
-    <div class="pt-16" *ngIf="dash.prossimo_match">
+        <div *ngIf="dash.match.casa" class="pt-16">
 
-      <mdb-card class="text-white" bgColor="bg-success">
-        <mdb-card-header>
-          <div *ngIf="!dash.turno.limbo">{{language.page.inizio_partita}}: {{dash.turno.tmp}}</div>
-          <div *ngIf="dash.turno.limbo">MATCH</div>
-        </mdb-card-header>
-        <!--Card content-->
-        <mdb-card-body class="sfondo_campo">
-          <div class="squadre">
-            <div class="row col-4 col-sm-4 col-md-4 col-lg-4">
-              <div class="col-12 col-sm-12 col-md-6 col-lg-6  punteggio">
-                <img src="assets/avatar/{{dash.prossimo_match.avatar_casa}}.png" class="avatar" width="24px" />
+          <mdb-card class="text-white" bgColor="bg-success">
+            <mdb-card-header>
+              <div>{{language.page.inizio_partita}}: {{dash.turno.data_inizio}}</div>
+            </mdb-card-header>
+            <!--Card content-->
+            <mdb-card-body class="sfondo_campo">
+              <div class="squadre">
+                <div class="row col-4 col-sm-4 col-md-4 col-lg-4">
+                  <div class="col-12 col-sm-12 col-md-6 col-lg-6  punteggio">
+                    <img src="assets/avatar/{{dash.match.avatar_casa}}.png" class="avatar" width="24px" />
+                  </div>
+                  <div class="col-12 col-sm-12 col-md-6 col-lg-6  punteggio">
+                    <label style="font-weight: bold;">
+                      {{dash.match.casa}}
+                    </label>
+                  </div>
+                </div>
+                <div class="punteggio col-4 col-sm-4 col-md-4 col-lg-4"></div>
+                <div class="row col-4 col-sm-4 col-md-4 col-lg-4">
+                  <div class="col-12 col-sm-12 col-md-6 col-lg-6  punteggio">
+                    <img src="assets/avatar/{{dash.match.avatar_trasferta}}.png" class="avatar" width="24px" />
+                  </div>
+                  <div class="col-12 col-sm-12 col-md-6 col-lg-6 punteggio">
+                    <label style="font-weight: bold;">
+                      {{dash.match.trasferta}}
+                    </label>
+                  </div>
+                </div>
               </div>
-              <div class="col-12 col-sm-12 col-md-6 col-lg-6  punteggio">
+              <div>
+                <my-button [submit]="false" [color]="'success'" [block]="true"
+                  [label]="language.page.inserisci_formazione" (myClick)="inserisciFormazione()"></my-button>
+              </div>
+            </mdb-card-body>
+
+          </mdb-card>
+
+          <!-- lavagna-->
+          <div class="pt-16">
+
+
+            <mdb-card class="text-white pa-16" bgColor="bg-success">
+
+              <mdb-card-body class="sfondo_lavagna">
                 <label style="font-weight: bold;">
-                  {{dash.prossimo_match.casa}}
+                  {{language.page.cosi_campo}}:
                 </label>
-              </div>
-            </div>
-            <div class="punteggio col-4 col-sm-4 col-md-4 col-lg-4"></div>
-            <div class="row col-4 col-sm-4 col-md-4 col-lg-4">
-              <div class="col-12 col-sm-12 col-md-6 col-lg-6  punteggio">
-                <img src="assets/avatar/{{dash.prossimo_match.avatar_trasferta}}.png" class="avatar" width="24px" />
-              </div>
-              <div class="col-12 col-sm-12 col-md-6 col-lg-6 punteggio">
-                <label style="font-weight: bold;">
-                  {{dash.prossimo_match.trasferta}}
-                </label>
-              </div>
-            </div>
+                <div class="squadre-lavagna">
+
+                  <div class="flex-colonna">
+                    <label style="font-weight: bold;">
+                      {{dash.match.casa}}
+                    </label>
+
+                    <label *ngFor="let gesso of dash.match.formazione_casa">
+                      {{gesso.nome_calciatore}}
+                    </label>
+                  </div>
+
+
+                  <div class="flex-colonna">
+                    <label style="font-weight: bold;">
+                      {{dash.match.trasferta}}
+                    </label>
+
+                    <label *ngFor="let gesso of dash.match.formazione_trasferta">
+                      {{gesso.nome_calciatore}}
+                    </label>
+                  </div>
+
+                </div>
+
+              </mdb-card-body>
+
+            </mdb-card>
+
           </div>
-          <div *ngIf="!dash.turno.limbo">
-            <my-button [submit]="false" [color]="'success'" [block]="true" [label]="language.page.inserisci_formazione"
-              (myClick)="inserisciFormazione()"></my-button>
-          </div>
-          <div *ngIf="dash.turno.limbo">
-            <my-button [submit]="false" [color]="'success'" [block]="true" [label]="language.page.vedi_live"
-              (myClick)="visualizzaLive()"></my-button>
-          </div>
-        </mdb-card-body>
+        </div>
 
-      </mdb-card>
+      </div>
+      <div *ngSwitchCase="PERIODO_GIORNATA.PARTITA_LIVE">
+        <div class="pt-16" *ngIf="dash.match.casa">
 
-      <!-- lavagna-->
-      <div class="pt-16">
-
-
-        <mdb-card class="text-white pa-16" bgColor="bg-success">
-
-          <mdb-card-body class="sfondo_lavagna">
-            <label style="font-weight: bold;">
-              {{language.page.cosi_campo}}:
-            </label>
-            <div class="squadre-lavagna">
-
-              <div class="flex-colonna">
-                <label style="font-weight: bold;">
-                  {{dash.prossimo_match.casa}}
-                </label>
-
-                <label *ngFor="let gesso of dash.prossimo_match.formazione_casa">
-                  {{gesso.nome_calciatore}}
-                </label>
+          <mdb-card class="text-white" bgColor="bg-success">
+            <mdb-card-header>
+              <div>MATCH</div>
+            </mdb-card-header>
+            <!--Card content-->
+            <mdb-card-body class="sfondo_campo">
+              <div class="squadre">
+                <div class="row col-4 col-sm-4 col-md-4 col-lg-4">
+                  <div class="col-12 col-sm-12 col-md-6 col-lg-6  punteggio">
+                    <img src="assets/avatar/{{dash.match.avatar_casa}}.png" class="avatar" width="24px" />
+                  </div>
+                  <div class="col-12 col-sm-12 col-md-6 col-lg-6  punteggio">
+                    <label style="font-weight: bold;">
+                      {{dash.match.casa}}
+                    </label>
+                  </div>
+                </div>
+                <div class="punteggio col-4 col-sm-4 col-md-4 col-lg-4"></div>
+                <div class="row col-4 col-sm-4 col-md-4 col-lg-4">
+                  <div class="col-12 col-sm-12 col-md-6 col-lg-6  punteggio">
+                    <img src="assets/avatar/{{dash.match.avatar_trasferta}}.png" class="avatar" width="24px" />
+                  </div>
+                  <div class="col-12 col-sm-12 col-md-6 col-lg-6 punteggio">
+                    <label style="font-weight: bold;">
+                      {{dash.match.trasferta}}
+                    </label>
+                  </div>
+                </div>
               </div>
 
-
-              <div class="flex-colonna">
-                <label style="font-weight: bold;">
-                  {{dash.prossimo_match.trasferta}}
-                </label>
-
-                <label *ngFor="let gesso of dash.prossimo_match.formazione_trasferta">
-                  {{gesso.nome_calciatore}}
-                </label>
+              <div>
+                <my-button [submit]="false" [color]="'success'" [block]="true" [label]="language.page.vedi_live"
+                  (myClick)="visualizzaLive()"></my-button>
               </div>
+            </mdb-card-body>
 
-            </div>
+          </mdb-card>
+        </div>
+      </div>
+      <div *ngSwitchCase="PERIODO_GIORNATA.POST_PARTITA">
 
-          </mdb-card-body>
+        <div class="pt-32">
+          <mdb-card class="text-white" bgColor="bg-success">
+            <mdb-card-header>{{language.page.risultati}}</mdb-card-header>
+          </mdb-card>
+          <risultati [selected]="dash.risultati"></risultati>
 
-        </mdb-card>
+        </div>
 
       </div>
     </div>
 
-    <div class="pt-16" *ngIf="!dash.prossimo_match&&dash.turno.limbo">
-
-      <mdb-card class="text-white" bgColor="bg-success">
-
-        <mdb-card-header>
-          <div>{{language.page.altri_match}}</div>
-        </mdb-card-header>
-
-        <mdb-card-body class="sfondo_campo">
-
-          <div>
-            <my-button [submit]="false" [color]="'success'" [block]="true" [label]="language.page.vedi_live"
-              (myClick)="visualizzaLive()"></my-button>
-          </div>
-        </mdb-card-body>
-
-      </mdb-card>
-
-    </div>
-
-
-    <div class="pt-32" *ngIf="dash.turno.precedente&&!dash.turno.limbo">
-      <mdb-card class="text-white" bgColor="bg-success">
-        <mdb-card-header>{{language.page.risultati}}</mdb-card-header>
-      </mdb-card>
-      <risultati [selected]="dash.risultati"></risultati>
-
-    </div>
-
-    <statistiche></statistiche>
+    <statistiche [statistiche]="dash.statistiche"></statistiche>
 
   </div>
 </div>

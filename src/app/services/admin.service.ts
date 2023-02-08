@@ -213,7 +213,7 @@ export class AdminService extends HttpSenderService {
 
   cambiaDate(payload: any) {
 
-    return this.http.post(`${this.buildURL("upd_data_partita")}`, { data: payload })
+    return this.http.post(`${this.buildURL("upd_giornata")}`, { data: payload })
       .pipe(map((res) => {
 
         return 'ok';
@@ -223,7 +223,7 @@ export class AdminService extends HttpSenderService {
 
   newData(payload: any) {
 
-    return this.http.post(`${this.buildURL("set_data_partita")}`, { data: payload })
+    return this.http.post(`${this.buildURL("set_giornata")}`, { data: payload })
       .pipe(map((res) => {
 
         return 'ok';
@@ -231,16 +231,7 @@ export class AdminService extends HttpSenderService {
         catchError(this.handleError));
   }
 
-  deleteDataPartita(giornata: string) {
-    
-    const params = new HttpParams().set('giornata', giornata);
-
-    return this.http.get(`${this.buildURL("del_data_partita")}`, { params: params })
-      .pipe(map(res => {
-        return 'ok';
-      }),
-        catchError(this.handleError));
-  }
+  
 
   getAccoppiamenti(): Observable<any[]> {
     return this.http.get(`${this.buildURL("get_accoppiamenti")}`).pipe(
@@ -277,6 +268,17 @@ export class AdminService extends HttpSenderService {
 
     return this.http.get(`${this.buildURL("del_accoppiamento")}`, { params: params })
       .pipe(map(res => {
+        return 'ok';
+      }),
+        catchError(this.handleError));
+  }
+
+
+  deleteObjectById(payload: any) {
+
+    return this.http.post(`${this.buildURL("del_object_by_id")}`, { data: payload })
+      .pipe(map((res) => {
+
         return 'ok';
       }),
         catchError(this.handleError));

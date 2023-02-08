@@ -5,10 +5,11 @@
 </div>
 
 <div *ngIf="!loading_btn" class="card">
-    <h3 class="card-header text-center font-weight-bold text-uppercase py-4">GESTIONE DATA</h3>
+    <h3 class="card-header text-center font-weight-bold text-uppercase py-4">GESTIONE GIORNATE</h3>
     <div class="card-body">
 
-        <button type="button" mdbBtn color="warning" size="sm" class="my-0" (click)="onNewDate()">AGGIUNGI NUOVA</button>
+        <button type="button" mdbBtn color="warning" size="sm" class="my-0" (click)="onNewDate()">AGGIUNGI
+            NUOVA</button>
         <hr>
 
         <div id="table" class="table-editable">
@@ -17,12 +18,16 @@
                 <tr>
                     <th class="text-center">G</th>
                     <th class="text-center">A</th>
+                    <th class="text-center">FASE</th>
                     <th class="text-center">INIZIO</th>
+                    <th class="text-center">PRIMA</th>
+                    <th class="text-center">ULTIMA</th>
                     <th class="text-center">FINE</th>
+                    <th class="text-center">MERC</th>
                     <th class="text-center">UPD</th>
                     <th class="text-center">DEL</th>
                 </tr>
-                <tr *ngFor="let ele of accoppiamenti.data_partite; let id = index">
+                <tr *ngFor="let ele of accoppiamenti.periodo_partite; let id = index">
                     <td>
                         <span>{{ele.giornata}}</span>
                     </td>
@@ -30,14 +35,28 @@
                         <span>{{ele.serie_a}}</span>
                     </td>
                     <td>
-                        <span contenteditable="true" (keyup)="changeValue(id, 'data_inizio', $event)"
-                            (blur)="updateList(id, 'data_inizio', $event)">{{ele.data_inizio}}</span>
+                        <span>{{ele.fase}}</span>
                     </td>
                     <td>
-                        <span contenteditable="true" (keyup)="changeValue(id, 'data_fine', $event)"
-                            (blur)="updateList(id, 'data_fine', $event)">{{ele.data_fine}}</span>
+                        <span contenteditable="true" (keyup)="changeValue(id, 'inizio_giornata', $event)"
+                            (blur)="updateList(id, 'inizio_giornata', $event)">{{ele.inizio_giornata}}</span>
                     </td>
-
+                    <td>
+                        <span contenteditable="true" (keyup)="changeValue(id, 'prima_partita', $event)"
+                            (blur)="updateList(id, 'prima_partita', $event)">{{ele.prima_partita}}</span>
+                    </td>
+                    <td>
+                        <span contenteditable="true" (keyup)="changeValue(id, 'ultima_partita', $event)"
+                            (blur)="updateList(id, 'ultima_partita', $event)">{{ele.ultima_partita}}</span>
+                    </td>
+                    <td>
+                        <span contenteditable="true" (keyup)="changeValue(id, 'fine_giornata', $event)"
+                            (blur)="updateList(id, 'fine_giornata', $event)">{{ele.fine_giornata}}</span>
+                    </td>
+                    <td>
+                        <span contenteditable="true" (keyup)="changeValue(id, 'is_upgrade', $event)"
+                            (blur)="updateList(id, 'is_upgrade', $event)">{{ele.is_upgrade}}</span>
+                    </td>
                     <td>
                         <span class="table-remove">
                             <button type="button" mdbBtn color="success" size="sm" class="my-0"

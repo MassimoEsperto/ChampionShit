@@ -24,7 +24,7 @@ export class DataPartiteComponent extends GlobalComponent implements OnInit {
     super();
   }
 
-  ngOnInit(){}
+  ngOnInit() { }
 
 
   getAccoppiamenti() {
@@ -52,21 +52,15 @@ export class DataPartiteComponent extends GlobalComponent implements OnInit {
 
   updateList(id: number, property: string, event: any) {
     const editField = event.target.textContent;
-    this.accoppiamenti.data_partite[id][property] = editField;
+    this.accoppiamenti.periodo_partite[id][property] = editField;
   }
 
-  onChangeData(element){
-
-    let payload = {
-      giornata: element.giornata,
-      data_inizio: element.data_inizio,
-      data_fine: element.data_fine
-    }
+  onChangeData(element) {
 
     const dialogRef = this.dialog.open(MyModalValidate);
     dialogRef.afterClosed().subscribe(result => {
       if (result)
-        this.changeData(payload);
+        this.changeData(element);
     });
   }
 
@@ -88,15 +82,17 @@ export class DataPartiteComponent extends GlobalComponent implements OnInit {
     const dialogRef = this.dialog.open(MyModalDate, {
       panelClass: 'dialog-language',
       data: {
-        titolo: 'DATE MATCH',
+        titolo: 'GIORNATE',
         valori: null,
-        combo: this.accoppiamenti.date_possibili
+        combo: this.accoppiamenti.date_possibili,
+        fasi: this.accoppiamenti.fasi
       }
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result)
+      if (result) {
         this.newData(result)
+      }
     });
   }
 
@@ -114,18 +110,25 @@ export class DataPartiteComponent extends GlobalComponent implements OnInit {
       })
   }
 
-  onDeleteData(element){
+  onDeleteData(element) {
 
     const dialogRef = this.dialog.open(MyModalValidate);
     dialogRef.afterClosed().subscribe(result => {
-      if (result)
-       this.deleteData(element.giornata);
+      if (result) {
+        let payload = {
+          tabella: "giornate",
+          id_nome: "id_giornata",
+          id_valore: element.giornata
+        }
+
+        this.deleteData(payload);
+      }
     });
   }
 
   deleteData(payload) {
 
-    this.adminService.deleteDataPartita(payload)
+    this.adminService.deleteObjectById(payload)
       .subscribe({
         next: (result: any) => {
           this.getAccoppiamenti()

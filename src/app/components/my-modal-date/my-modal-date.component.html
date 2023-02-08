@@ -15,70 +15,41 @@
         </mat-form-field>
 
         <mat-form-field appearance="outline">
-            <mat-label>Start anno</mat-label>
-            <mat-select formControlName="annoStart">
+            <mat-label>fase</mat-label>
+            <mat-select formControlName="fase">
                 <mat-option>None</mat-option>
-                <mat-option *ngFor="let item of data.combo.anni" [value]="item">{{item}}</mat-option>
+                <mat-option *ngFor="let item of data.fasi" [value]="item.id">{{item.descrizione}}</mat-option>
             </mat-select>
         </mat-form-field>
 
         <mat-form-field appearance="outline">
-            <mat-label>Start mese</mat-label>
-            <mat-select formControlName="meseStart">
-                <mat-option>None</mat-option>
-                <mat-option *ngFor="let item of data.combo.mesi" [value]="item">{{item}}</mat-option>
-            </mat-select>
+            <mat-label>inizio giornata</mat-label>
+            <input matInput type="datetime-local" formControlName="inizio_giornata">
         </mat-form-field>
 
         <mat-form-field appearance="outline">
-            <mat-label>Start giorno</mat-label>
-            <mat-select formControlName="giornoStart">
-                <mat-option>None</mat-option>
-                <mat-option *ngFor="let item of data.combo.giorni" [value]="item">{{item}}</mat-option>
-            </mat-select>
+            <mat-label>prima partita</mat-label>
+            <input matInput type="datetime-local" formControlName="prima_partita">
         </mat-form-field>
 
         <mat-form-field appearance="outline">
-            <mat-label>Start ora</mat-label>
-            <mat-select formControlName="oraStart">
-                <mat-option>None</mat-option>
-                <mat-option *ngFor="let item of data.combo.orari" [value]="item">{{item}}</mat-option>
-            </mat-select>
+            <mat-label>ultima partita</mat-label>
+            <input matInput type="datetime-local" formControlName="ultima_partita">
         </mat-form-field>
 
         <mat-form-field appearance="outline">
-            <mat-label>End anno</mat-label>
-            <mat-select formControlName="annoEnd">
-                <mat-option>None</mat-option>
-                <mat-option *ngFor="let item of data.combo.anni" [value]="item">{{item}}</mat-option>
-            </mat-select>
+            <mat-label>fine giornata</mat-label>
+            <input matInput type="datetime-local" formControlName="fine_giornata">
         </mat-form-field>
 
         <mat-form-field appearance="outline">
-            <mat-label>End mese</mat-label>
-            <mat-select formControlName="meseEnd">
+            <mat-label>is upgrade</mat-label>
+            <mat-select formControlName="upgrade">
                 <mat-option>None</mat-option>
-                <mat-option *ngFor="let item of data.combo.mesi" [value]="item">{{item}}</mat-option>
+                <mat-option value="1">SI</mat-option>
+                <mat-option value="0">NO</mat-option>
             </mat-select>
         </mat-form-field>
-
-        <mat-form-field appearance="outline">
-            <mat-label>End giorno</mat-label>
-            <mat-select formControlName="giornoEnd">
-                <mat-option>None</mat-option>
-                <mat-option *ngFor="let item of data.combo.giorni" [value]="item">{{item}}</mat-option>
-            </mat-select>
-        </mat-form-field>
-
-        <mat-form-field appearance="outline">
-            <mat-label>End ora</mat-label>
-            <mat-select formControlName="oraEnd">
-                <mat-option>None</mat-option>
-                <mat-option *ngFor="let item of data.combo.orari" [value]="item">{{item}}</mat-option>
-            </mat-select>
-        </mat-form-field>
-
-      
 
       
 

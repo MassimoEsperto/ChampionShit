@@ -11,23 +11,23 @@
                 <div class="flex-around">
                     <div style="text-align: center;">
                         <div><span>Num</span></div>
-                        <div><span>{{statistiche.risultati.num}}</span></div>
+                        <div><span>{{statistiche.totali.num}}</span></div>
                     </div>
                     <div style="text-align: center;">
                         <div><span>Win</span></div>
-                        <div><span>{{statistiche.risultati.win}}</span></div>
+                        <div><span>{{statistiche.totali.win}}</span></div>
                     </div>
                     <div style="text-align: center;">
                         <div><span>Lose</span></div>
-                        <div><span>{{statistiche.risultati.los}}</span></div>
+                        <div><span>{{statistiche.totali.los}}</span></div>
                     </div>
                     <div style="text-align: center;">
                         <div><span>Par</span></div>
-                        <div><span>{{statistiche.risultati.par}}</span></div>
+                        <div><span>{{statistiche.totali.par}}</span></div>
                     </div>
                     <div style="text-align: center;">
                         <div><span>Gol</span></div>
-                        <div><span>{{statistiche.risultati.gol}}</span></div>
+                        <div><span>{{statistiche.totali.gol}}</span></div>
                     </div>
                 </div>
 
@@ -37,7 +37,7 @@
 
     <div class="pt-8 pb-8">
 
-        <div *ngFor="let item of statistiche.giocate">
+        <div *ngFor="let item of statistiche.calendario">
 
             <mdb-card>
 

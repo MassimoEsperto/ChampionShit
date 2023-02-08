@@ -21,17 +21,18 @@ export class MyModalDate implements OnInit {
     this.form = this.fb.group({
       giornata: [null, Validators.required],
       serieA: [null, Validators.required],
-      annoStart: [null, Validators.required],
-      meseStart: [null, Validators.required],
-      giornoStart: [null, Validators.required],
-      oraStart: [null, Validators.required],
-      annoEnd: [null, Validators.required],
-      meseEnd: [null, Validators.required],
-      giornoEnd: [null, Validators.required],
-      oraEnd: [null, Validators.required],
-      id_data: [null]
+      fase: [null, Validators.required],
+      inizio_giornata: [null, Validators.required],
+      prima_partita: [null, Validators.required],
+      ultima_partita: [null, Validators.required],
+      fine_giornata: [null, Validators.required],
+      upgrade: [null, Validators.required]
     });
   }
+
+
+
+
 
   save() {
     if (this.form.valid) {
@@ -40,8 +41,12 @@ export class MyModalDate implements OnInit {
       let response = {
         giornata: control.giornata.value,
         serie_a: control.serieA.value,
-        data_inizio: control.annoStart.value +'-'+ control.meseStart.value +'-'+control.giornoStart.value+'-'+ control.oraStart.value,
-        data_fine: control.annoEnd.value +'-'+ control.meseEnd.value +'-'+control.giornoEnd.value+'-'+ control.oraEnd.value
+        inizio_giornata: control.inizio_giornata.value.replace("T", " ") + ":00",
+        prima_partita: control.prima_partita.value.replace("T", " ") + ":00",
+        ultima_partita: control.ultima_partita.value.replace("T", " ") + ":00",
+        fine_giornata: control.fine_giornata.value.replace("T", " ") + ":00",
+        is_upgrade: control.upgrade.value,
+        fase: control.fase.value
       }
 
       this.dialogRef.close(response);

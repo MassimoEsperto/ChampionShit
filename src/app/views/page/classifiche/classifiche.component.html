@@ -6,6 +6,7 @@
         <mdb-card class="text-white" bgColor="bg-success">
             <mdb-card-header>{{language.page.fasi.gironi}}</mdb-card-header>
         </mdb-card>
+
         <div *ngFor="let classifica of classifiche.gironi">
             <div class="pb-8 pt-8">
                 <mdb-card>
@@ -20,7 +21,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr mdbTableCol *ngFor="let el of classifica.teams">
+                                <tr [ngClass]="{'primo': el.posizione === 1, 'secondo' : el.posizione === 2 }"
+                                    mdbTableCol *ngFor="let el of classifica.teams">
                                     <td>
                                         <div class="squadra">
                                             <img src="assets/avatar/{{el.avatar}}.png" class="avatar" width="24px" />
@@ -36,6 +38,22 @@
 
                 </mdb-card>
             </div>
+        </div>
+
+        <div class="pb-8 pt-8">
+            <mdb-card>
+                <mdb-card-header style="background-color: white;">
+                    <div class="flex-start">
+                        <div class="primo mb-8" style="width: 80px;height: 20px;"> </div>
+                        <span style="font-size: 12px;"> -> PASSAGGIO AL TURNO SUCCESSITO</span>
+                    </div>
+                    <div class="flex-start">
+                        <div class="secondo" style="width: 80px;height: 20px;"> </div>
+                        <span style="font-size: 12px;"> -> QUALIFICATA AGLI SPAREGGI</span>
+                    </div>
+
+                </mdb-card-header>
+            </mdb-card>
         </div>
 
     </div>
