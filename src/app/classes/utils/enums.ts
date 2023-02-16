@@ -28,3 +28,12 @@ export enum PeriodoGiornata {
     PARTITA_LIVE = 2,
     POST_PARTITA = 3
 }
+
+export enum StatiUtente {
+    ISCRITTO = 1,
+    PARTECIPANTE = 2,
+    PAGANTE = 3,
+    ELIMINATO = 4,
+    VINCITORE = 5,
+    ADMIN = 6
+}

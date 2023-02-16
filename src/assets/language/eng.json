@@ -33,6 +33,20 @@
             "quarti": "QUARTER",
             "semi_finale": "SEMIFINAL",
             "finale": "FINAL"
+        },
+        "percorso": {
+            "0": "ENTERED IN THE COMPETITION",
+            "1": "ENTERED IN THE GROUPS",
+            "2": "ENTER PLAY-OFFS",
+            "3": "QUALIFIED EIGHTH",
+            "4": "QUARTER QUALIFYING",
+            "5": "QUALIFIED SEMI-FINAL",
+            "6": "FINAL QUALIFYING"
+        },
+        "stati": {
+            "in_corsa": "STILL RUNNING",
+            "eliminato": "USER DELETED",
+            "vincitore": "WINNER OF THE SHITCUP"
         }
     },
     "bottoni": {

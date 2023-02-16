@@ -33,6 +33,20 @@
             "quarti": "TRIMESTRE",
             "semi_finale": "DEMIFINALE",
             "finale": "FINAL"
+        },
+        "percorso": {
+            "0": "PARTICIPANT AU CONCOURS",
+            "1": "ENTREE DANS LES GROUPES",
+            "2": "ENTREZ DANS LES BARRAGES",
+            "3": "HUITIÈME QUALIFIÉ",
+            "4": "QUARTIER DE QUALIFICATION",
+            "5": "DEMI-FINALE QUALIFIÉE",
+            "6": "QUALIFICATION FINALE"
+        },
+        "stati": {
+            "in_corsa": "TOUJOURS EN COURS",
+            "eliminato": "UTILISATEUR SUPPRIME",
+            "vincitore": "GAGNANT DU SHITCUP"
         }
     },
     "alert": {
@@ -178,7 +192,6 @@
                 "messaggio1": "Le nombre de participants est de 20",
                 "messaggio2": "Slayer84"
             }
-
         ]
     }
 }

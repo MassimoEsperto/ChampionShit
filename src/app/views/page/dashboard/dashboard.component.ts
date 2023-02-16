@@ -44,6 +44,7 @@ export class DashboardComponent extends GlobalComponent implements OnInit {
       .subscribe({
         next: (result: any) => {
           this.dash = result
+          this.dash.statistiche.loggato = this.loggato
         },
         error: (error: any) => {
           this.alert.error(error);

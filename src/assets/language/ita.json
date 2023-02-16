@@ -33,6 +33,20 @@
             "quarti": "QUARTI",
             "semi_finale": "SEMIFINALE",
             "finale": "FINALE"
+        },
+        "percorso": {
+            "0": "ISCRITTO ALLA COMPETIZIONE",
+            "1": "INSERITO NEI GIRONI",
+            "2": "ACCESSO SPAREGGI",
+            "3": "QUALIFICATA OTTAVI",
+            "4": "QUALIFICATA QUARTI",
+            "5": "QUALIFICATA SEMIFINALE",
+            "6": "QUALIFICATA FINALE"
+        },
+        "stati": {
+            "in_corsa": "ANCORA IN CORSA",
+            "eliminato": "UTENTE ELIMINATO",
+            "vincitore": "VINCITORE DELLA SHITCUP"
         }
     },
     "alert": {

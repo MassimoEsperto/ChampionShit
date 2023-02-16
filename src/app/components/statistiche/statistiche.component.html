@@ -37,7 +37,25 @@
 
     <div class="pt-8 pb-8">
 
-        <div *ngFor="let item of statistiche.calendario">
+        <mdb-card>
+            <mdb-card-header>
+                <img src="assets/avatar/START.png" class="avatar" width="24px" />
+                {{language.page.percorso[0]}}
+            </mdb-card-header>
+        </mdb-card>
+
+    </div>
+
+    <div *ngFor="let percorso of statistiche.percorso" class="pt-8 pb-8">
+
+        <mdb-card>
+            <mdb-card-header>
+                <img src="assets/avatar/TRAGUARDO.png" class="avatar" width="24px" />
+                {{language.page.percorso[percorso.fase]}}
+            </mdb-card-header>
+        </mdb-card>
+
+        <div *ngFor="let item of percorso.calendario">
 
             <mdb-card>
 
@@ -67,6 +85,15 @@
 
             </mdb-card>
         </div>
+    </div>
+
+    <div class="pt-8 pb-8">
+
+        <mdb-card>
+            <mdb-card-header>
+                <div style="text-align: center;font-weight:bold">{{statistiche.loggato.squadra}} {{getStato(statistiche.stato)}}</div>
+            </mdb-card-header>
+        </mdb-card>
     </div>
 
 </div>
