@@ -1,4 +1,3 @@
-
 <!-- Editable table -->
 <div class="card">
   <h3 class="card-header text-center font-weight-bold text-uppercase py-4">GESTIONE UTENTI</h3>
@@ -10,8 +9,8 @@
           <th class="text-center">ID</th>
           <th class="text-center">USERNAME</th>
           <th class="text-center">SQUADRA</th>
-          <th class="text-center">RUOLO</th>
-          <th class="text-center">Validate</th>
+          <th class="text-center">STATO</th>
+          <th class="text-center">Update</th>
           <th class="text-center">Remove</th>
         </tr>
         <tr *ngFor="let ele of utenti; let id = index">
@@ -19,33 +18,24 @@
             <span>{{ele.id}}</span>
           </td>
           <td>
-            <span contenteditable="true" (keyup)="changeValue(id, 'username', $event)"
-              (blur)="updateList(id, 'username', $event)">{{ele.username}}</span>
+            <span>{{ele.username}}</span>
           </td>
           <td>
-            <span contenteditable="true" (keyup)="changeValue(id, 'squadra', $event)"
-              (blur)="updateList(id, 'squadra', $event)">{{ele.squadra}}</span>
+            <span>{{ele.squadra}}</span>
           </td>
           <td>
-            <span contenteditable="true" (keyup)="changeValue(id, 'ruolo', $event)"
-              (blur)="updateList(id, 'ruolo', $event)">{{getRuolo(ele.ruolo)}}</span>
+            <span>{{ele.stato}}</span>
           </td>
           <td>
-            <span *ngIf="ele.ruolo==3" class="table-remove">
+            <span class="table-remove">
               <button type="button" mdbBtn color="primary" size="sm" class="my-0"
-                (click)="onValidate(ele)">Validate</button>
-            </span>
-            <span *ngIf="ele.ruolo!=3&&!ele.is_pay" class="table-remove">
-              <button type="button" mdbBtn color="primary" size="sm" class="my-0"
-                (click)="onPagato(ele)">Pagare</button>
-            </span>
-            <span *ngIf="ele.is_pay" class="table-remove">
-              OK
+                (click)="onUpdUtente(ele)">UPDATE</button>
             </span>
           </td>
           <td>
             <span class="table-remove">
-              <button type="button" mdbBtn color="danger" size="sm" class="my-0" (click)="onDelete(id,ele.id)">Remove</button>
+              <button type="button" mdbBtn color="danger" size="sm" class="my-0"
+                (click)="onDelete(id,ele.id)">DELETE</button>
             </span>
           </td>
         </tr>
@@ -54,4 +44,3 @@
   </div>
 </div>
 <!-- Editable table -->
-

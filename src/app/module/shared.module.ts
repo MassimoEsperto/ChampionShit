@@ -14,6 +14,7 @@ import { MyModalMatch } from '../components/my-modal-match/my-modal-match.compon
 import { MyTitolo } from '../components/my-titolo/my-titolo.component';
 import { MyModalAccopiamenti } from '../components/my-modal-accopiamenti/my-modal-accopiamenti.component';
 import { MyModalDate } from '../components/my-modal-date/my-modal-date.component';
+import { MyModalUtente } from '../components/my-modal-utente/my-modal-utente.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { MyModalDate } from '../components/my-modal-date/my-modal-date.component
     MyModalLanguage,
     MyTitolo,
     MyModalAccopiamenti,
-    MyModalDate
+    MyModalDate,
+    MyModalUtente
   ],
   exports: [
     MyButton,
@@ -45,7 +47,8 @@ import { MyModalDate } from '../components/my-modal-date/my-modal-date.component
     MyModalMatch,
     MyTitolo,
     MyModalAccopiamenti,
-    MyModalDate
+    MyModalDate,
+    MyModalUtente
   ],
   providers: [
   ],

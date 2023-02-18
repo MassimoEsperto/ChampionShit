@@ -6,6 +6,7 @@ import { AlertService } from 'src/app/services/alert.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MyModalValidate } from 'src/app/components/my-modal-validate/my-modal-validate.component';
 import { ComboRuolo, Ruolo } from 'src/app/classes/utils/enums';
+import { MyModalUtente } from 'src/app/components/my-modal-utente/my-modal-utente.component';
 
 
 @Component({
@@ -17,7 +18,8 @@ export class GestioneUtentiComponent extends GlobalComponent implements OnInit {
 
 
   editField: string;
-  @Input() utenti: Utente[];
+  @Input() administrator: any;
+  utenti: Utente[];
 
   constructor(
     private alert: AlertService,
@@ -26,7 +28,9 @@ export class GestioneUtentiComponent extends GlobalComponent implements OnInit {
     super();
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.utenti = this.administrator.utenti;
+  }
 
 
 
@@ -46,9 +50,9 @@ export class GestioneUtentiComponent extends GlobalComponent implements OnInit {
   }
 
 
-  pagato(user: Utente) {
+  updDetailUtente(user: any) {
 
-    this.adminService.pagato(user)
+    this.adminService.updDetailUtente(user)
       .subscribe({
         next: (result: any) => {
 
@@ -61,20 +65,6 @@ export class GestioneUtentiComponent extends GlobalComponent implements OnInit {
       })
   }
 
-  validate(user: Utente) {
-
-    this.adminService.validateUtente(user)
-      .subscribe({
-        next: (result: any) => {
-
-          this.alert.success(this.language.alert.success);
-          this.ricalcola()
-        },
-        error: (error: any) => {
-          this.alert.error(error);
-        }
-      })
-  }
 
 
 
@@ -95,12 +85,6 @@ export class GestioneUtentiComponent extends GlobalComponent implements OnInit {
 
   /* FINE CHIAMATE AI SERVIZI */
 
-
-  updateList(id: number, property: string, event: any) {
-    const editField = event.target.textContent;
-    this.utenti[id][property] = editField;
-  }
-
   onDelete(id: any, id_utente: string) {
     const dialogRef = this.dialog.open(MyModalValidate);
     dialogRef.afterClosed().subscribe(result => {
@@ -109,38 +93,22 @@ export class GestioneUtentiComponent extends GlobalComponent implements OnInit {
     });
   }
 
-  onValidate(element: Utente) {
-    const dialogRef = this.dialog.open(MyModalValidate);
-    dialogRef.afterClosed().subscribe(result => {
-      if (result)
-        this.validate(element);
+  onUpdUtente(utente) {
+
+    const dialogRef = this.dialog.open(MyModalUtente, {
+      panelClass: 'dialog-language',
+      data: {
+        titolo: 'Modifica Utenti',
+        valori: utente,
+        stati: this.administrator.ruoli
+      }
     });
-  }
 
-  onPagato(element: Utente) {
-    const dialogRef = this.dialog.open(MyModalValidate);
     dialogRef.afterClosed().subscribe(result => {
-      if (result)
-        this.pagato(element);
+      if (result) {
+        this.updDetailUtente(result);
+      }
     });
-  }
-
-  changeValue(id: number, property: string, event: any) {
-    this.editField = event.target.textContent;
-  }
-
-  getRuolo(input: any) {
-    switch (Number(input)) {
-      case Ruolo.ADMIN:
-        return ComboRuolo.ADMIN_DESC
-        break;
-      case Ruolo.GIOCATORE:
-        return ComboRuolo.GIOCATORE_DESC
-        break;
-      default:
-        return ComboRuolo.VISITATORE_DESC
-        break;
-    }
   }
 
 }

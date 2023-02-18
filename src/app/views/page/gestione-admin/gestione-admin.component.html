@@ -4,7 +4,7 @@
 
     <mat-tab label="UTENTI">
       <div class="pt-16 pl-8 pr-8 tabula">
-        <gestione-utenti [utenti]="administrator.utenti"></gestione-utenti>
+        <gestione-utenti [administrator]="administrator"></gestione-utenti>
       </div>
     </mat-tab>
 
@@ -28,7 +28,8 @@
 
     <mat-tab label="SQUADRE">
       <div class="pt-16 tabula">
-        <gestione-squadre [listaRose]="administrator.lista_calciatori" [utenti]="administrator.utenti"></gestione-squadre>
+        <gestione-squadre [listaRose]="administrator.lista_calciatori"
+          [utenti]="administrator.utenti"></gestione-squadre>
       </div>
     </mat-tab>
 

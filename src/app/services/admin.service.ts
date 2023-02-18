@@ -38,18 +38,8 @@ export class AdminService extends HttpSenderService {
       catchError(this.handleError));
   }
 
-
-
-  validateUtente(utente: Utente) {
-    return this.http.put(`${this.buildURL("set_validate_utente")}`, { data: utente })
-      .pipe(map((res) => {
-        return 'ok';
-      }),
-        catchError(this.handleError));
-  }
-
-  pagato(utente: Utente) {
-    return this.http.put(`${this.buildURL("set_pay_utente")}`, { data: utente })
+  updDetailUtente(utente: Utente) {
+    return this.http.put(`${this.buildURL("upd_detail_utente")}`, { data: utente })
       .pipe(map((res) => {
         return 'ok';
       }),
