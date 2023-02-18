@@ -4,7 +4,6 @@ export class Utente {
   password: string;
   email: string;
   squadra: string;
-  ruolo: number;
   avatar: string;
   id_avatar: string;
   scadenza:string;
@@ -12,7 +11,7 @@ export class Utente {
   token?: string;
   lega?: string;
   account?: string;
-  pagato?: boolean;
+  stato?: number;
 
   constructor(
     username: string,

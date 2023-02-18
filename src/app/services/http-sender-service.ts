@@ -44,12 +44,11 @@ export class HttpSenderService {
       utente.avatar = element.avatar
       utente.id_avatar = element.id_avatar
       utente.id = element.id_utente
-      utente.ruolo = element.ruolo
       utente.token = element.token
       utente.num_msg = element.num_msg
       utente.lega = element.lega
       utente.account = element.account
-      utente.pagato = element.pagato == 1
+      utente.stato = element.stato
     }
 
     return utente

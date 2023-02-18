@@ -1,7 +1,6 @@
 
 import { AfterViewInit, Component, ElementRef } from '@angular/core';
 import { Utente } from 'src/app/classes/models/utente';
-import { Ruolo } from 'src/app/classes/utils/enums';
 import { GlobalComponent } from 'src/app/classes/utils/global-component';
 import { Utils } from 'src/app/classes/utils/utils';
 import { AuthService } from 'src/app/services/auth.service';
@@ -19,9 +18,7 @@ export class SidebarComponent extends GlobalComponent implements AfterViewInit {
     super();
   }
 
-  isPlayer: boolean;
-  isVisitors: boolean;
-  isPagante: boolean = true;
+ 
   loggato: Utente;
 
   ngAfterViewInit() {
@@ -30,10 +27,6 @@ export class SidebarComponent extends GlobalComponent implements AfterViewInit {
 
   ngOnInit() {
     this.loggato = this.authService.getLoggato();
-    let ruolo = this.loggato.ruolo;
-    this.isPlayer = ruolo == Ruolo.ADMIN || ruolo == Ruolo.GIOCATORE;
-    this.isVisitors = ruolo == Ruolo.VISITATORE;
-    this.isPagante = this.loggato.pagato;
   }
 
 

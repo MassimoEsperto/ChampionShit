@@ -1,4 +1,3 @@
-import { Ruolo, ComboRuolo } from './enums';
 import { ElementRef } from '@angular/core';
 
 export class Utils{

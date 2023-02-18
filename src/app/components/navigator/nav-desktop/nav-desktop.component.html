@@ -10,7 +10,7 @@
         <span class="navbar-brand">{{loggato.username}}</span>
       </div>
     </div>
-    <div *ngIf="isAdmin" class="nav-item flex-start">
+    <div *ngIf="loggato.stato==STATI_UTNTE.ADMIN" class="nav-item flex-start">
       <a class="pa-8" routerLink="/home/gestione-admin">
         <mdb-icon fas icon="id-card-alt" class="pr-1"></mdb-icon>{{language.header.admin}}
       </a>

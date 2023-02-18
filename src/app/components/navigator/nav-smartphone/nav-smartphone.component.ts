@@ -2,7 +2,6 @@ import { Component, ElementRef, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Utente } from 'src/app/classes/models/utente';
-import { Ruolo } from 'src/app/classes/utils/enums';
 import { GlobalComponent } from 'src/app/classes/utils/global-component';
 import { AdminService } from 'src/app/services/admin.service';
 import { AuthService } from 'src/app/services/auth.service';
@@ -17,9 +16,6 @@ import { MyModalLanguage } from '../../my-modal-language/my-modal-language.compo
 export class NavSmartphoneComponent extends GlobalComponent implements OnInit {
 
   loggato: Utente;
-  isAdmin: boolean;
-  isPlayer: boolean;
-  isVisitors: boolean;
   versione: any;
 
   constructor(private elementRef: ElementRef,
@@ -32,10 +28,6 @@ export class NavSmartphoneComponent extends GlobalComponent implements OnInit {
 
   ngOnInit() {
     this.loggato = this.authService.getLoggato();
-    let ruolo = this.loggato.ruolo;
-    this.isAdmin = ruolo == Ruolo.ADMIN;
-    this.isPlayer = ruolo == Ruolo.ADMIN || ruolo == Ruolo.GIOCATORE;
-    this.isVisitors = ruolo == Ruolo.VISITATORE;
     this.versione = this.services.versione()
   }
 

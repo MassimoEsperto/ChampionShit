@@ -66,7 +66,7 @@
                         <span class="cursore pb-8" (click)="onInfo()">{{language.footer.albo}}</span>
                         <a class="cursore pb-8" href="assets/download/WorldWideFantashit.pdf">{{language.footer.regolamento}}</a>
                         <span class="cursore pb-8" (click)="onChangeLanguage()">{{language.footer.cambio_lingua}}</span>
-                        <span *ngIf="isAdmin" class="cursore pb-8" routerLink="/home/gestione-admin">{{language.header.admin}}</span>
+                        <span *ngIf="loggato.stato==STATI_UTNTE.ADMIN" class="cursore pb-8" routerLink="/home/gestione-admin">{{language.header.admin}}</span>
                     </div>
                 </div>
             </div>

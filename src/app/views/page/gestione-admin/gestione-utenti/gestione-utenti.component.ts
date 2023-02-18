@@ -5,7 +5,6 @@ import { AdminService } from 'src/app/services/admin.service';
 import { AlertService } from 'src/app/services/alert.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MyModalValidate } from 'src/app/components/my-modal-validate/my-modal-validate.component';
-import { ComboRuolo, Ruolo } from 'src/app/classes/utils/enums';
 import { MyModalUtente } from 'src/app/components/my-modal-utente/my-modal-utente.component';
 
 
