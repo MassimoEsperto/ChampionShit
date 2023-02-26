@@ -73,8 +73,9 @@
 
           </div>
 
-          <div *ngIf="modulo" class="pa-8">
-            <p style="color: red;margin-bottom:0" class="pt-32">MODULO: {{modulo.descrizione}}</p>
+          <div *ngIf="modulo" class="pt-16">
+            <p style="color: white;margin-bottom:0">{{language.page.modulo}} : {{modulo.descrizione}}</p>
+            <p style="color: white;margin-bottom:0">{{language.page.punti_bonus}} : {{modulo.bonus}}</p>
           </div>
 
           <div class="pa-8">

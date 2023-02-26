@@ -24,9 +24,11 @@
         "data": "DATA",
         "voti_live": "VOTI LIVE",
         "statistiche": "STATISTICHE",
-        "generale": "UNICA PER TUTTI I GIRONI",
+        "generale": "RANKING UNICO PER TUTTI I GIRONI",
         "altri_match": "ALTRE PARTITE",
         "cosi_campo": "Cosi in campo",
+        "modulo": "MODULO",
+        "punti_bonus": "PUNTI BONUS",
         "fasi": {
             "gironi": "GIRONI",
             "spareggi": "SPAREGGI",

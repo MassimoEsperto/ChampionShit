@@ -27,6 +27,8 @@
         "generale": "UNIQUE POUR TOUS LES GROUPES",
         "altri_match": "AUTRES JEUX",
         "cosi_campo": "Cosi in campo",
+        "modulo": "MODULE",
+        "punti_bonus": "POINTS BONUS",
         "fasi": {
             "gironi": "GROUPES",
             "spareggi": "TIRAGES",

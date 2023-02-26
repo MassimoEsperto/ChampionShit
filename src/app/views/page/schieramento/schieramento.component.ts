@@ -67,16 +67,17 @@ export class SchieramentoComponent extends GlobalComponent implements OnInit {
 
   changeView() {
     this.schieramento = !this.schieramento;
-    let indice = this.squadra.length>0?"":"NNNNN";
-    for(let ele of this.squadra){
-      indice+=ele.tipo
+    this.aggiornaModulo()
+  }
+
+  aggiornaModulo() {
+
+    let indice = this.squadra.length > 0 ? "" : "NNNNN";
+    for (let ele of this.squadra) {
+      indice += ele.tipo
     }
 
-    this.modulo =this.moduli[indice]
-    
-    console.log("this.squadra",this.squadra)
-    console.log("indice",indice)
-    console.log("this.modulo",this.modulo)
+    this.modulo = this.moduli[indice]
   }
 
   sortedByRuoli(squadra) {
@@ -106,10 +107,12 @@ export class SchieramentoComponent extends GlobalComponent implements OnInit {
       .subscribe({
 
         next: (result: any) => {
-          
+
           this.formazione = result
           this.squadra = result.schierata
           this.moduli = result.moduli
+          this.aggiornaModulo()
+
         },
         error: (error: any) => {
           this.alert.error(error);
@@ -126,7 +129,7 @@ export class SchieramentoComponent extends GlobalComponent implements OnInit {
     let payload = {
       lista: [],
       id_partita: this.formazione.id_partita,
-      modulo:this.modulo
+      modulo: this.modulo.id
     }
 
     for (let membro of this.squadra) {

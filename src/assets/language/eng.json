@@ -27,6 +27,8 @@
         "generale": "UNIQUE FOR ALL GROUPS",
         "altri_match": "OTHER GAMES",
         "cosi_campo": "Cosi in campo",
+        "modulo": "MODULE",
+        "punti_bonus": "BONUS POINTS",
         "fasi": {
             "gironi": "GROUPS",
             "spareggi": "SHOOTS",
