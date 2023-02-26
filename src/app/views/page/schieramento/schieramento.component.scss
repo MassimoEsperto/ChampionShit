@@ -44,9 +44,14 @@
     flex-wrap: nowrap;
   }
 
-  mat-list-option[aria-selected="true"] {	
+mat-list-option[aria-selected="true"] {	
 	color: blanchedalmond;
-  }
-  mat-list-option[aria-selected="false"] {
-	color: blanchedalmond;
-  }
+}
+
+mat-list-option[aria-selected="false"] {
+	color: #ffffff83; 
+}
+
+.mat-list-item-disabled {
+     background-color: transparent; 
+}

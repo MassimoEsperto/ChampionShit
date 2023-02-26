@@ -8,12 +8,12 @@
 
       <mat-selection-list #players>
         <mat-list-option #item *ngFor="let player of formazione.rosa" [selected]="player.selected"
-          [hidden]="!disabledTeam(players,player) && !item.selected" [value]="player">
+          [disabled]="!disabledTeam(players,player) && !item.selected" [value]="player">
           {{player.tipo}} {{player.nome}} {{percentuale[player.nome]?percentuale[player.nome]:'0%'}}
         </mat-list-option>
       </mat-selection-list>
-      <br>
-      <p style="color: red;">{{language.page.indisponibili}}</p>
+
+      <p style="color: red;margin-bottom:0" class="pt-32">{{language.page.indisponibili}} : </p>
       <mat-nav-list>
         <mat-list-item *ngFor="let item of formazione.indisponibili">
           {{item.tipo}} {{item.nome}}
@@ -71,6 +71,10 @@
               </div>
             </div>
 
+          </div>
+
+          <div *ngIf="modulo" class="pa-8">
+            <p style="color: red;margin-bottom:0" class="pt-32">MODULO: {{modulo.descrizione}}</p>
           </div>
 
           <div class="pa-8">
