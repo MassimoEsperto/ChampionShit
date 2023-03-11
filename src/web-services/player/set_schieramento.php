@@ -29,7 +29,7 @@ if(isset($postdata) && !empty($postdata))
 	}
 	
 	//controllo
-	$count = "SELECT * FROM data_partite WHERE now() BETWEEN data_inizio AND data_fine"; 
+	$count = "SELECT * FROM giornate WHERE now() BETWEEN prima_partita AND fine_giornata "; 
 
 	$controllo = mysqli_query( $con , $count );
 

@@ -16,12 +16,12 @@ if(isset($postdata) && !empty($postdata))
 	$email = mysqli_real_escape_string($con, trim($dati->email));  
 	$pass = mysqli_real_escape_string($con, trim($dati->password));
 	$squadra = mysqli_real_escape_string($con, trim($dati->squadra));  
-	$lega = mysqli_real_escape_string($con, trim($dati->lega));    
+	$lega = mysqli_real_escape_string($con, trim($dati->lega));  
+    $account = mysqli_real_escape_string($con, trim($dati->account)); 
 	$players= $dati->players;
 
-	//$sql1 = "INSERT INTO utenti (username,email,password,squadra,lega) VALUES ('{$username}','{$email}','{$pass}','{$squadra}','{$lega}')";
-	$sql1 .= "INSERT INTO utenti (username,email,password,squadra,lega,avatar_id) VALUES ('{$username}','{$email}','{$pass}','{$squadra}','{$lega}',";
-	$sql1 .= "(SELECT id_avatar FROM avatar WHERE id_avatar not in (SELECT avatar_id FROM utenti) ORDER BY RAND() LIMIT 1))";
+	$sql1 .= "INSERT INTO utenti (username,email,password,squadra,lega,account) ";
+	$sql1 .= "VALUES ('{$username}','{$email}','{$pass}','{$squadra}','{$lega}','{$account}') ";
 	
     if ($con->multi_query($sql1) === TRUE) 
 	{

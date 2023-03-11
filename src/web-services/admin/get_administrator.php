@@ -6,13 +6,16 @@ require_once '../config/connect_local.php';
 //dichiarazione variabili	
 $comunicazioni = [];
 $utenti = [];
-$data_partite=[];
+$datatime;
 $incalcolate=[];
 $calcolate=[];
 $giornate_calcolate=[];
 $lista_calciatori= array();
 $formazioni=[];
 $rose=[];
+$ruoli=[];
+$formazioni_attuali = [];
+$periodo_partite=[];
 
 
 
@@ -38,7 +41,9 @@ else
 
 
 //utenti
-$sql2 = "SELECT id_utente,username,email,ruolo,squadra,is_pay FROM utenti where id_utente < 100";
+$sql2 = "SELECT u.id_utente,u.username,u.email,u.ruolo_id,u.squadra,u.account,r.stato ";
+$sql2 .="FROM utenti u,ruoli r where id_utente < 100 AND r.id_ruolo=u.ruolo_id";
+
 
 if($result = mysqli_query($con,$sql2))
 {
@@ -48,9 +53,10 @@ if($result = mysqli_query($con,$sql2))
 		$utenti[$ele]['username'] = $row['username'];
 		$utenti[$ele]['squadra'] = $row['squadra'];
 		$utenti[$ele]['email'] = $row['email'];
-		$utenti[$ele]['ruolo'] = $row['ruolo'];
+		$utenti[$ele]['ruolo'] = $row['ruolo_id'];
+        $utenti[$ele]['stato'] = $row['stato'];
         $utenti[$ele]['id'] = $row['id_utente'];
-        $utenti[$ele]['is_pay'] = $row['is_pay'] == 1;
+        $utenti[$ele]['account'] = $row['account'];
 		$ele++;
 	}
 }
@@ -60,25 +66,28 @@ else
 }
 
 
-//date partite
-$sql3 = "SELECT giornata,data_inizio,data_fine,serie_a FROM data_partite";
+//periodo partite
+$sql3 = "SELECT id_giornata,prima_partita,inizio_giornata,ultima_partita,fine_giornata,serie_a,is_upgrade FROM giornate";
 
 if($result = mysqli_query($con,$sql3))
 {
 	$ele = 0;
 	while($row = mysqli_fetch_assoc($result))
 	{
-		$data_partite[$ele]['giornata'] = $row['giornata'];
-		$data_partite[$ele]['serie_a'] = $row['serie_a'];
-		$data_partite[$ele]['data_inizio'] = $row['data_inizio'];
-		$data_partite[$ele]['data_fine'] = $row['data_fine'];
+		$periodo_partite[$ele]['giornata'] = $row['id_giornata'];
+		$periodo_partite[$ele]['serie_a'] = $row['serie_a'];
+		$periodo_partite[$ele]['inizio_giornata'] = $row['inizio_giornata'];
+		$periodo_partite[$ele]['prima_partita'] = $row['prima_partita'];
+        $periodo_partite[$ele]['ultima_partita'] = $row['ultima_partita'];
+		$periodo_partite[$ele]['fine_giornata'] = $row['fine_giornata'];
+		$periodo_partite[$ele]['is_upgrade'] = $row['is_upgrade'];
 		$ele++;
 	}
     
 }
 else
 {
-	errorMessage('query errata: date partite');
+	errorMessage('query errata: periodo partite');
 }
 
 
@@ -89,6 +98,7 @@ if($result = mysqli_query($con,$sql4))
 {
 	$ele_c = 0;
     $ele_i = 0;
+    $incalcolate[$ele_i] = 0;
 	while($row = mysqli_fetch_assoc($result))
 	{
     	if($row['calcolato']==1){
@@ -192,9 +202,90 @@ else
 
 
 
+//formazioni inserite
+$sql8 = "SELECT t.id_partita,t.girone,t.squadra,t.id_utente,t.schieramento,t.id_calciatore,t.calciatore,t.ruolo,t.voto ";
+$sql8 .="FROM ( ";
+$sql8 .="SELECT f.id_partita,c.girone,u.squadra,f.id_utente,f.schieramento,f.id_calciatore,l.nome_calciatore as calciatore,l.ruolo,f.voto, "; 
+$sql8 .="CASE WHEN f.id_utente = c.utente_casa THEN 1 ELSE 2 END AS priorita  ";
+$sql8 .="FROM formazioni f,calendario c, lista_calciatori l , utenti u  ";
+$sql8 .="WHERE f.id_partita=c.id_partita  ";
+$sql8 .="and l.id_calciatore=f.id_calciatore and u.id_utente=f.id_utente and c.giornata={$giornate_calcolate['incalcolate'][0]} ";
+$sql8 .="union ";
+$sql8 .="SELECT c.id_partita,c.girone,u.squadra,u.id_utente,0 as schieramento,0 as id_calciatore,'NULLO' as calciatore,'N' as ruolo,null as voto,1 AS priorita ";
+$sql8 .="FROM calendario c,utenti u  ";
+$sql8 .="WHERE u.id_utente=c.utente_casa and c.giornata={$giornate_calcolate['incalcolate'][0]} ";
+$sql8 .="union ";
+$sql8 .="SELECT c.id_partita,c.girone,u.squadra,u.id_utente,0 as schieramento,0 as id_calciatore,'NULLO' as calciatore,'N' as ruolo,null as voto,2 AS priorita ";
+$sql8 .="FROM calendario c,utenti u  ";
+$sql8 .="WHERE u.id_utente=c.utente_trasferta and c.giornata={$giornate_calcolate['incalcolate'][0]}  ";
+$sql8 .=") t ORDER BY t.id_partita,t.priorita,t.id_utente,t.schieramento  ";
+
+if($result = mysqli_query($con,$sql8))
+{
+	//indici
+	$ele = -1;
+	$squadre = -1;
+	$numero = -1;
+	
+	//tmp
+	$id_partita = 0;
+	$id_utente = 0;
+	
+	while($row = mysqli_fetch_assoc($result))
+	{
+		if($row['id_partita']!=$id_partita)
+		{
+			$squadre = -1;
+			$ele++;	
+			$formazioni_attuali[$ele]['id_partita'] = $row['id_partita'];
+			$formazioni_attuali[$ele]['girone'] =   		$row['girone'];	
+		}
+			
+		if($row['id_utente']!=$id_utente)
+		{
+			$numero = -1;
+			$squadre++;
+			
+			$formazioni_attuali[$ele]['match'][$squadre]['squadra'] = str_replace(' ', '', $row['squadra']);
+			$formazioni_attuali[$ele]['match'][$squadre]['id_utente'] =   	$row['id_utente'];
+			$id_utente = $row['id_utente'];
+			$formazioni_attuali[$ele]['match'][$squadre]['schieramento'] = [];
+		}
+		
+		if($numero > -1){
+          $formazioni_attuali[$ele]['match'][$squadre]['schieramento'][$numero]['id_calciatore'] = $row['id_calciatore'];
+          $formazioni_attuali[$ele]['match'][$squadre]['schieramento'][$numero]['calciatore'] = substr($row['calciatore'],0,12);
+          $formazioni_attuali[$ele]['match'][$squadre]['schieramento'][$numero]['ruolo'] = $row['ruolo'];
+		}
+		$numero++;
+		$id_partita = $row['id_partita'];
+		
+	}
+ 
+}
+else
+{
+	errorMessage('query errata: formazioni attuali');
+}
 
 
-
+//comunicazioni
+$sql9 = "SELECT id_ruolo,stato FROM ruoli ORDER BY id_ruolo ASC";
+if($result = mysqli_query($con,$sql9))
+{
+	$ele = 0;
+	while($row = mysqli_fetch_assoc($result))
+	{
+ 
+		$ruoli[$ele]['id'] = $row['id_ruolo'];
+        $ruoli[$ele]['stato'] = $row['stato'];
+		$ele++;
+	}
+}
+else
+{
+	errorMessage('query errata: ruoli');
+}
 
 
 
@@ -203,12 +294,13 @@ else
 //risultato
 $myObj->comunicazioni = $comunicazioni;
 $myObj->utenti = $utenti;
-$myObj->data_partite = $data_partite;
 $myObj->lista_calciatori = $lista_calciatori;
-$myObj->formazioni = $formazioni;
+$myObj->ultime_formazioni_inserite = $formazioni;
 $myObj->giornate_calcolate = $giornate_calcolate;
+$myObj->formazioni_attuali = $formazioni_attuali;
 $myObj->rose = $rose;
-
+$myObj->periodo_partite = $periodo_partite;
+$myObj->ruoli = $ruoli;
 
 $totObj=['data'=>$myObj];
 

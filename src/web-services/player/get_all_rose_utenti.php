@@ -33,6 +33,7 @@ if($result = mysqli_query($con,$sql))
         $element[$ele]['lista'][$list]['id_calciatore'] = $row['id_calciatore'];
 		$element[$ele]['lista'][$list]['calciatore'] = $row['nome'];
 		$element[$ele]['lista'][$list]['ruolo'] = $row['ruolo'];
+        $element[$ele]['lista'][$list]['id_utente'] = $row['id_utente'];
 		
 		$utente = $row['id_utente'];
 		$list++;
@@ -43,8 +44,6 @@ if($result = mysqli_query($con,$sql))
 }
 else
 {
-	header("HTTP/1.1 500 Internal Server Error");
-	header('Content-Type: application/json; charset=UTF-8');
-	die(json_encode(array('message' => 'query errata', 'code' => 400)));
+	errorMessage('query errata: rose utenti');
 }
 ?>

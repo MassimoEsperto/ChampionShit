@@ -1,5 +1,5 @@
 <?php
-
+//da eliminare
 require_once '../config/connect_local.php';
 require_once '../config/decode.php';
 
@@ -11,9 +11,7 @@ if(mysqli_query($con,$sql))
 }
 else
 {
-	header("HTTP/1.1 500 Internal Server Error");
-	header('Content-Type: application/json; charset=UTF-8');
-	die(json_encode(array('message' => 'query errata', 'code' => 400)));
+	errorMessage('query errata: comunicazioni');
 }
 
 ?>

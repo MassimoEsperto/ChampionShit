@@ -2,6 +2,7 @@
 
 require_once '../config/connect_local.php';
 require_once '../config/validate.php';
+//rinominare in get view match
 
 
 $squadra_casa = [];
@@ -19,7 +20,7 @@ if(trim($match) === '')
    die('valori non prelevati'. mysqli_error($con));
 }
 
-$sql1 = "SELECT f.schieramento,f.id_calciatore,REPLACE(l.nome_calciatore, ' ', '') as calciatore,l.ruolo,f.voto ";
+$sql1 = "SELECT f.schieramento,f.id_calciatore,l.nickname,l.ruolo,f.voto ";
 $sql1 .="FROM formazioni f,calendario c, lista_calciatori l , utenti u ";
 $sql1 .="WHERE f.id_partita=c.id_partita and l.id_calciatore=f.id_calciatore and u.id_utente=f.id_utente and c.id_partita={$match} and f.id_utente = c.utente_casa "; 
 $sql1 .="ORDER BY f.id_partita,f.id_utente,f.schieramento ";
@@ -29,7 +30,7 @@ $sql2 .="FROM formazioni f,calendario c, utenti u ";
 $sql2 .="WHERE f.id_partita=c.id_partita  and u.id_utente=f.id_utente and c.id_partita={$match} and f.id_utente = c.utente_casa"; 
 
 
-$sql3 = "SELECT f.schieramento,f.id_calciatore,REPLACE(l.nome_calciatore, ' ', '') as calciatore,l.ruolo,f.voto ";
+$sql3 = "SELECT f.schieramento,f.id_calciatore,l.nickname,l.ruolo,f.voto ";
 $sql3 .="FROM formazioni f,calendario c, lista_calciatori l , utenti u ";
 $sql3 .="WHERE f.id_partita=c.id_partita and l.id_calciatore=f.id_calciatore and u.id_utente=f.id_utente and c.id_partita={$match} and f.id_utente = c.utente_trasferta "; 
 $sql3 .="ORDER BY f.id_partita,f.id_utente,f.schieramento ";
@@ -67,7 +68,7 @@ if($result = mysqli_query($con,$sql1))
   {
     $formazione_casa[$count]['schieramento'] = $row['schieramento'];
     $formazione_casa[$count]['id_calciatore'] = $row['id_calciatore'];
-	$formazione_casa[$count]['nome_calciatore'] = $row['calciatore'];
+	$formazione_casa[$count]['nome_calciatore'] = $row['nickname'];
 	$formazione_casa[$count]['ruolo'] = $row['ruolo'];
 	$formazione_casa[$count]['voto'] = $row['voto'];
     $count++;
@@ -105,7 +106,7 @@ if($result = mysqli_query($con,$sql3))
   {
     $formazione_trasferta[$count]['schieramento'] = $row['schieramento'];
     $formazione_trasferta[$count]['id_calciatore'] = $row['id_calciatore'];
-	$formazione_trasferta[$count]['nome_calciatore'] = $row['calciatore'];
+	$formazione_trasferta[$count]['nome_calciatore'] = $row['nickname'];
 	$formazione_trasferta[$count]['ruolo'] = $row['ruolo'];
 	$formazione_trasferta[$count]['voto'] = $row['voto'];
     $count++;
