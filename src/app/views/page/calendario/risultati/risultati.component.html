@@ -1,6 +1,6 @@
 <div class="pt-8 pb-16 ">
 
-    <div *ngFor="let item of selected">
+    <div *ngFor="let item of selected.partite">
 
         <mdb-card>
 
@@ -9,25 +9,25 @@
                 <div class="squadre">
                     <div class="row col-4 col-sm-4 col-md-4 col-lg-4">
                         <div class="col-12 col-sm-12 col-md-6 col-lg-6  punteggio">
-                            <img src="assets/avatar/{{item.avatar_casa}}.png" class="avatar" width="24px" />
+                            <img src="assets/avatar/{{item.CASA.avatar}}.png" class="avatar" width="24px" />
                         </div>
                         <div class="col-12 col-sm-12 col-md-6 col-lg-6  punteggio">
                             <label>
-                                {{item.casa.replaceAll(" ", "")}}
+                                {{item.CASA.squadra}}
                             </label>
                         </div>
                     </div>
                     <div class="punteggio col-4 col-sm-4 col-md-4 col-lg-4">
-                        <span *ngIf="item.calcolato=='1'">{{item.gol_casa}}-{{item.gol_trasferta}}</span>
+                        <span *ngIf="item.calcolato=='1'">{{item.CASA.goals}}-{{item.TRASFERTA.goals}}</span>
                         <span *ngIf="item.calcolato!='1'">VS</span>
                     </div>
                     <div class="row col-4 col-sm-4 col-md-4 col-lg-4">
                         <div class="col-12 col-sm-12 col-md-6 col-lg-6  punteggio">
-                            <img src="assets/avatar/{{item.avatar_trasferta}}.png" class="avatar" width="24px" />
+                            <img src="assets/avatar/{{item.TRASFERTA.avatar}}.png" class="avatar" width="24px" />
                         </div>
                         <div class="col-12 col-sm-12 col-md-6 col-lg-6 punteggio">
                             <label>
-                                {{item.trasferta.replaceAll(" ", "")}}
+                                {{item.TRASFERTA.squadra}}
                             </label>
                         </div>
                     </div>

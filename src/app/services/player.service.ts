@@ -72,7 +72,7 @@ export class PlayerService extends HttpSenderService {
 
 
   getCalendario() {
-    return this.http.get(`${this.buildURL("get_risultati")}`, this.myheaders).pipe(
+    return this.http.get(`${this.buildURL("get_calendario_risultati")}`, this.myheaders).pipe(
       map((res) => {
 
         this.tokenError(res);//controllo token 
@@ -128,9 +128,9 @@ export class PlayerService extends HttpSenderService {
 
   viewMatch(match: any) { //match_live
 
-    const params = new HttpParams().set('match', match.partita);
+    const params = new HttpParams().set('match', match.id_calendario);
 
-    return this.http.get<any>(`${this.buildURL("get_match_live")}`,
+    return this.http.get<any>(`${this.buildURL("get_view_match")}`,
       { params: params, headers: this.myheaders.headers })
       .pipe(map((res) => {
 

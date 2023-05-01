@@ -16,5 +16,5 @@ export const INIBITO = "1"
 
 export const MAX_IMG = 40000
 
-export const SERVICE_TYPE = { ADMIN: "/admin/", PLAYER: "/player/", AUT: "/autenticazione/" , FANTA: "/fantagazzetta/" }
+export const SERVICE_TYPE = { ADMIN: "/nuoviadmin/", PLAYER: "/nuoviplayer/", AUT: "/autenticazione/" , FANTA: "/fantagazzetta/" }
 

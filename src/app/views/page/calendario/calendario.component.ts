@@ -14,66 +14,67 @@ import { SpinnerService } from 'src/app/services/spinner.service';
 })
 export class CalendarioComponent extends GlobalComponent implements OnInit {
 
-  palinsesto:any;
-
-  giornate = [];
- 
+  palinsesto: any;
+  tabIndex: number = 0
 
   constructor(
-    private spinner:SpinnerService,
+    private spinner: SpinnerService,
     private alert: AlertService,
     private playerService: PlayerService) {
     super();
   }
 
-  ngOnInit(){
+  ngOnInit() {
     this.calendario();
   }
 
 
-calendario() {
-  this.loading_page = true;
-  this.spinner.view();
+  calendario() {
+    this.loading_page = true;
+    this.spinner.view();
 
-  this.playerService.getCalendario()
-    .pipe(finalize(() => {
-      this.loadPage(this.spinner);
-    }))
-    .subscribe({
-      next: (result: any) => {
-        this.palinsesto = result;
-        let giornate = this.palinsesto.map(({ giornata }) => giornata);
-        this.giornate= giornate.filter((n, i) => giornate.indexOf(n) === i);
-      },
-      error: (error: any) => {
-        this.alert.error(error);
-      }
-    })
-}
+    this.playerService.getCalendario()
+      .pipe(finalize(() => {
+        this.loadPage(this.spinner);
+      }))
+      .subscribe({
+        next: (result: any) => {
 
-getSelected(num) {
-  return this.palinsesto.filter(e => e.giornata == num);
-}
+          this.palinsesto = result;
+          this.tabIndex = this.palinsesto.findIndex(i => i.active == true);
 
-getFasi(num) {
-
-  let selected=this.palinsesto.filter(e => e.giornata == num);
-    
-  switch (Number(selected[0].fase)) {
-    case FasiCompetizione.GIRONI:
-      return this.language.page.fasi.gironi
-    case FasiCompetizione.SPAREGGI:
-      return this.language.page.fasi.spareggi
-    case FasiCompetizione.QUARTI:
-      return this.language.page.fasi.quarti
-    case FasiCompetizione.SEMI_FINALE:
-      return this.language.page.fasi.semi_finale
-    case FasiCompetizione.FINALE:
-      return this.language.page.fasi.finale
-    default: return ""
+        },
+        error: (error: any) => {
+          this.alert.error(error);
+        }
+      })
   }
 
+  getSelected(num) {
+    return this.palinsesto.find(e => e.giornata == num);
+  }
 
-}
+  getFasi(num) {
+
+    let selected = this.palinsesto.filter(e => e.giornata == num);
+
+    switch (Number(selected[0].fase)) {
+      case FasiCompetizione.GIRONI:
+        return this.language.page.fasi.gironi
+      case FasiCompetizione.SPAREGGI:
+        return this.language.page.fasi.spareggi
+      case FasiCompetizione.OTTAVI:
+        return this.language.page.fasi.ottavi
+      case FasiCompetizione.QUARTI:
+        return this.language.page.fasi.quarti
+      case FasiCompetizione.SEMI_FINALE:
+        return this.language.page.fasi.semi_finale
+      case FasiCompetizione.FINALE:
+        return this.language.page.fasi.finale
+      default: return ""
+    }
+
+
+  }
 
 }

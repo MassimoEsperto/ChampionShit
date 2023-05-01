@@ -3,7 +3,6 @@ import { AlertService } from 'src/app/services/alert.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MyModalMatch } from 'src/app/components/my-modal-match/my-modal-match.component';
 import { PlayerService } from 'src/app/services/player.service';
-import { FasiCompetizione } from 'src/app/classes/utils/enums';
 import { GlobalComponent } from 'src/app/classes/utils/global-component';
 
 @Component({
@@ -23,6 +22,9 @@ export class RisultatiComponent extends GlobalComponent implements OnInit {
   }
 
   ngOnInit() { }
+
+  //ngOnChanges() {}
+
 
   viewMatch(partita: any) {
 

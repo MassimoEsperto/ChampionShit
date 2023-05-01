@@ -4,52 +4,56 @@
 
 <div class="flex-between pb-8">
     <div>
-        <h6 style="font-weight: bold;">{{data.casa.squadra}}</h6>
+        <h6 style="font-weight: bold;">{{data.CASA.squadra}}</h6>
     </div>
    
     <div>
-        <h6 style="font-weight: bold;"> {{data.trasferta.squadra}}</h6>
+        <h6 style="font-weight: bold;"> {{data.TRASFERTA.squadra}}</h6>
     </div>
 </div>
 
 <div class="flex-between scontro font-size-smart">
 
     <div class="formazioni">
-        <div *ngFor="let item of data.casa.formazione" class="flex-between">
+        <div *ngFor="let item of data.CASA.formazione" class="flex-between">
             <div class="pl-8">
-                {{item.nome_calciatore}}
+                {{item.nome}}
             </div>
             <div class="pl-8 pr-8">
                 {{item.voto}}
             </div>
         </div>
         <hr>
-        <div *ngIf="data.casa.somma" class="flex-between">
+        <div class="pl-8 pb-8">Modulo: {{data.CASA.modulo}}</div>
+        <div class="flex-between">
             <div class="pl-8">
                 TOT.
             </div>
             <div class="pl-8 pr-8">
-                {{data.casa.somma}}
+                {{data.CASA.somma}}
             </div>
         </div>
+       
     </div>
 
     <div class="formazioni">
-        <div *ngFor="let item of data.trasferta.formazione" class="flex-between">
+        <div *ngFor="let item of data.TRASFERTA.formazione" class="flex-between">
             <div>
-                {{item.nome_calciatore}}
+                {{item.nome}}
             </div>
             <div class="pl-8 pr-8">
                 {{item.voto}}
             </div>
         </div>
         <hr>
-        <div *ngIf="data.trasferta.somma" class="flex-between">
+        <div class="pb-8">Modulo: {{data.TRASFERTA.modulo}}</div>
+       
+        <div *ngIf="data.TRASFERTA.somma" class="flex-between">
             <div class="pl-8">
                 TOT.
             </div>
             <div class="pl-8 pr-8">
-                {{data.trasferta.somma}}
+                {{data.TRASFERTA.somma}}
             </div>
         </div>
     </div>
