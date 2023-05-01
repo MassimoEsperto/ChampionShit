@@ -95,8 +95,8 @@ export class PlayerService extends HttpSenderService {
       catchError(this.handleError));
   }
 
-  getFormazioniLive() {
-    return this.http.get(`${this.buildURL("get_formazioni_live")}`, this.myheaders).pipe(
+  getFormazioniInserite() {
+    return this.http.get(`${this.buildURL("get_formazioni_inserite")}`, this.myheaders).pipe(
       map((res) => {
 
         this.tokenError(res);//controllo token
@@ -111,9 +111,9 @@ export class PlayerService extends HttpSenderService {
   /* FINE RISULTATI */
 
   /* START SCHIERAMENTI */
-  getRosaDisponibile() {
+  getConvocabili() {
 
-    return this.http.get(`${this.buildURL("get_rosa_disponibile")}`, this.myheaders)
+    return this.http.get(`${this.buildURL("get_convocabili")}`, this.myheaders)
       .pipe(map((res) => {
 
         this.tokenError(res);//controllo token

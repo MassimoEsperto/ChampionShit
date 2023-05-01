@@ -27,7 +27,7 @@ export class VotiLiveComponent extends GlobalComponent implements OnInit {
 
   ngOnInit() {
     this.getLivefanta();
-  
+
   }
 
   getLivefanta() {
@@ -37,7 +37,7 @@ export class VotiLiveComponent extends GlobalComponent implements OnInit {
 
     this.fantaService.getLiveFormazione()
       .pipe(finalize(() => {
-        this. getLiveformazioni();
+        this.getLiveformazioni();
       }
       ))
       .subscribe({
@@ -55,7 +55,7 @@ export class VotiLiveComponent extends GlobalComponent implements OnInit {
 
   getLiveformazioni() {
 
-    this.playerService.getFormazioniLive()
+    this.playerService.getFormazioniInserite()
       .pipe(finalize(() => {
         this.loadPage(this.spinner);
       }

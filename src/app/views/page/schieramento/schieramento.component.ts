@@ -47,7 +47,7 @@ export class SchieramentoComponent extends GlobalComponent implements OnInit {
 
     this.fantaService.getProbabiliFormazione()
       .pipe(finalize(() => {
-        this.getFormazione();
+        this.getConvocabili();
       }))
       .subscribe({
 
@@ -98,16 +98,16 @@ export class SchieramentoComponent extends GlobalComponent implements OnInit {
   }
 
 
-  getFormazione() {
+  getConvocabili() {
 
-    this.playerService.getRosaDisponibile()
+    this.playerService.getConvocabili()
       .pipe(finalize(() => {
         this.loadPage(this.spinner);
       }))
       .subscribe({
 
         next: (result: any) => {
-
+console.log("getConvocabili",result)
           this.formazione = result
           this.squadra = result.schierata
           this.moduli = result.moduli
@@ -128,8 +128,8 @@ export class SchieramentoComponent extends GlobalComponent implements OnInit {
     this.loading_btn = true;
     let payload = {
       lista: [],
-      id_partita: this.formazione.id_partita,
-      modulo: this.modulo.id
+      id_risultato: this.formazione.id_risultato,
+      id_modulo: this.modulo.id
     }
 
     for (let membro of this.squadra) {

@@ -9,28 +9,30 @@
                 <div class="my-card-header">
                     <div class="row">
                         <div class="col-6">
-                            <span>{{fanta.match[0].squadra}}</span>
+                            <span>{{fanta.CASA.squadra}}</span>
                         </div>
                         <div class="col-6">
-                            <span>{{fanta.match[1].squadra}}</span>
+                            <span>{{fanta.TRASFERTA.squadra}}</span>
                         </div>
                     </div>
-                  </div>
+                </div>
                 <div class="my-card-body font-size-smart">
                     <div class="row">
                         <div class="col-6">
-                            <div *ngFor="let schieramento of fanta.match[0].schieramento">
-                                <span>{{schieramento.ruolo}} {{schieramento.nickname}} {{votilive[schieramento.calciatore]?votilive[schieramento.calciatore]:'-'}}</span>
+                            <div *ngFor="let schieramento of fanta.CASA.schieramento">
+                                <span>{{schieramento.ruolo}} {{schieramento.nickname}}
+                                    {{votilive[schieramento.calciatore]?votilive[schieramento.calciatore]:'-'}}</span>
                             </div>
                         </div>
                         <div class="col-6">
-                            <div *ngFor="let schieramento of fanta.match[1].schieramento">
-                                <span>{{schieramento.ruolo}} {{schieramento.nickname}} {{votilive[schieramento.calciatore]?votilive[schieramento.calciatore]:'-'}}</span>
+                            <div *ngFor="let schieramento of fanta.TRASFERTA.schieramento">
+                                <span>{{schieramento.ruolo}} {{schieramento.nickname}}
+                                    {{votilive[schieramento.calciatore]?votilive[schieramento.calciatore]:'-'}}</span>
                             </div>
                         </div>
                     </div>
                 </div>
-              </div>
+            </div>
 
         </div>
 

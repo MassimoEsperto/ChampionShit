@@ -11,6 +11,7 @@ import { GlobalComponent } from 'src/app/classes/utils/global-component';
 export class StatisticheComponent extends GlobalComponent implements OnInit {
 
   @Input() statistiche: any;
+  @Input() percorso: any;
 
   constructor() {
     super();

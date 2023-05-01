@@ -11,23 +11,23 @@
                 <div class="flex-around">
                     <div style="text-align: center;">
                         <div><span>Num</span></div>
-                        <div><span>{{statistiche.totali.num}}</span></div>
+                        <div><span>{{statistiche.total}}</span></div>
                     </div>
                     <div style="text-align: center;">
                         <div><span>Win</span></div>
-                        <div><span>{{statistiche.totali.win}}</span></div>
+                        <div><span>{{statistiche.win}}</span></div>
                     </div>
                     <div style="text-align: center;">
                         <div><span>Lose</span></div>
-                        <div><span>{{statistiche.totali.los}}</span></div>
+                        <div><span>{{statistiche.lose}}</span></div>
                     </div>
                     <div style="text-align: center;">
                         <div><span>Par</span></div>
-                        <div><span>{{statistiche.totali.par}}</span></div>
+                        <div><span>{{statistiche.par}}</span></div>
                     </div>
                     <div style="text-align: center;">
                         <div><span>Gol</span></div>
-                        <div><span>{{statistiche.totali.gol}}</span></div>
+                        <div><span>{{statistiche.goals}}</span></div>
                     </div>
                 </div>
 
@@ -46,16 +46,16 @@
 
     </div>
 
-    <div *ngFor="let percorso of statistiche.percorso" class="pt-8 pb-8">
+    <div *ngFor="let element of percorso" class="pt-8 pb-8">
 
         <mdb-card>
             <mdb-card-header>
                 <img src="assets/avatar/TRAGUARDO.png" class="avatar" width="24px" />
-                {{language.page.percorso[percorso.fase]}}
+                {{language.page.percorso[element.fase]}}
             </mdb-card-header>
         </mdb-card>
 
-        <div *ngFor="let item of percorso.calendario">
+        <div *ngFor="let item of element.partite">
 
             <mdb-card>
 
@@ -63,20 +63,20 @@
                     <div class="squadre">
                         <div class="col-5 pa-0">
                             <div style="text-align: center;">
-                                <label [ngStyle]="{'font-weight': item.is_casa ? 'bold' : 'normal' }">
-                                    {{item.casa}}
+                                <label [ngStyle]="{'font-weight': item.CASA.is_player ? 'bold' : 'normal' }">
+                                    {{item.CASA.squadra}}
                                 </label>
                             </div>
                         </div>
                         <div class="col-2 pa-0">
                             <div style="text-align: center;">
-                                <label>{{item.gol_casa}}-{{item.gol_trasferta}}</label>
+                                <label>{{item.CASA.goals}}-{{item.TRASFERTA.goals}}</label>
                             </div>
                         </div>
                         <div class="col-5 pa-0">
                             <div style="text-align: center;">
-                                <label [ngStyle]="{'font-weight': item.is_casa ? 'normal' : 'bold' }">
-                                    {{item.trasferta}}
+                                <label [ngStyle]="{'font-weight': item.TRASFERTA.is_player ? 'bold' : 'normal' }">
+                                    {{item.TRASFERTA.squadra}}
                                 </label>
                             </div>
                         </div>
@@ -91,7 +91,8 @@
 
         <mdb-card>
             <mdb-card-header>
-                <div style="text-align: center;font-weight:bold">{{statistiche.loggato.squadra}} {{getStato(statistiche.stato)}}</div>
+                <div style="text-align: center;font-weight:bold">{{statistiche.loggato.squadra}}
+                    {{getStato(statistiche.stato)}}</div>
             </mdb-card-header>
         </mdb-card>
     </div>
