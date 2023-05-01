@@ -46,7 +46,9 @@ export class AccoppiamentiComponent extends GlobalComponent implements OnInit {
       }))
       .subscribe({
         next: (result: any) => {
+
           this.accoppiamenti = result
+          console.log("getAccoppiamenti",result)
         },
         error: (error: any) => {
           this.alert.error(error);

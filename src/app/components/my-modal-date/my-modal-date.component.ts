@@ -19,14 +19,14 @@ export class MyModalDate implements OnInit {
 
   ngOnInit() {
     this.form = this.fb.group({
-      giornata: [null, Validators.required],
-      serieA: [null, Validators.required],
-      fase: [null, Validators.required],
-      inizio_giornata: [null, Validators.required],
-      prima_partita: [null, Validators.required],
-      ultima_partita: [null, Validators.required],
-      fine_giornata: [null, Validators.required],
-      upgrade: [null, Validators.required]
+      giornata: [this.data.valori ? this.data.valori.giornata : null, Validators.required],
+      serieA: [this.data.valori ? this.data.valori.serieA : null, Validators.required],
+      fase: [this.data.valori ? this.data.valori.fase : null, Validators.required],
+      inizio_giornata: [this.data.valori ? this.data.valori.inizio_giornata : null, Validators.required],
+      prima_partita: [this.data.valori ? this.data.valori.prima_partita : null, Validators.required],
+      ultima_partita: [this.data.valori ? this.data.valori.ultima_partita : null, Validators.required],
+      fine_giornata: [this.data.valori ? this.data.valori.fine_giornata : null, Validators.required],
+      upgrade: [this.data.valori ? this.data.valori.upgrade : null, Validators.required]
     });
   }
 

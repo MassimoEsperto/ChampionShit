@@ -12,7 +12,7 @@
             NUOVA</button>
         <hr>
 
-        <div id="table" class="table-editable">
+        <div id="table">
 
             <table class="table table-bordered table-responsive-md table-striped text-center">
                 <tr>
@@ -27,7 +27,7 @@
                     <th class="text-center">UPD</th>
                     <th class="text-center">DEL</th>
                 </tr>
-                <tr *ngFor="let ele of accoppiamenti.periodo_partite; let id = index">
+                <tr *ngFor="let ele of accoppiamenti.giornate; let id = index">
                     <td>
                         <span>{{ele.giornata}}</span>
                     </td>
@@ -38,24 +38,19 @@
                         <span>{{ele.fase}}</span>
                     </td>
                     <td>
-                        <span contenteditable="true" (keyup)="changeValue(id, 'inizio_giornata', $event)"
-                            (blur)="updateList(id, 'inizio_giornata', $event)">{{ele.inizio_giornata}}</span>
+                        <span>{{ele.inizio_giornata}}</span>
                     </td>
                     <td>
-                        <span contenteditable="true" (keyup)="changeValue(id, 'prima_partita', $event)"
-                            (blur)="updateList(id, 'prima_partita', $event)">{{ele.prima_partita}}</span>
+                        <span>{{ele.prima_partita}}</span>
                     </td>
                     <td>
-                        <span contenteditable="true" (keyup)="changeValue(id, 'ultima_partita', $event)"
-                            (blur)="updateList(id, 'ultima_partita', $event)">{{ele.ultima_partita}}</span>
+                        <span>{{ele.ultima_partita}}</span>
                     </td>
                     <td>
-                        <span contenteditable="true" (keyup)="changeValue(id, 'fine_giornata', $event)"
-                            (blur)="updateList(id, 'fine_giornata', $event)">{{ele.fine_giornata}}</span>
+                        <span>{{ele.fine_giornata}}</span>
                     </td>
                     <td>
-                        <span contenteditable="true" (keyup)="changeValue(id, 'is_upgrade', $event)"
-                            (blur)="updateList(id, 'is_upgrade', $event)">{{ele.is_upgrade}}</span>
+                        <span>{{ele.is_upgrade}}</span>
                     </td>
                     <td>
                         <span class="table-remove">

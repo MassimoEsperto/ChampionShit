@@ -18,7 +18,7 @@ export class GestioneUtentiComponent extends GlobalComponent implements OnInit {
 
   editField: string;
   @Input() administrator: any;
-  utenti: Utente[];
+  utenti: any;
 
   constructor(
     private alert: AlertService,
@@ -69,11 +69,11 @@ export class GestioneUtentiComponent extends GlobalComponent implements OnInit {
 
   ricalcola() {
 
-    this.adminService.getUtenti()
+    this.adminService.getAdministrator()
       .subscribe({
-        next: (result: Utente[]) => {
+        next: (result: any) => {
 
-          this.utenti = result;
+          this.utenti = result.utenti;
 
         },
         error: (error: any) => {

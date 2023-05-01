@@ -6,10 +6,10 @@
         <select  class="btn-file custom-select ml-16" [(ngModel)]="giornata_selezionata"
           placeholder="Giornata">
           <optgroup label="Da Calcolare">
-            <option *ngFor="let g of administrator.giornate_calcolate['incalcolate']" [ngValue]="g">Giornata {{g}}°</option>
+            <option *ngFor="let g of administrator.calcolato['NO']" [ngValue]="g">Giornata {{g}}°</option>
           </optgroup>
           <optgroup label="Gia Calcolato">
-            <option *ngFor="let g of administrator.giornate_calcolate['calcolate']" [ngValue]="g">Giornata {{g}}°</option>
+            <option *ngFor="let g of administrator.calcolato['SI']" [ngValue]="g">Giornata {{g}}°</option>
           </optgroup>
         </select>
         <div class="pa-8">

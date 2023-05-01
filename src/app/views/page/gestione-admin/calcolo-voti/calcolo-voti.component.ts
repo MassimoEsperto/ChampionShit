@@ -12,7 +12,7 @@ import { AdminService } from 'src/app/services/admin.service';
 })
 export class CalcoloVotiComponent extends GlobalComponent implements OnInit {
 
-  @Input() giornateDaCalcolare: any;
+  @Input() calcolato: any;
 
   giornata_selezionata: string;
   formazioni_inserite: any;
@@ -26,7 +26,7 @@ export class CalcoloVotiComponent extends GlobalComponent implements OnInit {
 
 
   ngOnInit() {
-    this.giornata_selezionata = this.giornateDaCalcolare.incalcolate[0];
+    this.giornata_selezionata = this.calcolato.SI[0];
   }
 
 

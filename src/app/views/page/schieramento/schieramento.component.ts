@@ -107,7 +107,7 @@ export class SchieramentoComponent extends GlobalComponent implements OnInit {
       .subscribe({
 
         next: (result: any) => {
-console.log("getConvocabili",result)
+
           this.formazione = result
           this.squadra = result.schierata
           this.moduli = result.moduli

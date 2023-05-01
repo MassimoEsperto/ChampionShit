@@ -23,7 +23,7 @@ export class MyModalUtente implements OnInit {
       squadra: [this.data.valori.squadra, Validators.required],
       email: [this.data.valori.email, Validators.required],
       account: [this.data.valori.account, Validators.required],
-      stato: [this.data.valori.ruolo, Validators.required]
+      stato: [this.data.valori.ruolo_id, Validators.required]
     });
   }
 

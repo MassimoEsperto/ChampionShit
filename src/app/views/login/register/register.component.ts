@@ -53,11 +53,11 @@ export class RegisterComponent extends GlobalComponent implements OnInit {
 
   listaUtenti() {
 
-    this.adminService.getUtenti()
+    this.adminService.get_all_object("utenti")
       .subscribe({
 
         next: (result: any) => {
-          this.utenti = result;
+          this.utenti = result.utenti;
         },
         error: (error: any) => {
           this.alert.error(error);

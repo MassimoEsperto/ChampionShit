@@ -26,7 +26,7 @@ export class RecuperoPrecedentiComponent extends GlobalComponent implements OnIn
 
 
   ngOnInit() {
-    this.giornata_selezionata = this.administrator.giornate_calcolate['incalcolate'][0]}
+    this.giornata_selezionata = this.administrator.calcolato['NO'][0]}
 
   giornata_selezionata: string;
   formazioni_inserite: any;
@@ -41,7 +41,7 @@ export class RecuperoPrecedentiComponent extends GlobalComponent implements OnIn
 
   recTeamTrasferta(item) {
 
-    let ultimeInserite =this.administrator.ultime_formazioni_inserite;
+    let ultimeInserite =this.administrator.recuperate;
     let listaRose = this.administrator.rose;
 
     let ripescata = ultimeInserite.filter(x => x.id_utente == item.match[1].id_utente)

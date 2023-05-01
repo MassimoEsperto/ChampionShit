@@ -37,6 +37,7 @@ export class GestioneAdminComponent extends GlobalComponent implements OnInit {
         next: (result: any) => {
         
           this.administrator = result
+          console.log(this.administrator)
 
         },
         error: (error: any) => {

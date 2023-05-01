@@ -46,23 +46,30 @@ export class DataPartiteComponent extends GlobalComponent implements OnInit {
       })
   }
 
-  changeValue(id: number, property: string, event: any) {
-    this.editField = event.target.textContent;
-  }
 
-  updateList(id: number, property: string, event: any) {
-    const editField = event.target.textContent;
-    this.accoppiamenti.periodo_partite[id][property] = editField;
-  }
 
   onChangeData(element) {
 
-    const dialogRef = this.dialog.open(MyModalValidate);
+console.log("onChangeData",element)
+
+    const dialogRef = this.dialog.open(MyModalDate, {
+      panelClass: 'dialog-language',
+      data: {
+        titolo: 'GIORNATE',
+        valori: element,
+        combo: this.accoppiamenti.date_possibili,
+        fasi: this.accoppiamenti.fasi
+      }
+    });
+
     dialogRef.afterClosed().subscribe(result => {
-      if (result)
-        this.changeData(element);
+      if (result) {
+        this.changeData(result);
+      }
     });
   }
+
+
 
   changeData(payload) {
 

@@ -33,10 +33,10 @@ export class RecuperaPasswordComponent extends GlobalComponent implements OnInit
   /* CHIAMATE AI SERVIZI */
   getAllUtenti() {
 
-    this.admin.getUtenti()
+    this.admin.get_all_object("utenti")
       .subscribe({
-        next: (result: Utente[]) => {
-          this.utenti = result;
+        next: (result: any) => {
+          this.utenti = result.utenti;
         },
         error: (error: any) => {
           this.alert.error(error);

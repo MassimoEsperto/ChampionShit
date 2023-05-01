@@ -28,15 +28,6 @@ export class AdminService extends HttpSenderService {
       catchError(this.handleError));
   }
 
-  getUtenti(): Observable<Utente[]> {
-    return this.http.get(`${this.buildURL("get_all_utenti")}`).pipe(
-      map((res) => {
-        this.utenti = res['data'];
-
-        return res['data'];
-      }),
-      catchError(this.handleError));
-  }
 
   updDetailUtente(utente: Utente) {
     return this.http.put(`${this.buildURL("upd_detail_utente")}`, { data: utente })
@@ -221,7 +212,7 @@ export class AdminService extends HttpSenderService {
         catchError(this.handleError));
   }
 
-  
+
 
   getAccoppiamenti(): Observable<any[]> {
     return this.http.get(`${this.buildURL("get_accoppiamenti")}`).pipe(
@@ -241,7 +232,7 @@ export class AdminService extends HttpSenderService {
         catchError(this.handleError));
   }
 
- 
+
   updAccoppiamento(payload: any) {
 
     return this.http.post(`${this.buildURL("upd_accoppiamento")}`, { data: payload })
@@ -253,7 +244,7 @@ export class AdminService extends HttpSenderService {
   }
 
   deleteAccoppiamento(id: string) {
-    
+
     const params = new HttpParams().set('id', id);
 
     return this.http.get(`${this.buildURL("del_accoppiamento")}`, { params: params })
@@ -270,6 +261,20 @@ export class AdminService extends HttpSenderService {
       .pipe(map((res) => {
 
         return 'ok';
+      }),
+        catchError(this.handleError));
+  }
+
+
+  get_all_object(tabelle: string) {
+
+    const params = new HttpParams().set('tabelle', tabelle);
+
+    return this.http.get(`${this.buildURL("get_all_objects")}`, { params: params })
+      .pipe(map(res => {
+
+        return res['data'];
+
       }),
         catchError(this.handleError));
   }
