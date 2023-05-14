@@ -7,6 +7,7 @@ import { HttpSenderService } from './http-sender-service';
 import { map, catchError } from 'rxjs/operators';
 import { SERVICE_TYPE } from '../classes/utils/costanti';
 import { Rosa } from '../classes/models/rosa';
+import * as XLSX from 'xlsx';
 
 @Injectable({
   providedIn: 'root'
@@ -107,11 +108,11 @@ export class AdminService extends HttpSenderService {
         catchError(this.handleError));
   }
 
-  getFormazioniInserite(giornata: string) {
+  getFormazioniByGionata(giornata: string) {
 
     const params = new HttpParams().set('giornata', giornata);
 
-    return this.http.get<any>(`${this.buildURL("get_formazioni_inserite")}`, { params: params })
+    return this.http.get<any>(`${this.buildURL("get_formazioni_by_giornata")}`, { params: params })
       .pipe(map((res) => {
 
         return res['data'];
@@ -278,6 +279,68 @@ export class AdminService extends HttpSenderService {
       }),
         catchError(this.handleError));
   }
+
+
+  //recupero voti da xls
+  async getWorkbookFromFile(excelFile: File) {
+    return new Promise<any>((resolve, reject) => {
+      var reader = new FileReader();
+
+      reader.onload = (event: any) => {
+        var data = event.target.result;
+
+        var workbook = XLSX.read(data, { type: 'binary' });
+
+        console.log(workbook.SheetNames);
+        resolve(workbook);
+      };
+      reader.readAsBinaryString(excelFile);
+    });
+  }
+
+  async getVotiFromFile(file: File) {
+
+    let filelist: any = [];
+
+    var workbook = await this.getWorkbookFromFile(file);
+
+    var first_sheet_name = workbook.SheetNames[0];
+    var worksheet = workbook.Sheets[first_sheet_name];
+
+    let _EMPTY_0 = worksheet.A1['h']
+    var arraylist: any = XLSX.utils.sheet_to_json(worksheet, { raw: true, defval: null });
+
+    for (let element of arraylist) {
+      if (element.__EMPTY) {
+        let nome: string = element['__EMPTY'].toLocaleUpperCase().replace("'", "").replace(".", "").trim()
+        let voto: number = element['__EMPTY_3'] != '-' ? Number(element['__EMPTY_3'].toString().trim()) : 4
+        let ruolo: string = element[_EMPTY_0].toString().trim()
+
+        let ris = {
+          nome: nome,
+          voto: voto
+        }
+        //filelist.push(ris);
+        filelist[nome] = voto
+      }
+
+      if (element.__EMPTY_6) {
+        let nome: string = element['__EMPTY_6'].toLocaleUpperCase().replace("'", "").replace(".", "").trim()
+        let voto: number = element['__EMPTY_9'] != '-' ? Number(element['__EMPTY_9'].toString().trim()) : 4
+        let ruolo: string = element['__EMPTY_5'].toString().trim()
+
+        let ris = {
+          nome: nome,
+          voto: voto
+        }
+        //filelist.push(ris);
+        filelist[nome] = voto
+      }
+    }
+
+    return filelist;
+  }
+
 
 }
 

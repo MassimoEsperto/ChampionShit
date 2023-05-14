@@ -89,7 +89,7 @@ export class RecuperoPrecedentiComponent extends GlobalComponent implements OnIn
   formazioniInserite() {
     this.loading_btn = true;
 
-    this.adminService.getFormazioniInserite(this.giornata_selezionata)
+    this.adminService.getFormazioniByGionata(this.giornata_selezionata)
       .pipe(finalize(() => {
         this.loading_btn = false;
       }

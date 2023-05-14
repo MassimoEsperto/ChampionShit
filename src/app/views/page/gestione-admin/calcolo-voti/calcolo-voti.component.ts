@@ -29,9 +29,40 @@ export class CalcoloVotiComponent extends GlobalComponent implements OnInit {
     this.giornata_selezionata = this.calcolato.SI[0];
   }
 
+  async getWorkbookFromFile2(excelFile: File) {
+    return new Promise<any>((resolve, reject) => {
+      var reader = new FileReader();
+
+      reader.onload = (event: any) => {
+        var data = event.target.result;
+
+        var workbook = XLSX.read(data, { type: 'binary' });
+
+        console.log(workbook.SheetNames);
+        resolve(workbook);
+      };
+      reader.readAsBinaryString(excelFile);
+    });
+  }
+
+  async importVoti(event: any) {
+    let file: File
+    let filelist: any = [];
+
+    file = event.target.files[0];
+    filelist = await this.adminService.getVotiFromFile(file)
+    console.log("filelist2", filelist)
+
+    for (let item of this.formazioni_inserite.lista) {
+      item.voto = filelist[item.nome_calciatore] || 4
+    }
+
+    console.log("this.formazioni_inserite", this.formazioni_inserite)
+  }
 
 
-  importVoti(event: any) {
+
+  importVotiOLD(event: any) {
     let file: File
     let arrayBuffer: any;
     let filelist: any = [];
@@ -60,7 +91,7 @@ export class CalcoloVotiComponent extends GlobalComponent implements OnInit {
           let nome: string = element['__EMPTY'].toLocaleUpperCase().replace("'", "").replace(".", "").trim()
           let voto: number = element['__EMPTY_3'] != '-' ? Number(element['__EMPTY_3'].toString().trim()) : 4
           let ruolo: string = element[_EMPTY_0].toString().trim()
-          if ("P" == ruolo) { voto = voto + 1; }
+          //if ("P" == ruolo) { voto = voto + 1; }
 
           let ris = {
             nome: nome,
@@ -111,10 +142,10 @@ export class CalcoloVotiComponent extends GlobalComponent implements OnInit {
 
 
   /* CHIAMATA AI SERVIZI */
-  formazioniInserite() {
+  formazioniByGionata() {
     this.loading_btn = true;
 
-    this.adminService.getFormazioniInserite(this.giornata_selezionata)
+    this.adminService.getFormazioniByGionata(this.giornata_selezionata)
       .pipe(finalize(() => {
         this.loading_btn = false;
       }
@@ -123,6 +154,7 @@ export class CalcoloVotiComponent extends GlobalComponent implements OnInit {
 
         next: (result: any) => {
           this.formazioni_inserite = result
+          console.log("this.formazioni_inserite", this.formazioni_inserite)
         },
         error: (error: any) => {
           this.alert.error(error);

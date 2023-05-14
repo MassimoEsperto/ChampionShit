@@ -19,29 +19,30 @@
                 <tr>
                     <th class="text-center">ID</th>
                     <th class="text-center">GIO</th>
-                    <th class="text-center">FS</th>
                     <th class="text-center">PARTITA</th>
                     <th class="text-center">UPD</th>
                     <th class="text-center">DEL</th>
                 </tr>
-                <tr *ngFor="let ele of accoppiamenti.calendario">
-                    <td>{{ele.id}}</td>
-                    <td>{{ele.giornata}}</td>
-                    <td>{{ele.fase}}</td>
-                    <td>{{ele.casa}} - {{ele.trasferta}}</td>
-                    <td>
-                        <span class="table-remove">
-                            <button type="button" mdbBtn color="success" size="sm" class="my-0"
-                                (click)="onUpdate(ele)">UPD</button>
-                        </span>
-                    </td>
-                    <td>
-                        <span class="table-remove">
-                            <button type="button" mdbBtn color="danger" size="sm" class="my-0"
-                                (click)="onDelete(ele.id)">DEL</button>
-                        </span>
-                    </td>
-                </tr>
+                <ng-container *ngFor="let item of accoppiamenti.calendario">
+
+                    <tr *ngFor="let ele of item.partite">
+                        <td>{{ele.id_calendario}}</td>
+                        <td>{{item.giornata}}</td>
+                        <td>{{ele.CASA.squadra}} - {{ele.TRASFERTA.squadra}}</td>
+                        <td>
+                            <span class="table-remove">
+                                <button type="button" mdbBtn color="success" size="sm" class="my-0"
+                                    (click)="onUpdate(ele,item)">UPD</button>
+                            </span>
+                        </td>
+                        <td>
+                            <span class="table-remove">
+                                <button type="button" mdbBtn color="danger" size="sm" class="my-0"
+                                    (click)="onDelete(ele.id_calendario)">DEL</button>
+                            </span>
+                        </td>
+                    </tr>
+                </ng-container>
             </table>
         </div>
     </div>

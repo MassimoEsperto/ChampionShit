@@ -23,21 +23,27 @@ export class EliminatorieComponent extends GlobalComponent implements OnInit {
     super();
   }
 
-  ngOnInit() { }
+  ngOnInit() { console.log("accoppiamenti", this.accoppiamenti) }
 
 
-  onUpdate(ele: any) {
-    this.onChangeItem(ele)
+  onUpdate(ele: any, item: any) {
+    let payload = {
+      id_casa: ele.CASA.id_utente,
+      id_trasferta: ele.TRASFERTA.id_utente,
+      giornata: item.giornata,
+      id_calendario: ele.id_calendario
+    }
+    this.onChangeItem(payload)
   }
 
 
-  onChangeItem(ele: any) {
+  onChangeItem(payload: any) {
 
     const dialogRef = this.dialog.open(MyModalAccopiamenti, {
       panelClass: 'dialog-language',
       data: {
         titolo: 'ACCOPPIAMENTI',
-        valori: ele,
+        valori: payload,
         combo: this.accoppiamenti.utenti
       }
     });

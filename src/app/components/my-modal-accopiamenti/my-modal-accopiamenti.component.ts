@@ -22,10 +22,11 @@ export class MyModalAccopiamenti implements OnInit {
     this.form = this.fb.group({
       casa: [this.data.valori ? this.data.valori.id_casa : null, Validators.required],
       trasferta: [this.data.valori ? this.data.valori.id_trasferta : null, Validators.required],
-      fase: [this.data.valori ? this.data.valori.fase : null, Validators.required],
       giornata: [this.data.valori ? this.data.valori.giornata : null, Validators.required],
-      id_partita: [this.data.valori ? this.data.valori.id : null]
+      id_calendario: [this.data.valori ? this.data.valori.id_calendario : null]
     });
+
+    console.log("update accoppiamenti",this.data.valori)
   }
 
   save() {

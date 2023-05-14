@@ -65,4 +65,13 @@ export abstract class GlobalComponent {
     PERIODO_GIORNATA = PeriodoGiornata;
     STATI_UTNTE = StatiUtente;
 
+    //combo
+    combobooleano = [{
+        descrizione: "SI",
+        valore: "1"
+    }, {
+        descrizione: "NO",
+        valore: "0"
+    }]
+
 }

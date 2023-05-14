@@ -43,11 +43,10 @@
         </mat-form-field>
 
         <mat-form-field appearance="outline">
-            <mat-label>is upgrade</mat-label>
+            <mat-label>upgrade</mat-label>
             <mat-select formControlName="upgrade">
                 <mat-option>None</mat-option>
-                <mat-option value="1">SI</mat-option>
-                <mat-option value="0">NO</mat-option>
+                <mat-option *ngFor="let item of combobooleano" [value]="item.valore">{{item.descrizione}}</mat-option>
             </mat-select>
         </mat-form-field>
 

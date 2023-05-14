@@ -12,7 +12,7 @@
   </select>
   <div class="pa-8">
     <my-button [submit]="false" [color]="'primary'" [block]="false" [disabled]="!giornata_selezionata" [label]="'PROCEDI'"
-      [loading]="loading_btn" (myClick)="formazioniInserite()"></my-button>
+      [loading]="loading_btn" (myClick)="formazioniByGionata()"></my-button>
   </div>
 </div>
 <div *ngIf="formazioni_inserite">
