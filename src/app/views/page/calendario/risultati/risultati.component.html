@@ -18,8 +18,8 @@
                         </div>
                     </div>
                     <div class="punteggio col-4 col-sm-4 col-md-4 col-lg-4">
-                        <span *ngIf="item.calcolato=='1'">{{item.CASA.goals}}-{{item.TRASFERTA.goals}}</span>
-                        <span *ngIf="item.calcolato!='1'">VS</span>
+                        <span *ngIf="selected.calcolato=='1'">{{item.CASA.goals}}-{{item.TRASFERTA.goals}}</span>
+                        <span *ngIf="selected.calcolato!='1'">VS</span>
                     </div>
                     <div class="row col-4 col-sm-4 col-md-4 col-lg-4">
                         <div class="col-12 col-sm-12 col-md-6 col-lg-6  punteggio">
