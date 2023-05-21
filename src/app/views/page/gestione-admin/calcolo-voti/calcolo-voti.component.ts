@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import * as XLSX from 'xlsx';
 import { GlobalComponent } from 'src/app/classes/utils/global-component';
 import { AlertService } from 'src/app/services/alert.service';
 import { finalize } from 'rxjs/operators';
@@ -17,6 +16,7 @@ export class CalcoloVotiComponent extends GlobalComponent implements OnInit {
   giornata_selezionata: string;
   formazioni_inserite: any;
   risultati = [];
+  voti_file: boolean = false
 
   constructor(
     private alert: AlertService,
@@ -66,7 +66,7 @@ export class CalcoloVotiComponent extends GlobalComponent implements OnInit {
       partite.TRASFERTA.punti = this.classifica(partite.TRASFERTA.goals, partite.CASA.goals)
     }
 
-    console.log("this.formazioni_inserite", this.formazioni_inserite)
+    this.voti_file = true
   }
 
 
@@ -92,17 +92,18 @@ export class CalcoloVotiComponent extends GlobalComponent implements OnInit {
   /* CHIAMATA AI SERVIZI */
   formazioniByGionata() {
     this.loading_btn = true;
+    this.loading_page = false;
 
     this.adminService.getFormazioniByGionata(this.giornata_selezionata)
       .pipe(finalize(() => {
         this.loading_btn = false;
+        this.loading_page = true;
       }
       ))
       .subscribe({
 
         next: (result: any) => {
           this.formazioni_inserite = result
-          console.log("this.formazioni_inserite", this.formazioni_inserite)
         },
         error: (error: any) => {
           this.alert.error(error);
@@ -110,6 +111,17 @@ export class CalcoloVotiComponent extends GlobalComponent implements OnInit {
         }
       })
 
+  }
+
+  onCalcolaGiornata() {
+  
+    let payload={
+      giornata:this.giornata_selezionata,
+      risultati:this.formazioni_inserite
+    }
+    console.log("payload", payload)
+    this.calcolaGiornata(payload)
+    
   }
 
 
