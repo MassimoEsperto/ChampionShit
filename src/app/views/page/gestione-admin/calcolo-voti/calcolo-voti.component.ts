@@ -29,21 +29,7 @@ export class CalcoloVotiComponent extends GlobalComponent implements OnInit {
     this.giornata_selezionata = this.calcolato.SI[0];
   }
 
-  async getWorkbookFromFile2(excelFile: File) {
-    return new Promise<any>((resolve, reject) => {
-      var reader = new FileReader();
 
-      reader.onload = (event: any) => {
-        var data = event.target.result;
-
-        var workbook = XLSX.read(data, { type: 'binary' });
-
-        console.log(workbook.SheetNames);
-        resolve(workbook);
-      };
-      reader.readAsBinaryString(excelFile);
-    });
-  }
 
   async importVoti(event: any) {
     let file: File
@@ -52,91 +38,53 @@ export class CalcoloVotiComponent extends GlobalComponent implements OnInit {
     file = event.target.files[0];
     filelist = await this.adminService.getVotiFromFile(file)
     console.log("filelist2", filelist)
+    /*
+        for (let item of this.formazioni_inserite.lista) {
+          item.voto = filelist[item.nome_calciatore] || 4
+        }*/
 
-    for (let item of this.formazioni_inserite.lista) {
-      item.voto = filelist[item.nome_calciatore] || 4
+    for (let partite of this.formazioni_inserite) {
+      partite.CASA.somma = Number(partite.CASA.bonus)
+      partite.TRASFERTA.somma = Number(partite.TRASFERTA.bonus)
+
+      for (let casa of partite.CASA.schieramento) {
+        casa.voto = Number(filelist[casa.calciatore]) || 4
+        partite.CASA.somma += casa.voto;
+      }
+
+
+
+      for (let trasferta of partite.TRASFERTA.schieramento) {
+        trasferta.voto = Number(filelist[trasferta.calciatore]) || 4
+        partite.TRASFERTA.somma += trasferta.voto;
+      }
+
+      partite.CASA.goals = this.gol(partite.CASA.somma)
+      partite.TRASFERTA.goals = this.gol(partite.TRASFERTA.somma)
+
+      partite.CASA.punti = this.classifica(partite.CASA.goals, partite.TRASFERTA.goals)
+      partite.TRASFERTA.punti = this.classifica(partite.TRASFERTA.goals, partite.CASA.goals)
     }
 
     console.log("this.formazioni_inserite", this.formazioni_inserite)
   }
 
 
-
-  importVotiOLD(event: any) {
-    let file: File
-    let arrayBuffer: any;
-    let filelist: any = [];
-
-    file = event.target.files[0];
-    let fileReader = new FileReader();
-    fileReader.readAsArrayBuffer(file);
-    fileReader.onload = (e) => {
-      arrayBuffer = fileReader.result;
-      var data = new Uint8Array(arrayBuffer);
-      var arr = new Array();
-      for (var i = 0; i != data.length; ++i) {
-        arr[i] = String.fromCharCode(data[i]);
-      }
-      var bstr = arr.join("");
-
-      var workbook = XLSX.read(bstr, { type: "binary" });
-      var first_sheet_name = workbook.SheetNames[0];
-      var worksheet = workbook.Sheets[first_sheet_name];
-
-      let _EMPTY_0 = worksheet.A1['h']
-      var arraylist: any = XLSX.utils.sheet_to_json(worksheet, { raw: true, defval: null });
-      //  filelist = [];
-      for (let element of arraylist) {
-        if (element.__EMPTY) {
-          let nome: string = element['__EMPTY'].toLocaleUpperCase().replace("'", "").replace(".", "").trim()
-          let voto: number = element['__EMPTY_3'] != '-' ? Number(element['__EMPTY_3'].toString().trim()) : 4
-          let ruolo: string = element[_EMPTY_0].toString().trim()
-          //if ("P" == ruolo) { voto = voto + 1; }
-
-          let ris = {
-            nome: nome,
-            voto: voto
-          }
-          filelist.push(ris);
-        }
-
-        if (element.__EMPTY_6) {
-          let nome: string = element['__EMPTY_6'].toLocaleUpperCase().replace("'", "").replace(".", "").trim()
-          let voto: number = element['__EMPTY_9'] != '-' ? Number(element['__EMPTY_9'].toString().trim()) : 4
-          let ruolo: string = element['__EMPTY_5'].toString().trim()
-          if ("P" == ruolo) { voto = voto + 1; }
-
-          let ris = {
-            nome: nome,
-            voto: voto
-          }
-          filelist.push(ris);
-        }
-      }
-      this.risultati = this.adminService.getPalinsesto(filelist, this.formazioni_inserite)
-    }
+  classifica(a: number, b: number) {
+    if (a == b) return 1
+    if (a > b) return 3
+    else return 0
   }
 
 
-  somma(punteggio: any) {
-    let punti: number = 0;
-    for (let item of punteggio.schieramento) {
-      punti += item.voto;
-    }
-    punteggio.punti = punti;
-  }
 
-  gol(punteggio: any) {
-    let punti: number = 0;
-    for (let item of punteggio.schieramento) {
-      punti += item.voto;
-    }
+  gol(punti: number) {
 
     if (punti < 30) {
-      punteggio.gol = 0
+      return 0
     } else {
       let tmp: any = (punti - 27) / 3;
-      punteggio.gol = parseInt(tmp).toFixed(0);
+      return parseInt(tmp).toFixed(0);
     }
   }
 
@@ -185,23 +133,6 @@ export class CalcoloVotiComponent extends GlobalComponent implements OnInit {
 
   }
 
-  updateRisultati() {
-
-    this.loading_btn = true;
-
-    this.adminService.insertVoti(this.risultati)
-      .subscribe({
-
-        next: (result: any) => {
-          this.calcolaGiornata(result)
-        },
-        error: (error: any) => {
-          this.alert.error(error);
-
-        }
-      })
-
-  }
   /* FINE CHIAMATA AI SERVIZI */
 }
 

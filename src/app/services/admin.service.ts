@@ -97,16 +97,7 @@ export class AdminService extends HttpSenderService {
         catchError(this.handleError));
   }
 
-  insertVoti(risultati: any): Observable<any[]> {
-
-    let payloads = this.formatting.payloadCalcolo(risultati);
-
-    return this.http.post(`${this.buildURL("set_voti")}`, { data: payloads.voti })
-      .pipe(map((res) => {
-        return payloads.ris;
-      }),
-        catchError(this.handleError));
-  }
+ 
 
   getFormazioniByGionata(giornata: string) {
 
@@ -119,12 +110,6 @@ export class AdminService extends HttpSenderService {
 
       }),
         catchError(this.handleError));
-  }
-
-
-  getPalinsesto(filelist: any, formazioni_inserite: any) {
-
-    return this.formatting.palinsesto(filelist, formazioni_inserite)
   }
 
 

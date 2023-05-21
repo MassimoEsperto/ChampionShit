@@ -3,7 +3,6 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { throwError } from 'rxjs'
 import { Utente } from '../classes/models/utente';
 import { WS_BASE_URL } from '../classes/utils/costanti'
-import { Formatting } from '../classes/utils/formatting';
 
 
 export class HttpSenderService {
@@ -14,7 +13,6 @@ export class HttpSenderService {
     this.typeServices = type
   }
 
-  formatting: Formatting = new Formatting();
 
   helper = new JwtHelperService();
   myheaders = { headers: new HttpHeaders().set('Authorization', `Bearer ${this.getLoggato().token}`) }
