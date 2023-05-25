@@ -3,7 +3,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { GlobalComponent } from 'src/app/classes/utils/global-component';
 import { AlertService } from 'src/app/services/alert.service';
 import { finalize } from 'rxjs/operators';
-import { INIBITO } from 'src/app/classes/utils/costanti';
 import { MatDialog } from '@angular/material/dialog';
 import { MyModalValidate } from 'src/app/components/my-modal-validate/my-modal-validate.component';
 
@@ -26,7 +25,8 @@ export class RecuperoPrecedentiComponent extends GlobalComponent implements OnIn
 
 
   ngOnInit() {
-    this.giornata_selezionata = this.administrator.calcolato['NO'][0]}
+    this.giornata_selezionata = this.administrator.calcolato['NO'][0]
+  }
 
   giornata_selezionata: string;
   formazioni_inserite: any;
@@ -39,48 +39,25 @@ export class RecuperoPrecedentiComponent extends GlobalComponent implements OnIn
     });
   }
 
-  recTeamTrasferta(item) {
-
-    let ultimeInserite =this.administrator.recuperate;
-    let listaRose = this.administrator.rose;
-
-    let ripescata = ultimeInserite.filter(x => x.id_utente == item.match[1].id_utente)
-    let avversario = listaRose.find(x => x.id_utente == item.match[0].id_utente)
+  recTeamTrasferta(item:any) {
 
     let payload = {
-      lista: [],
-      id_partita: item.id_partita,
-      id_utente: item.match[1].id_utente,
+      id_utente: item.CASA.id_utente,
+      id_risultato: item.TRASFERTA.id_risultato,
+      id_avversario: item.TRASFERTA.id_utente
     }
 
-    for (let membro of ripescata) {
-      let esiste = avversario.lista.some(x => x.id_calciatore == membro.id_calciatore)
-      if (esiste)
-        payload.lista.push(INIBITO)
-      else
-        payload.lista.push(membro.id_calciatore)
-    }
     this.onInsert(payload);
-
   }
 
-  recTeamCasa(item) {
-
-    let ultimeInserite =this.administrator.ultime_formazioni_inserite;
-
-    let ripescata = ultimeInserite.filter(x => x.id_utente == item.match[0].id_utente)
+  recTeamCasa(item:any) {
 
     let payload = {
-      lista: [],
-      id_partita: item.id_partita,
-      id_utente: item.match[0].id_utente,
+      id_utente: item.CASA.id_utente,
+      id_risultato: item.CASA.id_risultato
     }
-
-    for (let membro of ripescata) {
-      payload.lista.push(membro.id_calciatore)
-    }
+  
     this.onInsert(payload);
-
   }
 
 
@@ -98,6 +75,7 @@ export class RecuperoPrecedentiComponent extends GlobalComponent implements OnIn
 
         next: (result: any) => {
           this.formazioni_inserite = result
+          console.log("this.formazioni_inserite", this.formazioni_inserite)
         },
         error: (error: any) => {
           this.alert.error(error);
@@ -129,7 +107,7 @@ export class RecuperoPrecedentiComponent extends GlobalComponent implements OnIn
 
   }
 
-  
+
 
   /* FINE CHIAMATA AI SERVIZI */
 }

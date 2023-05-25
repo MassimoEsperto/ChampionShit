@@ -26,7 +26,7 @@ export class CalcoloVotiComponent extends GlobalComponent implements OnInit {
 
 
   ngOnInit() {
-    this.giornata_selezionata = this.calcolato.SI[0];
+    this.giornata_selezionata = this.calcolato.NO[0];
   }
 
 
@@ -37,11 +37,7 @@ export class CalcoloVotiComponent extends GlobalComponent implements OnInit {
 
     file = event.target.files[0];
     filelist = await this.adminService.getVotiFromFile(file)
-    console.log("filelist2", filelist)
-    /*
-        for (let item of this.formazioni_inserite.lista) {
-          item.voto = filelist[item.nome_calciatore] || 4
-        }*/
+
 
     for (let partite of this.formazioni_inserite) {
       partite.CASA.somma = Number(partite.CASA.bonus)
@@ -114,14 +110,14 @@ export class CalcoloVotiComponent extends GlobalComponent implements OnInit {
   }
 
   onCalcolaGiornata() {
-  
-    let payload={
-      giornata:this.giornata_selezionata,
-      risultati:this.formazioni_inserite
+
+    let payload = {
+      giornata: this.giornata_selezionata,
+      risultati: this.formazioni_inserite
     }
-    console.log("payload", payload)
+   
     this.calcolaGiornata(payload)
-    
+
   }
 
 

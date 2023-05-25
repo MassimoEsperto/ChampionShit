@@ -115,7 +115,7 @@ export class AdminService extends HttpSenderService {
 
   recuperoFormazione(payload: any): Observable<any[]> {
 
-    return this.http.post(`${this.buildURL("upd_schieramento")}`, { data: payload })
+    return this.http.post(`${this.buildURL("recupera_schieramento")}`, { data: payload })
       .pipe(map((res) => {
 
         return res['data'];

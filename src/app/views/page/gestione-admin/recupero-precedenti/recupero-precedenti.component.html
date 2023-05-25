@@ -4,7 +4,7 @@
 
     <div class="selezionata">
         <select  class="btn-file custom-select ml-16" [(ngModel)]="giornata_selezionata"
-          placeholder="Giornata">
+          placeholder="Giornata" (change)="formazioni_inserite=[]">
           <optgroup label="Da Calcolare">
             <option *ngFor="let g of administrator.calcolato['NO']" [ngValue]="g">Giornata {{g}}°</option>
           </optgroup>
@@ -12,6 +12,7 @@
             <option *ngFor="let g of administrator.calcolato['SI']" [ngValue]="g">Giornata {{g}}°</option>
           </optgroup>
         </select>
+
         <div class="pa-8">
           <my-button [submit]="false" [color]="'primary'" [block]="false" [disabled]="!giornata_selezionata" [label]="'PROCEDI'"
             [loading]="loading_btn" (myClick)="formazioniInserite()"></my-button>
@@ -24,32 +25,32 @@
                 <div class="casa">
 
                     <div class="squadraC pa-8">
-                        <label class="pr-8">{{item.match[0].squadra}}</label>
+                        <label class="pr-8">{{item.CASA.squadra}}</label>
                     </div>
                     <div class="pa-8">
-                        <div *ngFor="let ele of item.match[0].schieramento" class="calciatore">
-                            <label class="pr-8">{{ele.calciatore.substring(0, 9)}}</label>
+                        <div *ngFor="let ele of item.CASA.schieramento" class="calciatore">
+                            <label class="pr-8">{{ele.nickname}}</label>
                         </div>
                     </div>
                     <div class="calciatore pa-8">
                         <my-button [submit]="false" [color]="'primary'" [block]="false" [label]="'RECUPERA'"
                             [loading]="loading_btn" (myClick)="recTeamCasa(item)"
-                            [disabled]="item.match[0].schieramento.length"></my-button>
+                            [disabled]="item.CASA.schieramento.length==5"></my-button>
                     </div>
                 </div>
                 <div class="trasferta">
                     <div class="squadraT pr-8 pt-8 pb-8">
-                        <label>{{item.match[1].squadra}}</label>
+                        <label>{{item.TRASFERTA.squadra}}</label>
                     </div>
                     <div class="pr-8 pt-8 pb-8">
-                        <div *ngFor="let ele of item.match[1].schieramento" class="calciatore">
-                            <label class="pr-8">{{ele.calciatore.substring(0, 9)}}</label>
+                        <div *ngFor="let ele of item.TRASFERTA.schieramento" class="calciatore">
+                            <label class="pr-8">{{ele.nickname}}</label>
                         </div>
                     </div>
                     <div class="calciatore pa-8">
                         <my-button [submit]="false" [color]="'primary'" [block]="false" [label]="'RECUPERA'"
                             [loading]="loading_btn" (myClick)="recTeamTrasferta(item)"
-                            [disabled]="item.match[1].schieramento.length"></my-button>
+                            [disabled]="item.TRASFERTA.schieramento.length==5"></my-button>
                     </div>
                 </div>
             </div>
