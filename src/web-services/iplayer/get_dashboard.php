@@ -1,7 +1,7 @@
 <?php
-
-require_once '../common/turno.php';//require_once '../config/connect_local.php';
-$id_utente=1;//require_once '../config/decode.php';
+require_once '../config/connect_local.php';
+require_once '../common/turno.php';
+require_once '../config/decode.php';
     
 //dichiarazione variabili	
 $risultati = [];
@@ -75,7 +75,7 @@ if($turno['periodo'] != 3)
   $sql2 .="INNER JOIN risultati r2  ON c.id_calendario = r2.calendario_id AND r2.calendario_id =  r.calendario_id  ";
   $sql2 .="INNER JOIN utenti u on u.id_utente = r2.utente_id ";
   $sql2 .="INNER JOIN avatar a on a.id_avatar = u.avatar_id ";
-  $sql2 .="WHERE c.giornata_id = ({$turno['giornata']}-1) ORDER BY r2.luogo ";
+  $sql2 .="WHERE c.giornata_id = ({$turno['giornata']}) ORDER BY r2.luogo ";
 
 
   if($result = mysqli_query($con,$sql2))

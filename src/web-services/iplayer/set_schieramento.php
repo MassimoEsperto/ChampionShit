@@ -1,6 +1,6 @@
 <?php
-
-require_once '../config/turno.php';
+require_once '../config/connect_local.php';
+require_once '../common/turno.php';
 require_once '../config/decode.php';
 require_once '../config/post_data.php';
 
@@ -21,7 +21,7 @@ foreach($lista as $item)
 	$ele++;
 }
 
-$sql =  "UPDATE risultati SET modulo_id = {$id_modulo} ";
+$sql .=  "UPDATE risultati SET modulo_id = {$id_modulo} ";
 $sql .= "WHERE id_risultato = {$id_risultato} LIMIT 1 ; ";
 
 //controllo
@@ -35,7 +35,8 @@ else
 	{
 		$ritono = [
 					  'stato' => $con->affected_rows,
-					  'risposta' => 'ok'
+					 // 'risposta' => 'ok'
+                     'risposta' =>  $sql
 					];
 		echo json_encode(['data'=>$ritono]);
 	} 

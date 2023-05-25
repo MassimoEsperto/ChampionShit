@@ -1,51 +1,79 @@
 <?php
 
 require_once '../config/connect_local.php';
+require_once '../config/post_data.php';
 
-// Get the posted data.
-$postdata = file_get_contents("php://input");
 
-if(isset($postdata) && !empty($postdata))
+$risultati= $dati->risultati;
+$giornata = mysqli_real_escape_string($con, trim($dati->giornata)); 
+ 
+$sql =  "UPDATE giornate SET is_calcolata=1 WHERE id_giornata = {$giornata} LIMIT 1 ;";
+
+foreach($risultati as $risultato) 
 {
-	// Extract the data.
-	$request = json_decode($postdata);
-  
-	$dati= $request->data;
-	
-	foreach($dati as $partita) 
-	{
-		$id_partita = mysqli_real_escape_string($con, (int)$partita->id_partita);
-		$gol_casa = mysqli_real_escape_string($con, (int)$partita->gol_casa);
-		$gol_trasferta = mysqli_real_escape_string($con, (int)$partita->gol_trasferta);
-		$pt_casa = mysqli_real_escape_string($con, (int)$partita->pt_casa);
-		$pt_trasferta = mysqli_real_escape_string($con, (int)$partita->pt_trasferta);
-		
-		$sql .= "UPDATE calendario SET calcolato=1,gol_casa={$gol_casa},gol_trasferta={$gol_trasferta},";
-        $sql .= " pt_casa={$pt_casa},pt_trasferta={$pt_trasferta} ";
-		$sql .="WHERE id_partita={$id_partita} ;";
-		
-	}
+	$casa = $risultato->CASA;
+    $trasferta = $risultato->TRASFERTA;
     
-	
-	if ($con->multi_query($sql) === TRUE) 
-	{
-		$ritono = [
-					  'stato' => $con->affected_rows,
-					  'risposta' => 'ok'
-					];
-		echo json_encode(['data'=>$ritono]);
-	} 
-	else 
-	{
-		header("HTTP/1.1 500 Internal Server Error");
-		header('Content-Type: application/json; charset=UTF-8');
-		die(json_encode(array('message' => 'valori sballati', 'code' => 400)));
-	}
-	
+	$id = mysqli_real_escape_string($con, (int)$casa->id_risultato);
+	$goals = mysqli_real_escape_string($con, (int)$casa->goals);
+	$punti = mysqli_real_escape_string($con, (int)$casa->punti);
+	$somma = mysqli_real_escape_string($con, (int)$casa->somma);
+		
+	$sql .= "UPDATE risultati SET goals={$goals},punti={$punti},somma={$somma} ";
+	$sql .="WHERE id_risultato={$id} ;";
+    
+    $schieramento = $casa->schieramento;
+    
+    foreach($schieramento as $item) 
+    {
+            $id_calciatore = mysqli_real_escape_string($con, (int)($item->id));
+            $voto = mysqli_real_escape_string($con, trim($item->voto));
+
+            $sql .="UPDATE formazioniNEW ";
+            $sql .="INNER JOIN risultati ON formazioniNEW.risultato_id = risultati.id_risultato ";
+            $sql .="INNER JOIN calendarioNEW ON risultati.calendario_id = calendarioNEW.id_calendario AND calendarioNEW.giornata_id={$giornata} ";
+            $sql .="SET voto={$voto} WHERE calciatore_id={$id_calciatore};";
+
+    }
+    
+    $id = mysqli_real_escape_string($con, (int)$trasferta->id_risultato);
+	$goals = mysqli_real_escape_string($con, (int)$trasferta->goals);
+	$punti = mysqli_real_escape_string($con, (int)$trasferta->punti);
+	$somma = mysqli_real_escape_string($con, (int)$trasferta->somma);
+		
+	$sql .= "UPDATE risultati SET goals={$goals},punti={$punti},somma={$somma} ";
+	$sql .="WHERE id_risultato={$id} ;";
+    
+    $schieramento = $trasferta->schieramento;
+    
+    foreach($schieramento as $item) 
+    {
+            $id_calciatore = mysqli_real_escape_string($con, (int)($item->id));
+            $voto = mysqli_real_escape_string($con, trim($item->voto));
+
+            $sql .="UPDATE formazioniNEW ";
+            $sql .="INNER JOIN risultati ON formazioniNEW.risultato_id = risultati.id_risultato ";
+            $sql .="INNER JOIN calendarioNEW ON risultati.calendario_id = calendarioNEW.id_calendario AND calendarioNEW.giornata_id={$giornata} ";
+            $sql .="SET voto={$voto} WHERE calciatore_id={$id_calciatore};";
+
+    }
+		
 }
-else
+
+
+
+if ($con->multi_query($sql) === TRUE) 
 {
-	die('valori non prelevati'. mysqli_error($con));
+	$ritono = [
+				'stato' => $con->affected_rows,
+				'risposta' => 'ok'
+			];
+	echo json_encode(['data'=>$ritono]);
+	} 
+else{
+	errorMessage('query errata: calcola giornata');
 }
+
+
 
 ?>

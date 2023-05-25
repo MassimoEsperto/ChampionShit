@@ -1,6 +1,4 @@
 <?php
-
-require_once '../config/connect_local.php';
     
 //dichiarazione variabili	
 $turno = [];

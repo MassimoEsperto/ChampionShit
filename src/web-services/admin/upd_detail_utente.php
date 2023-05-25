@@ -4,7 +4,7 @@ require_once '../config/connect_local.php';
 require_once '../config/post_data.php';
 
 $account = mysqli_real_escape_string($con, trim($dati->account)); 
-$id_utente = mysqli_real_escape_string($con, trim($dati->id)); 
+$id = mysqli_real_escape_string($con, trim($dati->id)); 
 $email = mysqli_real_escape_string($con, trim($dati->email)); 
 $squadra = mysqli_real_escape_string($con, trim($dati->squadra)); 
 $username = mysqli_real_escape_string($con, trim($dati->username)); 
@@ -12,7 +12,7 @@ $stato = mysqli_real_escape_string($con, trim($dati->stato));
 
 
 $sql =  "UPDATE utenti SET username='{$username}',account='{$account}',email='{$email}', ";
-$sql .= "squadra='{$squadra}',ruolo_id='{$stato}' WHERE id_utente = {$id_utente} LIMIT 1 ";
+$sql .= "squadra='{$squadra}',ruolo_id='{$stato}' WHERE id_utente = {$id} LIMIT 1 ";
 
 
 if(mysqli_query($con,$sql))

@@ -3,11 +3,11 @@
 require_once '../config/connect_local.php';
 require_once '../config/post_data.php';
 
-$id_partita = mysqli_real_escape_string($con, trim($dati->id_partita)); 
+$id_calendario = mysqli_real_escape_string($con, trim($dati->id_calendario)); 
 
 $sql = "DELETE c,r FROM calendarioNEW c ";
 $sql .="JOIN risultati r ON r.calendario_id = c.id_calendario ";
-$sql .="WHERE id_calendario = {$id_partita} ";
+$sql .="WHERE id_calendario = {$id_calendario} ";
 
 
 if(mysqli_query($con, $sql))

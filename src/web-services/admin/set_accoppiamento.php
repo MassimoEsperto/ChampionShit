@@ -6,17 +6,22 @@ require_once '../config/post_data.php';
 $casa = mysqli_real_escape_string($con, trim($dati->casa)); 
 $trasferta = mysqli_real_escape_string($con, trim($dati->trasferta)); 
 $giornata = mysqli_real_escape_string($con, trim($dati->giornata)); 
-$fase = mysqli_real_escape_string($con, trim($dati->fase)); 
-
-$sql .= "INSERT INTO calendario(fase, giornata,utente_casa,utente_trasferta) ";
-$sql .= "VALUES ('{$fase}','{$giornata}','{$casa}','{$trasferta}');";
 
 
-if(mysqli_query($con, $sql))
+$sql .= "REPLACE INTO calendarioNEW(giornata_id) VALUES ({$giornata});";
+$sql .= "REPLACE INTO risultati(luogo,utente_id,calendario_id) VALUES ('CASA',{$casa},(SELECT MAX(id_calendario) FROM calendarioNEW));";
+$sql .= "REPLACE INTO risultati(luogo,utente_id,calendario_id) VALUES ('TRASFERTA',{$trasferta},(SELECT MAX(id_calendario) FROM calendarioNEW));";
+
+
+if ($con->multi_query($sql) === TRUE) 
 {
-     http_response_code(204);
-}
-else
+	$ritono = [
+				  'stato' => $con->affected_rows,
+				  'risposta' => 'ok'
+				];
+	echo json_encode(['data'=>$ritono]);
+} 
+else 
 {
-     errorMessage('query errata');
+	errorMessage('query errata: accoppiamento ');
 }

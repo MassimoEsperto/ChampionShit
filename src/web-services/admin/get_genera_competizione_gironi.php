@@ -34,7 +34,7 @@ if($result = mysqli_query($con,$sql2))
       $ele++;  
 	}
 
-    $gironi = array_values(array_diff(["A","B","C","D","E","F"], $occupati));
+    $gironi = array_values(array_diff(["A","B","C","D","E","F","G","H","I"], $occupati));
 
 }
 else

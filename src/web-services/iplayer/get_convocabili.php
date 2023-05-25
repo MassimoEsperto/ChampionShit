@@ -1,7 +1,7 @@
 <?php
-
+require_once '../config/connect_local.php';
 require_once '../common/turno.php';
-$id_utente=1;//require_once '../config/decode.php';
+require_once '../config/decode.php';
 
 //variabili
 $moduli = [];

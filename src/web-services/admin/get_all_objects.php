@@ -2,7 +2,7 @@
 
 require_once '../config/connect_local.php';
 
-$element = [];
+$oggetti = [];
 $tabella = "";
 $tabelle = ($_GET['tabelle'] !== null && $_GET['tabelle'] !== '')? mysqli_real_escape_string($con, $_GET['tabelle']) : false;
 //accetta una lista di tabelle separate dalla virgola
@@ -28,7 +28,7 @@ for($i=0;$i<$arr_length;$i++)
       {
       	  unset($row['password']);
           unset($row['messaggio']);
-          $element[$tabella[$i]][$ele] = $row;
+          $oggetti[$tabella[$i]][$ele] = $row;
           $ele++;
       }
   }
@@ -40,6 +40,6 @@ for($i=0;$i<$arr_length;$i++)
 }
     
 
-echo json_encode(['data'=>$element]);
+echo json_encode(['data'=>$oggetti]);
 
 ?>
