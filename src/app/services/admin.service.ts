@@ -150,8 +150,8 @@ export class AdminService extends HttpSenderService {
   }
 
 
-  getCreaCompetizioneRandom() {
-    return this.http.get(`${this.buildURL("get_crea_competizione_random")}`).pipe(
+  getGeneraCompetizioneGironi() {
+    return this.http.get(`${this.buildURL("get_genera_competizione_gironi")}`).pipe(
       map((res) => {
 
         return res['data'];
@@ -160,9 +160,9 @@ export class AdminService extends HttpSenderService {
       catchError(this.handleError));
   }
 
-  setCreaCompetizioneRandom(payload: any): Observable<any[]> {
+  setGeneraCompetizioneGironi(payload: any): Observable<any[]> {
 
-    return this.http.post(`${this.buildURL("set_crea_competizione_random")}`, { data: payload })
+    return this.http.post(`${this.buildURL("set_genera_competizione_gironi")}`, { data: payload })
       .pipe(map((res) => {
         return res['data'];
       }),

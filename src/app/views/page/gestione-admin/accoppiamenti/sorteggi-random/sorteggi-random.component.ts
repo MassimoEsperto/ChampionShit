@@ -58,15 +58,15 @@ export class SorteggiRandomComponent extends GlobalComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         let payload = { utenti: lista, girone: this.girone }
-        this.setCreaCompetizioneRandom(payload)
+        this.setGeneraCompetizioneGironi(payload)
       }
 
     });
   }
 
-  getStartNewRandom() {
+  getStartNewGrirone() {
 
-    this.adminService.getCreaCompetizioneRandom()
+    this.adminService.getGeneraCompetizioneGironi()
 
       .subscribe({
         next: (result: any) => {
@@ -83,11 +83,11 @@ export class SorteggiRandomComponent extends GlobalComponent implements OnInit {
   }
 
 
-  setCreaCompetizioneRandom(payload: any) {
+  setGeneraCompetizioneGironi(payload: any) {
 
     this.loading_btn = true;
 
-    this.adminService.setCreaCompetizioneRandom(payload)
+    this.adminService.setGeneraCompetizioneGironi(payload)
       .pipe(finalize(() => {
         this.loading_btn = false;
       }
