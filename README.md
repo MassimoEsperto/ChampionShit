@@ -10,4 +10,6 @@ ng build --base-href "/WorldWideFantashit/ShitMonkeysCup/"
 ng build --prod --base-href "/WorldWideFantashit/ShitCup/"
 ng build --base-href "/WorldWideFantashit/ChampionShit/"
 
+ng build --prod --base-href "/WorldWideFantashit/ShitCup/"
+
 ## in angular material $font-family:  'Paint' in tema e pink

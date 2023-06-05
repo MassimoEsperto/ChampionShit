@@ -36,7 +36,7 @@ export class AuthService extends HttpSenderService {
 
         const decoded = this.helper.decodeToken(token);
         decoded.token = token;
- 
+
         this.setToken(decoded);
 
         return decoded;
@@ -111,19 +111,19 @@ export class AuthService extends HttpSenderService {
   }
 
   verificaVersioneWeb() {
-    return this.http.get(`${this.buildURL("versione")}`)
+    return this.http.get(`${this.buildURL("info")}`)
       .pipe(map((res) => {
         let verifica = {
-          applicazione: res['data'],
+          applicazione: res['data'].versione,
           locale: this.versione(),
-          error: res['data'] != this.versione()
+          error: res['data'].versione != this.versione()
         }
         return verifica;
       }),
         catchError(this.handleError));
   }
 
-  registerNewUtente(payload: any): Observable<any[]>  {
+  registerNewUtente(payload: any): Observable<any[]> {
 
     return this.http.post(`${this.buildURL("register_new_utente")}`, { data: payload })
       .pipe(map((res) => {
@@ -131,4 +131,16 @@ export class AuthService extends HttpSenderService {
       }),
         catchError(this.handleError));
   }
+
+  getRegister() {
+    return this.http.get(`${this.buildURL("get_register")}`).pipe(
+      map((res) => {
+
+        return res['data'];
+
+      }),
+      catchError(this.handleError));
+  }
+
+
 }

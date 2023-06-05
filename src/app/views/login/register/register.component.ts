@@ -18,7 +18,6 @@ export class RegisterComponent extends GlobalComponent implements OnInit {
     private router: Router,
     private alert: AlertService,
     private fanta: FantaGazzettaService,
-    private adminService: AdminService,
     private service: AuthService) {
     super();
   }
@@ -31,32 +30,18 @@ export class RegisterComponent extends GlobalComponent implements OnInit {
   squadra: any;
 
   ngOnInit() {
-    this.listaUtenti()
-    this.listaCalciatori()
+    this.getStartRegister()
   }
 
 
-  listaCalciatori() {
+  getStartRegister() {
 
-    this.adminService.getListaCalciatori()
+    this.service.getRegister()
       .subscribe({
 
         next: (result: any) => {
-          this.svincolati = result;
-        },
-        error: (error: any) => {
-          this.alert.error(error);
-
-        }
-      })
-  }
-
-  listaUtenti() {
-
-    this.adminService.get_all_object("utenti")
-      .subscribe({
-
-        next: (result: any) => {
+          this.svincolati = result.lista_calciatori;
+          console.log("lista", result)
           this.utenti = result.utenti;
         },
         error: (error: any) => {
@@ -66,11 +51,13 @@ export class RegisterComponent extends GlobalComponent implements OnInit {
       })
   }
 
+
+
   getLega(lega: string) {
 
     this.loading_btn = true
     let re = /\ /gi;
-    let nome_lega = lega.replace(re,"-")
+    let nome_lega = lega.replace(re, "-")
 
     this.fanta.getLega(nome_lega)
       .pipe(finalize(() => this.loading_btn = false))

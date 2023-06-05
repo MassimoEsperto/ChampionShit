@@ -74,4 +74,8 @@ export abstract class GlobalComponent {
         valore: "0"
     }]
 
+    TABELLE ={
+        UTENTI:"utenti",
+        CALCIATORI:"lista_calciatori order by nome_calciatore"
+    }
 }
