@@ -9,9 +9,10 @@
 
 
     <div [ngSwitch]="this.dash.turno.periodo">
+      
       <div *ngSwitchCase="PERIODO_GIORNATA.PRE_PARTITA">
 
-        <div class="pt-16">
+        <div *ngIf="dash.match.ESISTENTE" class="pt-16">
 
           <mdb-card class="text-white" bgColor="bg-success">
             <mdb-card-header>
@@ -93,7 +94,7 @@
 
       </div>
       <div *ngSwitchCase="PERIODO_GIORNATA.PARTITA_LIVE">
-        <div class="pt-16">
+        <div *ngIf="dash.match.ESISTENTE" class="pt-16">
 
           <mdb-card class="text-white" bgColor="bg-success">
             <mdb-card-header>
@@ -125,6 +126,23 @@
                 </div>
               </div>
 
+              <div>
+                <my-button [submit]="false" [color]="'success'" [block]="true" [label]="language.page.vedi_live"
+                  (myClick)="visualizzaLive()"></my-button>
+              </div>
+            </mdb-card-body>
+
+          </mdb-card>
+        </div>
+
+        <div *ngIf="!dash.match.ESISTENTE" class="pt-16">
+
+          <mdb-card class="text-white" bgColor="bg-success">
+            <mdb-card-header>
+              <div>NO MATCH</div>
+            </mdb-card-header>
+            <!--Card content-->
+            <mdb-card-body class="sfondo_campo">
               <div>
                 <my-button [submit]="false" [color]="'success'" [block]="true" [label]="language.page.vedi_live"
                   (myClick)="visualizzaLive()"></my-button>
