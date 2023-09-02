@@ -1,4 +1,4 @@
-<div *ngIf="loggato.stato!=STATI_UTNTE.ISCRITTO" class="all-view">
+<div *ngIf="loggato.selezionata.stato!=STATI_UTNTE.ISCRITTO" class="all-view">
 
   <div class="pcdesktop">
     <nav-desktop></nav-desktop>
@@ -14,7 +14,7 @@
 
   <!-- Page -->
   <div class="pt-media" style="min-height:100vh;">
-    <div *ngIf="loggato.stato==STATI_UTNTE.PARTECIPANTE" class="pagante">
+    <div *ngIf="loggato.selezionata.stato==STATI_UTNTE.PARTECIPANTE" class="pagante">
       <h2>RICORDATI DI SALDARE IL DEBITO!</h2>
     </div>
     <my-spinner></my-spinner>
@@ -26,6 +26,6 @@
   <my-footer></my-footer>
 </div>
 
-<div *ngIf="loggato.stato==STATI_UTNTE.ISCRITTO">
+<div *ngIf="loggato.selezionata.stato==STATI_UTNTE.ISCRITTO">
   <pagamento></pagamento>
 </div>

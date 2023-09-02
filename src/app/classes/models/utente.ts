@@ -1,27 +1,24 @@
+import { Squadra } from "./squadra";
+
 export class Utente {
   id:string;
   username: string;
   password: string;
   email: string;
-  squadra: string;
-  avatar: string;
-  id_avatar: string;
   scadenza:string;
   num_msg: number;
+  qta: number;
   token?: string;
-  lega?: string;
-  account?: string;
-  stato?: number;
-
+  squadre?:[]
+  selezionata?:Squadra
+ 
   constructor(
     username: string,
     password: string,
-    email: string,
-    squadra: string
+    email: string
   ) {
     this.username = username;
     this.password = password;
     this.email = email;
-    this.squadra = squadra;
   }
 }

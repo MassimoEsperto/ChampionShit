@@ -80,6 +80,7 @@ export class AuthService extends HttpSenderService {
   setToken(tkuser: any) {
     tkuser.scadenza = this.scadenza().toString();
     let input = JSON.stringify(tkuser)
+
     localStorage.setItem('tk-user', input);
   }
 

@@ -46,7 +46,7 @@ export class UpgradeTeamComponent extends GlobalComponent implements OnInit {
 
         next: (result: any) => {
           this.svincolati = result;
-          this.getLega(this.loggato.lega)
+          this.getLega(this.loggato.selezionata.lega)
         },
         error: (error: any) => {
           this.alert.error(error);
@@ -64,7 +64,7 @@ export class UpgradeTeamComponent extends GlobalComponent implements OnInit {
         next: (result: any) => {
 
           if (result && result.length > 0) {
-            let fantalega = result.find(i => i.team == this.loggato.account).lista || [];
+            let fantalega = result.find(i => i.team == this.loggato.selezionata.account).lista || [];
             this.onLega(fantalega)
           } else {
             this.alert.error("Lega inesistente");
@@ -135,7 +135,7 @@ export class UpgradeTeamComponent extends GlobalComponent implements OnInit {
     this.squadra = selected.map(item => item.value);
     let payload = {
       lista: this.squadra,
-      lega: this.loggato.lega
+      lega: this.loggato.selezionata.lega
     }
     this.upgradeRosa(payload)
 

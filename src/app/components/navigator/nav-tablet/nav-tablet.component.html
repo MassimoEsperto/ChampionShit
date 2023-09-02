@@ -7,7 +7,7 @@
     </div>
     <div>
         <a type="button">
-            <img src="assets/avatar/{{loggato.avatar}}.png" (click)="info()" alt=""
+            <img src="assets/avatar/{{loggato.selezionata.avatar}}.png" (click)="info()" alt=""
                 class="img-fluid rounded-circle z-depth-0" width="24px" height="24px"></a>
     </div>
 </div>
@@ -18,7 +18,7 @@
 
         <!-- Links -->
         <ul class="navbar-nav mr-auto">
-            <li *ngIf="loggato.stato==STATI_UTNTE.ADMIN" class="nav-item flex-start pl-16">
+            <li *ngIf="loggato.selezionata.stato==STATI_UTNTE.ADMIN" class="nav-item flex-start pl-16">
                 <mdb-icon fas icon="id-card-alt" class="white-text"></mdb-icon>
                 <a class="nav-link waves-light" (click)="navElement()" routerLink="/home/gestione-admin"
                     mdbWavesEffect>{{language.header.admin}}</a>

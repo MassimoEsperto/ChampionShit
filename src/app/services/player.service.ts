@@ -6,6 +6,7 @@ import { HttpSenderService } from './http-sender-service';
 import { map, catchError } from 'rxjs/operators';
 import { Utente } from '../classes/models/utente';
 import { SERVICE_TYPE } from '../classes/utils/costanti';
+import { Squadra } from '../classes/models/squadra';
 
 @Injectable({
   providedIn: 'root'
@@ -35,6 +36,18 @@ export class PlayerService extends HttpSenderService {
   updateUtente(utente: Utente) {
     return this.http.put(`${this.buildURL("upd_utente")}`,
       { data: utente }, this.myheaders)
+      .pipe(map((res) => {
+
+        this.tokenError(res);//controllo token
+
+        return 'ok';
+      }),
+        catchError(this.handleError));
+  }
+
+  changeTeam(squadra: Squadra) {
+    return this.http.put(`${this.buildURL("change_team")}`,
+      { data: squadra }, this.myheaders)
       .pipe(map((res) => {
 
         this.tokenError(res);//controllo token

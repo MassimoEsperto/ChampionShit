@@ -33,20 +33,17 @@ export class HttpSenderService {
 
   getLoggato() {
     let element = JSON.parse(localStorage.getItem("tk-user"))
-    let utente: Utente = new Utente('', '', '', '')
+    let utente: Utente = new Utente('', '', '')
     if (element) {
+      utente.id = element.id_utente
       utente.username = element.username
       utente.email = element.email
-      utente.squadra = element.squadra
-
-      utente.avatar = element.avatar
-      utente.id_avatar = element.id_avatar
-      utente.id = element.id_utente
+      utente.selezionata = element.selezionata
       utente.token = element.token
       utente.num_msg = element.num_msg
-      utente.lega = element.lega
-      utente.account = element.account
-      utente.stato = element.stato
+      utente.squadre = element.squadre
+      utente.qta = element.qta
+  
     }
 
     return utente

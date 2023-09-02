@@ -3,14 +3,14 @@
     <div class="nav-item flex-start pr-8">
       <div class="pr-8">
         <a type="button">
-          <img src="assets/avatar/{{loggato.avatar}}.png" routerLink="/home/info-utente" alt=""
+          <img src="assets/avatar/{{loggato.selezionata.avatar}}.png" routerLink="/home/info-utente" alt=""
             class="img-fluid rounded-circle z-depth-0" width="24px" height="24px"></a>
       </div>
       <div>
         <span class="navbar-brand">{{loggato.username}}</span>
       </div>
     </div>
-    <div *ngIf="loggato.stato==STATI_UTNTE.ADMIN" class="nav-item flex-start">
+    <div *ngIf="loggato.selezionata.stato==STATI_UTNTE.ADMIN" class="nav-item flex-start">
       <a class="pa-8" routerLink="/home/gestione-admin">
         <mdb-icon fas icon="id-card-alt" class="pr-1"></mdb-icon>{{language.header.admin}}
       </a>

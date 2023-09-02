@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { finalize, timeout } from 'rxjs/operators';
+import { Squadra } from 'src/app/classes/models/squadra';
 import { Utente } from 'src/app/classes/models/utente';
 import { GlobalComponent } from 'src/app/classes/utils/global-component';
 import { MyModalValidate } from 'src/app/components/my-modal-validate/my-modal-validate.component';
@@ -38,10 +39,17 @@ export class InfoUtenteComponent extends GlobalComponent implements OnInit {
   vincolati = []
   squadra: any;
 
+  selezinata: Squadra;
+  squadre = [];
+
 
   ngOnInit() {
 
     this.loggato = this.playerService.getLoggato();
+    this.selezinata = this.loggato.selezionata
+
+    console.log("loggato", this.loggato)
+    console.log("this.selezinata", this.selezinata)
     this.onStart()
 
   }
@@ -76,27 +84,51 @@ export class InfoUtenteComponent extends GlobalComponent implements OnInit {
 
   selectedCombo(item) {
     this.avatarSel = item;
-    this.loggato.avatar = item.nome
-    this.loggato.id_avatar = item.id_avatar
+    this.loggato.selezionata.avatar = item.nome
+    this.loggato.selezionata.id_avatar = item.id_avatar
   }
 
 
   preselect() {
-    this.avatarSel = this.avatars.find(x => x.id_avatar == this.loggato.id_avatar)
+    this.avatarSel = this.avatars.find(x => x.id_avatar == this.loggato.selezionata.id_avatar)
   }
+
+  onChange(element: Squadra) {
+    console.log("onChange", element)
+
+    this.loading_btn = true;
+
+    this.playerService.changeTeam(element)
+      .pipe(finalize(() => this.loading_btn = false))
+      .subscribe({
+        next: (result: any) => {
+          let token = this.playerService.getLocalStorage();
+          token.selezionata = element
+          this.authService.setToken(token);
+          this.alert.success(this.language.alert.success);
+          this.refreshPage();
+        },
+        error: (error: any) => {
+          this.alert.error(error);
+        },
+
+      })
+  }
+
+
 
   updateAvatar() {
 
     this.loading_btn = true;
     let utente: Utente = this.playerService.getLoggato();
-    utente.id_avatar = this.loggato.id_avatar
+    utente.selezionata.id_avatar = this.loggato.selezionata.id_avatar
     this.playerService.updateUtente(utente)
       .pipe(finalize(() => this.loading_btn = false))
       .subscribe({
         next: (result: any) => {
           let token = this.playerService.getLocalStorage();
-          token.avatar = this.loggato.avatar
-          token.id_avatar = this.loggato.id_avatar
+          token.selezionata.avatar = this.loggato.selezionata.avatar
+          token.selezionata.id_avatar = this.loggato.selezionata.id_avatar
           this.authService.setToken(token);
           this.alert.success(this.language.alert.success);
           this.refreshPage();
@@ -119,8 +151,8 @@ export class InfoUtenteComponent extends GlobalComponent implements OnInit {
   updateUtente(element: any) {
 
     this.loading_btn = true;
-    let utente: Utente = new Utente(element.username, '', element.email, element.squadra.toUpperCase())
-    utente.id_avatar = this.loggato.id_avatar
+    let utente: Utente = new Utente(element.username, '', element.email)
+    utente.selezionata.id_avatar = this.loggato.selezionata.id_avatar
     this.playerService.updateUtente(utente)
       .pipe(finalize(() => this.loading_btn = false))
       .subscribe({

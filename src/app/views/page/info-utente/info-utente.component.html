@@ -2,6 +2,35 @@
 
   <my-titolo [title]="language.page.personalizza"></my-titolo>
 
+  <div class="pt-16 pb-64" style="text-align: center;">
+    <mdb-card>
+      <mdb-card-header>{{language.page.cambia_dati}}</mdb-card-header>
+      <!--Card content-->
+      <mdb-card-body class="pt-16">
+
+        <!-- Form -->
+        <form class="text-center" style="color: #757575;" (submit)="onChange(selezionata)">
+
+          <select class="form-control mb-4 mt-4 custom-select" [(ngModel)]="selezionata" placeholder="cambia squadra"
+            name="squadra_selezionata" required>
+            <option *ngFor="let u of loggato.squadre" [ngValue]="u">{{u.squadra}}</option>
+          </select>
+
+
+          <!-- Sign in button -->
+
+          <my-button [submit]="true" [color]="'danger'" [block]="true" 
+          [disabled]="!selezionata" [label]="language.bottoni.invia"></my-button>
+
+        </form>
+        <!-- Form -->
+
+      </mdb-card-body>
+
+    </mdb-card>
+  </div>
+
+
   <div *ngIf="!upgrade" class="mio-container" style="text-align: center;">
 
 
@@ -61,7 +90,7 @@
             <!-- Squadra -->
             <div class="pt-32">
               <input type="text" id="squadra" class="form-control" placeholder="Squadra" minlength="4"
-                [(ngModel)]="loggato.squadra" name="squadra" required maxlength="12" #team="ngModel" />
+                [(ngModel)]="loggato.selezionata.squadra" name="squadra" required maxlength="12" #team="ngModel" />
             </div>
             <!-- Sign in button -->
             <div class="pt-64 spazio">
