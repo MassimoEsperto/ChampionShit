@@ -11,6 +11,7 @@ export class Utente {
   token?: string;
   squadre?:[]
   selezionata?:Squadra
+  language?:string;
  
   constructor(
     username: string,

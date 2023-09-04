@@ -40,7 +40,7 @@ export class PlayerService extends HttpSenderService {
 
         this.tokenError(res);//controllo token
 
-        return 'ok';
+        return res['data'];
       }),
         catchError(this.handleError));
   }

@@ -84,6 +84,13 @@ export class AuthService extends HttpSenderService {
     localStorage.setItem('tk-user', input);
   }
 
+  setTokenDecoded(tkuser: any) {
+    const decoded = this.helper.decodeToken(tkuser);
+        decoded.token = tkuser;
+
+        this.setToken(decoded);
+  }
+
   /**
    * recupera la password
    * @param username 

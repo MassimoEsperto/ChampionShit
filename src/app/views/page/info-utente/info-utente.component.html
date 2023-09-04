@@ -1,10 +1,12 @@
 <div *ngIf="!loading_page" [hidden]="hidden_page" class="page" style="text-align: center;">
 
   <my-titolo [title]="language.page.personalizza"></my-titolo>
+  <div *ngIf="loggato.qta">
 
-  <div class="pt-16 pb-64" style="text-align: center;">
+
+  <div *ngIf="selezionata" class="pt-16 pb-64" style="text-align: center;">
     <mdb-card>
-      <mdb-card-header>{{language.page.cambia_dati}}</mdb-card-header>
+      <mdb-card-header>{{language.page.seleziona_squadra}}</mdb-card-header>
       <!--Card content-->
       <mdb-card-body class="pt-16">
 
@@ -13,13 +15,14 @@
 
           <select class="form-control mb-4 mt-4 custom-select" [(ngModel)]="selezionata" placeholder="cambia squadra"
             name="squadra_selezionata" required>
+            <option [ngValue]="selezionata" selected>{{selezionata.squadra}}</option>
             <option *ngFor="let u of loggato.squadre" [ngValue]="u">{{u.squadra}}</option>
           </select>
 
 
           <!-- Sign in button -->
 
-          <my-button [submit]="true" [color]="'danger'" [block]="true" 
+          <my-button [submit]="true" [color]="'danger'" [block]="true" [loading]="loading_btn"
           [disabled]="!selezionata" [label]="language.bottoni.invia"></my-button>
 
         </form>
@@ -111,8 +114,13 @@
 
   </div>
 </div>
+</div>
 
 
-<div *ngIf="upgrade">
+<div *ngIf="upgrade&&loggato.qta">
   <upgrade-team></upgrade-team>
+</div>
+
+<div *ngIf="!loggato.qta">
+oooooooooo
 </div>

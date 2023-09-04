@@ -2,6 +2,7 @@
     "page": {
         "cambia_dati": "CHANGE DATA",
         "cambia_squadra": "UPDATE TEAM",
+        "seleziona_squadra": "SELECT TEAM",
         "cambia_img": "CHANGE IMAGE",
         "personalizza": "CUSTOMIZE",
         "giornata": "DAY",

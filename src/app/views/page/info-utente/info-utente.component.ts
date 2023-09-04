@@ -39,17 +39,17 @@ export class InfoUtenteComponent extends GlobalComponent implements OnInit {
   vincolati = []
   squadra: any;
 
-  selezinata: Squadra;
+  selezionata: Squadra;
   squadre = [];
 
 
   ngOnInit() {
 
     this.loggato = this.playerService.getLoggato();
-    this.selezinata = this.loggato.selezionata
+    this.selezionata = this.loggato.selezionata
 
     console.log("loggato", this.loggato)
-    console.log("this.selezinata", this.selezinata)
+    console.log("this.selezinata", this.selezionata)
     this.onStart()
 
   }
@@ -93,7 +93,7 @@ export class InfoUtenteComponent extends GlobalComponent implements OnInit {
     this.avatarSel = this.avatars.find(x => x.id_avatar == this.loggato.selezionata.id_avatar)
   }
 
-  onChange(element: Squadra) {
+  onChangeOLD(element: Squadra) { //servizio da eliminare
     console.log("onChange", element)
 
     this.loading_btn = true;
@@ -102,11 +102,40 @@ export class InfoUtenteComponent extends GlobalComponent implements OnInit {
       .pipe(finalize(() => this.loading_btn = false))
       .subscribe({
         next: (result: any) => {
+
+          console.log("upd token ",result)
+
           let token = this.playerService.getLocalStorage();
           token.selezionata = element
           this.authService.setToken(token);
           this.alert.success(this.language.alert.success);
           this.refreshPage();
+        },
+        error: (error: any) => {
+          this.alert.error(error);
+        },
+
+      })
+  }
+
+
+  onChange(element: Squadra) { //servizio da eliminare
+    
+    this.loading_btn = true;
+    let utente: Utente = this.playerService.getLoggato();
+    utente.selezionata = element
+    this.playerService.updateUtente(utente)
+      .pipe(finalize(() => this.loading_btn = false))
+      .subscribe({
+        next: (result: any) => {
+
+          console.log("upd token ",result)
+
+         // let token = this.playerService.getLocalStorage();
+         // token.selezionata = this.loggato.selezionata
+          this.authService.setTokenDecoded(result);
+          this.alert.success(this.language.alert.success);
+       //   this.refreshPage();
         },
         error: (error: any) => {
           this.alert.error(error);
@@ -126,9 +155,11 @@ export class InfoUtenteComponent extends GlobalComponent implements OnInit {
       .pipe(finalize(() => this.loading_btn = false))
       .subscribe({
         next: (result: any) => {
+
+          console.log("upd token ",result)
+
           let token = this.playerService.getLocalStorage();
-          token.selezionata.avatar = this.loggato.selezionata.avatar
-          token.selezionata.id_avatar = this.loggato.selezionata.id_avatar
+          token.selezionata = this.loggato.selezionata
           this.authService.setToken(token);
           this.alert.success(this.language.alert.success);
           this.refreshPage();
@@ -148,22 +179,24 @@ export class InfoUtenteComponent extends GlobalComponent implements OnInit {
     });
   }
 
-  updateUtente(element: any) {
+  updateUtente(element: Utente) {
 
     this.loading_btn = true;
-    let utente: Utente = new Utente(element.username, '', element.email)
-    utente.selezionata.id_avatar = this.loggato.selezionata.id_avatar
-    this.playerService.updateUtente(utente)
+ 
+    this.playerService.updateUtente(element)
       .pipe(finalize(() => this.loading_btn = false))
       .subscribe({
         next: (result: any) => {
+
+          console.log("upd token ",result)
+
           let token = this.playerService.getLocalStorage();
           token.username = element.username;
           token.email = element.email;
-          token.squadra = element.squadra.toUpperCase();
+          token.selezionata = element.selezionata;
           this.authService.setToken(token);
           this.alert.success(this.language.alert.success);
-          this.refreshPage();
+      //    this.refreshPage();
         },
         error: (error: any) => {
           this.alert.error(error);
