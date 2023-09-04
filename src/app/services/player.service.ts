@@ -45,18 +45,6 @@ export class PlayerService extends HttpSenderService {
         catchError(this.handleError));
   }
 
-  changeTeam(squadra: Squadra) {
-    return this.http.put(`${this.buildURL("change_team")}`,
-      { data: squadra }, this.myheaders)
-      .pipe(map((res) => {
-
-        this.tokenError(res);//controllo token
-
-        return 'ok';
-      }),
-        catchError(this.handleError));
-  }
-
   getAvatars() {
     return this.http.get(`${this.buildURL("get_avatars")}`, this.myheaders).pipe(
       map((res) => {

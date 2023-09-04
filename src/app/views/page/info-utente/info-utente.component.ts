@@ -93,32 +93,7 @@ export class InfoUtenteComponent extends GlobalComponent implements OnInit {
     this.avatarSel = this.avatars.find(x => x.id_avatar == this.loggato.selezionata.id_avatar)
   }
 
-  onChangeOLD(element: Squadra) { //servizio da eliminare
-    console.log("onChange", element)
-
-    this.loading_btn = true;
-
-    this.playerService.changeTeam(element)
-      .pipe(finalize(() => this.loading_btn = false))
-      .subscribe({
-        next: (result: any) => {
-
-          console.log("upd token ",result)
-
-          let token = this.playerService.getLocalStorage();
-          token.selezionata = element
-          this.authService.setToken(token);
-          this.alert.success(this.language.alert.success);
-          this.refreshPage();
-        },
-        error: (error: any) => {
-          this.alert.error(error);
-        },
-
-      })
-  }
-
-
+  
   onChange(element: Squadra) { //servizio da eliminare
     
     this.loading_btn = true;
@@ -135,7 +110,7 @@ export class InfoUtenteComponent extends GlobalComponent implements OnInit {
          // token.selezionata = this.loggato.selezionata
           this.authService.setTokenDecoded(result);
           this.alert.success(this.language.alert.success);
-       //   this.refreshPage();
+          this.refreshPage();
         },
         error: (error: any) => {
           this.alert.error(error);

@@ -34,6 +34,7 @@ import { UpgradeTeamComponent } from '../components/upgrade-team/upgrade-team.co
 import { MyLogoComponent } from '../components/my-logo/my-logo.component';
 import { AccoppiamentiComponent } from '../views/page/gestione-admin/accoppiamenti/accoppiamenti.component';
 import { EliminatorieComponent } from '../views/page/gestione-admin/accoppiamenti/eliminatorie/eliminatorie.component';
+import { RegistraSquadraComponent } from '../components/registra-squadra/registra-squadra.component';
 
 
 
@@ -67,7 +68,8 @@ import { EliminatorieComponent } from '../views/page/gestione-admin/accoppiament
     UpgradeTeamComponent,
     MyLogoComponent,
     AccoppiamentiComponent,
-    EliminatorieComponent
+    EliminatorieComponent,
+    RegistraSquadraComponent
   ],
   imports: [
     CommonModule,
