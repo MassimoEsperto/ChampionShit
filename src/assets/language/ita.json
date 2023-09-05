@@ -63,14 +63,17 @@
         "versione_locale": "Versione locale",
         "versione_applicazione": "Versione applicazione",
         "soluzione": "Soluzione indicata",
-        "svuotare_cache": "Svuotare le cache e cancellare i cookie.."
+        "svuotare_cache": "Svuotare le cache e cancellare i cookie..",
+        "gestione_squadre": "GESTIONE SQUADRE"
     },
     "bottoni": {
         "invia": "INVIA",
         "inserisci": "INSERISCI",
         "schiera": "SCHIERA",
         "entra": "ENTRA",
-        "avatar": "Seleziona Avatar"
+        "avatar": "Seleziona Avatar",
+        "annulla": "ANNULLA",
+        "aggiungi_squadra": "AGGIUNGI SQUADRA"
     },
     "pannello": {
         "admin": "ADMIN",

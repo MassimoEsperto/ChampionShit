@@ -57,7 +57,9 @@
         "inserisci": "INSERT",
         "schiera": "DEPLOY",
         "entra": "COME IN",
-        "avatar": "Select Avatar"
+        "avatar": "Select Avatar",
+        "annulla": "CANCEL",
+        "aggiungi_squadra": "ADD TEAM"
     },
     "alert": {
         "success": "Incredible It Worked!",
@@ -70,7 +72,8 @@
         "versione_locale": "Local version",
         "versione_applicazione": "Application version",
         "soluzione": "Solution indicated",
-        "svuotare_cache": "Empty caches and delete cookies .."
+        "svuotare_cache": "Empty caches and delete cookies ..",
+        "gestione_squadre": "TEAM MANAGEMENT"
     },
     "pannello": {
         "admin": "ADMIN",

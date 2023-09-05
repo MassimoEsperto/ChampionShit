@@ -35,6 +35,7 @@ import { MyLogoComponent } from '../components/my-logo/my-logo.component';
 import { AccoppiamentiComponent } from '../views/page/gestione-admin/accoppiamenti/accoppiamenti.component';
 import { EliminatorieComponent } from '../views/page/gestione-admin/accoppiamenti/eliminatorie/eliminatorie.component';
 import { RegistraSquadraComponent } from '../components/registra-squadra/registra-squadra.component';
+import { IscrizioneComponent } from '../views/page/iscrizione/iscrizione.component';
 
 
 
@@ -69,7 +70,8 @@ import { RegistraSquadraComponent } from '../components/registra-squadra/registr
     MyLogoComponent,
     AccoppiamentiComponent,
     EliminatorieComponent,
-    RegistraSquadraComponent
+    RegistraSquadraComponent,
+    IscrizioneComponent
   ],
   imports: [
     CommonModule,

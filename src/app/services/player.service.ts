@@ -51,7 +51,19 @@ export class PlayerService extends HttpSenderService {
 
         this.tokenError(res);//controllo token
 
-        return res['data'];;
+        return res['data'];
+
+      }),
+      catchError(this.handleError));
+  }
+
+  getInfoUtente() {
+    return this.http.get(`${this.buildURL("get_info_utente")}`, this.myheaders).pipe(
+      map((res) => {
+
+        this.tokenError(res);//controllo token
+
+        return res['data'];
 
       }),
       catchError(this.handleError));
@@ -190,6 +202,22 @@ export class PlayerService extends HttpSenderService {
   upgradeRosa(payload: any): Observable<any[]> {
 
     return this.http.post(`${this.buildURL("upgrade_rosa")}`,
+      { data: payload }, this.myheaders)
+      .pipe(map((res) => {
+
+        this.tokenError(res);//controllo token
+
+        return res['data'];
+      }),
+        catchError(this.handleError));
+  }
+
+
+  /* ISCRIZIONI */
+
+  delSquadra(payload: any): Observable<any[]> {
+
+    return this.http.post(`${this.buildURL("del_squadra")}`,
       { data: payload }, this.myheaders)
       .pipe(map((res) => {
 

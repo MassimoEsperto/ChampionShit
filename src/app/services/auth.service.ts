@@ -131,14 +131,25 @@ export class AuthService extends HttpSenderService {
         catchError(this.handleError));
   }
 
-  registerNewUtente(payload: any): Observable<any[]> {
+  registraUtente(payload: any): Observable<any[]> {
 
-    return this.http.post(`${this.buildURL("register_new_utente")}`, { data: payload })
+    return this.http.post(`${this.buildURL("registra_utente")}`, { data: payload })
       .pipe(map((res) => {
         return res['data'];
       }),
         catchError(this.handleError));
   }
+
+  registraSquadra(payload: any): Observable<any[]> {
+
+    return this.http.post(`${this.buildURL("registra_squadra")}`, { data: payload })
+      .pipe(map((res) => {
+        return res['data'];
+      }),
+        catchError(this.handleError));
+  }
+
+  
 
   getRegister() {
     return this.http.get(`${this.buildURL("get_register")}`).pipe(

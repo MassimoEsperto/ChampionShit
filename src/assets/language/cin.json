@@ -63,14 +63,17 @@
         "versione_locale": "本地版本",
         "versione_applicazione": "应用程序版本",
         "soluzione": "已指示解决方案",
-        "svuotare_cache": "清空缓存并删除 co​​okie .."
+        "svuotare_cache": "清空缓存并删除 co​​okie ..",
+        "gestione_squadre": "團隊管理"
     },
     "bottoni": {
         "invia": "发送",
         "inserisci": "插",
         "schiera": "大批",
         "entra": "进来",
-        "avatar": "选择头像"
+        "avatar": "选择头像",
+        "annulla": "取消",
+        "aggiungi_squadra": "添加團隊"
     },
     "pannello": {
         "admin": "行政",

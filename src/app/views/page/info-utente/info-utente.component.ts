@@ -34,6 +34,7 @@ export class InfoUtenteComponent extends GlobalComponent implements OnInit {
   loggato: Utente;
   avatarSel: any;
   upgrade: boolean = false;
+ 
 
   svincolati: any;
   vincolati = []
@@ -179,6 +180,8 @@ export class InfoUtenteComponent extends GlobalComponent implements OnInit {
 
       })
   }
+
+ 
 
   /* SEZIONE UPGRADE */
 

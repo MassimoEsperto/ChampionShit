@@ -63,14 +63,17 @@
         "versione_locale": "Version locale",
         "versione_applicazione": "Version de l'application",
         "soluzione": "Solution indiquée",
-        "svuotare_cache": "Vider les caches et supprimer les cookies .."
+        "svuotare_cache": "Vider les caches et supprimer les cookies ..",
+        "gestione_squadre": "GESTION EQUIPE"
     },
     "bottoni": {
         "invia": "ENVOYER",
         "inserisci": "INSERT",
         "schiera": "TABLEU",
         "entra": "ENTREZ",
-        "avatar": "Selectionnez Avatar"
+        "avatar": "Selectionnez Avatar",
+        "annulla": "ANNULER",
+        "aggiungi_squadra": "AJOUTER ÉQUIPE"
     },
     "pannello": {
         "admin": "ADMIN",
