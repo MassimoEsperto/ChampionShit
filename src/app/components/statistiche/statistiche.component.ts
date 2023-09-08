@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { StatiUtente } from 'src/app/classes/utils/enums';
+import { StatiSquadra } from 'src/app/classes/utils/enums';
 import { GlobalComponent } from 'src/app/classes/utils/global-component';
 
 
@@ -23,9 +23,9 @@ export class StatisticheComponent extends GlobalComponent implements OnInit {
   getStato(num) {
 
     switch (Number(num)) {
-      case StatiUtente.ELIMINATO:
+      case StatiSquadra.ELIMINATO:
         return this.language.page.stati.eliminato
-      case StatiUtente.VINCITORE:
+      case StatiSquadra.VINCITORE:
         return this.language.page.stati.vincitore
       default:
         return this.language.page.stati.in_corsa

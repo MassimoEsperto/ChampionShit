@@ -4,18 +4,23 @@ require_once '../config/connect_local.php';
 require_once '../config/post_data.php';
 
 $account = mysqli_real_escape_string($con, trim($dati->account)); 
-$id = mysqli_real_escape_string($con, trim($dati->id)); 
+$id = mysqli_real_escape_string($con, trim($dati->id_utente)); 
 $email = mysqli_real_escape_string($con, trim($dati->email)); 
-$squadra = mysqli_real_escape_string($con, trim($dati->squadra)); 
-$username = mysqli_real_escape_string($con, trim($dati->username)); 
-$stato = mysqli_real_escape_string($con, trim($dati->stato)); 
+$username = mysqli_real_escape_string($con, trim($dati->username));
+$ruolo = mysqli_real_escape_string($con, trim($dati->ruolo));
+$squadra = mysqli_real_escape_string($con, trim($dati->squadra));
 
 
-$sql =  "UPDATE utenti SET username='{$username}',account='{$account}',email='{$email}', ";
-$sql .= "squadra='{$squadra}',ruolo_id='{$stato}' WHERE id_utente = {$id} LIMIT 1 ";
+$stato_squadra = mysqli_real_escape_string($con, trim($dati->stato)); 
+$id_squadra_in = mysqli_real_escape_string($con, trim($dati->id_squadra)); 
+
+$sql =  "UPDATE utenti SET username='{$username}',email='{$email}',ruolo_id='{$ruolo}' ";
+$sql .= "WHERE id_utente = {$id} LIMIT 1; ";
+$sql .= "UPDATE squadre SET stato_id=$stato_squadra,squadra='{$squadra}',account='{$account}' ";
+$sql .= "WHERE id_squadra = {$id_squadra_in} LIMIT 1 ";
 
 
-if(mysqli_query($con,$sql))
+if ($con->multi_query($sql) === TRUE) 
 {
     echo json_encode(['data'=>'ok']);
     

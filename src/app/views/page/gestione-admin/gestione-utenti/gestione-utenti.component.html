@@ -8,17 +8,21 @@
         <tr>
           <th class="text-center">ID</th>
           <th class="text-center">USERNAME</th>
+          <th class="text-center">RUOLO</th>
           <th class="text-center">SQUADRA</th>
           <th class="text-center">STATO</th>
           <th class="text-center">Update</th>
           <th class="text-center">Remove</th>
         </tr>
-        <tr *ngFor="let ele of utenti; let id = index">
+        <tr *ngFor="let ele of squadre; let id = index">
           <td>
-            <span>{{ele.id}}</span>
+            <span>{{ele.id_utente}}</span>
           </td>
           <td>
             <span>{{ele.username}}</span>
+          </td>
+          <td>
+            <span>{{ele.ruolo}}</span>
           </td>
           <td>
             <span>{{ele.squadra}}</span>

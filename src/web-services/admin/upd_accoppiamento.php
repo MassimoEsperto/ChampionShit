@@ -9,8 +9,8 @@ $giornata = mysqli_real_escape_string($con, trim($dati->giornata));
 
 
 $sql  ="UPDATE risultati ";
-$sql .="INNER JOIN calendarioNEW ON risultati.calendario_id = calendarioNEW.id_calendario AND calendarioNEW.giornata_id={$giornata} ";
-$sql .="SET utente_id = (case when luogo = 'CASA' then {$casa} when luogo = 'TRASFERTA' then {$trasferta} end) ";
+$sql .="INNER JOIN calendario ON risultati.calendario_id = calendario.id_calendario AND calendario.giornata_id={$giornata} ";
+$sql .="SET squadra_id = (case when luogo = 'CASA' then {$casa} when luogo = 'TRASFERTA' then {$trasferta} end) ";
 
 if(mysqli_query($con, $sql))
 {

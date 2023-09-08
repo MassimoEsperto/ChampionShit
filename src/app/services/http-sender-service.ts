@@ -43,6 +43,7 @@ export class HttpSenderService {
       utente.num_msg = element.num_msg
       utente.squadre = element.squadre
       utente.qta = element.qta
+      utente.ruolo = element.ruolo
   
     }
 

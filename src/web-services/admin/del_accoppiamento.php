@@ -5,7 +5,7 @@ require_once '../config/post_data.php';
 
 $id_calendario = mysqli_real_escape_string($con, trim($dati->id_calendario)); 
 
-$sql = "DELETE c,r FROM calendarioNEW c ";
+$sql = "DELETE c,r FROM calendario c ";
 $sql .="JOIN risultati r ON r.calendario_id = c.id_calendario ";
 $sql .="WHERE id_calendario = {$id_calendario} ";
 

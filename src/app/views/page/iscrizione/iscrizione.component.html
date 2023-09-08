@@ -11,16 +11,17 @@
                     <p>Congratulazioni ora sei registrato.</p>
                     <p>Se vuoi partecipare al fantastico torneo della SchitCup bisogna seguire le istruzioni riportate.
                     </p>
-                    <p>L'unico modo per iscriversi è versare la quota di iscrizione pari a
-                        <span style="font-weight: bold;">€ 10</span> presso le casse della dirigenza,
-                        per farlo sono previste due modalità:
+                    <p>inserisci una o più squadre facente parte del tuo attuale fantacalcio, ricordo che la quota per squadra è pari a 
+                        <span style="font-weight: bold;">€ 10</span> da versare presso le casse della dirigenza.
+                        Per l'inserimento di una nuova squadre basta inserire i dati che vengono di volta in volta richiesti.
+                        Per il pagamento sono previste due modalità:
                     </p>
                     <ul>
                         <li>Pagamento di persona ad uno degli esponenti organizzatori dell'evento.</li>
                         <li>Pagamento on line seguendo le istruzioni sotto riportate</li>
                     </ul>
                     <p>
-                        *Per il pagamento on line todo da fare prossimamente
+                        Pagamento bonifico: LT05 3250 0431 2585 4853 inserendo il o i nomi delle squadre registrate
                     </p>
                     <p>Saluti.</p>
 
@@ -37,14 +38,14 @@
 
                             <div id="table" class="table-editable">
 
-                                <table class="table table-bordered table-responsive-md table-striped text-center">
+                                <table class="table table-bordered table-responsive-md table-striped text-center" style="border: 0px;">
                                     <tr>
                                         <th class="text-center">ID</th>
                                         <th class="text-center">ACCOUNT</th>
                                         <th class="text-center">SQUADRA</th>
-                                        <th class="text-center">DEL</th>
+                                        <th class="text-center"></th>
                                     </tr>
-                                    <tr *ngFor="let ele of info.squadre">
+                                    <tr *ngFor="let ele of squadre">
                                         <td>{{ele.id_squadra}}</td>
                                         <td>{{ele.account}}</td>
                                         <td>{{ele.squadra}}</td>
@@ -64,7 +65,7 @@
 
                     <hr>
                     <!-- Forgot login -->
-                    <a routerLink="/sign-in">Torna all Login <mdb-icon fas icon="backward"
+                    <a routerLink="/sign-in" style="color: aliceblue;">Torna all Login <mdb-icon fas icon="backward"
                             class="white-text"></mdb-icon></a>
 
 
@@ -75,6 +76,6 @@
 
     </div>
     <div *ngIf="registra">
-        <registra-squadra (esci)="registra = false"></registra-squadra>
+        <registra-squadra (esci)="registra = false; getInfoUtente()"></registra-squadra>
     </div>
 </div>

@@ -18,7 +18,7 @@
 
         <!-- Links -->
         <ul class="navbar-nav mr-auto">
-            <li *ngIf="loggato.selezionata.stato==STATI_UTNTE.ADMIN" class="nav-item flex-start pl-16">
+            <li *ngIf="loggato.ruolo==RUOLI_UTENTE.ADMIN" class="nav-item flex-start pl-16">
                 <mdb-icon fas icon="id-card-alt" class="white-text"></mdb-icon>
                 <a class="nav-link waves-light" (click)="navElement()" routerLink="/home/gestione-admin"
                     mdbWavesEffect>{{language.header.admin}}</a>

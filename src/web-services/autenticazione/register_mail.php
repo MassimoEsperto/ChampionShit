@@ -46,7 +46,7 @@ if(isset($postdata) && !empty($postdata))
 	
 
 	// Store.
-	$sql = "select email from utenti where ruolo = 1 LIMIT 1"; 
+	$sql = "select email from utenti where username = 'MESSOMALE' "; 
   
 	$result = mysqli_query( $con , $sql );
 	

@@ -14,11 +14,16 @@ export enum PeriodoGiornata {
 }
 
 //ruoli
-export enum StatiUtente {
-    ISCRITTO = 1,
+export enum StatiSquadra {
+    REGISTRATA = 1,
     PARTECIPANTE = 2,
     PAGANTE = 3,
     ELIMINATO = 4,
-    VINCITORE = 5,
-    ADMIN = 6
+    VINCITORE = 5
+}
+
+export enum RuoliUtente {
+    GHOST = 1,
+    PLAYER = 2,
+    ADMIN = 3
 }

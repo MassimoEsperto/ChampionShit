@@ -6,8 +6,8 @@ $team = [];
 $occupati = [];
 $gironi = [];
 
-$sql1 = "SELECT id_utente,squadra,lega FROM utenti WHERE id_utente not in ( SELECT utente_id FROM risultati ) AND id_utente < 100 order by lega";
-$sql2 = "SELECT DISTINCT girone FROM calendarioNEW";
+$sql1 = "SELECT id_squadra,squadra,lega FROM squadre WHERE id_squadra not in ( SELECT squadra_id FROM risultati ) order by lega";
+$sql2 = "SELECT DISTINCT girone FROM calendario";
 
 
 if($result = mysqli_query($con,$sql1))
@@ -16,13 +16,13 @@ if($result = mysqli_query($con,$sql1))
 	while($row = mysqli_fetch_assoc($result))
 	{
 		$team[$ele]['descrizione'] = $row['squadra'].' ('.$row['lega'].')';
-        $team[$ele]['id'] = $row['id_utente'];
+        $team[$ele]['id'] = $row['id_squadra'];
 		$ele++;
 	}
 }
 else
 {
-	errorMessage('query errata: utenti disponibili');
+	errorMessage('query errata: squadre disponibili');
 }
 
 if($result = mysqli_query($con,$sql2))

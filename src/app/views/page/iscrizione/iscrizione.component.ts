@@ -21,6 +21,7 @@ export class IscrizioneComponent extends GlobalComponent implements OnInit {
 
   info: any
   registra: boolean = false;
+  squadre=[]
 
   constructor(
     private router: Router,
@@ -60,6 +61,7 @@ export class IscrizioneComponent extends GlobalComponent implements OnInit {
       .subscribe({
         next: (result: any) => {
           this.info = result;
+          this.squadre = result.squadre
         },
         error: (error: any) => {
           this.alert.error(error);

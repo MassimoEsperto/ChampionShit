@@ -1,13 +1,13 @@
 <?php
 
 require_once '../config/connect_local.php';
-$tabelle = "lista_calciatori order by nome_calciatore,comunicazioni ORDER BY id_comunicazione DESC,ruoli"; 
+$tabelle = "lista_calciatori order by nome_calciatore,comunicazioni ORDER BY id_comunicazione DESC,ruoli,stati_squadre"; 
 require_once '../common/all_objects.php';
 require_once '../common/utenti.php';
 require_once '../common/giornate.php';
 require_once '../common/rose.php';
 require_once '../common/formazioni.php';
-//require_once '../common/recuperate.php';
+require_once '../common/squadre.php';
     
 //dichiarazione variabili	
 $calcolato=[];
@@ -52,15 +52,17 @@ else
 
 
 //risultato
+
 $myObj->comunicazioni = $oggetti_['comunicazioni ORDER BY id_comunicazione DESC'];
 $myObj->utenti = $utenti_;
 $myObj->lista_calciatori = $oggetti_['lista_calciatori order by nome_calciatore'];
-//$myObj->recuperate = $recuperate_;
 $myObj->calcolato = $calcolato;
 $myObj->formazioni = $formazioni_;
 $myObj->rose = $rose_;
 $myObj->giornate = $giornate_;
 $myObj->ruoli = $oggetti_['ruoli'];
+$myObj->stati_squadre = $oggetti_['stati_squadre'];
+$myObj->squadre = $squadre_;
 
 
 $totObj=['data'=>$myObj];

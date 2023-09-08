@@ -18,12 +18,14 @@ export class MyModalUtente implements OnInit {
   }
 
   ngOnInit() {
+
     this.form = this.fb.group({
       username: [this.data.valori.username, Validators.required],
       squadra: [this.data.valori.squadra, Validators.required],
       email: [this.data.valori.email, Validators.required],
       account: [this.data.valori.account, Validators.required],
-      stato: [this.data.valori.ruolo_id, Validators.required]
+      stato: [this.data.valori.id_stato, Validators.required],
+      ruolo: [this.data.valori.id_ruolo, Validators.required]
     });
   }
 
@@ -37,7 +39,9 @@ export class MyModalUtente implements OnInit {
         email: control.email.value,
         account: control.account.value,
         stato: control.stato.value,
-        id: this.data.valori.id
+        ruolo: control.ruolo.value,
+        id_utente: this.data.valori.id_utente,
+        id_squadra: this.data.valori.id_squadra
       }
 
       this.dialogRef.close(response);

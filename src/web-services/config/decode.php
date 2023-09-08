@@ -22,7 +22,9 @@ $decodeJwt = $objJWT->decodeJwt();
 $id_utente = $decodeJwt['id_utente'];
 $username	= $decodeJwt['username'];
 $email = $decodeJwt['email'];
-$ruolo = $decodeJwt['ruolo'];
-$squadra = $decodeJwt['squadra'];
+
+$selezionata = $decodeJwt['selezionata'];
+$id_squadra = $selezionata['id_squadra'];
+
 
 ?>

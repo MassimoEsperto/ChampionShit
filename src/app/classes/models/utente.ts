@@ -7,10 +7,11 @@ export class Utente {
   email: string;
   scadenza:string;
   num_msg: number;
+  ruolo: number;
   qta: number;
   token?: string;
-  squadre?:[]
-  selezionata?:Squadra
+  squadre?:Array<Squadra> = [];
+  selezionata?:Squadra;
   language?:string;
  
   constructor(

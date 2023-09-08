@@ -18,7 +18,7 @@ export class GestioneUtentiComponent extends GlobalComponent implements OnInit {
 
   editField: string;
   @Input() administrator: any;
-  utenti: any;
+  squadre: any;
 
   constructor(
     private alert: AlertService,
@@ -28,7 +28,7 @@ export class GestioneUtentiComponent extends GlobalComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.utenti = this.administrator.utenti;
+    this.squadre = this.administrator.squadre;
   }
 
 
@@ -73,7 +73,7 @@ export class GestioneUtentiComponent extends GlobalComponent implements OnInit {
       .subscribe({
         next: (result: any) => {
 
-          this.utenti = result.utenti;
+          this.squadre = result.squadre;
 
         },
         error: (error: any) => {
@@ -99,7 +99,8 @@ export class GestioneUtentiComponent extends GlobalComponent implements OnInit {
       data: {
         titolo: 'Modifica Utenti',
         valori: utente,
-        stati: this.administrator.ruoli
+        stati: this.administrator.stati_squadre,
+        ruoli: this.administrator.ruoli
       }
     });
 

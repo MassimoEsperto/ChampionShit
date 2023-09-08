@@ -16,7 +16,7 @@ foreach($lista as $item)
 {
 	$id_calciatore = mysqli_real_escape_string($con, (int)($item));
 	
-	$sql .= "REPLACE INTO formazioniNEW(risultato_id, schieramento, calciatore_id) ";
+	$sql .= "REPLACE INTO formazioni(risultato_id, schieramento, calciatore_id) ";
 	$sql .= "VALUES ({$id_risultato}, {$ele}, {$id_calciatore}); ";
 	$ele++;
 }

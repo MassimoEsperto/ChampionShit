@@ -7,7 +7,7 @@ require_once '../config/post_data.php';
 $risultati= $dati->risultati;
 $giornata = mysqli_real_escape_string($con, trim($dati->giornata)); 
  
-$sql =  "UPDATE giornate SET is_calcolata=1 WHERE id_giornata = {$giornata} LIMIT 1 ;";
+$sql =  "UPDATE giornate SET is_calcolata=1,ultima_partita=CURRENT_TIMESTAMP() WHERE id_giornata = {$giornata} LIMIT 1 ;";
 
 foreach($risultati as $risultato) 
 {
@@ -29,9 +29,9 @@ foreach($risultati as $risultato)
             $id_calciatore = mysqli_real_escape_string($con, (int)($item->id));
             $voto = mysqli_real_escape_string($con, trim($item->voto));
 
-            $sql .="UPDATE formazioniNEW ";
-            $sql .="INNER JOIN risultati ON formazioniNEW.risultato_id = risultati.id_risultato ";
-            $sql .="INNER JOIN calendarioNEW ON risultati.calendario_id = calendarioNEW.id_calendario AND calendarioNEW.giornata_id={$giornata} ";
+            $sql .="UPDATE formazioni ";
+            $sql .="INNER JOIN risultati ON formazioni.risultato_id = risultati.id_risultato ";
+            $sql .="INNER JOIN calendario ON risultati.calendario_id = calendario.id_calendario AND calendario.giornata_id={$giornata} ";
             $sql .="SET voto={$voto} WHERE calciatore_id={$id_calciatore};";
 
     }
@@ -51,9 +51,9 @@ foreach($risultati as $risultato)
             $id_calciatore = mysqli_real_escape_string($con, (int)($item->id));
             $voto = mysqli_real_escape_string($con, trim($item->voto));
 
-            $sql .="UPDATE formazioniNEW ";
-            $sql .="INNER JOIN risultati ON formazioniNEW.risultato_id = risultati.id_risultato ";
-            $sql .="INNER JOIN calendarioNEW ON risultati.calendario_id = calendarioNEW.id_calendario AND calendarioNEW.giornata_id={$giornata} ";
+            $sql .="UPDATE formazioni ";
+            $sql .="INNER JOIN risultati ON formazioni.risultato_id = risultati.id_risultato ";
+            $sql .="INNER JOIN calendario ON risultati.calendario_id = calendario.id_calendario AND calendario.giornata_id={$giornata} ";
             $sql .="SET voto={$voto} WHERE calciatore_id={$id_calciatore};";
 
     }

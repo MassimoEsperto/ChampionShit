@@ -1,12 +1,12 @@
 <?php
     
 //dichiarazione variabili	
-$turno = [];
+$turno_ = [];
 
 
 //inizializzo a 0 nel caso fossero null
-$turno['giornata'] = 0;
-$turno['periodo'] = 0;
+$turno_['giornata'] = 0;
+$turno_['periodo'] = 0;
 
 
 //Query ed elaborazioni
@@ -24,17 +24,14 @@ if($result = mysqli_query($con,$sql_turno))
 {
 	while($row = mysqli_fetch_assoc($result))
 	{
-		$turno['data_inizio'] = $row['data_inizio'];
-		$turno['giornata'] = $row['id_giornata'];
-        $turno['is_upgrade'] = $row['is_upgrade'];
-		$turno['periodo'] = $row['periodo'];
+		$turno_['data_inizio'] = $row['data_inizio'];
+		$turno_['giornata'] = $row['id_giornata'];
+        $turno_['is_upgrade'] = $row['is_upgrade'];
+		$turno_['periodo'] = $row['periodo'];
 	}
     
 }
-else
-{
-	
-}
+
 
  
 ?>

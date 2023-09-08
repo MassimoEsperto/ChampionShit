@@ -2,20 +2,33 @@
 
 require_once '../config/connect_local.php';
 
-$lega = $_GET['lega'];($_GET['lega'] !== null && $_GET['lega'] !== '')? mysqli_real_escape_string($con, $_GET['lega']) : false;
+$lega = $_GET['lega'];
+
+if(trim($lega) === '')
+{
+    die('valori non prelevati'. mysqli_error($con));
+}
+
+$url_fanta = 'https://leghe.fantacalcio.it/'.$lega.'/area-gioco/rose/index.html' ;
+
+require_once 'read_sito.php';
+
+
+if(trim($sito_fanta) === '')
+{
+    die('sito irrangiungibile'. mysqli_error($con));
+}
+
+
 $partecipanti = 0;
 $indice = 0;
 $formazioni = [];
 
 
-// Validate.
-if(trim($lega) === '')
-{
-    die('valori non prelevati'. mysqli_error($con));
-}
   
-$response =  file_get_contents('https://leghe.fantacalcio.it/'.$lega.'/area-gioco/rose/index.html');
-$home = explode("no-current-competition-team", $response);
+
+$home = explode("no-current-competition-team", $sito_fanta);
+
 $page = explode("list-rosters-item", $home[0]);
 
 $arr_length = count($page);

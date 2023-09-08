@@ -31,7 +31,15 @@
             <mat-label>Stato</mat-label>
             <mat-select formControlName="stato">
                 <mat-option>None</mat-option>
-                <mat-option *ngFor="let item of data.stati" [value]="item.id_ruolo">{{item.stato}}</mat-option>
+                <mat-option *ngFor="let item of data.stati" [value]="item.id_stato">{{item.stato}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Ruolo</mat-label>
+            <mat-select formControlName="ruolo">
+                <mat-option>None</mat-option>
+                <mat-option *ngFor="let item of data.ruoli" [value]="item.id_ruolo">{{item.ruolo}}</mat-option>
             </mat-select>
         </mat-form-field>
 
