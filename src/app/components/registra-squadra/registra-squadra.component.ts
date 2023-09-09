@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { finalize } from 'rxjs/operators';
 import { Utente } from 'src/app/classes/models/utente';
 import { GlobalComponent } from 'src/app/classes/utils/global-component';
-import { AdminService } from 'src/app/services/admin.service';
 import { AlertService } from 'src/app/services/alert.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { FantaGazzettaService } from 'src/app/services/fanta-gazzetta.service';
@@ -27,35 +26,15 @@ export class RegistraSquadraComponent extends GlobalComponent implements OnInit 
 
   fantalega: any;
   svincolati: any;
-  utenti: any;
+
   vincolati = []
   stepform = 1
   squadra: any;
   loggato: Utente;
 
   ngOnInit() {
-    this.getStartRegister()
     this.loggato = this.service.getLoggato();
   }
-
-
-  getStartRegister() {
-
-    this.service.getRegister()
-      .subscribe({
-
-        next: (result: any) => {
-          this.svincolati = result.lista_calciatori;
-          console.log("lista", result)
-          this.utenti = result.utenti;
-        },
-        error: (error: any) => {
-          this.alert.error(error);
-
-        }
-      })
-  }
-
 
 
   getLega(lega: string) {
@@ -72,8 +51,12 @@ export class RegistraSquadraComponent extends GlobalComponent implements OnInit 
           this.fantalega = result
 
           if (this.fantalega && this.fantalega.length > 0) {
-            this.fantalega['lega'] = nome_lega
-            this.stepform += 1
+            if (this.fantalega.length >= 10) {
+              this.fantalega['lega'] = nome_lega
+              this.stepform += 1
+            } else {
+              this.alert.error("La lega deve avere un minimo di 10 partecipanti");
+            }
           } else {
             this.alert.error("Lega inesistente");
           }
@@ -85,7 +68,7 @@ export class RegistraSquadraComponent extends GlobalComponent implements OnInit 
   }
 
 
-  registrati(payload: any) {
+  registraSquadra(payload: any) {
 
     this.service.registraSquadra(payload)
       .pipe(finalize(() => this.loading_btn = false))
@@ -102,17 +85,12 @@ export class RegistraSquadraComponent extends GlobalComponent implements OnInit 
 
 
 
-  onRegistrati(element: any) {
+  onRegistraSquadra(element: any) {
 
     this.loading_btn = true;
-    let esiste = this.utenti.some(i => i.username == element.username);
 
-    if (esiste) {
-      this.alert.error("Username già è in uso");
-      return
-    }
     let payload = {
-    
+
       "squadra": element.squadra,
       "id_utente": this.loggato.id,
       "lega": this.fantalega['lega'],
@@ -120,7 +98,7 @@ export class RegistraSquadraComponent extends GlobalComponent implements OnInit 
       "players": this.squadra
     }
 
-    this.registrati(payload)
+    this.registraSquadra(payload)
   }
 
   navigateToHome() {
