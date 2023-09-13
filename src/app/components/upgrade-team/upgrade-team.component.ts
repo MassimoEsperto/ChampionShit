@@ -36,21 +36,24 @@ export class UpgradeTeamComponent extends GlobalComponent implements OnInit {
 
   onStart() {
     this.startPage(this.spinner);
-    this.getListaCalciatori()
+    this.getInfoUtente()
   }
 
-  getListaCalciatori() {
+  getInfoUtente() {
 
-    this.adminService.getListaCalciatori()
+    this.loading_btn = true
+
+    this.playerService.getInfoUtente()
+      .pipe(finalize(() => {
+        this.loading_btn = false
+      }))
       .subscribe({
-
         next: (result: any) => {
-          this.svincolati = result;
+          this.svincolati = result.lista_calciatori
           this.getLega(this.loggato.selezionata.lega)
         },
         error: (error: any) => {
           this.alert.error(error);
-
         }
       })
   }

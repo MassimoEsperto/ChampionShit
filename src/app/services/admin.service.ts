@@ -58,17 +58,6 @@ export class AdminService extends HttpSenderService {
         catchError(this.handleError));
   }
 
-  getListaCalciatori() {
-    return this.http.get(`${this.buildURL("get_lista_calciatori")}`).pipe(
-      map((res) => {
-
-        return res['data'];
-
-      }),
-      catchError(this.handleError));
-  }
-
-
 
   calcolaGiornata(payload: any): Observable<any[]> {
 

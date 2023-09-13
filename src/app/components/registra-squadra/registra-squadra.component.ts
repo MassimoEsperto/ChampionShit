@@ -3,9 +3,11 @@ import { Router } from '@angular/router';
 import { finalize } from 'rxjs/operators';
 import { Utente } from 'src/app/classes/models/utente';
 import { GlobalComponent } from 'src/app/classes/utils/global-component';
+import { AdminService } from 'src/app/services/admin.service';
 import { AlertService } from 'src/app/services/alert.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { FantaGazzettaService } from 'src/app/services/fanta-gazzetta.service';
+import { PlayerService } from 'src/app/services/player.service';
 
 @Component({
   selector: 'registra-squadra',
@@ -17,6 +19,7 @@ export class RegistraSquadraComponent extends GlobalComponent implements OnInit 
   constructor(
     private router: Router,
     private alert: AlertService,
+    private playerService: PlayerService,
     private fanta: FantaGazzettaService,
     private service: AuthService) {
     super();
@@ -25,7 +28,7 @@ export class RegistraSquadraComponent extends GlobalComponent implements OnInit 
   @Output() esci = new EventEmitter();
 
   fantalega: any;
-  svincolati: any;
+  calciatori: any;
 
   vincolati = []
   stepform = 1
@@ -34,6 +37,25 @@ export class RegistraSquadraComponent extends GlobalComponent implements OnInit 
 
   ngOnInit() {
     this.loggato = this.service.getLoggato();
+    this.getInfoUtente();
+  }
+
+  getInfoUtente() {
+
+    this.loading_btn = true
+
+    this.playerService.getInfoUtente()
+      .pipe(finalize(() => {
+        this.loading_btn = false
+      }))
+      .subscribe({
+        next: (result: any) => {
+          this.calciatori = result.lista_calciatori
+        },
+        error: (error: any) => {
+          this.alert.error(error);
+        }
+      })
   }
 
 
@@ -114,7 +136,7 @@ export class RegistraSquadraComponent extends GlobalComponent implements OnInit 
     this.loading_btn = true
     this.vincolati = []
     for (let ele of lega.lista) {
-      let singolo = this.svincolati.find(i => i.nome_calciatore == ele);
+      let singolo = this.calciatori.find(i => i.nome_calciatore == ele);
       if (singolo) {
         singolo['selected'] = true;
         this.vincolati.push(singolo)

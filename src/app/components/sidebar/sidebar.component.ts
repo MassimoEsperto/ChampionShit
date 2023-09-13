@@ -27,7 +27,6 @@ export class SidebarComponent extends GlobalComponent implements AfterViewInit {
 
   ngOnInit() {
     this.loggato = this.authService.getLoggato();
-    console.log("sidebar ",this.loggato)
   }
 
 
