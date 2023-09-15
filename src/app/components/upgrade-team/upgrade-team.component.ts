@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { finalize } from 'rxjs/operators';
 import { Utente } from 'src/app/classes/models/utente';
 import { GlobalComponent } from 'src/app/classes/utils/global-component';
-import { AdminService } from 'src/app/services/admin.service';
 import { AlertService } from 'src/app/services/alert.service';
 import { FantaGazzettaService } from 'src/app/services/fanta-gazzetta.service';
 import { PlayerService } from 'src/app/services/player.service';
@@ -23,8 +23,8 @@ export class UpgradeTeamComponent extends GlobalComponent implements OnInit {
   constructor(
     private alert: AlertService,
     private fanta: FantaGazzettaService,
-    private adminService: AdminService,
     private spinner: SpinnerService,
+    private router: Router,
     private playerService: PlayerService) {
     super();
   }
@@ -156,6 +156,10 @@ export class UpgradeTeamComponent extends GlobalComponent implements OnInit {
 
         next: (result: any) => {
           this.alert.success(this.language.alert.success);
+          setTimeout(() => {
+            this.router.navigate(['/home/rose-utenti']);
+          }, 2000);
+          
         },
         error: (error: any) => {
           this.alert.error(error);

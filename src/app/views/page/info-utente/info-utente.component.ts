@@ -33,11 +33,7 @@ export class InfoUtenteComponent extends GlobalComponent implements OnInit {
   avatars: any = [];
   loggato: Utente;
   avatarSel: any;
-  upgrade: boolean = false;
 
-
-  svincolati: any;
-  vincolati = []
   squadra: any;
 
   id_selected: number = 0;
@@ -49,18 +45,10 @@ export class InfoUtenteComponent extends GlobalComponent implements OnInit {
     this.loggato = this.playerService.getLoggato();
     this.id_selected = this.loggato.selezionata.id_squadra
 
-    this.onStart()
+    this.getAvatars()
 
   }
 
-  onStart() {
-
-    this.route.queryParams.subscribe(params => {
-      this.upgrade = Number(params['upgrade']) == 1;
-      if (!this.upgrade)
-        this.getAvatars()
-    });
-  }
 
   getAvatars() {
 
@@ -99,7 +87,7 @@ export class InfoUtenteComponent extends GlobalComponent implements OnInit {
 
   }
 
-  changeTeam(element: Squadra) { //servizio da eliminare
+  changeTeam(element: Squadra) {
 
     this.loading_btn = true;
     let utente: Utente = this.playerService.getLoggato();

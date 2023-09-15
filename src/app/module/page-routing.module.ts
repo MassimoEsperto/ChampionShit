@@ -12,6 +12,7 @@ import { GestioneAdminComponent } from '../views/page/gestione-admin/gestione-ad
 import { ComunicazioniComponent } from '../views/page/comunicazioni/comunicazioni.component';
 import { VotiLiveComponent } from '../views/page/voti-live/voti-live.component';
 import { ClassificheComponent } from '../views/page/classifiche/classifiche.component';
+import { AggiornaRosaComponent } from '../views/page/aggiorna-rosa/aggiorna-rosa.component';
 
 
 
@@ -44,6 +45,10 @@ const routes: Routes = [
             {
                 path: 'info-utente',
                 component: InfoUtenteComponent
+            },
+            {
+                path: 'aggiorna-rosa',
+                component: AggiornaRosaComponent
             },
             {
                 path: 'rose-utenti',

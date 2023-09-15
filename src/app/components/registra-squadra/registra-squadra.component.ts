@@ -73,11 +73,11 @@ export class RegistraSquadraComponent extends GlobalComponent implements OnInit 
           this.fantalega = result
 
           if (this.fantalega && this.fantalega.length > 0) {
-            if (this.fantalega.length >= 10) {
+            if (this.fantalega.length >= 8) {
               this.fantalega['lega'] = nome_lega
               this.stepform += 1
             } else {
-              this.alert.error("La lega deve avere un minimo di 10 partecipanti");
+              this.alert.error("La lega deve avere un minimo di 8 partecipanti");
             }
           } else {
             this.alert.error("Lega inesistente");

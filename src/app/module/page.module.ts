@@ -36,6 +36,7 @@ import { AccoppiamentiComponent } from '../views/page/gestione-admin/accoppiamen
 import { EliminatorieComponent } from '../views/page/gestione-admin/accoppiamenti/eliminatorie/eliminatorie.component';
 import { RegistraSquadraComponent } from '../components/registra-squadra/registra-squadra.component';
 import { IscrizioneComponent } from '../views/page/iscrizione/iscrizione.component';
+import { AggiornaRosaComponent } from '../views/page/aggiorna-rosa/aggiorna-rosa.component';
 
 
 
@@ -71,7 +72,8 @@ import { IscrizioneComponent } from '../views/page/iscrizione/iscrizione.compone
     AccoppiamentiComponent,
     EliminatorieComponent,
     RegistraSquadraComponent,
-    IscrizioneComponent
+    IscrizioneComponent,
+    AggiornaRosaComponent
   ],
   imports: [
     CommonModule,

@@ -2,8 +2,8 @@
 
     <div class="punteggio pa-0">
         <div class="col-12 col-sm-10 col-md-8 col-lg-6 pa-0">
-
-            <mdb-card *ngIf="is_upgrade!=1" class="text-white" bgColor="bg-transparent">
+<div>
+            <mdb-card class="text-white" bgColor="bg-transparent">
 
                 <mdb-card-body class="pa-0">
 
@@ -32,12 +32,13 @@
                 </mdb-card-body>
                 <mdb-card-header>
                     <div style="text-align: center;">
-                        {{loggato.squadra}}
+                        {{loggato.selezionata.squadra}}
                     </div>
                 </mdb-card-header>
             </mdb-card>
-
-            <mdb-card *ngIf="is_upgrade==1" class="text-white" bgColor="bg-transparent">
+        </div>
+        <div *ngIf="is_upgrade==1" class="pt-32">
+            <mdb-card class="text-white" bgColor="bg-transparent">
 
                 <mdb-card-body class="pa-0">
                     <div class="punteggio pa-0">
@@ -54,7 +55,7 @@
                     </div>
                 </mdb-card-header>
             </mdb-card>
-
+        </div>
         </div>
     </div>
 

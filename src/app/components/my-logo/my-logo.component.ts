@@ -26,7 +26,7 @@ export class MyLogoComponent implements OnInit {
   }
 
   upgradeTeam() {
-    this.router.navigate(['/home/info-utente'], { queryParams: { upgrade: this.is_upgrade } });
+    this.router.navigate(['/home/aggiorna-rosa'], { queryParams: { upgrade: this.is_upgrade } });
   }
 
 }

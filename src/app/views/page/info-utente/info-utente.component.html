@@ -5,7 +5,7 @@
   <div *ngIf="loggato.qta">
 
 
-    <div class="pt-16 pb-64" style="text-align: center;">
+    <div *ngIf="loggato.qta > 1" class="pt-16 pb-64" style="text-align: center;">
       <mdb-card>
         <mdb-card-header>{{language.page.seleziona_squadra}}</mdb-card-header>
         <!--Card content-->
@@ -34,7 +34,7 @@
     </div>
 
 
-    <div *ngIf="!upgrade" class="mio-container" style="text-align: center;">
+    <div class="mio-container" style="text-align: center;">
 
 
       <div class="pb-64">
@@ -114,13 +114,4 @@
 
     </div>
   </div>
-</div>
-
-
-<div *ngIf="upgrade&&loggato.qta">
-  <upgrade-team></upgrade-team>
-</div>
-
-<div *ngIf="!loggato.qta">
-  oooooooooo
 </div>
