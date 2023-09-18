@@ -21,7 +21,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr [ngClass]="{'primo': el.posizione === 1, 'secondo' : el.posizione === 2 }"
+                                <tr [ngClass]="{'qualificato': el.posizione === CONDIZIONE_GIRONE.QAULIFICATO, 'spareggi' : el.posizione === CONDIZIONE_GIRONE.SPAREGGI }"
                                     mdbTableCol *ngFor="let el of classifica.teams">
                                     <td>
                                         <div class="squadra">

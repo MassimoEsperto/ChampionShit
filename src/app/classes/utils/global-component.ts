@@ -2,7 +2,7 @@ import language_ita from 'src/assets/language/ita.json';
 import language_eng from 'src/assets/language/eng.json';
 import language_fra from 'src/assets/language/fra.json';
 import language_cin from 'src/assets/language/cin.json';
-import { PeriodoGiornata, RuoliUtente, StatiSquadra } from './enums';
+import { CondizioneGirone, PeriodoGiornata, RuoliUtente, StatiSquadra } from './enums';
 
 export abstract class GlobalComponent {
 
@@ -65,6 +65,8 @@ export abstract class GlobalComponent {
     PERIODO_GIORNATA = PeriodoGiornata;
     STATI_SQUADRA = StatiSquadra;
     RUOLI_UTENTE = RuoliUtente;
+    CONDIZIONE_GIRONE = CondizioneGirone;
+
 
     //combo
     combobooleano = [{

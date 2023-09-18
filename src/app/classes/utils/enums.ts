@@ -27,3 +27,9 @@ export enum RuoliUtente {
     PLAYER = 2,
     ADMIN = 3
 }
+
+export enum CondizioneGirone {
+    QAULIFICATO = 1,
+    SPAREGGI = 2,
+    ELIMINATA = 3
+}
