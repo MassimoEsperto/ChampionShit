@@ -57,7 +57,7 @@ export class SorteggiRandomComponent extends GlobalComponent implements OnInit {
     const dialogRef = this.dialog.open(MyModalValidate);
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        let payload = { utenti: lista, girone: this.girone }
+        let payload = { squadre: lista, girone: this.girone }
         this.setGeneraCompetizioneGironi(payload)
       }
 

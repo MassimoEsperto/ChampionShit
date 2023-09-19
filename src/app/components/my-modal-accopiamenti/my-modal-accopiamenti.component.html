@@ -8,7 +8,7 @@
             <mat-label>Casa</mat-label>
             <mat-select formControlName="casa">
                 <mat-option>None</mat-option>
-                <mat-option *ngFor="let item of data.combo" [value]="item.id">{{item.squadra}}</mat-option>
+                <mat-option *ngFor="let item of data.combo" [value]="item.id_squadra">{{item.squadra}}</mat-option>
             </mat-select>
         </mat-form-field>
 
@@ -16,7 +16,7 @@
             <mat-label>Trasferta</mat-label>
             <mat-select formControlName="trasferta">
                 <mat-option>None</mat-option>
-                <mat-option *ngFor="let item of data.combo" [value]="item.id">{{item.squadra}}</mat-option>
+                <mat-option *ngFor="let item of data.combo" [value]="item.id_squadra">{{item.squadra}}</mat-option>
             </mat-select>
         </mat-form-field>
 

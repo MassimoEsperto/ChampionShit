@@ -26,7 +26,6 @@ export class MyModalAccopiamenti implements OnInit {
       id_calendario: [this.data.valori ? this.data.valori.id_calendario : null]
     });
 
-    console.log("update accoppiamenti",this.data.valori)
   }
 
   save() {

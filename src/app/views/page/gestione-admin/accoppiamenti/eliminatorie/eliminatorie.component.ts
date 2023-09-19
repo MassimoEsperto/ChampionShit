@@ -23,13 +23,13 @@ export class EliminatorieComponent extends GlobalComponent implements OnInit {
     super();
   }
 
-  ngOnInit() { console.log("accoppiamenti", this.accoppiamenti) }
+  ngOnInit() { }
 
 
   onUpdate(ele: any, item: any) {
     let payload = {
-      id_casa: ele.CASA.id_utente,
-      id_trasferta: ele.TRASFERTA.id_utente,
+      id_casa: ele.CASA.id_squadra,
+      id_trasferta: ele.TRASFERTA.id_squadra,
       giornata: item.giornata,
       id_calendario: ele.id_calendario
     }
@@ -44,7 +44,7 @@ export class EliminatorieComponent extends GlobalComponent implements OnInit {
       data: {
         titolo: 'ACCOPPIAMENTI',
         valori: payload,
-        combo: this.accoppiamenti.utenti
+        combo: this.accoppiamenti.squadre
       }
     });
 
@@ -61,7 +61,7 @@ export class EliminatorieComponent extends GlobalComponent implements OnInit {
       data: {
         titolo: 'ACCOPPIAMENTI',
         valori: null,
-        combo: this.accoppiamenti.utenti
+        combo: this.accoppiamenti.squadre
       }
     });
 

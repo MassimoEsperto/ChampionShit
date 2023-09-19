@@ -75,7 +75,6 @@ export class RecuperoPrecedentiComponent extends GlobalComponent implements OnIn
 
         next: (result: any) => {
           this.formazioni_inserite = result
-          console.log("this.formazioni_inserite", this.formazioni_inserite)
         },
         error: (error: any) => {
           this.alert.error(error);

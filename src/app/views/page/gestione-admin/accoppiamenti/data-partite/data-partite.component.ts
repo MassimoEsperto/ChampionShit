@@ -50,8 +50,6 @@ export class DataPartiteComponent extends GlobalComponent implements OnInit {
 
   onChangeData(element) {
 
-console.log("onChangeData",element)
-
     const dialogRef = this.dialog.open(MyModalDate, {
       panelClass: 'dialog-language',
       data: {

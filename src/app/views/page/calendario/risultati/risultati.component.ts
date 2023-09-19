@@ -23,7 +23,7 @@ export class RisultatiComponent extends GlobalComponent implements OnInit {
 
   ngOnInit() { }
 
-  ngOnChanges() {console.log(this.selected)}
+  ngOnChanges() {}
 
 
   viewMatch(partita: any) {
