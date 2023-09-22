@@ -253,7 +253,7 @@ export class GestioneSquadreComponent extends GlobalComponent implements OnInit 
   onSostituisci(element) {
   
     let payload = {
-      id_utente: element.utente.id_utente,
+      id_squadra: element.utente.id_squadra,
       player_in: element.player,
       player_out: element.utente.id_calciatore
     }
