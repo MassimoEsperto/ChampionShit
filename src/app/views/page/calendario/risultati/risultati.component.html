@@ -7,26 +7,26 @@
             <!--Card content-->
             <mdb-card-body style="cursor:pointer" (click)="viewMatch(item)">
                 <div class="squadre">
-                    <div class="row col-4 col-sm-4 col-md-4 col-lg-4">
-                        <div class="col-12 col-sm-12 col-md-6 col-lg-6  punteggio">
+                    <div class="row col-4 col-sm-4 col-md-5 col-lg-5">
+                        <div class="col-12 col-sm-12 col-md-2 col-lg-2  punteggio">
                             <img src="assets/avatar/{{item.CASA.avatar}}.png" class="avatar" width="24px" />
                         </div>
-                        <div class="col-12 col-sm-12 col-md-6 col-lg-6  punteggio">
-                            <label>
+                        <div class="col-12 col-sm-12 col-md-10 col-lg-10  punteggio">
+                            <label class="nome_squadra">
                                 {{item.CASA.squadra}}
                             </label>
                         </div>
                     </div>
-                    <div class="punteggio col-4 col-sm-4 col-md-4 col-lg-4">
+                    <div class="punteggio col-4 col-sm-4 col-md-2 col-lg-2">
                         <span *ngIf="selected.calcolato=='1'">{{item.CASA.goals}}-{{item.TRASFERTA.goals}}</span>
                         <span *ngIf="selected.calcolato!='1'">VS</span>
                     </div>
-                    <div class="row col-4 col-sm-4 col-md-4 col-lg-4">
-                        <div class="col-12 col-sm-12 col-md-6 col-lg-6  punteggio">
+                    <div class="row col-4 col-sm-4 col-md-5 col-lg-5">
+                        <div class="col-12 col-sm-12 col-md-2 col-lg-2  punteggio">
                             <img src="assets/avatar/{{item.TRASFERTA.avatar}}.png" class="avatar" width="24px" />
                         </div>
-                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 punteggio">
-                            <label>
+                        <div class="col-12 col-sm-12 col-md-10 col-lg-10 punteggio">
+                            <label class="nome_squadra">
                                 {{item.TRASFERTA.squadra}}
                             </label>
                         </div>

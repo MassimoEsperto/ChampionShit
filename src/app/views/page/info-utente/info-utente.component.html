@@ -87,13 +87,13 @@
               </div>
               <!-- Email -->
               <div class="pt-32">
-                <input type="email" id="email" class="form-control" placeholder="Email" minlength="8" maxlength="25"
+                <input type="email" id="email" class="form-control" placeholder="Email" minlength="8" maxlength="50"
                   [(ngModel)]="loggato.email" name="email" required email #mail="ngModel" />
               </div>
               <!-- Squadra -->
               <div class="pt-32">
                 <input type="text" id="squadra" class="form-control" placeholder="Squadra" minlength="4"
-                  [(ngModel)]="loggato.selezionata.squadra" name="squadra" required maxlength="12" #team="ngModel" />
+                  [(ngModel)]="loggato.selezionata.squadra" name="squadra" required maxlength="16" #team="ngModel" />
               </div>
               <!-- Sign in button -->
               <div class="pt-64 spazio">

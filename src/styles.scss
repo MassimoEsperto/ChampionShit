@@ -133,3 +133,10 @@ html, body { height: 100%; }
 ::-webkit-scrollbar-thumb:hover {
   background: #00c851; 
 }
+
+.nome_squadra{
+  display: inline-block;
+  margin-bottom: 0;
+  min-width: 140px;
+  text-align: center;
+}
