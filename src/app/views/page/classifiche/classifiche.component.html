@@ -14,10 +14,13 @@
                     </mdb-card-header>
                     <!--Card content-->
                     <mdb-card-body>
-                        <table class="table table-hover">
+                        <table class="table mb-0" style="border-radius: 8px;">
                             <thead class="red white-text rounded-lg">
                                 <tr>
-                                    <th *ngFor="let head of headElementsGironi" scope="col">{{head}} </th>
+
+                                    <th *ngFor="let head of headElementsGironi;let i=index" scope="col"
+                                        [ngClass]="i > 0 ? 'numeri' : 'niente'">{{head}} </th>
+
                                 </tr>
                             </thead>
                             <tbody>
@@ -43,13 +46,21 @@
         <div class="pb-8 pt-8">
             <mdb-card>
                 <mdb-card-header style="background-color: white;">
+                    <span style="font-size: 14px;">QUALIFICATE: </span>
                     <div class="flex-start">
-                        <div class="qualificato" style="width: 64px;height: 12px;"> </div>
-                        <span style="font-size: 12px;"> -> PASSAGGIO AL TURNO SUCCESSIVO</span>
+                        <div class="qualificato leggenda"></div>
+                        <div>
+                            <span style="font-size: 14px;"><mdb-icon fas icon="bullhorn"></mdb-icon> AL TURNO
+                                SUCCESSIVO</span>
+                        </div>
                     </div>
                     <div class="flex-start">
-                        <div class="spareggi" style="width: 64px;height: 12px;"> </div>
-                        <span style="font-size: 12px;"> -> QUALIFICATA AGLI SPAREGGI</span>
+                        <div class="spareggi leggenda"></div>
+                        <div>
+                            <span style="font-size: 14px;"><mdb-icon fas icon="bullhorn"></mdb-icon> AGLI
+                                SPAREGGI</span>
+                        </div>
+
                     </div>
 
                 </mdb-card-header>
@@ -72,7 +83,10 @@
                     <table class="table table-hover">
                         <thead class="red white-text rounded-lg">
                             <tr>
-                                <th *ngFor="let head of headElementsFactory" scope="col">{{head}} </th>
+
+                                <th *ngFor="let head of headElementsFactory;let i=index" scope="col"
+                                    [ngClass]="i > 0 ? 'numeri' : 'niente'">{{head}} </th>
+
                             </tr>
                         </thead>
                         <tbody>

@@ -5,6 +5,7 @@
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: flex-start;
+    align-items: center;
 }
 
 .qualificato{
@@ -13,4 +14,19 @@
 
 .spareggi{
     background-color: lightblue;
+}
+
+.leggenda{
+    width: 64px;
+    height: 14px;
+    margin-right: 8px;
+}
+
+
+.card-body {
+    padding: 0.50rem;
+}
+
+.numeri{
+    width: 40px;
 }
