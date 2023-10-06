@@ -34,7 +34,7 @@
             <mdb-card-header>Invia Notifica</mdb-card-header>
             <mdb-card-body>
 
-                <form class="text-center" #element="ngForm" (submit)="addComunicazione(element.form.value)">
+                <form class="text-center" #element="ngForm" (submit)="associaComunicazione(element.form.value)">
 
                     <select multiple class="form-control mb-4 mt-4 custom-select" placeholder="Utenti" name="utenti"
                         ngModel required>
@@ -43,7 +43,7 @@
 
                     <select class="form-control mb-4 mt-4 custom-select" placeholder="Notifiche" name="notifica" ngModel
                         required>
-                        <option *ngFor="let n of notifiche" [ngValue]="n.id">{{n.titolo}}</option>
+                        <option *ngFor="let n of notifiche" [ngValue]="n.id_comunicazione">{{n.titolo}}</option>
                     </select>
 
                     <!-- Send button -->

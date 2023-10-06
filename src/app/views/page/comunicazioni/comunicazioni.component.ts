@@ -23,7 +23,7 @@ export class ComunicazioniComponent extends GlobalComponent implements OnInit {
     super();
   }
 
-   ngOnInit() {
+  ngOnInit() {
     this.loading_page = true;
     this.spinner.view();
     this.getComunicazioni();
@@ -46,15 +46,9 @@ export class ComunicazioniComponent extends GlobalComponent implements OnInit {
   }
 
   readComunicazioni() {
-    this.playerService.readCommunicazioni()
-      .subscribe({
-        next: (result: any) => {
-          let token = this.playerService.getLocalStorage();
-          token.num_msg = 0    
-          this.authService.setToken(token);
-        },
-        error: (error: any) => {}
-      })
+    let token = this.playerService.getLocalStorage();
+    token.num_msg = 0
+    this.authService.setToken(token);
   }
 
 
