@@ -30,6 +30,7 @@ export class GestioneNotificheComponent extends GlobalComponent implements OnIni
   toggla() {
     this.toggle = !this.toggle
     if(!this.notifiche) this.getComunicazioni();
+    console.log("utenti",this.utenti)
   }
 
   /* CHIAMATE AI SERVIZI */
@@ -54,10 +55,10 @@ export class GestioneNotificheComponent extends GlobalComponent implements OnIni
 
   getComunicazioni() {
 
-    this.adminService.getComunicazioni()
+    this.adminService.getAdministrator()
       .subscribe({
         next: (result: any) => {      
-          this.notifiche=result;
+          this.notifiche=result.comunicazioni;
         },
         error: (error: any) => {
           this.alert.error(error);

@@ -121,14 +121,6 @@ export class AdminService extends HttpSenderService {
         catchError(this.handleError));
   }
 
-  getComunicazioni(): Observable<any[]> {
-    return this.http.get(`${this.buildURL("get_all_comunicazioni")}`).pipe(
-      map((res) => {
-        return res['data'];
-      }),
-      catchError(this.handleError));
-  }
-
   addComunicazione(payload: any): Observable<any[]> {
 
     return this.http.post(`${this.buildURL("add_comunicazione")}`, { data: payload })
