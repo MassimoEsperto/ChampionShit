@@ -36,38 +36,50 @@
 
         <my-titolo [title]="language.page.formazione"></my-titolo>
 
-        <div class="pa-8">
+        <div>
           <div class="squadra-list" (click)="changeView()">
 
             <div class="flex-schiera pa-8">
               <div *ngFor="let ele of squadra">
-                <div class="squadra-box" *ngIf="ele.tipo=='P'">
-                  <div class="pt-16">{{ele.tipo+" "+ele.nome.substring(0, 10)}}</div>
+                <div *ngIf="ele.tipo=='P'">
+                  <img src="assets/caricature/{{ele.icona}}.png" class="avatar" width="40px" />
+                  <div class="squadra-box">
+                  <div>{{ele.tipo+" "+ele.nickname}}</div>
                 </div>
+              </div>
               </div>
             </div>
 
             <div class="flex-schiera pa-8">
               <div *ngFor="let ele of squadra">
-                <div class="squadra-box" *ngIf="ele.tipo=='D'">
-                  <div class="pt-16">{{ele.tipo+" "+ele.nome.substring(0, 10)}}</div>
+                <div *ngIf="ele.tipo=='D'">
+                  <img src="assets/caricature/{{ele.icona}}.png" class="avatar" width="40px" />
+                  <div class="squadra-box">
+                  <div>{{ele.tipo+" "+ele.nickname}}</div>
                 </div>
+              </div>
               </div>
             </div>
 
             <div class="flex-schiera pa-8">
               <div *ngFor="let ele of squadra">
-                <div class="squadra-box" *ngIf="ele.tipo=='C'">
-                  <div class="pt-16">{{ele.tipo+" "+ele.nome.substring(0, 10)}}</div>
+                <div *ngIf="ele.tipo=='C'">
+                  <img src="assets/caricature/{{ele.icona}}.png" class="avatar" width="40px" />
+                  <div class="squadra-box">
+                  <div>{{ele.tipo+" "+ele.nickname}}</div>
                 </div>
+              </div>
               </div>
             </div>
 
             <div class="flex-schiera pa-8">
               <div *ngFor="let ele of squadra">
-                <div class="squadra-box" *ngIf="ele.tipo=='A'">
-                  <div class="pt-16">{{ele.tipo+" "+ele.nome.substring(0, 10)}}</div>
+                <div *ngIf="ele.tipo=='A'">
+                  <img src="assets/caricature/{{ele.icona}}.png" class="avatar" width="40px" />
+                  <div class="squadra-box">
+                  <div>{{ele.tipo+" "+ele.nickname}}</div>
                 </div>
+              </div>
               </div>
             </div>
 
