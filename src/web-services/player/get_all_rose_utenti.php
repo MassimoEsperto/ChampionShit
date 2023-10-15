@@ -27,7 +27,7 @@ if($result = mysqli_query($con,$sql))
 			$ele++;
 		}
 		
-		$element[$ele]['squadra'] = str_replace(' ', '', $row['squadra']);
+		$element[$ele]['squadra'] = $row['squadra'];
         $element[$ele]['id_utente'] = $row['id_utente'];	
         $element[$ele]['id_squadra'] = $row['id_squadra'];	
         $element[$ele]['avatar'] = $row['avatar'];
@@ -39,6 +39,7 @@ if($result = mysqli_query($con,$sql))
 		$element[$ele]['lista'][$list]['calciatore'] = $row['nome'];
 		$element[$ele]['lista'][$list]['ruolo'] = $row['ruolo'];
         $element[$ele]['lista'][$list]['id_utente'] = $row['id_utente'];
+        $element[$ele]['lista'][$list]['id_squadra'] = $row['id_squadra'];
 		
 		$squadrone = $row['id_squadra'];
 		$list++;

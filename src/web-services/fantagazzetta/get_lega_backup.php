@@ -61,9 +61,7 @@ for($i=2;$i<$arr_length;$i++)
     
     }
 }
-//per mariano
-//$formazioni[7]['lista'][30]="PEDRO";
-//$formazioni[7]['lista'][31]="BONAZZOLI";
+
 echo json_encode(['data'=>$formazioni]);
 
 ?>

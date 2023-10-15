@@ -1,6 +1,8 @@
 <?php
 require_once '../config/connect_local.php';
 require_once '../config/decode.php';
+$tabelle = "lista_calciatori order by nome_calciatore"; 
+require_once '../common/all_objects.php';
 
 //variabili
 $squadre_utente = [];
@@ -31,7 +33,7 @@ else
 
 //risultato
 $myObj->squadre = $squadre_utente;
-$myObj->query = $sql1;
+$myObj->lista_calciatori = $oggetti_['lista_calciatori order by nome_calciatore'];
 
 $totObj=['data'=>$myObj];
 

@@ -7,7 +7,7 @@ require_once '../config/post_data.php';
 $lega = mysqli_real_escape_string($con, trim($dati->lega)); 
 
 //elimina rosa esistente
-$sql1 = "DELETE FROM `rose` WHERE `id_squadra` ='{$id_squadra}' ";
+$sql1 = "DELETE FROM rose WHERE squadra_id = {$id_squadra} ";
 
 if(mysqli_query($con, $sql1))
 {

@@ -11,168 +11,22 @@
 
       <div *ngSwitchCase="PERIODO_GIORNATA.PRE_PARTITA">
 
-        <div *ngIf="dash.match.ESISTENTE" class="pt-16">
-
-          <mdb-card class="text-white" bgColor="bg-success">
-            <mdb-card-header>
-              <div>{{language.page.inizio_partita}}: {{dash.turno.data_inizio}}</div>
-            </mdb-card-header>
-            <!--Card content-->
-            <mdb-card-body class="sfondo_campo">
-              <div class="squadre">
-                <div class="row col-4 col-sm-4 col-md-5 col-lg-5">
-                  <div class="col-12 col-sm-12 col-md-2 col-lg-2  punteggio">
-                    <img src="assets/avatar/{{dash.match.CASA.avatar}}.png" class="avatar" width="24px" />
-                  </div>
-                  <div class="col-12 col-sm-12 col-md-10 col-lg-10  punteggio">
-                    <label class="nome_squadra" style="font-weight: bold;">
-                      {{dash.match.CASA.squadra}}
-                    </label>
-                  </div>
-                </div>
-                <div class="punteggio col-4 col-sm-4 col-md-2 col-lg-2"></div>
-                <div class="row col-4 col-sm-4 col-md-5 col-lg-5">
-                  <div class="col-12 col-sm-12 col-md-2 col-lg-2  punteggio">
-                    <img src="assets/avatar/{{dash.match.TRASFERTA.avatar}}.png" class="avatar" width="24px" />
-                  </div>
-                  <div class="col-12 col-sm-12 col-md-10 col-lg-10 punteggio">
-                    <label class="nome_squadra" style="font-weight: bold;">
-                      {{dash.match.TRASFERTA.squadra}}
-                    </label>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <my-button [submit]="false" [color]="'success'" [block]="true"
-                  [label]="language.page.inserisci_formazione" (myClick)="inserisciFormazione()"></my-button>
-              </div>
-            </mdb-card-body>
-
-          </mdb-card>
-
-          <!-- lavagna-->
-          <div class="pt-16">
-
-            <mdb-card class="text-white pa-16" bgColor="bg-success">
-
-              <mdb-card-body class="sfondo_lavagna">
-                <label style="font-weight: bold;">
-                  {{language.page.cosi_campo}}:
-                </label>
-
-
-                <div class="lavagna">
-
-                  <div class="divisione pb-8">
-                    <div class="col-half sfidante">
-                      <h6 style="font-weight: bold;">{{dash.match.CASA.squadra}}</h6>
-                    </div>
-                    <div class="col-half sfidante">
-                      <h6 style="font-weight: bold;"> {{dash.match.TRASFERTA.squadra}}</h6>
-                    </div>
-                  </div>
-
-                  <div class="divisione">
-                    <div class="col-half">
-                      <div class="font-size-smart pa-4">
-                        <div class="formazioni">
-                          <label *ngFor="let gesso of dash.match.CASA.schieramento">
-                            {{gesso.nome}}
-                          </label>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-half">
-                      <div class="font-size-smart pa-4">
-                        <div class="formazioni">
-                          <label *ngFor="let gesso of dash.match.TRASFERTA.schieramento">
-                            {{gesso.nome}}
-                          </label>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                </div>
-
-              </mdb-card-body>
-
-            </mdb-card>
-
-          </div>
-        </div>
+        <pre-partita [dash]="dash"></pre-partita>
 
       </div>
+
       <div *ngSwitchCase="PERIODO_GIORNATA.PARTITA_LIVE">
-        <div *ngIf="dash.match.ESISTENTE" class="pt-16">
 
-          <mdb-card class="text-white" bgColor="bg-success">
-            <mdb-card-header>
-              <div>MATCH</div>
-            </mdb-card-header>
-            <!--Card content-->
-            <mdb-card-body class="sfondo_campo">
-              <div class="squadre">
-                <div class="row col-4 col-sm-4 col-md-4 col-lg-4">
-                  <div class="col-12 col-sm-12 col-md-6 col-lg-6  punteggio">
-                    <img src="assets/avatar/{{dash.match.CASA.avatar}}.png" class="avatar" width="24px" />
-                  </div>
-                  <div class="col-12 col-sm-12 col-md-6 col-lg-6  punteggio">
-                    <label style="font-weight: bold;">
-                      {{dash.match.CASA.squadra}}
-                    </label>
-                  </div>
-                </div>
-                <div class="punteggio col-4 col-sm-4 col-md-4 col-lg-4"></div>
-                <div class="row col-4 col-sm-4 col-md-4 col-lg-4">
-                  <div class="col-12 col-sm-12 col-md-6 col-lg-6  punteggio">
-                    <img src="assets/avatar/{{dash.match.TRASFERTA.avatar}}.png" class="avatar" width="24px" />
-                  </div>
-                  <div class="col-12 col-sm-12 col-md-6 col-lg-6 punteggio">
-                    <label style="font-weight: bold;">
-                      {{dash.match.TRASFERTA.squadra}}
-                    </label>
-                  </div>
-                </div>
-              </div>
+        <partita-incorso [dash]="dash"></partita-incorso>
 
-              <div>
-                <my-button [submit]="false" [color]="'success'" [block]="true" [label]="language.page.vedi_live"
-                  (myClick)="visualizzaLive()"></my-button>
-              </div>
-            </mdb-card-body>
-
-          </mdb-card>
-        </div>
-
-        <div *ngIf="!dash.match.ESISTENTE" class="pt-16">
-
-          <mdb-card class="text-white" bgColor="bg-success">
-            <mdb-card-header>
-              <div>NO MATCH</div>
-            </mdb-card-header>
-            <!--Card content-->
-            <mdb-card-body class="sfondo_campo">
-              <div>
-                <my-button [submit]="false" [color]="'success'" [block]="true" [label]="language.page.vedi_live"
-                  (myClick)="visualizzaLive()"></my-button>
-              </div>
-            </mdb-card-body>
-
-          </mdb-card>
-        </div>
       </div>
+
       <div *ngSwitchCase="PERIODO_GIORNATA.POST_PARTITA">
 
-        <div class="pt-32">
-          <mdb-card class="text-white" bgColor="bg-success">
-            <mdb-card-header>{{language.page.risultati}}</mdb-card-header>
-          </mdb-card>
-          <risultati [selected]="dash.risultati"></risultati>
-
-        </div>
+        <post-partita [dash]="dash"></post-partita>
 
       </div>
+
     </div>
 
     <statistiche [statistiche]="dash.statistiche" [percorso]="dash.percorso"></statistiche>

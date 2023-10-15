@@ -1,0 +1,57 @@
+<div *ngIf="dash.match.ESISTENTE" class="pt-16">
+
+    <mdb-card class="text-white" bgColor="bg-success">
+        <mdb-card-header>
+            <div>MATCH</div>
+        </mdb-card-header>
+        <!--Card content-->
+        <mdb-card-body class="sfondo_campo">
+            <div class="squadre">
+                <div class="row col-4 col-sm-4 col-md-4 col-lg-4">
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-6  punteggio">
+                        <img src="assets/avatar/{{dash.match.CASA.avatar}}.png" class="avatar" width="24px" />
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-6  punteggio">
+                        <label style="font-weight: bold;">
+                            {{dash.match.CASA.squadra}}
+                        </label>
+                    </div>
+                </div>
+                <div class="punteggio col-4 col-sm-4 col-md-4 col-lg-4"></div>
+                <div class="row col-4 col-sm-4 col-md-4 col-lg-4">
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-6  punteggio">
+                        <img src="assets/avatar/{{dash.match.TRASFERTA.avatar}}.png" class="avatar" width="24px" />
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 punteggio">
+                        <label style="font-weight: bold;">
+                            {{dash.match.TRASFERTA.squadra}}
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <my-button [submit]="false" [color]="'success'" [block]="true" [label]="language.page.vedi_live"
+                    (myClick)="visualizzaLive()"></my-button>
+            </div>
+        </mdb-card-body>
+
+    </mdb-card>
+</div>
+
+<div *ngIf="!dash.match.ESISTENTE" class="pt-16">
+
+    <mdb-card class="text-white" bgColor="bg-success">
+        <mdb-card-header>
+            <div>NO MATCH</div>
+        </mdb-card-header>
+        <!--Card content-->
+        <mdb-card-body class="sfondo_campo">
+            <div>
+                <my-button [submit]="false" [color]="'success'" [block]="true" [label]="language.page.vedi_live"
+                    (myClick)="visualizzaLive()"></my-button>
+            </div>
+        </mdb-card-body>
+
+    </mdb-card>
+</div>

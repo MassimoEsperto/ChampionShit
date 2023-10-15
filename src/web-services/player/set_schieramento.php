@@ -25,7 +25,7 @@ $sql .=  "UPDATE risultati SET modulo_id = {$id_modulo} ";
 $sql .= "WHERE id_risultato = {$id_risultato} LIMIT 1 ; ";
 
 //controllo
-if ($turno['periodo'] != 1) 
+if ($turno_['periodo'] != 1) 
 {
 	errorMessage('Non è possibile schierare formazioni per questa data!');
 } 
@@ -34,8 +34,7 @@ else
 	if ($con->multi_query($sql) === TRUE) 
 	{
 		$ritono = [
-					  'stato' => $con->affected_rows,
-					 // 'risposta' => 'ok'
+					 'stato' => $con->affected_rows,
                      'risposta' =>  $sql
 					];
 		echo json_encode(['data'=>$ritono]);

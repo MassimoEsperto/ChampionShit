@@ -9,7 +9,7 @@ $player_in = mysqli_real_escape_string($con, trim($dati->player_in));
 $player_out = mysqli_real_escape_string($con, trim($dati->player_out));
  
 
-$sql = "UPDATE rose SET id_calciatore='{$player_in}' ";
+$sql = "UPDATE rose SET calciatore_id='{$player_in}' ";
 $sql .="WHERE squadra_id = {$id_squadra} AND calciatore_id = {$player_out} LIMIT 1";
 	
 if(mysqli_query($con, $sql))

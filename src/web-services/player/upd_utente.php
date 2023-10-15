@@ -12,6 +12,7 @@ $objJWT = new JWT();//inizialize token
 $email = mysqli_real_escape_string($con, trim($dati->email));  
 $username = mysqli_real_escape_string($con, trim($dati->username));
 $language = mysqli_real_escape_string($con, trim($dati->language));
+$ruolo = mysqli_real_escape_string($con, trim($dati->ruolo));
 $num_msg = mysqli_real_escape_string($con, trim($dati->num_msg));
 $qta = mysqli_real_escape_string($con, trim($dati->qta));
 $squadre = $dati->squadre;
@@ -37,6 +38,7 @@ $sql .= "WHERE id_squadra = {$id_squadra_in} ; ";
 							'email' => $email,
                             'language' => $language,  
                             'num_msg' => $num_msg,
+                            'ruolo' => $ruolo,
                             'squadre' => $squadre,
                             'selezionata' => $selezionata,
                             'qta' => $qta,

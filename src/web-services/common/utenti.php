@@ -5,9 +5,9 @@ $utenti_ = [];
 
 //Query ed elaborazioni
 //all utenti
-$sql_utenti = "SELECT id_utente,username,email,language,ruolo_id ";
+$sql_utenti = "SELECT id_utente,username,email,language,ruolo_id, ";
 $sql_utenti .="(SELECT COUNT(*) FROM squadre WHERE utente_id=id_utente) AS qta ";
-$sql_utenti .="FROM utenti where id_utente < 100 ";
+$sql_utenti .="FROM utenti ";
 
 
 if($result = mysqli_query($con,$sql_utenti))

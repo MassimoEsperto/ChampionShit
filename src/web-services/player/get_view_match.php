@@ -15,6 +15,16 @@ if(trim($match) === '')
    die('valori non prelevati'. mysqli_error($con));
 }
 
+for ($i = 0; $i <= 4; $i++)
+{
+	$schieramento['CASA']['formazione'][$i]['nome'] = "-";
+    $schieramento['CASA']['formazione'][$i]['ruolo'] = "";
+    $schieramento['CASA']['formazione'][$i]['voto'] = "";
+    
+    $schieramento['TRASFERTA']['formazione'][$i]['nome'] = "-";
+    $schieramento['TRASFERTA']['formazione'][$i]['ruolo'] = "";
+    $schieramento['TRASFERTA']['formazione'][$i]['voto'] = "";
+}
 
 
 $sql5 = "SELECT c.girone,r.luogo,r.squadra_id,r.somma,r.goals,l.id_calciatore,l.nickname,l.ruolo, ";
@@ -47,11 +57,11 @@ if($result = mysqli_query($con,$sql5))
     $schieramento[$row['luogo']]['goals'] = $row['goals'];
    	$schieramento[$row['luogo']]['squadra'] = $row['squadra'];
     $schieramento[$row['luogo']]['modulo'] = $row['descrizione'];
-   
+   if($row['nickname']!= ''){
    	$schieramento[$row['luogo']]['formazione'][$count]['nome'] = $row['nickname'];
    	$schieramento[$row['luogo']]['formazione'][$count]['ruolo'] = $row['ruolo'];
    	$schieramento[$row['luogo']]['formazione'][$count]['voto'] = $row['voto'];
-   
+   }
   }
  	
 }

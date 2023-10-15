@@ -6,7 +6,7 @@ $team = [];
 $occupati = [];
 $gironi = [];
 
-$sql1 = "SELECT id_squadra,squadra,lega FROM squadre WHERE id_squadra not in ( SELECT squadra_id FROM risultati ) order by lega";
+$sql1 = "SELECT id_squadra,squadra,lega,account,utente_id FROM squadre WHERE id_squadra not in ( SELECT squadra_id FROM risultati ) order by utente_id,lega";
 $sql2 = "SELECT DISTINCT girone FROM calendario";
 
 
@@ -15,7 +15,7 @@ if($result = mysqli_query($con,$sql1))
 	$ele = 0;
 	while($row = mysqli_fetch_assoc($result))
 	{
-		$team[$ele]['descrizione'] = $row['squadra'].' ('.$row['lega'].')';
+		$team[$ele]['descrizione'] = $row['utente_id'] .')' . $row['squadra'].' ('.$row['lega'].')';
         $team[$ele]['id'] = $row['id_squadra'];
 		$ele++;
 	}

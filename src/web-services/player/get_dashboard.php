@@ -10,6 +10,17 @@ $statistiche = [];
 $schieramento = [];
 $percorso = [];
 
+for ($i = 0; $i <= 4; $i++)
+{
+	$schieramento['CASA']['formazione'][$i]['nome'] = "-";
+    $schieramento['CASA']['formazione'][$i]['ruolo'] = "";
+    $schieramento['CASA']['formazione'][$i]['voto'] = "";
+    
+    $schieramento['TRASFERTA']['formazione'][$i]['nome'] = "-";
+    $schieramento['TRASFERTA']['formazione'][$i]['ruolo'] = "";
+    $schieramento['TRASFERTA']['formazione'][$i]['voto'] = "";
+}
+
 //inizializzo a 0 nel caso fossero null
 $match = 0;
 
@@ -106,7 +117,7 @@ if($turno_['periodo'] != 3)
           {
             $match_in_corso[$row['luogo']]['id_squadra'] = $row['squadra_id'];
             $match_in_corso[$row['luogo']]['id_utente'] = $row['id_utente'];
-            $match_in_corso[$row['luogo']]['squadra'] = str_replace(' ', '', $row['squadra']);
+            $match_in_corso[$row['luogo']]['squadra'] = $row['squadra'];
             $match_in_corso[$row['luogo']]['avatar'] = $row['nome'];
 
             $match_in_corso['ESISTENTE'] = true;
@@ -155,10 +166,11 @@ if($turno_['periodo'] != 3)
         $schieramento[$row['luogo']]['goals'] = $row['goals'];
         $schieramento[$row['luogo']]['squadra'] = $row['squadra'];
         $schieramento[$row['luogo']]['modulo'] = $row['descrizione'];
-
-        $schieramento[$row['luogo']]['formazione'][$count]['nome'] = $row['nickname'];
-        $schieramento[$row['luogo']]['formazione'][$count]['ruolo'] = $row['ruolo'];
-        $schieramento[$row['luogo']]['formazione'][$count]['voto'] = $row['voto'];
+		if($row['nickname']!= ''){
+          $schieramento[$row['luogo']]['formazione'][$count]['nome'] = $row['nickname'];
+          $schieramento[$row['luogo']]['formazione'][$count]['ruolo'] = $row['ruolo'];
+          $schieramento[$row['luogo']]['formazione'][$count]['voto'] = $row['voto'];
+        }
 
       }
 		$match_in_corso['CASA']['schieramento'] = $schieramento['CASA']['formazione'];
@@ -276,6 +288,7 @@ $myObj->match = $match_in_corso;
 $myObj->statistiche = $statistiche;
 $myObj->percorso = $percorso;
 
+//da eliminare
 $myObj->id_squadra = $id_squadra;
 
 

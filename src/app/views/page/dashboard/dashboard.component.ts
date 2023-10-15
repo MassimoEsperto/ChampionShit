@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
 import { finalize } from 'rxjs/operators';
 import { Utente } from 'src/app/classes/models/utente';
 import { GlobalComponent } from 'src/app/classes/utils/global-component';
@@ -18,7 +17,6 @@ export class DashboardComponent extends GlobalComponent implements OnInit {
   constructor(
     private spinner: SpinnerService,
     private alert: AlertService,
-    private router: Router,
     private playerService: PlayerService,
     public dialog: MatDialog) {
     super();
@@ -52,13 +50,5 @@ export class DashboardComponent extends GlobalComponent implements OnInit {
       })
   }
 
-
-  inserisciFormazione() {
-    this.router.navigate(['/home/schieramento']);
-  }
-
-  visualizzaLive() {
-    this.router.navigate(['/home/voti-live']);
-  }
 
 }
