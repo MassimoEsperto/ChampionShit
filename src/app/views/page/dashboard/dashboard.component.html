@@ -8,7 +8,7 @@
     <my-logo [is_upgrade]="this.dash.turno.is_upgrade"></my-logo>
 
     <div [ngSwitch]="this.dash.turno.periodo">
-      
+
       <div *ngSwitchCase="PERIODO_GIORNATA.PRE_PARTITA">
 
         <div *ngIf="dash.match.ESISTENTE" class="pt-16">
@@ -59,27 +59,38 @@
                 <label style="font-weight: bold;">
                   {{language.page.cosi_campo}}:
                 </label>
-                <div class="squadre-lavagna">
 
-                  <div class="flex-colonna">
-                    <label class="nome_squadra" style="font-weight: bold;">
-                      {{dash.match.CASA.squadra}}
-                    </label>
 
-                    <label *ngFor="let gesso of dash.match.CASA.schieramento">
-                      {{gesso.nome}}
-                    </label>
+                <div class="lavagna">
+
+                  <div class="divisione pb-8">
+                    <div class="col-half sfidante">
+                      <h6 style="font-weight: bold;">{{dash.match.CASA.squadra}}</h6>
+                    </div>
+                    <div class="col-half sfidante">
+                      <h6 style="font-weight: bold;"> {{dash.match.TRASFERTA.squadra}}</h6>
+                    </div>
                   </div>
 
-
-                  <div class="flex-colonna">
-                    <label class="nome_squadra" style="font-weight: bold;">
-                      {{dash.match.TRASFERTA.squadra}}
-                    </label>
-
-                    <label *ngFor="let gesso of dash.match.TRASFERTA.schieramento">
-                      {{gesso.nome}}
-                    </label>
+                  <div class="divisione">
+                    <div class="col-half">
+                      <div class="font-size-smart pa-4">
+                        <div class="formazioni">
+                          <label *ngFor="let gesso of dash.match.CASA.schieramento">
+                            {{gesso.nome}}
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-half">
+                      <div class="font-size-smart pa-4">
+                        <div class="formazioni">
+                          <label *ngFor="let gesso of dash.match.TRASFERTA.schieramento">
+                            {{gesso.nome}}
+                          </label>
+                        </div>
+                      </div>
+                    </div>
                   </div>
 
                 </div>

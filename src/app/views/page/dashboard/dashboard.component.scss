@@ -2,15 +2,6 @@
 
 
 
-.squadre-lavagna{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: space-around;
-    align-items: flex-end;
-
-}
-
 .squadre{
     display: flex;
     flex-direction: row;
@@ -54,4 +45,27 @@
 	background-repeat: no-repeat;
     background-size: cover;
 
+}
+
+
+.divisione{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.col-half {
+    flex-basis: 50%;
+  }
+
+.formazioni{
+    display: flex;
+    flex-direction: column;
+}
+
+.sfidante{
+    font-weight: bold;
+    text-align: center;
 }
