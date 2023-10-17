@@ -122,9 +122,9 @@ export class AuthService extends HttpSenderService {
     return this.http.get(`${this.buildURL("info")}`)
       .pipe(map((res) => {
         let verifica = {
-          applicazione: res['data'].versione,
+          applicazione: res['data']['info']['VERSIONE'],
           locale: this.versione(),
-          error: res['data'].versione != this.versione()
+          error: res['data']['info']['VERSIONE']!= this.versione()
         }
         return verifica;
       }),
