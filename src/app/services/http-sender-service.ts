@@ -73,6 +73,6 @@ export class HttpSenderService {
   }
 
   versione() {
-    return "5.1"
+    return "6.1"
   }
 }
