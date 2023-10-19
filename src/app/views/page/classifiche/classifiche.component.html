@@ -69,44 +69,58 @@
 
     </div>
 
+
+
     <div *ngIf="classifiche.factory.length" class="pt-8 pb-8">
         <mdb-card class="text-white" bgColor="bg-success">
             <mdb-card-header>COEFFICIENTE MERDA</mdb-card-header>
         </mdb-card>
 
-        <div class="pb-8 pt-8">
-            <mdb-card>
-                <mdb-card-header style="background-color: white;">{{language.page.generale}}
-                </mdb-card-header>
-                <!--Card content-->
-                <mdb-card-body>
-                    <table class="table table-hover">
-                        <thead class="red white-text rounded-lg">
-                            <tr>
+        <div class="pt-8 pb-32">
 
-                                <th *ngFor="let head of headElementsFactory;let i=index" scope="col"
-                                    [ngClass]="i > 0 ? 'numeri' : 'niente'">{{head}} </th>
+            <mat-accordion class="factory-align">
+                <div>
+                    <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                <label class="nome_squadra">
+                                    {{language.page.generale}}
+                                </label>
+                            </mat-panel-title>
+                            <mat-panel-description style="justify-content: space-between;align-items: center;">
+                                <div></div>
+                                <img src="assets/img/monkey_cup.png" class="avatar" width="28px" />
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
 
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr mdbTableCol *ngFor="let el of classifiche.factory">
-                                <td>
-                                    <div class="squadra">
-                                        <img src="assets/avatar/{{el.avatar}}.png" class="avatar" width="24px" />
-                                        <div class="pl-8">{{el.squadra}}</div>
-                                    </div>
-                                </td>
-                                <td style="font-weight: bold;">{{el.factory}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </mdb-card-body>
+                        <table class="table mb-0" style="border-radius: 8px;">
+                            <thead class="red white-text rounded-lg">
+                                <tr>
+                                    <th *ngFor="let head of headElementsFactory;let i=index" scope="col"
+                                        [ngClass]="i > 0 ? 'numeri' : 'niente'">{{head}} </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr mdbTableCol *ngFor="let el of classifiche.factory">
+                                    <td>
+                                        <div class="squadra">
+                                            <img src="assets/avatar/{{el.avatar}}.png" class="avatar" width="24px" />
+                                            <div class="pl-8">{{el.squadra}}</div>
+                                        </div>
+                                    </td>
+                                    <td style="font-weight: bold;">{{el.factory}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
 
-            </mdb-card>
+                    </mat-expansion-panel>
+                </div>
 
+            </mat-accordion>
         </div>
 
     </div>
+
+    
 
 </div>

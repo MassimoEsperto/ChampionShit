@@ -5,6 +5,7 @@ import { finalize } from 'rxjs/operators';
 import { AlertService } from 'src/app/services/alert.service';
 import { PlayerService } from 'src/app/services/player.service';
 import { FantaGazzettaService } from 'src/app/services/fanta-gazzetta.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -17,6 +18,7 @@ export class SchieramentoComponent extends GlobalComponent implements OnInit {
   constructor(
     private spinner: SpinnerService,
     private alert: AlertService,
+    private router: Router,
     private playerService: PlayerService,
     private fantaService: FantaGazzettaService,
     private ref: ChangeDetectorRef) {
@@ -144,6 +146,10 @@ export class SchieramentoComponent extends GlobalComponent implements OnInit {
 
         next: (result: any) => {
           this.alert.success(this.language.alert.success);
+          setTimeout(() => {
+            this.router.navigate(['home/dashboard']);
+          }, 3000);
+
         },
         error: (error: any) => {
           this.alert.error(error);
