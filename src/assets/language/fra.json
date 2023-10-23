@@ -73,7 +73,8 @@
         "entra": "ENTREZ",
         "avatar": "Selectionnez Avatar",
         "annulla": "ANNULER",
-        "aggiungi_squadra": "AJOUTER ÉQUIPE"
+        "aggiungi_squadra": "AJOUTER ÉQUIPE",
+        "cambia": "CHANGER"
     },
     "pannello": {
         "admin": "ADMIN",
@@ -196,12 +197,17 @@
             {
                 "subtitolo": "Edition 2021/2022",
                 "messaggio1": "Le nombre de participants est de 20",
-                "messaggio2": "Slayer84"
+                "messaggio2": "Gagnant Slayer84"
             },
             {
                 "subtitolo": "Edition 2022/2023",
                 "messaggio1": "Le nombre de participants est de 20",
-                "messaggio2": "KilKennely"
+                "messaggio2": "Gagnant Kil Kil"
+            },
+            {
+                "subtitolo": "Edition 2023/2024",
+                "messaggio1": "Le nombre de participants est de 36",
+                "messaggio2": "Gagnant ???"
             }
         ]
     }

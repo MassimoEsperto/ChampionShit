@@ -59,7 +59,8 @@
         "entra": "COME IN",
         "avatar": "Select Avatar",
         "annulla": "CANCEL",
-        "aggiungi_squadra": "ADD TEAM"
+        "aggiungi_squadra": "ADD TEAM",
+        "cambia": "CHANGE"
     },
     "alert": {
         "success": "Incredible It Worked!",
@@ -196,12 +197,17 @@
             {
                 "subtitolo": "Edition 2021/2022",
                 "messaggio1": "Number of participants is 20",
-                "messaggio2": "Slayer84"
+                "messaggio2": "Winner Slayer84"
             },
             {
                 "subtitolo": "Edition 2022/2023",
                 "messaggio1": "Number of participants is 20",
-                "messaggio2": "KilKennely"
+                "messaggio2": "Winner Kil Kil"
+            },
+            {
+                "subtitolo": "Edition 2023/2024",
+                "messaggio1": "Number of participants is 36",
+                "messaggio2": "Winner ????"
             }
             
         ]

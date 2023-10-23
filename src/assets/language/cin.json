@@ -73,7 +73,8 @@
         "entra": "进来",
         "avatar": "选择头像",
         "annulla": "取消",
-        "aggiungi_squadra": "添加團隊"
+        "aggiungi_squadra": "添加團隊",
+        "cambia": "更改数据"
     },
     "pannello": {
         "admin": "行政",
@@ -197,12 +198,17 @@
             {
                 "subtitolo": "版 2021/2022",
                 "messaggio1": "参加人数为 20",
-                "messaggio2": "Slayer84"
+                "messaggio2": "优胜者 Slayer84"
             },
             {
                 "subtitolo": "版 2022/2023",
                 "messaggio1": "参加人数为 20",
-                "messaggio2": "KilKennely"
+                "messaggio2": "优胜者 Kil Kil"
+            },
+            {
+                "subtitolo": "版 2023/2024",
+                "messaggio1": "参加人数为 36",
+                "messaggio2": "优胜者 ?????"
             }
         ]
     }
