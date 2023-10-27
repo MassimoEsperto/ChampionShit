@@ -38,6 +38,7 @@ export class HttpSenderService {
       utente.id = element.id_utente
       utente.username = element.username
       utente.email = element.email
+      utente.cellulare = element.cellulare
       utente.selezionata = element.selezionata
       utente.token = element.token
       utente.num_msg = element.num_msg
@@ -73,6 +74,6 @@ export class HttpSenderService {
   }
 
   versione() {
-    return "6.1"
+    return "6.1.2"
   }
 }

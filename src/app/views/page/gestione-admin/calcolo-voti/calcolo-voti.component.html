@@ -1,8 +1,17 @@
-<p>IN QUESTA SEZIONE E' POSSIBILE EFFETTUARE IL CALCOLO DELLA GIORNATA</p>
-<br>
+<div class="pb-16 pt-8">
+  <mdb-card bgColor="bg-light">
+    <mdb-card-header>
+      <mdb-icon fas icon="info-circle"></mdb-icon>
+      <span class="pl-16">
+        IN QUESTA SEZIONE E' POSSIBILE EFFETTUARE IL CALCOLO DELLA GIORNATA
+      </span>
+    </mdb-card-header>
+  </mdb-card>
+</div>
+
 <div class="selezionata">
-  <select class="btn-file custom-select ml-16" [(ngModel)]="giornata_selezionata"
-    placeholder="Giornata" (change)="formazioni_inserite=[]">
+  <select class="btn-file custom-select ml-16" [(ngModel)]="giornata_selezionata" placeholder="Giornata"
+    (change)="formazioni_inserite=[]">
     <optgroup label="Da Calcolare">
       <option *ngFor="let g of calcolato['NO']" [ngValue]="g">Giornata {{g}}°</option>
     </optgroup>
@@ -11,8 +20,8 @@
     </optgroup>
   </select>
   <div class="pa-8">
-    <my-button [submit]="false" [color]="'primary'" [block]="false" [disabled]="!giornata_selezionata" [label]="'PROCEDI'"
-      [loading]="loading_btn" (myClick)="formazioniByGionata()"></my-button>
+    <my-button [submit]="false" [color]="'primary'" [block]="false" [disabled]="!giornata_selezionata"
+      [label]="'PROCEDI'" [loading]="loading_btn" (myClick)="formazioniByGionata()"></my-button>
   </div>
 </div>
 <div *ngIf="formazioni_inserite">
@@ -49,7 +58,8 @@
         <div class="trasferta">
           <div class="squadraT pr-8 pt-8 pb-8">
             <label>{{item.TRASFERTA.squadra.substring(0, 8)}}</label>
-            <input value="{{item.TRASFERTA.goals}}" [(ngModel)]="item.TRASFERTA.goals" type="number" class="voto" disabled>
+            <input value="{{item.TRASFERTA.goals}}" [(ngModel)]="item.TRASFERTA.goals" type="number" class="voto"
+              disabled>
           </div>
           <div class="pr-8 pt-8 pb-8">
             <div *ngFor="let ele of item.TRASFERTA.schieramento" class="calciatore">
@@ -71,7 +81,7 @@
     </div>
   </div>
   <div class="pa-8">
-    <my-button [submit]="false" [color]="'danger'" [block]="true" [disabled]="!voti_file"
-      [label]="'CALCOLA GIORNATA'" [loading]="loading_btn" (myClick)="onCalcolaGiornata()"></my-button>
+    <my-button [submit]="false" [color]="'danger'" [block]="true" [disabled]="!voti_file" [label]="'CALCOLA GIORNATA'"
+      [loading]="loading_btn" (myClick)="onCalcolaGiornata()"></my-button>
   </div>
 </div>

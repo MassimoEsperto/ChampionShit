@@ -28,6 +28,10 @@
                         <input type="email" id="email" class="form-control mb-4" placeholder="Email" minlength="8"
                             maxlength="40" [(ngModel)]="element.mail" name="email" required email />
 
+                        <!-- Cellulare -->
+                        <input type="text" id="cellulare" class="form-control mb-4 mt-4" placeholder="Cellulare"
+                            pattern="\d{8,15}$" [(ngModel)]="element.cellulare" name="cellulare" required />
+
                         <!-- Password -->
                         <input type="password" id="psw" class="form-control mb-4" placeholder="Pwd (min 8 caratteri)"
                             minlength="8" maxlength="20" [(ngModel)]="element.password" name="password" required />

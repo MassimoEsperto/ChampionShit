@@ -39,27 +39,32 @@ export class RecuperoPrecedentiComponent extends GlobalComponent implements OnIn
     });
   }
 
-  recTeamTrasferta(item:any) {
+
+  recuperaFormazioneCasa(item:any) {
 
     let payload = {
-      id_utente: item.CASA.id_utente,
+      id_squadra: item.CASA.id_squadra,
+      id_avversario: item.TRASFERTA.id_squadra,
+      id_risultato: item.CASA.id_risultato,
+      id_calendario: item.id_calendario,
+      in_casa:1
+    }
+
+    this.onInsert(payload);
+  }
+
+  recuperaFormazioneTrasferta(item:any) {
+
+    let payload = {
+      id_squadra: item.TRASFERTA.id_squadra,
+      id_avversario: item.CASA.id_squadra,
       id_risultato: item.TRASFERTA.id_risultato,
-      id_avversario: item.TRASFERTA.id_utente
+      id_calendario: item.id_calendario,
+      in_casa:0
     }
 
     this.onInsert(payload);
   }
-
-  recTeamCasa(item:any) {
-
-    let payload = {
-      id_utente: item.CASA.id_utente,
-      id_risultato: item.CASA.id_risultato
-    }
-  
-    this.onInsert(payload);
-  }
-
 
 
   /* CHIAMATA AI SERVIZI */

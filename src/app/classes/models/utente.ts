@@ -5,6 +5,7 @@ export class Utente {
   username: string;
   password: string;
   email: string;
+  cellulare: string;
   scadenza:string;
   num_msg: number;
   ruolo: number;

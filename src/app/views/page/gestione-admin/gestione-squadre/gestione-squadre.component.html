@@ -1,5 +1,13 @@
-<p>IN QUESTA SEZIONE POTRAI SIA CARICARE LE SQUADRE CHE SOSTITUIRE GIOCATORI DEI PARTECIPANTI</p>
-
+<div class="pb-16 pt-8">
+  <mdb-card bgColor="bg-light">
+    <mdb-card-header>
+      <mdb-icon fas icon="info-circle"></mdb-icon>
+      <span class="pl-16">
+        IN QUESTA SEZIONE POTRAI SIA CARICARE LE SQUADRE CHE SOSTITUIRE GIOCATORI DEI PARTECIPANTI
+      </span>
+    </mdb-card-header>
+  </mdb-card>
+</div>
 
 <my-button [submit]="false" [color]="'warning'" [block]="true" [label]="'CAMBIA IN '+labelView" (myClick)="changeView()"
   [loading]="loading_btn"></my-button>

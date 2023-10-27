@@ -1,23 +1,32 @@
-<p>IN QUESTA SEZIONE E' POSSIBILE RECUPERARE LE FORMAZIONI PRECEDENTEMENTE INSERITE</p>
+<div class="pb-16 pt-8">
+    <mdb-card bgColor="bg-light">
+        <mdb-card-header>
+            <mdb-icon fas icon="info-circle"></mdb-icon>
+            <span class="pl-16">
+                IN QUESTA SEZIONE E' POSSIBILE RECUPERARE LE FORMAZIONI PRECEDENTEMENTE INSERITE
+            </span>
+        </mdb-card-header>
+    </mdb-card>
+</div>
 
 <div *ngIf="administrator">
 
     <div class="selezionata">
-        <select  class="btn-file custom-select ml-16" [(ngModel)]="giornata_selezionata"
-          placeholder="Giornata" (change)="formazioni_inserite=[]">
-          <optgroup label="Da Calcolare">
-            <option *ngFor="let g of administrator.calcolato['NO']" [ngValue]="g">Giornata {{g}}°</option>
-          </optgroup>
-          <optgroup label="Gia Calcolato">
-            <option *ngFor="let g of administrator.calcolato['SI']" [ngValue]="g">Giornata {{g}}°</option>
-          </optgroup>
+        <select class="btn-file custom-select ml-16" [(ngModel)]="giornata_selezionata" placeholder="Giornata"
+            (change)="formazioni_inserite=[]">
+            <optgroup label="Da Calcolare">
+                <option *ngFor="let g of administrator.calcolato['NO']" [ngValue]="g">Giornata {{g}}°</option>
+            </optgroup>
+            <optgroup label="Gia Calcolato">
+                <option *ngFor="let g of administrator.calcolato['SI']" [ngValue]="g">Giornata {{g}}°</option>
+            </optgroup>
         </select>
 
         <div class="pa-8">
-          <my-button [submit]="false" [color]="'primary'" [block]="false" [disabled]="!giornata_selezionata" [label]="'PROCEDI'"
-            [loading]="loading_btn" (myClick)="formazioniInserite()"></my-button>
+            <my-button [submit]="false" [color]="'primary'" [block]="false" [disabled]="!giornata_selezionata"
+                [label]="'PROCEDI'" [loading]="loading_btn" (myClick)="formazioniInserite()"></my-button>
         </div>
-      </div>
+    </div>
 
     <div class="partite pl-8 pb-8 pt-16">
         <div *ngFor="let item of formazioni_inserite" class="pr-8 pb-8">
@@ -34,7 +43,7 @@
                     </div>
                     <div class="calciatore pa-8">
                         <my-button [submit]="false" [color]="'primary'" [block]="false" [label]="'RECUPERA'"
-                            [loading]="loading_btn" (myClick)="recTeamCasa(item)"
+                            [loading]="loading_btn" (myClick)="recuperaFormazioneCasa(item)"
                             [disabled]="item.CASA.schieramento.length==5"></my-button>
                     </div>
                 </div>
@@ -49,7 +58,7 @@
                     </div>
                     <div class="calciatore pa-8">
                         <my-button [submit]="false" [color]="'primary'" [block]="false" [label]="'RECUPERA'"
-                            [loading]="loading_btn" (myClick)="recTeamTrasferta(item)"
+                            [loading]="loading_btn" (myClick)="recuperaFormazioneTrasferta(item)"
                             [disabled]="item.TRASFERTA.schieramento.length==5"></my-button>
                     </div>
                 </div>

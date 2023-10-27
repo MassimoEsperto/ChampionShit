@@ -20,7 +20,7 @@ export class AccoppiamentiComponent extends GlobalComponent implements OnInit {
 
   view_possibili = [
     {id: 1, name: "Date"},
-    {id: 2, name: "Eliminatorie"},
+    {id: 2, name: "Calendario"},
     {id: 3, name: "Sorteggi gironi"}];
 
   constructor(

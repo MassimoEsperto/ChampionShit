@@ -153,6 +153,7 @@ export class InfoUtenteComponent extends GlobalComponent implements OnInit {
           let token = this.playerService.getLocalStorage();
           token.username = element.username;
           token.email = element.email;
+          token.cellulare = element.cellulare;
           token.selezionata = element.selezionata;
           this.authService.setToken(token);
           this.alert.success(this.language.alert.success);
