@@ -9,7 +9,7 @@
         "da_disputare": "TO DISPUTE",
         "inizio_partita": "START MATCH",
         "inserisci_formazione": "INSERT TRAINING",
-        "vedi_live": "SEE LIVE",
+        "vedi_live": "SEE ALL LIVE",
         "risultati": "RESULTS",
         "classifiche": "RANKINGS",
         "girone": "GROUP",
@@ -27,7 +27,8 @@
         "statistiche": "STATISTICS",
         "generale": "UNIQUE FOR ALL GROUPS",
         "altri_match": "OTHER GAMES",
-        "cosi_campo": "Cosi in campo",
+        "cosi_campo": "So on the pitch",
+        "live_match": "Live Match",
         "modulo": "MODULE",
         "punti_bonus": "BONUS POINTS",
         "fasi": {

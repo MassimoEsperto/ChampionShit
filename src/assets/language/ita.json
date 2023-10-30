@@ -9,7 +9,7 @@
         "da_disputare": "DA DISPUTARE",
         "inizio_partita": "INIZIO PARTITA",
         "inserisci_formazione": "INSERISCI FORMAZIONE",
-        "vedi_live": "VEDI LIVE",
+        "vedi_live": "VEDI TUTTI I LIVE",
         "risultati": "RISULTATI",
         "classifiche": "CLASSIFICHE",
         "girone": "GIRONE",
@@ -28,6 +28,7 @@
         "generale": "RANKING UNICO PER TUTTI I GIRONI",
         "altri_match": "ALTRE PARTITE",
         "cosi_campo": "Cosi in campo",
+        "live_match": "Live Match",
         "modulo": "MODULO",
         "punti_bonus": "PUNTI BONUS",
         "fasi": {
