@@ -17,7 +17,7 @@
 
 .footer-fisso {
     position: fixed;
-    overflow: auto;
+    overflow: visible;
     left: 0;
     bottom: 0;
     right: 0;
@@ -27,8 +27,7 @@
     color: white;
     text-align: center;
     font-size: 12px;
-    padding-top: 4px;
-    padding-bottom: 4px;
+    padding: 4px;
  }
 
  .footer-copyright {
@@ -55,4 +54,8 @@
 
 .cursore{
     color: white !important;
+}
+
+.font-small{
+    font-size: 8px;
 }

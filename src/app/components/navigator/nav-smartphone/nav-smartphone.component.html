@@ -1,47 +1,48 @@
 <div class="footer-fisso">
-    <div class="navigazione">
-        <div class="colonna" routerLink="/home/dashboard" (click)="impostazioni.hide()">
-            <div style="padding-bottom: 4px;">
-                <mdb-icon fas icon="home" class="pr-1"></mdb-icon>
+    
+    <div class="row pa-0 ma-0">
+        <div class="col colonna pa-0 ma-0" routerLink="/home/dashboard" (click)="impostazioni.hide()">
+            <div class="pt-4">
+                <mdb-icon fas icon="home" size="lg"></mdb-icon>
             </div>
             <div>
-                <span>{{language.smart.home}}</span>
+                <span class="font-small">{{language.smart.home}}</span>
             </div>
         </div>
 
-        <div class="colonna" routerLink="/home/calendario" (click)="impostazioni.hide()">
-            <div style="padding-bottom: 4px;">
-                <mdb-icon far icon="calendar-alt" class="pr-1"></mdb-icon>
+        <div class="col colonna pa-0 ma-0" routerLink="/home/calendario" (click)="impostazioni.hide()">
+            <div class="pt-4">
+                <mdb-icon far icon="calendar-alt" size="lg"></mdb-icon>
             </div>
             <div>
-                <span>{{language.smart.calendario}}.</span>
+                <span class="font-small">{{language.smart.calendario}}</span>
             </div>
         </div>
 
-        <div class="colonna" routerLink="/home/rose-utenti" (click)="impostazioni.hide()">
-            <div style="padding-bottom: 4px;">
-                <mdb-icon fas icon="binoculars" class="pr-1"></mdb-icon>
+        <div class="col colonna pa-0 ma-0" routerLink="/home/rose-utenti" (click)="impostazioni.hide()">
+            <div class="pt-4">
+                <mdb-icon fas icon="binoculars" size="lg"></mdb-icon>
             </div>
             <div>
-                <span>{{language.smart.rose}}</span>
+                <span class="font-small">{{language.smart.rose}}</span>
             </div>
         </div>
        
-        <div class="colonna" (click)="impostazioni.hide()" routerLink="/home/classifiche">
-            <div style="padding-bottom: 4px;">
-                <mdb-icon fas icon="chart-line" class="pr-1"></mdb-icon>
+        <div class="col colonna pa-0 ma-0" (click)="impostazioni.hide()" routerLink="/home/classifiche">
+            <div class="pt-4">
+                <mdb-icon fas icon="chart-line" size="lg"></mdb-icon>
             </div>
             <div>
-                <span>{{language.smart.classifiche}}</span>
+                <span class="font-small">{{language.smart.classifiche}}</span>
             </div>
         </div>
 
-        <div class="colonna" (click)="impostazioni.toggle()">
-            <div style="padding-bottom: 4px;">
-                <mdb-icon fas icon="user-cog" class="pr-1"></mdb-icon>
+        <div class="col colonna pa-0 ma-0" (click)="impostazioni.toggle()">
+            <div class="pt-4">
+                <mdb-icon fas icon="user-cog" size="lg"></mdb-icon>
             </div>
             <div>
-                <span>{{language.smart.info}}</span>
+                <span class="font-small">{{language.smart.info}}</span>
             </div>
         </div>
 

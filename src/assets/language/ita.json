@@ -99,9 +99,9 @@
     "smart": {
         "admin": "ADMIN",
         "home": "HOME",
-        "calendario": "CALE.",
+        "calendario": "CALENDARIO",
         "rose": "ROSE",
-        "classifiche": "CLAS.",
+        "classifiche": "CLASSIFICHE",
         "info": "INFO"
     },
     "login": {
