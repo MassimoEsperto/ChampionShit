@@ -21,21 +21,28 @@
                         (submit)="onRegistrati(element.value)">
 
                         <!-- Username -->
-                        <input type="text" id="username" class="form-control mb-4 mt-4" placeholder="Username"
-                            minlength="4" maxlength="12" [(ngModel)]="element.username" name="username" required />
+                        <div class="pt-8 pb-8">
+                            <input type="text" id="username" class="form-control" placeholder="Username" minlength="4"
+                                maxlength="12" [(ngModel)]="element.username" name="username" required />
+                        </div>
 
                         <!-- Email -->
-                        <input type="email" id="email" class="form-control mb-4" placeholder="Email" minlength="8"
-                            maxlength="40" [(ngModel)]="element.mail" name="email" required email />
+                        <div class="pt-8 pb-8">
+                            <input type="email" id="email" class="form-control" placeholder="Email" minlength="8"
+                                maxlength="40" [(ngModel)]="element.mail" name="email" required email />
+                        </div>
 
                         <!-- Cellulare -->
-                        <input type="text" id="cellulare" class="form-control mb-4 mt-4" placeholder="Cellulare"
-                            pattern="\d{8,15}$" [(ngModel)]="element.cellulare" name="cellulare" required />
+                        <div class="pt-8 pb-8">
+                            <input type="text" id="cellulare" class="form-control" placeholder="Cellulare"
+                                pattern="\d{8,15}$" [(ngModel)]="element.cellulare" name="cellulare" required />
+                        </div>
 
                         <!-- Password -->
-                        <input type="password" id="psw" class="form-control mb-4" placeholder="Pwd (min 8 caratteri)"
-                            minlength="8" maxlength="20" [(ngModel)]="element.password" name="password" required />
-
+                        <div class="pt-8 pb-8">
+                            <input type="password" id="psw" class="form-control" placeholder="Pwd (min 8 caratteri)"
+                                minlength="8" maxlength="20" [(ngModel)]="element.password" name="password" required />
+                        </div>
                         <!-- Sign in button -->
                         <my-button [submit]="true" [color]="'danger'" [block]="true" [disabled]="element.invalid"
                             [label]="language.bottoni.invia" [loading]="loading_btn"></my-button>

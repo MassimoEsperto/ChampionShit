@@ -18,19 +18,22 @@
         <!-- Form -->
         <form class="text-center" style="color: #757575;" #loggato="ngForm" (submit)="login(loggato)">
 
-          <!-- Email -->
-          <input type="text" id="name" class="form-control mb-4 mt-4" placeholder="Username"
-            [(ngModel)]="loggato.username" name="name" required />
-
+          <!-- Username -->
+          <div class="pt-16 pb-8">
+            <input type="text" id="name" class="form-control" placeholder="Username" [(ngModel)]="loggato.username"
+              name="name" required />
+          </div>
           <!-- Password -->
-          <input type="password" id="psw" class="form-control mb-4" placeholder="Password"
-            [(ngModel)]="loggato.password" name="password" required />
-
+          <div class="pt-8 pb-8">
+            <input type="password" id="psw" class="form-control" placeholder="Password" [(ngModel)]="loggato.password"
+              name="password" required />
+          </div>
           <!-- Sign in button -->
-          <my-button [submit]="true" [color]="'danger'" [block]="true" [disabled]="loggato.invalid" [label]="language.bottoni.entra" [loading]="loading_btn"></my-button>
+          <my-button [submit]="true" [color]="'danger'" [block]="true" [disabled]="loggato.invalid"
+            [label]="language.bottoni.entra" [loading]="loading_btn"></my-button>
 
           <!-- Forgot password -->
-          <a routerLink="/recupera-password">{{language.login.recupera_password}}</a> / 
+          <a routerLink="/recupera-password">{{language.login.recupera_password}}</a> /
           <!-- Register -->
           <a routerLink="/register">{{language.login.registrati}}</a>
 
@@ -43,6 +46,5 @@
     <!-- Material form login -->
 
   </div>
-  
-</div>
 
+</div>
