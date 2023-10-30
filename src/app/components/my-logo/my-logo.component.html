@@ -1,61 +1,63 @@
 <div class="pt-8 pb-16">
 
     <div class="punteggio pa-0">
-        <div class="col-12 col-sm-10 col-md-8 col-lg-6 pa-0">
-<div>
-            <mdb-card class="text-white" bgColor="bg-transparent">
+        <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-4 pa-0">
+            <div>
+                <mdb-card class="text-white" bgColor="bg-transparent">
 
-                <mdb-card-body class="pa-0">
+                    <mdb-card-body class="pa-0">
 
-                    <div class="loghi">
-                        <div style="text-align: left;" class="col-3 pl-0 ml-0 semi-loghi">
+                        <div class="loghi">
+                            <div style="text-align: left;" class="col-3 pl-0 ml-0 semi-loghi">
+                                <div>
+                                    <img src="assets/img/rifle1.gif" width="100%" style="max-width: 120px;" />
+                                </div>
+                                <div class="pt-8">
+                                    <img src="assets/img/telecamera.png" width="100%" style="max-width: 100px;" />
+                                </div>
+                            </div>
+                            <div style="text-align: center;" class="col-6 pt-16 pb-8 cursore"
+                                (click)="visualizzaProfilo()">
+                                <img src="assets/avatar/{{loggato.selezionata.avatar}}.png" width="100%"
+                                    style="max-width: 180px;" />
+                            </div>
+                            <div style="text-align: right;" class="col-3 pr-0 mr-0 semi-loghi">
+                                <div>
+                                    <img src="assets/img/rifle2.gif" width="100%" style="max-width: 120px;" />
+                                </div>
+                                <div class="pt-8">
+                                    <img src="assets/img/proiettore.png" width="100%" style="max-width: 100px;" />
+                                </div>
+                            </div>
+                        </div>
+
+                    </mdb-card-body>
+                    <mdb-card-header>
+                        <div style="text-align: center;">
+                            {{loggato.selezionata.squadra}}
+                        </div>
+                    </mdb-card-header>
+                </mdb-card>
+            </div>
+            <div *ngIf="is_upgrade==1" class="pt-32">
+                <mdb-card class="text-white" bgColor="bg-transparent">
+
+                    <mdb-card-body class="pa-0">
+                        <div class="punteggio pa-0">
                             <div>
-                                <img src="assets/img/rifle1.gif" width="100%" style="max-width: 120px;" />
-                            </div>
-                            <div class="pt-8">
-                                <img src="assets/img/telecamera.png" width="100%" style="max-width: 100px;" />
-                            </div>
-                        </div>
-                        <div style="text-align: center;" class="col-6 pt-16 pb-8 cursore" (click)="visualizzaProfilo()">
-                            <img src="assets/avatar/{{loggato.selezionata.avatar}}.png" width="100%" style="max-width: 180px;" />
-                        </div>
-                        <div style="text-align: right;" class="col-3 pr-0 mr-0 semi-loghi">
-                            <div>
-                                <img src="assets/img/rifle2.gif" width="100%" style="max-width: 120px;" />
-                            </div>
-                            <div class="pt-8">
-                                <img src="assets/img/proiettore.png" width="100%" style="max-width: 100px;" />
+                                <div style="text-align: center;" class="pt-16 pb-8 cursore" (click)="upgradeTeam()">
+                                    <img src="assets/img/team.png" width="100%" style="max-width: 180px;" />
+                                </div>
                             </div>
                         </div>
-                    </div>
-
-                </mdb-card-body>
-                <mdb-card-header>
-                    <div style="text-align: center;">
-                        {{loggato.selezionata.squadra}}
-                    </div>
-                </mdb-card-header>
-            </mdb-card>
-        </div>
-        <div *ngIf="is_upgrade==1" class="pt-32">
-            <mdb-card class="text-white" bgColor="bg-transparent">
-
-                <mdb-card-body class="pa-0">
-                    <div class="punteggio pa-0">
-                        <div>
-                            <div style="text-align: center;" class="pt-16 pb-8 cursore" (click)="upgradeTeam()">
-                                <img src="assets/img/team.png" width="100%" style="max-width: 180px;" />
-                            </div>
+                    </mdb-card-body>
+                    <mdb-card-header>
+                        <div style="text-align: center;">
+                            UPGRADE TEAM
                         </div>
-                    </div>
-                </mdb-card-body>
-                <mdb-card-header>
-                    <div style="text-align: center;">
-                        UPGRADE TEAM
-                    </div>
-                </mdb-card-header>
-            </mdb-card>
-        </div>
+                    </mdb-card-header>
+                </mdb-card>
+            </div>
         </div>
     </div>
 
